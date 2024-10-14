@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScoreBoard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://example.com/background.jpg') no-repeat center center fixed; /* Cambia la URL por la de tu fondo */
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .scoreboard {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        .team {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+        .position {
+            font-weight: bold;
+            color: #333;
+        }
+        .input-score {
+            width: 60%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .star {
+            color: gold;
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <p>Cientificos en juego</p>
+        
+        <div>
+            <button><img src="imagenes/3253482-flag-spain-icon_106784.ico" alt=""></button>
+            <button><img src="imagenes/3253480-catalonia-icon-flag_106770.ico" alt=""></button>
+            <button><img src="imagenes/united_kingdom_gb_gbr_flag_icon_255824.ico" alt=""></button>
+        </div>
+        
+    </nav>
+
+    <h1>RESULTADOS GLOBAL</h1>
+
+    <div class="scoreboard">
+        <div class="team">
+            <span class="position">#1</span>
+            <input type="text" class="input-score" placeholder="Nombre"/>
+        </div>
+        <div class="team">
+            <span class="position">#2</span>
+            <input type="text" class="input-score" placeholder="Nombre"/>
+        </div>
+        <div class="team">
+            <span class="position">#3</span>
+            <input type="text" class="input-score" placeholder="Nombre"/>
+        </div>
+        <div class="team">
+            <span class="position">#4</span>
+            <input type="text" class="input-score" placeholder="Nombre"/>
+        </div>
+        <div class="team">
+            <span class="star">⭐</span>
+        </div>
+    </div>
+
+</body>
+</html>
