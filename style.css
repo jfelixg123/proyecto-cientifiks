@@ -1,9 +1,61 @@
-.arrow {
-    width: 0;
-    height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 20px solid blue;
-    cursor: pointer;
-    margin: 20px;
+body{
+    background-image: none;
+}
+.container2{
+    padding-top: 90px;
+}
+.container {
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    height: 60vh; /* Altura completa de la ventana */
+    width: 100%;
+    background-color: #4F4C4C;
+    opacity: 70%;
+}
+.login-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: 300px;
+    padding: 30px;
+    border-radius: 30px;
+    background-color: #3484CE;
+    color: white;
+    
+}
+.login-container button{
+    width: 48%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 40px;
+    font-size: 16px;
+    background-color: #FF7C02;
+    color: white;
+}
+input[type="email"], input[type="password"] {
+    width: 95%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    box-shadow: 2px -2px 5px rgba(10, 96, 177, 0.705), 2px 2px 5px rgba(10, 97, 177, 0.5);
+}
+h1{
+    text-align: center;
+}
+nav button{
+    background-color: transparent;
+    border: none;
+}
+img{
+    height: 50px;
+}
+.cambioIdioma{
+    display: flex;
+    justify-content: right; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
 }
