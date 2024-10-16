@@ -1,8 +1,13 @@
 body{
-    background-image: none;
+    background-image: url('/imagenes/barco\ 3.png');
+    background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    font-family: "Bebas Neue", sans-serif;
 }
-.container2{
-    padding-top: 90px;
+p{
+    font-size: 30px;
+    
 }
 .container {
     display: flex;
@@ -10,12 +15,23 @@ body{
     align-items: center; /* Centrar verticalmente */
     height: 60vh; /* Altura completa de la ventana */
     width: 100%;
+}
+.capa1{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    height: 60vh; 
+    width: 100%;
     background-color: #4F4C4C;
-    opacity: 70%;
+    opacity: 75%;
+    position: absolute; 
+    top: 50; 
+    z-index: 1;
 }
 .login-container{
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
     width: 500px;
     height: 300px;
@@ -23,7 +39,9 @@ body{
     border-radius: 30px;
     background-color: #3484CE;
     color: white;
-    
+    position: relative;
+    z-index: 2;
+    font-size: 29px;
 }
 .login-container button{
     width: 48%;
@@ -34,8 +52,10 @@ body{
     font-size: 16px;
     background-color: #FF7C02;
     color: white;
+    font-family: "Bebas Neue", sans-serif;
 }
-input[type="email"], input[type="password"] {
+input[type="email"], input[type="password"],  input[type="name"],  input[type="surname"]{
+
     width: 95%;
     padding: 10px;
     margin: 10px 0;
@@ -46,6 +66,7 @@ input[type="email"], input[type="password"] {
 }
 h1{
     text-align: center;
+    font-size: 50px;
 }
 nav button{
     background-color: transparent;
@@ -58,4 +79,18 @@ img{
     display: flex;
     justify-content: right; /* Centrar horizontalmente */
     align-items: center; /* Centrar verticalmente */
+}
+nav {
+    display: flex; /* Habilita flexbox */
+    justify-content: space-between; /* Espacio entre los elementos */
+    align-items: flex-start; /* Alinea los elementos al inicio (parte superior) */
+    padding: 10px; /* Espacio alrededor */
+}
+
+nav p, .cambioIdioma {
+    margin-top: 50px; /* Ajusta este valor según lo que necesites */
+}
+a{
+ text-decoration: none;
+ color: white;   
 }
