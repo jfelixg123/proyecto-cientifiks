@@ -28,7 +28,7 @@ p{
     top: 50; 
     z-index: 1;
 }
-.login-container{
+.login-container, .login-container-register{
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -43,16 +43,23 @@ p{
     z-index: 2;
     font-size: 29px;
 }
-.login-container button{
+.login-container-register{
+    height: 440px;
+}
+.login-container button, .login-container-register button{
     width: 48%;
     padding: 10px;
-    margin: 10px 0;
+    margin: 30px 0;
+    margin-bottom: 10px;
     border: none;
     border-radius: 40px;
     font-size: 16px;
     background-color: #FF7C02;
     color: white;
     font-family: "Bebas Neue", sans-serif;
+}
+.login-container-register button{
+    width: 100%;
 }
 input[type="email"], input[type="password"],  input[type="name"],  input[type="surname"]{
 

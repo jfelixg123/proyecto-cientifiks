@@ -24,7 +24,7 @@
     <h1 id="login-title">REGISTRARSE</h1>
     <div class="container">
         <div class="capa1"></div>
-        <div class="login-container">
+        <div class="login-container-register">
             <form action="">
                 
                 <label id="name-label" for="name">Nombre</label>
@@ -49,47 +49,51 @@
                 <br>
                 <input type="password" id="password" required>
 
-                <button type="button" id="register-button"><a href="/register.html" rel="noopener noreferrer">REGISTRARSE</a></button>
+                <button type="submit" id="register-button">REGISTRARSE</button>
             </form>
         </div>
     </div>
 
     <script>
         const texts = {
-            es: {
-                title: "Científicos en juego",
-                loginTitle: "INICIAR SESIÓN",
-                emailLabel: "Correo",
-                passwordLabel: "Contraseña",
-                loginButton: "INICIAR SESIÓN",
-                registerButton: "REGISTRARSE"
-            },
-            ca: {
-                title: "Científics en joc",
-                loginTitle: "INICIAR SESSIÓ",
-                emailLabel: "Correu",
-                passwordLabel: "Contrasenya",
-                loginButton: "INICIAR SESSIÓ",
-                registerButton: "REGISTRAR-SE"
-            },
-            en: {
-                title: "Scientists in Play",
-                loginTitle: "LOGIN",
-                emailLabel: "Email",
-                passwordLabel: "Password",
-                loginButton: "LOGIN",
-                registerButton: "REGISTER"
-            }
-        };
+    es: {
+        title: "Científicos en juego",
+        registerTitle: "REGISTRARSE",
+        nameLabel: "Nombre",
+        surnameLabel: "Apellidos",
+        emailLabel: "Correo electrónico",
+        passwordLabel: "Contraseña",
+        registerButton: "REGISTRARSE"
+    },
+    ca: {
+        title: "Científics en joc",
+        registerTitle: "REGISTRAR-SE",
+        nameLabel: "Nom",
+        surnameLabel: "Cognoms",
+        emailLabel: "Correu electrònic",
+        passwordLabel: "Contrasenya",
+        registerButton: "REGISTRAR-SE"
+    },
+    en: {
+        title: "Scientists in Play",
+        registerTitle: "REGISTER",
+        nameLabel: "Name",
+        surnameLabel: "Surname",
+        emailLabel: "Email",
+        passwordLabel: "Password",
+        registerButton: "REGISTER"
+    }
+};
 
-        function changeLanguage(lang) {
-            document.getElementById("nav-title").innerText = texts[lang].title;
-            document.getElementById("login-title").innerText = texts[lang].loginTitle;
-            document.getElementById("email-label").innerText = texts[lang].emailLabel;
-            document.getElementById("password-label").innerText = texts[lang].passwordLabel;
-            document.getElementById("login-button").innerText = texts[lang].loginButton;
-            document.getElementById("register-button").innerText = texts[lang].registerButton;
-        }
+function changeLanguage(lang) {
+    document.getElementById("nav-title").innerText = texts[lang].title;
+    document.getElementById("login-title").innerText = texts[lang].registerTitle;
+    document.getElementById("name-label").innerText = texts[lang].nameLabel;
+    document.getElementById("surname-label").innerText = texts[lang].surnameLabel;
+    document.getElementById("email-label").innerText = texts[lang].emailLabel;
+    document.getElementById("password-label").innerText = texts[lang].passwordLabel;
+    document.getElementById("register-button").innerText = texts[lang].registerButton;
+}
     </script>
 </body>
 </html>
