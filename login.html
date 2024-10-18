@@ -14,11 +14,10 @@
     <nav>
         <button type="button"><img src="imagenes/flecha.png" alt="" class="flechaVolver"></button>
 
-
         <div class="cambioIdioma">
-            <button onclick="changeLanguage('es')"><img src="imagenes/mundo.png" alt=""></button>
-            <button onclick="changeLanguage('ca')"><img src="imagenes/bandera.png" alt=""></button>
-            <button onclick="changeLanguage('en')"><img src="imagenes/reino-unido.png" alt=""></button>
+            <button id="lang-es"><img src="imagenes/mundo.png" alt=""></button>
+            <button id="lang-ca"><img src="imagenes/bandera.png" alt=""></button>
+            <button id="lang-en"><img src="imagenes/reino-unido.png" alt=""></button>
         </div>
     </nav>
 
@@ -35,7 +34,7 @@
                 <br>
                 <input type="password" id="password" required>
                 <button type="submit" id="login-button">INICIAR SESIÓN</button>
-                <button type="button" id="register-button"><a href="/register.html" rel="noopener noreferrer">REGISTRARSE</a></button>
+                <button type="button" id="register-button">REGISTRARSE</button>
             </form>
         </div>
     </div>
@@ -43,7 +42,6 @@
     <script>
         const texts = {
             es: {
-                title: "Científicos en juego",
                 loginTitle: "INICIAR SESIÓN",
                 emailLabel: "Correo",
                 passwordLabel: "Contraseña",
@@ -51,7 +49,6 @@
                 registerButton: "REGISTRARSE"
             },
             ca: {
-                title: "Científics en joc",
                 loginTitle: "INICIAR SESSIÓ",
                 emailLabel: "Correu",
                 passwordLabel: "Contrasenya",
@@ -59,7 +56,6 @@
                 registerButton: "REGISTRAR-SE"
             },
             en: {
-                title: "Scientists in Play",
                 loginTitle: "LOGIN",
                 emailLabel: "Email",
                 passwordLabel: "Password",
@@ -69,13 +65,20 @@
         };
 
         function changeLanguage(lang) {
-            document.getElementById("nav-title").innerText = texts[lang].title;
             document.getElementById("login-title").innerText = texts[lang].loginTitle;
             document.getElementById("email-label").innerText = texts[lang].emailLabel;
             document.getElementById("password-label").innerText = texts[lang].passwordLabel;
             document.getElementById("login-button").innerText = texts[lang].loginButton;
             document.getElementById("register-button").innerText = texts[lang].registerButton;
         }
+
+        document.getElementById("lang-es").addEventListener("click", () => changeLanguage('es'));
+        document.getElementById("lang-ca").addEventListener("click", () => changeLanguage('ca'));
+        document.getElementById("lang-en").addEventListener("click", () => changeLanguage('en'));
+
+        document.getElementById("register-button").addEventListener("click", () => {
+            window.location.href = '/register.html';
+        });
     </script>
 </body>
 </html>

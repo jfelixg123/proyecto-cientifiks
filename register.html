@@ -7,17 +7,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <title>Login</title>
+    <title>Registro</title>
 </head>
 <body>
     
     <nav>
-        <button type="button"><img src="imagenes/flecha.png" alt="" class="flechaVolver"></button>
+        <button type="button" id="back-button"><img src="imagenes/flecha.png" alt="" class="flechaVolver"></button>
 
         <div class="cambioIdioma">
-            <button onclick="changeLanguage('es')"><img src="imagenes/mundo.png" alt=""></button>
-            <button onclick="changeLanguage('ca')"><img src="imagenes/bandera.png" alt=""></button>
-            <button onclick="changeLanguage('en')"><img src="imagenes/reino-unido.png" alt=""></button>
+            <button id="lang-es"><img src="imagenes/mundo.png" alt=""></button>
+            <button id="lang-ca"><img src="imagenes/bandera.png" alt=""></button>
+            <button id="lang-en"><img src="imagenes/reino-unido.png" alt=""></button>
         </div>
     </nav>
 
@@ -26,7 +26,6 @@
         <div class="capa1"></div>
         <div class="login-container-register">
             <form action="">
-                
                 <label id="name-label" for="name">Nombre</label>
                 <br>
                 <input type="name" id="name" required>
@@ -39,7 +38,7 @@
                 
                 <br>
 
-                <label id="email-label" for="email">Correo  electrónico</label>
+                <label id="email-label" for="email">Correo electrónico</label>
                 <br>
                 <input type="email" id="email" required>
                 
@@ -56,44 +55,49 @@
 
     <script>
         const texts = {
-    es: {
-        title: "Científicos en juego",
-        registerTitle: "REGISTRARSE",
-        nameLabel: "Nombre",
-        surnameLabel: "Apellidos",
-        emailLabel: "Correo electrónico",
-        passwordLabel: "Contraseña",
-        registerButton: "REGISTRARSE"
-    },
-    ca: {
-        title: "Científics en joc",
-        registerTitle: "REGISTRAR-SE",
-        nameLabel: "Nom",
-        surnameLabel: "Cognoms",
-        emailLabel: "Correu electrònic",
-        passwordLabel: "Contrasenya",
-        registerButton: "REGISTRAR-SE"
-    },
-    en: {
-        title: "Scientists in Play",
-        registerTitle: "REGISTER",
-        nameLabel: "Name",
-        surnameLabel: "Surname",
-        emailLabel: "Email",
-        passwordLabel: "Password",
-        registerButton: "REGISTER"
-    }
-};
+            es: {
+                registerTitle: "REGISTRARSE",
+                nameLabel: "Nombre",
+                surnameLabel: "Apellidos",
+                emailLabel: "Correo electrónico",
+                passwordLabel: "Contraseña",
+                registerButton: "REGISTRARSE"
+            },
+            ca: {
+                registerTitle: "REGISTRAR-SE",
+                nameLabel: "Nom",
+                surnameLabel: "Cognoms",
+                emailLabel: "Correu electrònic",
+                passwordLabel: "Contrasenya",
+                registerButton: "REGISTRAR-SE"
+            },
+            en: {
+                registerTitle: "REGISTER",
+                nameLabel: "Name",
+                surnameLabel: "Surname",
+                emailLabel: "Email",
+                passwordLabel: "Password",
+                registerButton: "REGISTER"
+            }
+        };
 
-function changeLanguage(lang) {
-    document.getElementById("nav-title").innerText = texts[lang].title;
-    document.getElementById("login-title").innerText = texts[lang].registerTitle;
-    document.getElementById("name-label").innerText = texts[lang].nameLabel;
-    document.getElementById("surname-label").innerText = texts[lang].surnameLabel;
-    document.getElementById("email-label").innerText = texts[lang].emailLabel;
-    document.getElementById("password-label").innerText = texts[lang].passwordLabel;
-    document.getElementById("register-button").innerText = texts[lang].registerButton;
-}
+        function changeLanguage(lang) {
+            document.getElementById("login-title").innerText = texts[lang].registerTitle;
+            document.getElementById("name-label").innerText = texts[lang].nameLabel;
+            document.getElementById("surname-label").innerText = texts[lang].surnameLabel;
+            document.getElementById("email-label").innerText = texts[lang].emailLabel;
+            document.getElementById("password-label").innerText = texts[lang].passwordLabel;
+            document.getElementById("register-button").innerText = texts[lang].registerButton;
+        }
+
+        // Asignar eventos a los botones
+        document.getElementById("back-button").addEventListener("click", () => {
+            window.location.href = 'login.html';
+        });
+
+        document.getElementById("lang-es").addEventListener("click", () => changeLanguage('es'));
+        document.getElementById("lang-ca").addEventListener("click", () => changeLanguage('ca'));
+        document.getElementById("lang-en").addEventListener("click", () => changeLanguage('en'));
     </script>
 </body>
 </html>
