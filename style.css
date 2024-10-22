@@ -767,9 +767,10 @@ section:hover {
     color: gold;
 }
 
-/*JEan style*/
+/*Jean style*/
+
 body{
-    background-image: url('/imagenes/barco\ 3.png');
+    background-image: url('./LangingPagPhoto/barco\ 3.png');
     background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
     background-position: center; /* Centra la imagen */
     background-repeat: no-repeat; /* Evita que la imagen se repita */
