@@ -1,3 +1,761 @@
+/* Pablo Landing page */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.carousel-item {
+    position: relative; /* Permite que los hijos con posición absoluta se posicionen correctamente */
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+}
+
+.navegador {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    display: flex;
+    z-index: 10;
+    padding: 5px;
+    flex-direction: column;
+}
+
+.contenido {
+    position: absolute; 
+    top: 200px; 
+    left: 0;
+    width: 100%;
+    height: auto;
+    min-height: calc(100vh - 200px); 
+    background-color: rgba(204, 190, 113, 0.575);  
+    z-index: 1; 
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+}
+.TituloInicio{
+    margin-top: 20px;
+    display: flex;
+    width: auto;
+    height: auto;
+    min-width: 170px;
+    border: solid 1px white;
+}
+.TituloInicio h1{
+    font-size: 50px;
+}
+.Descripcion{
+    display: flex;
+    width: auto;
+    height: auto;
+    min-width: 40px;
+    max-width: 750px;
+    border: solid 1px white;
+    margin: 50px;
+    justify-content: center;
+    align-items: center;
+}
+.botones{
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 100px;
+    min-height: 75px;
+    max-width: 250px;
+    background-color: brown;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 25px;
+}
+.botones a{
+    text-decoration:none;
+    color:#000
+}
+
+.idiomas {
+    display: flex;
+    width: 100%;
+    max-height: 70px;
+    height: auto; /* Cambia a auto para que la altura se ajuste al contenido */
+    background-color: aqua;
+    justify-content: space-between;
+    position: relative;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en varias filas */
+}
+
+.menu {
+    width: 100%;
+    height: 70%;
+    background-color: green; 
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.Second {
+    width: 100%;
+    height: auto;
+    min-height: 650px;
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+}
+
+.imagenJuego {
+    transition: opacity 1s ease;
+    opacity: 1; /* Inicialmente visible */
+}
+  
+.imagenJuego.hidden {
+    opacity: 0; /* Oculta la imagen */
+}
+
+.MasJuego {
+    width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
+    display: flex;
+    justify-content: center; /* Centra los elementos horizontalmente */
+    align-items: center; /* Centra los elementos verticalmente */
+    flex-wrap: nowrap; /* Mantiene los elementos en una línea en pantallas grandes */
+    gap: 20px; /* Espacio entre los juegos */
+}
+
+.PJuego {
+    width: 50%; /* Cada juego ocupa el 50% del ancho en pantallas grandes */
+    height: auto; /* La altura se ajusta al contenido */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid 1px white;
+    margin: 10px;
+}
+
+.PJuego img {
+    width: 100%; /* O el tamaño que desees, como 300px */
+  height: 300px; /* Mantiene la proporción */
+  max-width: 500px; /* Establece un ancho máximo */
+  max-height: 300px; /* Establece una altura máxima para que todas sean del mismo tamaño */
+  object-fit: cover; /* Asegura que la imagen llene el espacio sin distorsionarse */
+  border-radius: 15px;
+}
+
+.idioma {
+    width: 150px; /* Cambia a auto para que se ajuste al contenido */
+    height: 40px;
+    margin: 5px; /* Añade margen para que haya espacio entre los idiomas */
+    display: flex;
+    justify-content: space-around; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+}
+
+.idioma img {
+    width: 30px; /* Ajusta el tamaño de las imágenes */
+    height: 30px; /* Ajusta el tamaño de las imágenes */
+    border-radius: 50%;
+}
+
+.titulo , .opcion{
+    height: 100px;
+    border: 1px solid white;
+
+}
+.titulo{
+    width: 400px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-left: 10px;
+}
+
+.opcion{
+    width: 500px;
+    margin-right: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ranking{
+    width: 67px;
+    height: 67px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ranking img{
+    display: flex;
+    z-index: 1;
+    width: auto;
+    height: auto;
+    max-width: 40px;
+    max-height: 40px;
+}
+
+.inicarSesion , .registrarse{
+    width: 190px;
+    height: 67px;
+    border: 1px solid white;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.inicarSesion h2, .registrarse h2{
+    font-size: 30px;
+}
+
+.SobreNostros{
+    width: 100%;
+    height: auto;
+    background-color: blueviolet;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.TituloNosotros{
+    width: 400px;
+    min-height: 75px ;
+    height: 75px;
+    border: solid 1px white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 30px;
+}
+.TituloNosotros h1 {
+    font-size: 3rem; /* Tamaño base del título */
+    text-align: center;
+    color: white;
+}
+.Nosotros {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan si no caben */
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 30px;
+}
+
+.Creador {
+    flex-basis: calc(25% - 30px); /* Cada creador ocupará el 25% del ancho menos el gap */
+    max-width: 300px; /* Máximo ancho para pantallas grandes */
+    min-width: 200px; /* Mínimo ancho para evitar que sea muy pequeño en pantallas pequeñas */
+    height: auto; /* La altura se ajustará al contenido */
+    border: solid 1px white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+
+}
+.Creador img{
+    width: 250px;
+    height: 250px;
+}
+.ClickAqui img {
+    animation: subirBajar 1s infinite; /* La duración y la cantidad de repeticiones de la animación */
+}
+.Cofre {
+    cursor: pointer; /* Cambia el cursor a mano cuando está sobre el cofre */
+    width: 100%; /* Asegúrate de que la imagen se ajuste al contenedor */
+    height: auto;
+}
+footer{
+    width: 100%;
+    min-height: 75px;
+    background-color: gray;
+    height: 100px;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+}
+.relleno{
+    width: 100%;
+    height: 300px;
+    background-color: aqua;
+}
+.FooterDerechos, .Redes{
+    width: auto;
+    min-height: 50px;
+    border: solid 1px white;
+    display: flex;
+    margin: 20px;
+}
+
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  
+  .fade-out {
+    animation: fadeOut 0.5s forwards;
+  }
+  
+  .fade-in {
+    animation: fadeIn 0.5s forwards;
+}
+
+
+@keyframes subirBajar {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(20px); /* Cambia -10px a la distancia que desees */
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+@media  (max-width: 944px){
+    .titulo{
+        max-width: 200px;
+        height: 75px;
+        margin-right: 20px;
+    }
+    .MasJuego {
+        flex-wrap: wrap; /* Permite que los elementos se envuelvan en varias filas */
+    }
+
+    .PJuego {
+        width: 100%; /* Cada juego ocupará el 100% del ancho en pantallas más pequeñas */
+    }
+    .PJuego img{
+        max-width: 400px;
+        max-height: 250px;
+    }
+    .Creador {
+        flex-basis: calc(50% - 30px); /* En pantallas medianas, 2 creadores por fila */
+    }
+    .Creador img{
+        width: 200px;
+        height: 200px;
+    }
+    .TituloInicio h1{
+        font-size: 40px;
+    }
+    .Descripcion{
+        max-width: 500px;
+        margin: 60px;
+    }
+    
+}
+    
+
+
+
+@media (max-width: 768px) {
+    .navegador {
+        height: 150px;
+        font-size: 14px;
+        padding: 5px;
+    }
+    
+    .contenido {
+        top: 150px; 
+        height: calc(100vh - 150px); 
+        padding: 15px; 
+    }
+    
+    .idioma {
+        height: 30px; /* Ajusta la altura para pantallas más pequeñas */
+        width: 100px;
+    }
+
+    .idioma img {
+        width: 25px; /* Reduce el tamaño de las imágenes */
+        height: 25px; /* Reduce el tamaño de las imágenes */
+    }
+    .titulo{
+        max-width: 220px;
+        height: 75px;
+        margin-right: 10px;
+    }
+    .titulo h1{
+        font-size: x-large;
+    }
+    .ranking{
+        max-width: 50px;
+        height: 50px;
+    }
+    .inicarSesion{
+        width: 180px;
+        height: 50px;
+        margin: 10px;
+    }
+    .inicarSesion h2{
+        font-size: large;
+    }
+    .registrarse{
+        width: 180px;
+        height: 50px;
+        margin: 10px;
+    }
+    .registrarse h2{
+        font-size: large;
+    }
+    .opcion{
+        width: auto;
+        height: 70px;
+    }
+    .MasJuego {
+        flex-wrap: wrap; /* Permite que los elementos se envuelvan en varias filas */
+    }
+
+    .PJuego {
+        width: 100%; /* Cada juego ocupará el 100% del ancho en pantallas más pequeñas */
+    }
+    .PJuego img{
+        max-height: 300px;
+    }
+    .TituloNosotros h1 {
+        font-size: 2rem; /* Reducir el tamaño del título */
+    }
+    .Creador {
+        flex-basis: calc(50% - 30px); /* En pantallas medianas, 2 creadores por fila */
+    }
+    .Creador img{
+        width: 175px;
+        height: 175px;
+    }
+    .ranking img{
+        max-width: 30px;
+        max-height: 30px;
+    }
+    .Descripcion{
+        max-width: 450px;
+    }
+
+}
+
+@media (max-width: 576px) {
+    .navegador {
+        height: 100px;
+        font-size: 12px;
+    }
+    
+    .contenido {
+        top: 100px; 
+        height: calc(100vh - 100px); 
+        margin: 10px; 
+    }
+    
+    .idioma {
+        height: 25px; /* Ajusta la altura para pantallas más pequeñas */
+        width: 75px;
+    }
+
+    .idioma img {
+        width: 20px; /* Reduce el tamaño de las imágenes */
+        height: 20px; /* Reduce el tamaño de las imágenes */
+    }
+    .titulo{
+        max-width: 175px;
+        height: 50px;
+        margin-right: 20px;
+    }
+    .titulo h1{
+        font-size: large;
+    }
+    .ranking{
+        max-width: 30px;
+        height: 30px;
+    }
+    .inicarSesion{
+        width: 100px;
+        height: 40px;
+    }
+    .inicarSesion h2{
+        font-size: small;
+    }
+    .registrarse{
+        width: 100px;
+        height: 40px;
+    }
+    .registrarse h2{
+        font-size: small;
+    }
+    .opcion{
+        width: 300px;
+        height: 50px;
+    }
+    .MasJuego {
+        flex-wrap: wrap; /* Permite que los elementos se envuelvan en varias filas */
+    }
+
+    .PJuego {
+        width: 100%; /* Cada juego ocupará el 100% del ancho en pantallas más pequeñas */
+    }
+    .TituloNosotros h1 {
+        font-size: 1.5rem; /* Reducir aún más el tamaño */
+    }
+    .Creador {
+        flex-basis: 100%; /* En pantallas pequeñas, cada creador ocupará el 100% del ancho */
+    }
+    .Creador img{
+        width: 100px;
+        height: 100px;
+    }
+    .Cofre {
+        width: 80%; /* Cambia esto al tamaño que prefieras */
+        max-width: 200px; /* Asegúrate de que no crezca demasiado */
+        height: auto; /* Mantén la proporción de la imagen */
+    }
+    .ranking img{
+        max-width: 20px;
+        max-height: 20px;
+    }
+    .TituloInicio h1{
+        font-size: 30px;
+    }
+}
+
+/* style j.Pera  style J.Salamin Menu Juego*/
+body{
+    background-color: #CCE2EB;
+    margin: 0px;
+    padding: 0px;
+}
+
+
+
+section {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    transition: .5s ease;
+    
+}
+
+section:hover {
+    cursor: crosshair;
+    filter: contrast(150%);
+    transform: scale(1.01);
+}
+
+.contenedor {
+    position:relative;
+    width: 100%;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+
+.contenedor img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+    transition: .5s ease;
+}
+
+.contenedor:hover img {
+    cursor: crosshair;
+    width: 100%;
+    opacity: 50%;
+    filter: contrast(120%);
+    transform: scale(1.3);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    padding: 20px;
+    text-align: center;
+    
+}
+
+.contenedor:hover .overlay {
+    opacity: 1;
+    
+}
+
+.overlay h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Franklin Gothic';
+}
+
+.overlay p {
+    margin: 40px 0;
+    font-size: 14px;
+    font-family: 'Franklin Gothic light';
+    max-width: 250px;
+}
+
+.play-btn {
+    background-color: #FF7C02;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: 0.3s ease;
+    font-family: 'Franklin Gothic medium';
+}
+
+.play-btn:hover {
+    background-color: #f78821;
+    transform: scale(1.2);
+}
+
+/*style j.Pera  style J.Salamin Scoreboard*/
+
+body {
+    font-family: Arial, sans-serif;
+    background: url('../img/fondo.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 36px;
+    color: #333;
+    text-transform: uppercase;
+}
+
+.scoreboard {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    max-width: 800px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.ranking {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.rank-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    
+}
+
+.pastilla-posicion{
+    background-color: #d0e4f7;
+    border-radius: 22px;
+    padding: 10px 20px;
+    border-width: 1px;
+    box-shadow: 2px 2px 3px #0F65B5;
+    margin: 0px 15px;
+}
+
+.pastilla-nombre{
+    background-color: white;
+    border-radius: 22px;
+    padding: 10px 20px;
+    border-width: 5px;
+    border-color: #0F65B5;
+    margin: 0px 15px;
+}
+
+.pastilla-puntos{
+    background-color: #3484CE;
+    border-radius: 22px;
+    padding: 10px 20px;
+    border-width: 1px;
+    border-color: #0F65B5;
+    margin: 0px 15px;
+}
+
+
+
+.rank-number {
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 10px;
+    
+}
+
+.rank-name {
+    width: 200px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.rank-score{
+    width: 200px;
+     margin-left: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc; 
+}
+.icons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.icon {
+    font-size: 40px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.user-icon {
+    color: #000;
+}
+
+.star-icon {
+    color: gold;
+}
+
+/*JEan style*/
 body{
     background-image: url('/imagenes/barco\ 3.png');
     background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
