@@ -777,16 +777,15 @@ section:hover {
 
 /*Jean style*/
 
-body{
+.bodycss{
+    width: auto;
     background-image: url('./LangingPagPhoto/barco\ 3.png');
     background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
     background-position: center; /* Centra la imagen */
     background-repeat: no-repeat; /* Evita que la imagen se repita */
     font-family: "Bebas Neue", sans-serif;
-}
-p{
     font-size: 30px;
-    
+    height: 954px;
 }
 .flechaVolver{
     transform: rotate(630deg);
@@ -824,6 +823,7 @@ p{
     position: relative;
     z-index: 2;
     font-size: 29px;
+    box-sizing: content-box;
 }
 .login-container-register{
     height: 440px;
@@ -853,32 +853,33 @@ input[type="email"], input[type="password"],  input[type="name"],  input[type="s
     font-size: 16px;
     box-shadow: 2px -2px 5px rgba(10, 96, 177, 0.705), 2px 2px 5px rgba(10, 97, 177, 0.5);
 }
-h1{
+#login-title{
     text-align: center;
     font-size: 50px;
     color: #3E3737;
+    margin: revert;
 }
 nav button{
     background-color: transparent;
     border: none;
 }
-img{
+.navLogin img{
     height: 50px;
+}
+.cambioIdioma img{
+    margin: 5px;
 }
 .cambioIdioma{
     display: flex;
     justify-content: right; /* Centrar horizontalmente */
     align-items: center; /* Centrar verticalmente */
+    margin-top: 50px;
 }
-nav {
+.navLogin {
     display: flex; /* Habilita flexbox */
     justify-content: space-between; /* Espacio entre los elementos */
     align-items: flex-start; /* Alinea los elementos al inicio (parte superior) */
     padding: 10px; /* Espacio alrededor */
-}
-
-nav p, .cambioIdioma {
-    margin-top: 50px; /* Ajusta este valor según lo que necesites */
 }
 a{
  text-decoration: none;
