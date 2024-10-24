@@ -13,15 +13,15 @@
     width: 100%;
     height: 100vh;
     object-fit: cover;
+    opacity: 0.6;
 }
 
 .navegador {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 200px;
-    background-color: rgba(0, 0, 0, 0.5);
+    height: 175px;
     color: white;
     display: flex;
     z-index: 10;
@@ -36,7 +36,6 @@
     width: 100%;
     height: auto;
     min-height: calc(100vh - 200px); 
-    background-color: rgba(204, 190, 113, 0.575);  
     z-index: 1; 
     flex-direction: column;
     align-items: center;
@@ -48,7 +47,6 @@
     width: auto;
     height: auto;
     min-width: 170px;
-    border: solid 1px white;
 }
 .TituloInicio h1{
     font-size: 50px;
@@ -59,7 +57,6 @@
     height: auto;
     min-width: 40px;
     max-width: 750px;
-    border: solid 1px white;
     margin: 50px;
     justify-content: center;
     align-items: center;
@@ -73,7 +70,7 @@
     min-width: 100px;
     min-height: 75px;
     max-width: 250px;
-    background-color: brown;
+    background-color: #FF7C02;
     margin-top: 20px;
     padding: 10px;
     border-radius: 25px;
@@ -88,7 +85,6 @@
     width: 100%;
     max-height: 70px;
     height: auto; /* Cambia a auto para que la altura se ajuste al contenido */
-    background-color: aqua;
     justify-content: space-between;
     position: relative;
     flex-wrap: wrap; /* Permite que los elementos se envuelvan en varias filas */
@@ -97,7 +93,6 @@
 .menu {
     width: 100%;
     height: 70%;
-    background-color: green; 
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -107,9 +102,9 @@
     width: 100%;
     height: auto;
     min-height: 650px;
-    background-color: aqua;
     display: flex;
     justify-content: center;
+    background-color: #CCE2EB;
 }
 
 .imagenJuego {
@@ -136,8 +131,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: solid 1px white;
     margin: 10px;
+}
+.PJuego h3{
+    font-size: 60px;
+    margin-bottom: 20px;
 }
 
 .PJuego img {
@@ -166,7 +164,6 @@
 
 .titulo , .opcion{
     height: 100px;
-    border: 1px solid white;
 
 }
 .titulo{
@@ -206,7 +203,6 @@
 .inicarSesion , .registrarse{
     width: 190px;
     height: 67px;
-    border: 1px solid white;
     border-radius: 10px;
     justify-content: center;
     align-items: center;
@@ -215,11 +211,17 @@
 .inicarSesion h2, .registrarse h2{
     font-size: 30px;
 }
+.inicarSesion{
+    background-color: #3484CE;
+}
+.registrarse{
+    background-color: #FF7C02;
+}
 
 .SobreNostros{
     width: 100%;
     height: auto;
-    background-color: blueviolet;
+    background-color: #3484CE;
     min-height: 500px;
     display: flex;
     align-items: center;
@@ -229,7 +231,6 @@
     width: 400px;
     min-height: 75px ;
     height: 75px;
-    border: solid 1px white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -255,7 +256,6 @@
     max-width: 300px; /* Máximo ancho para pantallas grandes */
     min-width: 200px; /* Mínimo ancho para evitar que sea muy pequeño en pantallas pequeñas */
     height: auto; /* La altura se ajustará al contenido */
-    border: solid 1px white;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -278,7 +278,7 @@
 footer{
     width: 100%;
     min-height: 75px;
-    background-color: gray;
+    background-color: #3484CE;
     height: 100px;
     justify-content: space-between;
     align-items: center;
@@ -287,12 +287,11 @@ footer{
 .relleno{
     width: 100%;
     height: 300px;
-    background-color: aqua;
+    background-color: #CCE2EB;
 }
 .FooterDerechos, .Redes{
     width: auto;
     min-height: 50px;
-    border: solid 1px white;
     display: flex;
     margin: 20px;
 }
@@ -360,6 +359,9 @@ footer{
     .Descripcion{
         max-width: 500px;
         margin: 60px;
+    }
+    .FooterDerechos p{
+        font-size: 30px;
     }
     
 }
@@ -448,6 +450,9 @@ footer{
     .Descripcion{
         max-width: 450px;
     }
+    .FooterDerechos p{
+        font-size: 25px;
+    }
 
 }
 
@@ -530,6 +535,9 @@ footer{
     }
     .TituloInicio h1{
         font-size: 30px;
+    }
+    .FooterDerechos p{
+        font-size: 12px;
     }
 }
 

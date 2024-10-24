@@ -1,49 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const cofreImgs = document.querySelectorAll(".Cofre"); // Selecciona todos los elementos con clase 'Cofre'
-    const imagenes = [
-        "./LangingPagPhoto/cofre1-removebg-preview.png", // Cerrado
-        "./LangingPagPhoto/cofre2-removebg-preview.png",
-        "./LangingPagPhoto/cofre3-removebg-preview.png",
-        "./LangingPagPhoto/cofre4-removebg-preview.png",
-        "./LangingPagPhoto/cofre5-removebg-preview.png", // Abierto del todo
-    ];
-
-    cofreImgs.forEach(cofreImg => { // Itera sobre cada imagen de cofre
-        let index = 0; // Para llevar el seguimiento de la imagen actual
-        let abierto = false; // Estado del cofre (abierto o cerrado)
-        let animando = false; // Estado de la animación
-
-        cofreImg.addEventListener("click", function () {
-            if (!animando) { // Solo ejecutar si no está en animación
-                animando = true; // Establecer que estamos en animación
-                if (abierto) {
-                    const interval = setInterval(function () {
-                        index--; // Disminuir el índice
-                        if (index < 0) {
-                            clearInterval(interval); // Detener la animación
-                            index = 0; // Restablecer el índice
-                            abierto = false; // Cambiar el estado a cerrado
-                            animando = false; // Terminar la animación
-                        } else {
-                            cofreImg.src = imagenes[index]; // Cambiar la imagen
-                        }
-                    }, 100); // Cambia la imagen cada 100ms
-                } else {
-                    const interval = setInterval(function () {
-                        index++; // Aumentar el índice
-                        if (index >= imagenes.length) {
-                            clearInterval(interval); // Detener la animación
-                            index = imagenes.length - 1; // Asegúrate de que esté en la última imagen
-                            animando = false; // Terminar la animación
-                        } else {
-                            cofreImg.src = imagenes[index]; // Cambiar la imagen
-                        }
-                    }, 100); // Cambia la imagen cada 100ms
-                    abierto = true; // Cambiar el estado a abierto
-                }
-            }
-        });
-    });
 
     const translations = {
         "es": {
@@ -95,6 +50,86 @@ document.addEventListener("DOMContentLoaded", function () {
             aboutUs: "Sobre Nosaltres" 
         }
     };
+
+    
+    const cofreImgs = document.querySelectorAll(".Cofre"); // Selecciona todos los elementos con clase 'Cofre'
+    const imagenes = [
+        "./LangingPagPhoto/cofre1-removebg-preview.png", // Cerrado
+        "./LangingPagPhoto/cofre2-removebg-preview.png",
+        "./LangingPagPhoto/cofre3-removebg-preview.png",
+        "./LangingPagPhoto/cofre4-removebg-preview.png",
+        "./LangingPagPhoto/cofre5-removebg-preview.png", // Abierto del todo
+    ];
+
+    const dialogoImgs = [
+        "./LangingPagPhoto/perfil.png", // Imagen para el primer cofre
+        "./LangingPagPhoto/cosa.png", // Imagen para el segundo cofre
+        "./LangingPagPhoto/Cubo.png", // Imagen para el tercer cofre
+        "./LangingPagPhoto/catalan.png", // Imagen para el cuarto cofre
+    ];
+
+    cofreImgs.forEach((cofreImg, index) => { // Itera sobre cada imagen de cofre
+        let indexImagen = 0; // Para llevar el seguimiento de la imagen actual
+        let abierto = false; // Estado del cofre (abierto o cerrado)
+        let animando = false; // Estado de la animación
+        const imagenInicial = cofreImg.src; // Guarda la imagen inicial del cofre
+        const dialogoImg = cofreImg.parentElement.querySelector('.ClickAqui img'); // Selecciona la imagen de diálogo correspondiente al cofre
+    
+        // Establece la transición de opacidad para la imagen de diálogo
+        dialogoImg.style.transition = 'opacity 0.3s ease';
+    
+        cofreImg.addEventListener("click", function () {
+            if (!animando) { // Solo ejecutar si no está en animación
+                animando = true; // Establecer que estamos en animación
+    
+                if (abierto) {
+                    // Animación para cerrar el cofre (más rápida)
+                    const interval = setInterval(function () {
+                        indexImagen--; // Disminuir el índice
+                        if (indexImagen < 0) {
+                            clearInterval(interval); // Detener la animación
+                            cofreImg.src = imagenInicial; // Restaurar la imagen inicial
+                            indexImagen = 0; // Restablecer el índice
+                            abierto = false; // Cambiar el estado a cerrado
+                            animando = false; // Terminar la animación
+    
+                            // Asegúrate de que la imagen de diálogo sea invisible al final
+                            dialogoImg.style.opacity = '0'; // Hace que la imagen de diálogo sea invisible
+                        } else {
+                            cofreImg.src = imagenes[indexImagen]; // Cambiar la imagen
+    
+                            // Cambiar la opacidad de la imagen de diálogo a medida que se cierra el cofre
+                            const opacityValue = (indexImagen / (imagenes.length - 1)); // Calcula el nuevo valor de opacidad
+                            dialogoImg.style.opacity = opacityValue; // Aplica el nuevo valor de opacidad
+                        }
+                    }, 100); // Cambia la imagen cada 75ms para hacerla más rápida al cerrar
+                } else {
+                    // Cambiar la opacidad de la imagen de diálogo antes de abrir el cofre
+                    dialogoImg.style.opacity = '0'; // Oculta la imagen de diálogo al abrir el cofre
+                    const interval = setInterval(function () {
+                        indexImagen++; // Aumentar el índice
+                        if (indexImagen >= imagenes.length) {
+                            clearInterval(interval); // Detener la animación
+                            indexImagen = imagenes.length - 1; // Asegúrate de que esté en la última imagen
+                            animando = false; // Terminar la animación
+                            dialogoImg.style.opacity = '1'; // Asegúrate de que la imagen de diálogo sea visible
+                        } else {
+                            cofreImg.src = imagenes[indexImagen]; // Cambiar la imagen
+                        }
+                    }, 100); // Cambia la imagen cada 90ms para la apertura
+                    abierto = true; // Cambiar el estado a abierto
+    
+                    // Cambiar la imagen de diálogo correspondiente según el índice del cofre
+                    dialogoImg.src = dialogoImgs[index]; // Cambia la imagen del diálogo correspondiente
+                    dialogoImg.style.animation = 'none';
+                    dialogoImg.style.transition = 'opacity 0.3s ease'; // Mantiene la transición para la opacidad
+                    dialogoImg.style.opacity = '1'; // Asegúrate de que la imagen de diálogo sea visible
+                }
+            }
+        });
+    });
+    
+    
     const languageButtons = document.querySelectorAll(".idioma img");
     languageButtons.forEach(button => {
         button.addEventListener("click", function () {
