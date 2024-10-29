@@ -1,0 +1,17 @@
+.movimiento {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    position: absolute; /* Necesario para moverlo */
+    left: 0;  /* Inicializa la posición */
+    bottom: 0;   /* Inicializa la posición */
+}
+
+.obstaculo{
+    width: 200px;
+    height: 20px;
+    background-color: blue;
+    position: absolute;
+    bottom: 100px;
+    left: 50px;
+}
