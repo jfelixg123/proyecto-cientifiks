@@ -1,13 +1,88 @@
-.movimiento {
-    width: 100px;
-    height: 100px;
+body{
+    background-image: url(./imagenes/fondo.jpg);
+    background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 30px;   
+}
+.rata{
+    width: 40px;
+    height: 140px;
     background-color: red;
     position: absolute; /* Necesario para moverlo */
     left: 0;  /* Inicializa la posición */
     bottom: 0;   /* Inicializa la posición */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(./imagenes/rata.png);
+}
+.basura{
+    width: 40px;
+    height: 140px;
+    background-color: red;
+    position: absolute; /* Necesario para moverlo */
+    left: 0;  /* Inicializa la posición */
+    bottom: 0;   /* Inicializa la posición */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(./imagenes/basura.png);
+}
+.charco{
+    width: 40px;
+    height: 140px;
+    background-color: red;
+    position: absolute; /* Necesario para moverlo */
+    left: 0;  /* Inicializa la posición */
+    bottom: 0;   /* Inicializa la posición */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(./imagenes/charco.png);
+}
+.piso{
+
+}
+.parteSuperior, .murcielagos{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%; /* Ajusta según tu diseño */
+    height: 60px; /* Ajusta la altura de la barra */
+    padding: 20px 20px;
+    margin: 0 auto;
+}
+.llaves{
+   display: flex;
+}
+.llaves  p{
+ margin: 5px;    
+}
+.vidas p{
+    margin: 21px;
+}
+.vidas{
+    display: flex;
+}
+.panelVidas img{
+margin: 3px;
+}
+.vidas img{
+    width: 50px;
+    height: 50px;
+}
+.personaje {
+    width: 40px;
+    height: 140px;
+    background-color: red;
+    position: absolute; /* Necesario para moverlo */
+    left: 0;  /* Inicializa la posición */
+    bottom: 0;   /* Inicializa la posición */
+    background-image: url(./imagenes/AnnaMujal.png);
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-.obstaculo{
+.suelo{
     width: 200px;
     height: 20px;
     background-color: blue;

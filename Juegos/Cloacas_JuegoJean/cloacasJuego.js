@@ -9,6 +9,7 @@ const maxVelocityX = 5; // Velocidad máxima horizontal
 function applyGravity() {
     const divBottom = parseInt(div.style.top || window.innerHeight - div.offsetHeight + 'px');
 
+    // Solo aplica gravedad si no está colisionando con el obstáculo desde arriba
     if (!isColliding(div, obstaculo) && divBottom + div.offsetHeight < window.innerHeight) {
         div.style.top = (divBottom + gravity) + 'px';
     }
@@ -30,9 +31,22 @@ function isColliding(div1, div2) {
 // Función para actualizar la posición en función de la velocidad
 function updatePosition() {
     const divLeft = parseInt(div.style.left || '0px');
-    if (divLeft + velocityX >= 0 && divLeft + div.offsetWidth + velocityX <= window.innerWidth) {
-        div.style.left = (divLeft + velocityX) + 'px';
+    const nextPosition = divLeft + velocityX;
+
+    // Verifica colisión en cada frame y detén el movimiento si hay colisión
+    if (velocityX > 0 && isColliding(div, obstaculo)) {
+        // Si colisiona moviéndose hacia la derecha, lo coloca justo al borde izquierdo del obstáculo
+        div.style.left = obstaculo.getBoundingClientRect().left - div.offsetWidth + 'px';
+        velocityX = 0;
+    } else if (velocityX < 0 && isColliding(div, obstaculo)) {
+        // Si colisiona moviéndose hacia la izquierda, lo coloca justo al borde derecho del obstáculo
+        div.style.left = obstaculo.getBoundingClientRect().right + 'px';
+        velocityX = 0;
+    } else {
+        // Si no hay colisión, actualiza la posición del personaje
+        div.style.left = nextPosition + 'px';
     }
+
     requestAnimationFrame(updatePosition); // Llama a esta función repetidamente para una animación suave
 }
 
