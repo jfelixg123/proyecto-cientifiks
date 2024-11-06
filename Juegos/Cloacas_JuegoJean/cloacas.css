@@ -1,10 +1,104 @@
 body{
     background-image: url(./imagenes/fondo.jpg);
-    background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
-    background-position: center; /* Centra la imagen */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     font-family: "Bebas Neue", sans-serif;
-    font-size: 30px;   
+    font-size: 30px;
+    color: white;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;   
+}
+.juegoContenedor{
+    width: 1800px;
+    height: 900px;
+    background-color: rgba(34, 34, 34, 0.8); /* Fondo semi-transparente para resaltar el área del juego */
+    border: 3px solid #444;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* SUELOS PARTE IZQUIERDA, DERECHA, CENTRAL Y SUPERIOR DEL CONTAINER JUEGO */
+
+.linea{
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+.parteSuperior, .murcielagos{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%; /* Ajusta según tu diseño */
+    height: 60px; /* Ajusta la altura de la barra */
+    padding: 20px 20px;
+    margin: 0 auto;
+}
+.parteIzquierda, .parteDerecha {
+    height: 100%; /* Asegura que cada parte ocupe toda la altura del contenedor */
+    width: 39%;
+}
+.parteIzquierda {
+    
+    background-color: red; /* Color de fondo de ejemplo */
+}
+
+.parteMedio {
+    flex: 1; /* 2 partes del espacio total */
+    background-color: blue; /* Color de fondo de ejemplo */
+    height: 100%;
+}
+
+.parteDerecha {
+   
+    background-color: green; /* Color de fondo de ejemplo */
+}
+
+.suelo{
+    width: 200px;
+    height: 20px;
+    background-color: blue;
+    position: absolute;
+    bottom: 100px;
+    left: 50px;
+}
+
+/* OBJETOS */
+
+.llaves{
+   display: flex;
+}
+.llaves  p{
+ margin: 5px;    
+}
+.vidas p{
+    margin: 21px;
+}
+.vidas{
+    display: flex;
+}
+.panelVidas img{
+margin: 3px;
+}
+.vidas img{
+    width: 50px;
+    height: 50px;
+}
+.personaje {
+    width: 40px;
+    height: 140px;
+    background-color: red;
+    position: absolute; /* Necesario para moverlo */
+    left: 0;  /* Inicializa la posición */
+    bottom: 0;   /* Inicializa la posición */
+    background-image: url(./imagenes/AnnaMujal.png);
+    background-position: center;
+    background-repeat: no-repeat;
 }
 .rata{
     width: 40px;
@@ -38,55 +132,4 @@ body{
     background-position: center;
     background-repeat: no-repeat;
     background-image: url(./imagenes/charco.png);
-}
-.piso{
-
-}
-.parteSuperior, .murcielagos{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 90%; /* Ajusta según tu diseño */
-    height: 60px; /* Ajusta la altura de la barra */
-    padding: 20px 20px;
-    margin: 0 auto;
-}
-.llaves{
-   display: flex;
-}
-.llaves  p{
- margin: 5px;    
-}
-.vidas p{
-    margin: 21px;
-}
-.vidas{
-    display: flex;
-}
-.panelVidas img{
-margin: 3px;
-}
-.vidas img{
-    width: 50px;
-    height: 50px;
-}
-.personaje {
-    width: 40px;
-    height: 140px;
-    background-color: red;
-    position: absolute; /* Necesario para moverlo */
-    left: 0;  /* Inicializa la posición */
-    bottom: 0;   /* Inicializa la posición */
-    background-image: url(./imagenes/AnnaMujal.png);
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-.suelo{
-    width: 200px;
-    height: 20px;
-    background-color: blue;
-    position: absolute;
-    bottom: 100px;
-    left: 50px;
 }
