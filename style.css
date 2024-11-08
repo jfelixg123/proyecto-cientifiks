@@ -8,6 +8,16 @@
 .carousel-item {
     position: relative; /* Permite que los hijos con posición absoluta se posicionen correctamente */
 }
+h1{
+    font-family: "Bebas Neue", sans-serif ;
+    font-weight: 400;
+    font-style: normal;
+}
+p{
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
 
 .carousel-item img {
     width: 100%;
@@ -28,7 +38,14 @@
     padding: 5px;
     flex-direction: column;
 }
+#navbar {
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Añade transición para box-shadow */
+}
 
+.nav-active {
+    background-color: rgba(62, 55, 55, 0.65);
+    box-shadow: 0 20px 30px rgba(54, 46, 46, 0.65), 0 40px 60px rgba(62, 55, 55, 0.2); /* Menor desenfoque */
+}
 .contenido {
     position: absolute; 
     top: 200px; 
@@ -56,10 +73,14 @@
     width: auto;
     height: auto;
     min-width: 40px;
-    max-width: 750px;
+    max-width: 700px;
     margin: 50px;
     justify-content: center;
     align-items: center;
+}
+.Descripcion p{
+    font-size: 32px;
+    
 }
 .botones{
     width: auto;
@@ -73,17 +94,17 @@
     background-color: #FF7C02;
     margin-top: 20px;
     padding: 10px;
-    border-radius: 25px;
+    border-radius: 23px;
 }
 .botones a{
     text-decoration:none;
-    color:#000
+    color: white;
 }
 
 .idiomas {
     display: flex;
     width: 100%;
-    max-height: 70px;
+    max-height: 40px;
     height: auto; /* Cambia a auto para que la altura se ajuste al contenido */
     justify-content: space-between;
     position: relative;
@@ -91,7 +112,7 @@
 }
 
 .menu {
-    width: 100%;
+    width: 100.5%;
     height: 70%;
     display: flex;
     justify-content: flex-end;
@@ -124,41 +145,60 @@
     flex-wrap: nowrap; /* Mantiene los elementos en una línea en pantallas grandes */
     gap: 20px; /* Espacio entre los juegos */
 }
-
 .PJuego {
-    width: 50%; /* Cada juego ocupa el 50% del ancho en pantallas grandes */
-    height: auto; /* La altura se ajusta al contenido */
+    position: relative; 
+    width: 50%; 
+    height: auto; 
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 10px;
 }
-.PJuego h3{
-    font-size: 60px;
-    margin-bottom: 20px;
-}
 
 .PJuego img {
-    width: 100%; /* O el tamaño que desees, como 300px */
-  height: 300px; /* Mantiene la proporción */
-  max-width: 500px; /* Establece un ancho máximo */
-  max-height: 300px; /* Establece una altura máxima para que todas sean del mismo tamaño */
-  object-fit: cover; /* Asegura que la imagen llene el espacio sin distorsionarse */
-  border-radius: 15px;
+    width: 100%; 
+    height: 400px; 
+    max-width: 600px; 
+    max-height: 400px; 
+    object-fit: cover; 
+    border-radius: 15px;
+    transition: filter 0.3s ease; /* Transición para el filtro */
 }
 
+.PJuego:hover img {
+    filter: brightness(0.5); /* Aplica un filtro de brillo para oscurecer la imagen al hacer hover sobre el contenedor */
+}
+
+.boton-juego {
+    width: 200px;
+    height: 50px;
+    border-radius: 15px;
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    opacity: 0; 
+    transition: opacity 0.3s ease; 
+}
+
+.PJuego:hover .boton-juego {
+    opacity: 1; /* Muestra el botón solo cuando el mouse está sobre la imagen o el contenedor */
+}
+.boton-juego:hover{
+    background-color: #FF7C02;
+}
 .idioma {
     width: 150px; /* Cambia a auto para que se ajuste al contenido */
     height: 40px;
-    margin: 5px; /* Añade margen para que haya espacio entre los idiomas */
+    margin: 15px; /* Añade margen para que haya espacio entre los idiomas */
     display: flex;
     justify-content: space-around; /* Centra el contenido horizontalmente */
     align-items: center; /* Centra el contenido verticalmente */
 }
 
 .idioma img {
-    width: 30px; /* Ajusta el tamaño de las imágenes */
-    height: 30px; /* Ajusta el tamaño de las imágenes */
+    width: 40px; /* Ajusta el tamaño de las imágenes */
+    height: 40px; /* Ajusta el tamaño de las imágenes */
     border-radius: 50%;
 }
 
@@ -173,6 +213,14 @@
     display: flex;
     margin-left: 10px;
 }
+.titulo h1{
+    font-family: Bebas Neue;
+    color: #000;
+}
+.titulo-activo h1{
+    color: rgb(255, 255, 255);
+    transition: color 0.75s ease; /* Animación para el cambio de color */ 
+}
 
 .opcion{
     width: 500px;
@@ -181,10 +229,9 @@
     align-items: center;
     justify-content: space-between;
 }
-
 .ranking{
-    width: 67px;
-    height: 67px;
+    width: 65px;
+    height: 65px;
     background-color: white;
     border-radius: 50%;
     display: flex;
@@ -207,6 +254,17 @@
     justify-content: center;
     align-items: center;
     display: flex;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transición para el color y el tamaño */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+}
+.inicarSesion:hover, .registrarse:hover {
+    transform: scale(1.10); /* Aumenta el tamaño un poco */
+}
+.registrarse:hover{
+    background-color: #f8c28f; /* Fondo más blanco */
+}
+.inicarSesion:hover{
+    background-color: #a6d4ff;
 }
 .inicarSesion h2, .registrarse h2{
     font-size: 30px;
@@ -257,6 +315,7 @@
     min-width: 200px; /* Mínimo ancho para evitar que sea muy pequeño en pantallas pequeñas */
     height: auto; /* La altura se ajustará al contenido */
     display: flex;
+    position: relative;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -266,10 +325,28 @@
 .Creador img{
     width: 250px;
     height: 250px;
+    min-width: 175px;
+    min-height: 175px;
 }
 .ClickAqui img {
     animation: subirBajar 1s infinite; /* La duración y la cantidad de repeticiones de la animación */
 }
+.ClickAqui{
+    position: relative;
+}
+.mini-texto {
+    position: absolute; /* Lo posicionamos relativo al contenedor 'character' */
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    display: none; /* Oculto por defecto */
+    pointer-events: none; /* No interfiere con el movimiento del mouse */
+    transition: opacity 0.2s ease;
+    z-index: 1;
+}
+
 .Cofre {
     cursor: pointer; /* Cambia el cursor a mano cuando está sobre el cofre */
     width: 100%; /* Asegúrate de que la imagen se ajuste al contenedor */
@@ -286,14 +363,18 @@ footer{
 }
 .relleno{
     width: 100%;
-    height: 300px;
-    background-color: #CCE2EB;
+    height: 150px;
+    background-color: #3484CE;
 }
 .FooterDerechos, .Redes{
     width: auto;
     min-height: 50px;
     display: flex;
     margin: 20px;
+    color: white;
+}
+.FooterDerechos p{
+    font-size:20px ;
 }
 
 
@@ -363,7 +444,9 @@ footer{
     .FooterDerechos p{
         font-size: 30px;
     }
-    
+    .Descripcion p{
+        font-size: 25px;
+    }
 }
     
 
@@ -448,10 +531,13 @@ footer{
         max-height: 30px;
     }
     .Descripcion{
-        max-width: 450px;
+        max-width: 600px;
     }
     .FooterDerechos p{
-        font-size: 25px;
+        font-size: 15px;
+    }
+    .Descripcion p{
+        font-size: 23px;
     }
 
 }
@@ -524,11 +610,6 @@ footer{
         width: 100px;
         height: 100px;
     }
-    .Cofre {
-        width: 80%; /* Cambia esto al tamaño que prefieras */
-        max-width: 200px; /* Asegúrate de que no crezca demasiado */
-        height: auto; /* Mantén la proporción de la imagen */
-    }
     .ranking img{
         max-width: 20px;
         max-height: 20px;
@@ -538,6 +619,9 @@ footer{
     }
     .FooterDerechos p{
         font-size: 12px;
+    }
+    .Descripcion p{
+        font-size: 20px;
     }
 }
 
