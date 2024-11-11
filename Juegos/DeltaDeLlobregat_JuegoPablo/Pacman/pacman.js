@@ -27,7 +27,7 @@ let vidas = 3;
 let pacmanPosition = { x: 1, y: 18 };   // Posición inicial del pacman
 let enemyPosition = { x: 47, y: 18 }; // Posición inicial del enemigo
 let secondEnemyPosition = { x: 32, y: 10 };  
-let score = 0; // Variable global para la puntuación
+let score = 8; // Variable global para la puntuación
 let canMove = true; // Variable para controlar si Pac-Man puede moverse
 let timerInterval;
 let timeLeft = 300;
@@ -374,19 +374,24 @@ function ResetGamePoint() {
     const puntosIniciales2 = [
         [9,1],[1,21],[4,48],[14, 32],[16,48]
     ]
+    /*
     const murosIniciales = [
         [15, 32], [16,32],[17,32],[14,31],[14,33],[15,33]
     ];
     const murosIniciales2 =[
         [15,31],[4,39],[5,39],[9,12],[7,23],[7,22]
     ]
-    
+    */
+    const murosIniciales = [
+        [15, 32]
+    ]
     puntosIniciales.forEach(([fila, columna]) => {
         map[fila][columna] = 3;
     });
     puntosIniciales2.forEach(([fila, columna]) => {
         map[fila][columna] = 3;
     });
+
     murosIniciales.forEach(([fila, columna]) => {
         map[fila][columna] = 1; // Establece el valor del muro en el mapa (1)
     });
