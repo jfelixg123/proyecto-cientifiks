@@ -64,7 +64,8 @@ img{
 }
 
 .wall {
-    background-color: blue; /* Color de los muros */
+    background-image: url(./ImagenJuego/prisma.png);
+    background-size: cover;
 }
 .point{
     background-color: aqua;
