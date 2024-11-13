@@ -11,6 +11,7 @@ const vampiro = document.getElementById("vampiroVertical");
 const gameOverScreen = document.getElementById('gameOverScreen');
 const jugarotravez = document.getElementById('jugarDeNuevo');
 const volverMenu = document.getElementById('returnMenu');
+console.log("tardes");
 
 let morir = false;
 let score = 0;
