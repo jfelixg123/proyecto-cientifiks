@@ -35,19 +35,19 @@ jugar.addEventListener("click", function () {
 document.addEventListener("keydown", function (event) {
     if (event.code === "Space") {
         player.classList.add("playerJump");
-        player.style.backgroundImage = "url('../img/gifchica_saltando.gif')";
+        player.style.backgroundImage = "url('./img/gifchica_saltando.gif')";
     }
 });
 
 player.addEventListener('animationend', () => {
     player.classList.remove("playerJump");
-    player.style.backgroundImage = "url('../img/gifchica.gif')";
+    player.style.backgroundImage = "url('./img/gifchica.gif')";
 });
 
 document.addEventListener("keydown", function (event) {
     if (event.code === "ArrowDown") {
         playerCollider.style.animation = "agacharse 0.1s forwards";
-        player.style.backgroundImage = "url('../img/gifchica_esquivar.png')";
+        player.style.backgroundImage = "url('./img/gifchica_esquivar.png')";
 
        
     }
@@ -56,7 +56,7 @@ document.addEventListener("keydown", function (event) {
 document.addEventListener("keyup", function (event) {
     if (event.code === "ArrowDown") {
         playerCollider.style.animation = "none";
-        player.style.backgroundImage = "url('../img/gifchica.gif')";
+        player.style.backgroundImage = "url('./img/gifchica.gif')";
         playerCollider.style.height = "100%";  // Restablecer el tamaño completo
         playerCollider.style.bottom = "0px";  // Restablecer la posición inicial
     }
@@ -103,6 +103,7 @@ function startScoreCounter() {
             }, 2200);
         }
     }, 100);
+    return score;
 }
 
 function detectarColision() {
@@ -145,6 +146,15 @@ function detectarColision() {
     return false;
 }
 
+function detenerAnimacionEnemigos() {
+
+    for (let enemigo of enemigoArray) {
+        enemigo.style.animation = "none";
+        enemigo.style.left = enemigo.style.left;  // Asegura que el enemigo quede en su posición actual
+        enemigo.style.top = enemigo.style.top;
+    }
+
+}
 
 function reiniciarJuego() {
     score = 0;
@@ -170,6 +180,10 @@ function gameLoop() {
         console.log("has muerto");
         fondo.style.animation = "none";
         vampiro.style.animation = "none"; 
+        player.style.animation = "none";
+        detenerAnimacionEnemigos();
+
+        guardarScore(score);
         clearInterval(scoreInterval);
        
         gameStarted = false;
@@ -197,6 +211,25 @@ function generadorEnemigos() {
         }, 3000); 
     }
     
+}
+function guardarScore(score) {
+    
+    fetch('../php/score.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ score: score })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            console.log('Score guardado exitosamente');
+        } else {
+            console.log('Error al guardar el score:', data.message);
+        }
+    })
+    .catch(error => console.error('Error:', error));
 }
 
 gameLoop();
