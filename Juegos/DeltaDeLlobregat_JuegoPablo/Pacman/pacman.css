@@ -47,7 +47,8 @@ img{
     height: 600px;        
     overflow: hidden;     
     position: relative;   
-    background-color: black; 
+    background-image: url(./ImagenJuego/Warm_Ocean.png);
+    background-size: cover;
     border: 1px solid white;
 }
 #game {
@@ -67,8 +68,12 @@ img{
     background-image: url(./ImagenJuego/prisma.png);
     background-size: cover;
 }
+.The_World{
+    background-color: mediumseagreen;
+}
 .point{
-    background-color: aqua;
+    background-image: url(./ImagenJuego/petroleo.png);
+    background-size: cover;
 }
 .pacman {
     background-color: yellow; /* Color de Pac-Man */
@@ -77,10 +82,8 @@ img{
     background-color: red; /* Color del enemigo */
 }
 .SpeedBoost{
-    background-color: purple;
-}
-.EnemyBoost{
-    background-color: lightblue;
+    background-image: url(./ImagenJuego/oxygen.png);
+    background-size: cover;
 }
 .tiempo{
     display: flex;

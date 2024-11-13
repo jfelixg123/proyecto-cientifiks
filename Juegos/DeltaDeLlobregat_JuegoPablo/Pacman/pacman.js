@@ -3,9 +3,9 @@ const map = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 1],
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 3, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 0, 0, 0, 0, 0, 3, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 3, 1, 4, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 3, 1],
+    [1, 0, 0, 0, 0, 0, 3, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 3, 1, 4, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 5, 1, 0, 0, 0, 3, 1],
     [1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1],
-    [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 5, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
     [1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
@@ -15,7 +15,7 @@ const map = [
     [1, 0, 1, 1, 1, 0, 0, 0, 3, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
     [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 3, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
     [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 3, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1],
-    [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 3, 1],
+    [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 5, 3, 1],
     [1, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1],
     [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
@@ -35,6 +35,7 @@ let currentSpeed = 250;
 let boostTimeout;
 let secondEnemyAppeared = false;
 let isPaused = false;
+let enemyMovementInterval;
 
 // Crear el mapa
 function createMap() {
@@ -50,6 +51,8 @@ function createMap() {
                 cell.classList.add('point');
             }else if(map[row][col] === 4){
                 cell.classList.add('SpeedBoost');
+            }else if(map[row][col] === 5){
+                cell.classList.add('The_World');
             }
             gameContainer.appendChild(cell);
         }
@@ -64,8 +67,7 @@ function drawEnemy() {
     const cells = document.querySelectorAll('.cell');    
     // Dibujar el primer enemigo
     const index = enemyPosition.y * map[0].length + enemyPosition.x;
-    cells[index].classList.add('enemy');
-    
+    cells[index].classList.add('enemy');    
     // Dibujar el segundo enemigo solo si ha aparecido
     if (secondEnemyAppeared) {
         const secondIndex = secondEnemyPosition.y * map[0].length + secondEnemyPosition.x;
@@ -75,8 +77,7 @@ function drawEnemy() {
 function movePacman(dx, dy) {
     if (!isPaused) {
         const newX = pacmanPosition.x + dx;
-        const newY = pacmanPosition.y + dy;
-    
+        const newY = pacmanPosition.y + dy;    
         // Verifica si la posicion se puede mover
         if (newX >= 0 && newX < map[0].length && newY >= 0 && newY < map.length && (map[newY][newX] === 0 || map[newY][newX] === 2 || map[newY][newX] === 3 || map[newY][newX] === 4|| map[newY][newX] === 5)) {
             // Quitar la poscion anterior
@@ -141,7 +142,6 @@ function moveEnemy() {
                 drawSecondEnemy(); // Aquí asumimos que tienes una función drawSecondEnemy() para el segundo enemigo
             }
         }
-
         checkCollision();  // Comprobar las colisiones después de mover los enemigos
     }
 }
@@ -155,29 +155,24 @@ function findPath(start, goal) {
         { dx: -1, dy: 0 }, // Izquierda
         { dx: 1, dy: 0 }   // Derecha
     ];
-
     while (queue.length > 0) {
         const { position, path } = queue.shift();
         const posKey = `${position.x},${position.y}`;
-
         // Evitar visitar posiciones ya exploradas
         if (visited.has(posKey)) continue;
         visited.add(posKey);
-
         // Si hemos llegado a la posición objetivo, devolvemos el camino
         if (position.x === goal.x && position.y === goal.y) {
             return [...path, goal];
         }
-
         // Explorar las celdas vecinas
         for (const { dx, dy } of directions) {
             const newX = position.x + dx;
             const newY = position.y + dy;
-
             // Asegurarnos de que estamos dentro de los límites del mapa
             if (newX >= 0 && newX < map[0].length && newY >= 0 && newY < map.length) {
                 // Permitir que el enemigo pase por las celdas vacías (0) y los puntos (3)
-                if (map[newY][newX] === 0 || map[newY][newX] === 3) {
+                if (map[newY][newX] === 0 || map[newY][newX] === 3 || map[newY][newX] === 4 || map[newY][newX] === 5) {
                     queue.push({ position: { x: newX, y: newY }, path: [...path, position] });
                 }
             }
@@ -189,7 +184,6 @@ function findPath(start, goal) {
 function checkCollision() {
     const cells = document.querySelectorAll('.cell');
     const index = pacmanPosition.y * map[0].length + pacmanPosition.x;
-
     // Comprobar colisión con el primer enemigo
     if (pacmanPosition.x === enemyPosition.x && pacmanPosition.y === enemyPosition.y) {
         if (vidas === 1) {
@@ -200,7 +194,6 @@ function checkCollision() {
             resetPositions();
         }
     }
-
     // Comprobar colisión con el segundo enemigo si ha aparecido
     if (secondEnemyAppeared && pacmanPosition.x === secondEnemyPosition.x && pacmanPosition.y === secondEnemyPosition.y) {
         if (vidas === 1) {
@@ -211,7 +204,6 @@ function checkCollision() {
             resetPositions();
         }
     }
-
     // Comprobar si Pac-Man recoge un punto
     if (map[pacmanPosition.y][pacmanPosition.x] === 3) {
         score++;
@@ -229,6 +221,10 @@ function checkCollision() {
         map[pacmanPosition.y][pacmanPosition.x] = 0;
         cells[index].classList.remove('SpeedBoost');
         activateSpeedBoost();
+    }else if(map[pacmanPosition.y][pacmanPosition.x] === 5){
+        map[pacmanPosition.y][pacmanPosition.x] = 0;
+        cells[index].classList.remove('The_World');
+        StopTime();
     } else if (map[pacmanPosition.y][pacmanPosition.x] === 2) {
         if (score >= 6) {
             showWinPopup();
@@ -242,16 +238,13 @@ function drawSecondEnemy() {
         cells[index].classList.add('enemy'); // Dibujar al segundo enemigo en el mapa
     }
 }
-function DesbloquearMuro() {
-    
+function DesbloquearMuro() {  
     const Muros = [
         [15, 32], [16,32],[17,32],[14,31],[14,33],[15,33],[15,31]
     ];
-    
     const Muros2 =[
         [4,39],[5,39],[9,12],[7,23],[7,22]
     ];
-    
     Muros.forEach(([fila, columna]) => {
         const index = fila * map[0].length + columna;
         map[fila][columna] = 0; // Cambia el valor en el mapa a un espacio vacío (0)
@@ -303,6 +296,14 @@ function showGameOverPopup() {
         window.location.href = 'index.html'; // Cambia 'index.html' a la página de salida deseada
     });
 }
+function StopTime() {
+    // Detiene el movimiento del enemigo
+    clearInterval(enemyMovementInterval);
+    // Después de 5 segundos, vuelve a iniciar el movimiento del enemigo
+    setTimeout(() => {
+        startEnemyMovement(); // Reactiva el movimiento del enemigo
+    }, 5000); // 5 segundos
+}
 function activateSpeedBoost() {
     currentSpeed = 25; // Cambia a velocidad aumentada
     clearTimeout(boostTimeout); // Limpia cualquier boost anterior
@@ -328,16 +329,13 @@ function resetPositions() {
     pacmanPosition = { x: 1, y: 18 };
     enemyPosition = { x: 47, y: 18 };
     secondEnemyPosition = { x: 32, y: 10 }; // Posición inicial del segundo enemigo
-
     const cells = document.querySelectorAll('.cell');
     cells.forEach(cell => {
         cell.classList.remove('pacman');
         cell.classList.remove('enemy');
     });
-
     drawPacman();
     drawEnemy(); // Dibuja al primer enemigo
-
     // Si el segundo enemigo ha aparecido, dibújalo en su posición inicial
     if (secondEnemyAppeared) {
         drawSecondEnemy(); // Función que dibuja al segundo enemigo
@@ -371,7 +369,6 @@ function resetGame() {
 function ResetGamePoint() {
     vidas = 3; // Restablecer vidas al valor inicial
     score = 0; // Reiniciar la puntuación a cero
-
     const puntosIniciales = [
         [13, 8], [4, 6], [3, 18], [11, 20], [15, 20],
         [18, 20], [4, 27], [2, 34], [12, 32], [2, 48] //[27, 46] no funciona la posicion?
@@ -384,8 +381,7 @@ function ResetGamePoint() {
     ];
     const murosIniciales2 =[
         [15,31],[4,39],[5,39],[9,12],[7,23],[7,22]
-    ]
-    
+    ]   
     puntosIniciales.forEach(([fila, columna]) => {
         map[fila][columna] = 3;
     });
@@ -398,7 +394,6 @@ function ResetGamePoint() {
     murosIniciales2.forEach(([fila, columna]) => {
         map[fila][columna] = 1; // Establece el valor del muro en el mapa (1)
     });
-
 }
 function removeSecondEnemy() {
     const cells = document.querySelectorAll('.cell');
@@ -410,7 +405,6 @@ function removeSecondEnemy() {
 // Manejo de las teclas presionadas
 document.addEventListener('keydown', (event) => {
     if (!canMove) return; // Si no puede moverse, salimos de la función
-
     switch (event.key) {
         case 'w':
             movePacman(0, -1);
@@ -425,10 +419,8 @@ document.addEventListener('keydown', (event) => {
             movePacman(1, 0);
             break;
     }
-
     // Desactiva el movimiento temporalmente
     canMove = false;
-
     // Activa el movimiento nuevamente después de 250 ms
     setTimeout(() => {
         canMove = true;
@@ -439,7 +431,6 @@ function updateTimer() {
     if (!isPaused) {
         // Actualiza el temporizador en el DOM
         document.getElementById('timer').innerText = timeLeft;
-
         if (timeLeft <= 0) {
             clearInterval(timerInterval); // Detener el temporizador cuando se acabe el tiempo
             canMove = false; // Deshabilitar movimiento
@@ -447,7 +438,6 @@ function updateTimer() {
             resetGame(); // Llamar a la función para reiniciar el juego
             return;
         }
-
         timeLeft--; // Disminuir el tiempo cada segundo
     }
 }
@@ -469,5 +459,8 @@ function updateScoreDisplay() {
     document.getElementById('puntuaje').innerText = score; // Actualiza el texto del elemento de puntuación
 }
 // Mueve el enemigo cada 500 ms
-setInterval(moveEnemy, 500);
+function startEnemyMovement() {
+    enemyMovementInterval = setInterval(moveEnemy, 500); // Mueve al enemigo cada 500ms
+}
+startEnemyMovement();
 initializeGame();
