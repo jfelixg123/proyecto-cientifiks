@@ -27,7 +27,7 @@ let vidas = 3;
 let pacmanPosition = { x: 1, y: 18 };   // Posición inicial del pacman
 let enemyPosition = { x: 47, y: 18 }; // Posición inicial del enemigo
 let secondEnemyPosition = { x: 32, y: 10 };  
-let score = 8; // Variable global para la puntuación
+let score = 0; // Variable global para la puntuación
 let canMove = true; // Variable para controlar si Pac-Man puede moverse
 let timerInterval;
 let timeLeft = 300;
@@ -63,17 +63,6 @@ function drawPacman() {
     const index = pacmanPosition.y * map[0].length + pacmanPosition.x;
     cells[index].classList.add('pacman');
 }
-function drawEnemy() {
-    const cells = document.querySelectorAll('.cell');    
-    // Dibujar el primer enemigo
-    const index = enemyPosition.y * map[0].length + enemyPosition.x;
-    cells[index].classList.add('enemy');    
-    // Dibujar el segundo enemigo solo si ha aparecido
-    if (secondEnemyAppeared) {
-        const secondIndex = secondEnemyPosition.y * map[0].length + secondEnemyPosition.x;
-        cells[secondIndex].classList.add('enemy');
-    }
-}
 function movePacman(dx, dy) {
     if (!isPaused) {
         const newX = pacmanPosition.x + dx;
@@ -94,6 +83,27 @@ function movePacman(dx, dy) {
         }
     }
 }
+let enemyDirection = 'right';  // Dirección inicial del primer enemigo
+let secondEnemyDirection = 'right';  // Dirección inicial del segundo enemig
+function drawEnemy() {
+    const cells = document.querySelectorAll('.cell');
+    const index = enemyPosition.y * map[0].length + enemyPosition.x;
+    
+    // Solo agregar la clase 'enemy' si la celda no tiene un '1'
+    if (map[enemyPosition.y][enemyPosition.x] !== 3) {
+        cells[index].classList.add('enemy', `enemy-${enemyDirection}`);
+    }
+}
+
+function drawSecondEnemy() {
+    const cells = document.querySelectorAll('.cell');
+    const index = secondEnemyPosition.y * map[0].length + secondEnemyPosition.x;
+    
+    // Solo agregar la clase 'enemy' si la celda no tiene un '1'
+    if (map[secondEnemyPosition.y][secondEnemyPosition.x] !== 3) {
+        cells[index].classList.add('enemy', `enemy-${secondEnemyDirection}`);
+    }
+}
 // Mover el enemigo utilizando BFS
 function moveEnemy() {
     if (!isPaused) {
@@ -104,10 +114,23 @@ function moveEnemy() {
             const cells = document.querySelectorAll('.cell');
             const currentIndex = enemyPosition.y * map[0].length + enemyPosition.x;
             cells[currentIndex].classList.remove('enemy');
+            
+            // Actualizar la dirección
+            if (nextPosition.x > enemyPosition.x) {
+                enemyDirection = 'right';  // Mover hacia la derecha
+            } else if (nextPosition.x < enemyPosition.x) {
+                enemyDirection = 'left';  // Mover hacia la izquierda
+            } else if (nextPosition.y > enemyPosition.y) {
+                enemyDirection = 'down';  // Mover hacia abajo
+            } else if (nextPosition.y < enemyPosition.y) {
+                enemyDirection = 'up';  // Mover hacia arriba
+            }
+
             // Actualizar posición del primer enemigo
             enemyPosition.x = nextPosition.x;
             enemyPosition.y = nextPosition.y;
-            // Dibujar al primer enemigo en la nueva posición
+
+            // Dibujar al primer enemigo con la dirección correcta
             drawEnemy();
         }
 
@@ -120,31 +143,29 @@ function moveEnemy() {
                 const secondCurrentIndex = secondEnemyPosition.y * map[0].length + secondEnemyPosition.x;
                 cells[secondCurrentIndex].classList.remove('enemy');
 
-                // Comprobar si ambos enemigos se moverían a la misma casilla
-                if (secondNextPosition.x === enemyPosition.x && secondNextPosition.y === enemyPosition.y) {
-                    // Si se juntarían, mueve el segundo enemigo a la siguiente posición disponible (path[2])
-                    if (secondPath.length > 2) {
-                        const alternativePosition = secondPath[2]; // Tomar el siguiente paso como alternativa
-                        secondEnemyPosition.x = alternativePosition.x;
-                        secondEnemyPosition.y = alternativePosition.y;
-                    } else {
-                        // Si no hay pasos alternativos, se mantiene en su lugar
-                        secondEnemyPosition.x = secondPath[1].x;
-                        secondEnemyPosition.y = secondPath[1].y;
-                    }
-                } else {
-                    // Si no están en la misma casilla, mueve al segundo enemigo a la siguiente posición
-                    secondEnemyPosition.x = secondNextPosition.x;
-                    secondEnemyPosition.y = secondNextPosition.y;
+                // Actualizar la dirección del segundo enemigo
+                if (secondNextPosition.x > secondEnemyPosition.x) {
+                    secondEnemyDirection = 'right';
+                } else if (secondNextPosition.x < secondEnemyPosition.x) {
+                    secondEnemyDirection = 'left';
+                } else if (secondNextPosition.y > secondEnemyPosition.y) {
+                    secondEnemyDirection = 'down';
+                } else if (secondNextPosition.y < secondEnemyPosition.y) {
+                    secondEnemyDirection = 'up';
                 }
 
-                // Dibujar al segundo enemigo en la nueva posición
-                drawSecondEnemy(); // Aquí asumimos que tienes una función drawSecondEnemy() para el segundo enemigo
+                // Actualizar posición del segundo enemigo
+                secondEnemyPosition.x = secondNextPosition.x;
+                secondEnemyPosition.y = secondNextPosition.y;
+
+                // Dibujar al segundo enemigo con la dirección correcta
+                drawSecondEnemy();
             }
         }
         checkCollision();  // Comprobar las colisiones después de mover los enemigos
     }
 }
+
 // Encuentra el camino utilizando BFS
 function findPath(start, goal) {
     const queue = [{ position: start, path: [] }];
@@ -212,10 +233,12 @@ function checkCollision() {
         cells[index].classList.remove('point');
         if (score === 9) {
             DesbloquearMuro();
-        }else if(score === 10){
+        }
+        if(score === 10){
+            DesbloquearMuro();
             secondEnemyAppeared = true;  // El segundo enemigo aparece después de 9 puntos
             drawSecondEnemy();
-            DesbloquearMuro();
+            
         }
     } else if (map[pacmanPosition.y][pacmanPosition.x] === 4) {
         map[pacmanPosition.y][pacmanPosition.x] = 0;
@@ -229,13 +252,6 @@ function checkCollision() {
         if (score >= 6) {
             showWinPopup();
         }
-    }
-}
-function drawSecondEnemy() {
-    const cells = document.querySelectorAll('.cell');
-    const index = secondEnemyPosition.y * map[0].length + secondEnemyPosition.x;
-    if (cells[index]) {
-        cells[index].classList.add('enemy'); // Dibujar al segundo enemigo en el mapa
     }
 }
 function DesbloquearMuro() {  
@@ -450,10 +466,10 @@ function startTimer() {
 }
 // Inicializa el mapa y dibuja Pac-Man y el enemigo
 function initializeGame() {
+    startTimer(); // Iniciar el temporizador
     createMap();  // Crear el mapa del juego
     drawPacman(); // Dibujar Pac-Man
     drawEnemy();  // Dibujar el enemigo
-    startTimer(); // Iniciar el temporizador
 }
 function updateScoreDisplay() {
     document.getElementById('puntuaje').innerText = score; // Actualiza el texto del elemento de puntuación

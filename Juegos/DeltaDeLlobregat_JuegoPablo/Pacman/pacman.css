@@ -53,15 +53,15 @@ img{
 }
 #game {
     display: grid;
-    grid-template-rows: repeat(30, 30px);    
-    grid-template-columns: repeat(50, 30px); 
+    grid-template-rows: repeat(30, 40px);    
+    grid-template-columns: repeat(50, 40px); 
 }
 .exit {
     background-color: green; /* Color verde para la salida */
 }
 .cell {
-    width: 30px;   /* Tamaño de la celda */
-    height: 30px;  /* Tamaño de la celda */
+    width: 40px;   /* Tamaño de la celda */
+    height: 40px;  /* Tamaño de la celda */
 }
 
 .wall {
@@ -79,8 +79,25 @@ img{
     background-color: yellow; /* Color de Pac-Man */
 }
 .enemy {
-    background-color: red; /* Color del enemigo */
+    background-size: cover;
 }
+
+.enemy-right {
+    background-image: url(./ImagenJuego/shipRight.gif);
+}
+
+.enemy-left {
+    background-image: url(./ImagenJuego/shipLeft.gif);
+}
+
+.enemy-up {
+    background-image: url(./ImagenJuego/shipUp.gif);
+}
+
+.enemy-down {
+    background-image: url(./ImagenJuego/shipDown.gif);
+}
+
 .SpeedBoost{
     background-image: url(./ImagenJuego/oxygen.png);
     background-size: cover;

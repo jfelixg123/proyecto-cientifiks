@@ -34,19 +34,19 @@ jugar.addEventListener("click", function () {
 document.addEventListener("keydown", function (event) {
     if (event.code === "Space") {
         player.classList.add("playerJump");
-        player.style.backgroundImage = "url('../img/gifchica_saltando.gif')";
+        player.style.backgroundImage = "url('./img/gifchica_saltando.gif')";
     }
 });
 
 player.addEventListener('animationend', () => {
     player.classList.remove("playerJump");
-    player.style.backgroundImage = "url('../img/gifchica.gif')";
+    player.style.backgroundImage = "url('./img/gifchica.gif')";
 });
 
 document.addEventListener("keydown", function (event) {
     if (event.code === "ArrowDown") {
         playerCollider.style.animation = "agacharse 0.1s forwards";
-        player.style.backgroundImage = "url('../img/gifchica_esquivar.png')";
+        player.style.backgroundImage = "url('./img/gifchica_esquivar.png')";
 
        
     }
@@ -55,7 +55,7 @@ document.addEventListener("keydown", function (event) {
 document.addEventListener("keyup", function (event) {
     if (event.code === "ArrowDown") {
         playerCollider.style.animation = "none";
-        player.style.backgroundImage = "url('../img/gifchica.gif')";
+        player.style.backgroundImage = "url('./img/gifchica.gif')";
         playerCollider.style.height = "100%";  // Restablecer el tamaño completo
         playerCollider.style.bottom = "0px";  // Restablecer la posición inicial
     }
