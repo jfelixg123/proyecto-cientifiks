@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloacas</title>
+    <link rel="stylesheet" href="cloacas.css">
+    
+</head>
+
+<body>
+    <div class="personaje" id="personaje"></div>
+    <div class="juegoContenedor" id="juegoContenedor">
+        <div class="parteSuperior">
+            <div class="llaves">
+                <p>LLAVES DE PASO =</p>
+                <P>0</P>
+            </div>
+            <div class="vidas">
+                <p>VIDAS:</p>
+                <div class="panelVidas">
+                    <img id="PrimeroVida" src="imagenes/heart.png" alt="">
+                    <img id="SegundaVida" src="imagenes/heart.png" alt="">
+                    <img id="TerceraVida" src="imagenes/heart.png" alt="">
+                </div>
+            </div>
+            <div id="tiempo">00:00</div>
+        </div>
+        <div class="murcielagos">
+            <img src="imagenes/murcielago.png" alt="">
+            <img src="imagenes/murcielago.png" alt="">
+            <img src="imagenes/murcielago.png" alt="">
+            <img src="imagenes/murcielago.png" alt="">
+        </div>
+        <div class="juegoContenedorCentral" id="juegoContenedorCentral">
+            <div id="parteIzquierda" class="parteIzquierda">
+                <div class="tercerPisoIzquierda">
+                    <div class="llavePasoTercerPiso"></div>
+                    <div id="rataTercerPiso" class="rataTercerPiso"></div>
+                    <div class="basuraTercerPiso"></div>
+                    <div class="charcoTercerPisoIzquierda"></div>
+                </div>
+                <div class="segundoPisoIzquierda">
+                    <div id="rataSegundoPiso" class="rataSegundoPiso"></div>
+                    <div class="charcoSegundoPisoIzquierda"></div>
+                </div>
+                <div class="primerPisoIzquierda">
+                    <div class="llavePasoPrimerPiso"></div>
+                    <div id="rataPrimerPiso" class="rataPrimerPiso"></div>
+                    <div class="basuraPrimerPiso"></div>
+                    <div class="charcoPrimerPisoIzquierda"></div>
+                </div>
+            </div>
+            <div class="parteMedio">
+                <div class="pasoPrimerPiso"></div>
+                <div class="pasoSegundoPiso"></div>
+            </div>
+            <div id="parteDerecha" class="parteDerecha">
+                <div class="tercerPisoDerecha">
+                    <div class="puerta"></div>
+                    <div class="staircase-container">
+                        <div class="stair"></div>
+                        <div class="stair"></div>
+                        <div class="stair"></div>
+                        <div class="stair"></div>
+                        <div class="stair"></div>
+                        <div class="stair"></div>
+                        <div class="stair"></div>
+                        <div class="stair"></div>
+                        <div class="stair"></div>
+                      </div> 
+                </div>
+                <div class="segundoPisoDerecha">
+                    <div id="rataSegundoPisoDerecha" class="rataSegundoPisoDerecha"></div>
+                    <div class="basuraSegundoPisoDerecha"></div>
+                    <div class="llavePasoSegundoPisoDerecha"></div>
+                </div>
+                <div class="primerPisoDerecha">
+                    <div id="rataPrimerPisoDerecha" class="rataPrimerPisoDerecha"></div>
+                    <div class="basuraPrimerPisoDerecha"></div>
+                    <div class="llaveDePasoPrimerPisoDerecha"></div>
+                    <div class="charcoPrimerPisoDerecha"></div>
+                </div>
+            </div>
+        </div>
+        <div class="suelo" id="suelo"></div>
+    </div>
+    <script src="cloacasJuego.js"></script>
+</body>
+</html>

@@ -8,27 +8,59 @@
 .carousel-item {
     position: relative; /* Permite que los hijos con posición absoluta se posicionen correctamente */
 }
+h1{
+    font-family: "Bebas Neue", sans-serif ;
+    font-weight: 400;
+    font-style: normal;
+}
+p{
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+h2 a{
+        color: black; 
+        text-decoration: none;
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+}
+h1 a{
+    color: black; 
+    text-decoration: none;  
+    font-family: "Bebas Neue", sans-serif ;
+    font-weight: 400;
+    font-style: normal;
+}
 
 .carousel-item img {
     width: 100%;
     height: 100vh;
     object-fit: cover;
+    opacity: 0.6;
 }
 
 .navegador {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 200px;
-    background-color: rgba(0, 0, 0, 0.5);
+    height: 175px;
     color: white;
     display: flex;
     z-index: 10;
     padding: 5px;
     flex-direction: column;
 }
+#navbar {
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Añade transición para box-shadow */
+}
 
+.nav-active {
+    background-color: rgba(62, 55, 55, 0.65);
+    box-shadow: 0 20px 30px rgba(54, 46, 46, 0.65), 0 40px 60px rgba(62, 55, 55, 0.2); /* Menor desenfoque */
+}
 .contenido {
     position: absolute; 
     top: 200px; 
@@ -36,7 +68,6 @@
     width: 100%;
     height: auto;
     min-height: calc(100vh - 200px); 
-    background-color: rgba(204, 190, 113, 0.575);  
     z-index: 1; 
     flex-direction: column;
     align-items: center;
@@ -48,7 +79,6 @@
     width: auto;
     height: auto;
     min-width: 170px;
-    border: solid 1px white;
 }
 .TituloInicio h1{
     font-size: 50px;
@@ -58,11 +88,14 @@
     width: auto;
     height: auto;
     min-width: 40px;
-    max-width: 750px;
-    border: solid 1px white;
+    max-width: 700px;
     margin: 50px;
     justify-content: center;
     align-items: center;
+}
+.Descripcion p{
+    font-size: 32px;
+    
 }
 .botones{
     width: auto;
@@ -73,31 +106,29 @@
     min-width: 100px;
     min-height: 75px;
     max-width: 250px;
-    background-color: brown;
+    background-color: #FF7C02;
     margin-top: 20px;
     padding: 10px;
-    border-radius: 25px;
+    border-radius: 23px;
 }
 .botones a{
     text-decoration:none;
-    color:#000
+    color: white;
 }
 
 .idiomas {
     display: flex;
     width: 100%;
-    max-height: 70px;
+    max-height: 40px;
     height: auto; /* Cambia a auto para que la altura se ajuste al contenido */
-    background-color: aqua;
     justify-content: space-between;
     position: relative;
     flex-wrap: wrap; /* Permite que los elementos se envuelvan en varias filas */
 }
 
 .menu {
-    width: 100%;
+    width: 100.5%;
     height: 70%;
-    background-color: green; 
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -107,9 +138,9 @@
     width: 100%;
     height: auto;
     min-height: 650px;
-    background-color: aqua;
     display: flex;
     justify-content: center;
+    background-color: #CCE2EB;
 }
 
 .imagenJuego {
@@ -129,44 +160,65 @@
     flex-wrap: nowrap; /* Mantiene los elementos en una línea en pantallas grandes */
     gap: 20px; /* Espacio entre los juegos */
 }
-
 .PJuego {
-    width: 50%; /* Cada juego ocupa el 50% del ancho en pantallas grandes */
-    height: auto; /* La altura se ajusta al contenido */
+    position: relative; 
+    width: 50%; 
+    height: auto; 
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: solid 1px white;
     margin: 10px;
 }
 
 .PJuego img {
-    width: 100%; /* O el tamaño que desees, como 300px */
-  height: 300px; /* Mantiene la proporción */
-  max-width: 500px; /* Establece un ancho máximo */
-  max-height: 300px; /* Establece una altura máxima para que todas sean del mismo tamaño */
-  object-fit: cover; /* Asegura que la imagen llene el espacio sin distorsionarse */
-  border-radius: 15px;
+    width: 100%; 
+    height: 400px; 
+    max-width: 600px; 
+    max-height: 400px; 
+    object-fit: cover; 
+    border-radius: 15px;
+    transition: filter 0.3s ease; /* Transición para el filtro */
 }
 
+.PJuego:hover img {
+    filter: brightness(0.5); /* Aplica un filtro de brillo para oscurecer la imagen al hacer hover sobre el contenedor */
+}
+
+.boton-juego {
+    width: 200px;
+    height: 50px;
+    border-radius: 15px;
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    opacity: 0; 
+    transition: opacity 0.3s ease; 
+}
+
+.PJuego:hover .boton-juego {
+    opacity: 1; /* Muestra el botón solo cuando el mouse está sobre la imagen o el contenedor */
+}
+.boton-juego:hover{
+    background-color: #FF7C02;
+}
 .idioma {
     width: 150px; /* Cambia a auto para que se ajuste al contenido */
     height: 40px;
-    margin: 5px; /* Añade margen para que haya espacio entre los idiomas */
+    margin: 15px; /* Añade margen para que haya espacio entre los idiomas */
     display: flex;
     justify-content: space-around; /* Centra el contenido horizontalmente */
     align-items: center; /* Centra el contenido verticalmente */
 }
 
 .idioma img {
-    width: 30px; /* Ajusta el tamaño de las imágenes */
-    height: 30px; /* Ajusta el tamaño de las imágenes */
+    width: 40px; /* Ajusta el tamaño de las imágenes */
+    height: 40px; /* Ajusta el tamaño de las imágenes */
     border-radius: 50%;
 }
 
 .titulo , .opcion{
     height: 100px;
-    border: 1px solid white;
 
 }
 .titulo{
@@ -177,8 +229,10 @@
     margin-left: 10px;
 }
 .titulo h1{
+
     font-family: "Bebas Neue";
     color: white;
+
 }
 .titulo-activo h1{
     color: rgb(255, 255, 255);
@@ -192,10 +246,9 @@
     align-items: center;
     justify-content: space-between;
 }
-
 .ranking{
-    width: 67px;
-    height: 67px;
+    width: 65px;
+    height: 65px;
     background-color: white;
     border-radius: 50%;
     display: flex;
@@ -214,20 +267,36 @@
 .inicarSesion , .registrarse{
     width: 190px;
     height: 67px;
-    border: 1px solid white;
     border-radius: 10px;
     justify-content: center;
     align-items: center;
     display: flex;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transición para el color y el tamaño */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+}
+.inicarSesion:hover, .registrarse:hover {
+    transform: scale(1.10); /* Aumenta el tamaño un poco */
+}
+.registrarse:hover{
+    background-color: #f8c28f; /* Fondo más blanco */
+}
+.inicarSesion:hover{
+    background-color: #a6d4ff;
 }
 .inicarSesion h2, .registrarse h2{
     font-size: 30px;
+}
+.inicarSesion{
+    background-color: #3484CE;
+}
+.registrarse{
+    background-color: #FF7C02;
 }
 
 .SobreNostros{
     width: 100%;
     height: auto;
-    background-color: blueviolet;
+    background-color: #3484CE;
     min-height: 500px;
     display: flex;
     align-items: center;
@@ -237,7 +306,6 @@
     width: 400px;
     min-height: 75px ;
     height: 75px;
-    border: solid 1px white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -263,8 +331,8 @@
     max-width: 300px; /* Máximo ancho para pantallas grandes */
     min-width: 200px; /* Mínimo ancho para evitar que sea muy pequeño en pantallas pequeñas */
     height: auto; /* La altura se ajustará al contenido */
-    border: solid 1px white;
     display: flex;
+    position: relative;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -274,10 +342,28 @@
 .Creador img{
     width: 250px;
     height: 250px;
+    min-width: 175px;
+    min-height: 175px;
 }
 .ClickAqui img {
     animation: subirBajar 1s infinite; /* La duración y la cantidad de repeticiones de la animación */
 }
+.ClickAqui{
+    position: relative;
+}
+.mini-texto {
+    position: absolute; /* Lo posicionamos relativo al contenedor 'character' */
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    display: none; /* Oculto por defecto */
+    pointer-events: none; /* No interfiere con el movimiento del mouse */
+    transition: opacity 0.2s ease;
+    z-index: 1;
+}
+
 .Cofre {
     cursor: pointer; /* Cambia el cursor a mano cuando está sobre el cofre */
     width: 100%; /* Asegúrate de que la imagen se ajuste al contenedor */
@@ -286,7 +372,7 @@
 footer{
     width: 100%;
     min-height: 75px;
-    background-color: gray;
+    background-color: #3484CE;
     height: 100px;
     justify-content: space-between;
     align-items: center;
@@ -294,15 +380,18 @@ footer{
 }
 .relleno{
     width: 100%;
-    height: 300px;
-    background-color: aqua;
+    height: 150px;
+    background-color: #3484CE;
 }
 .FooterDerechos, .Redes{
     width: auto;
     min-height: 50px;
-    border: solid 1px white;
     display: flex;
     margin: 20px;
+    color: white;
+}
+.FooterDerechos p{
+    font-size:20px ;
 }
 
 
@@ -369,7 +458,12 @@ footer{
         max-width: 500px;
         margin: 60px;
     }
-    
+    .FooterDerechos p{
+        font-size: 30px;
+    }
+    .Descripcion p{
+        font-size: 25px;
+    }
 }
     
 
@@ -454,7 +548,13 @@ footer{
         max-height: 30px;
     }
     .Descripcion{
-        max-width: 450px;
+        max-width: 600px;
+    }
+    .FooterDerechos p{
+        font-size: 15px;
+    }
+    .Descripcion p{
+        font-size: 23px;
     }
 
 }
@@ -527,17 +627,18 @@ footer{
         width: 100px;
         height: 100px;
     }
-    .Cofre {
-        width: 80%; /* Cambia esto al tamaño que prefieras */
-        max-width: 200px; /* Asegúrate de que no crezca demasiado */
-        height: auto; /* Mantén la proporción de la imagen */
-    }
     .ranking img{
         max-width: 20px;
         max-height: 20px;
     }
     .TituloInicio h1{
         font-size: 30px;
+    }
+    .FooterDerechos p{
+        font-size: 12px;
+    }
+    .Descripcion p{
+        font-size: 20px;
     }
 }
 
@@ -807,16 +908,15 @@ section:hover {
 
 /*Jean style*/
 
-body{
+.bodycss{
+    width: auto;
     background-image: url('./LangingPagPhoto/barco\ 3.png');
     background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
     background-position: center; /* Centra la imagen */
     background-repeat: no-repeat; /* Evita que la imagen se repita */
     font-family: "Bebas Neue", sans-serif;
-}
-p{
     font-size: 30px;
-    
+    height: 954px;
 }
 .flechaVolver{
     transform: rotate(630deg);
@@ -854,6 +954,7 @@ p{
     position: relative;
     z-index: 2;
     font-size: 29px;
+    box-sizing: content-box;
 }
 .login-container-register{
     height: 440px;
@@ -883,32 +984,33 @@ input[type="email"], input[type="password"],  input[type="name"],  input[type="s
     font-size: 16px;
     box-shadow: 2px -2px 5px rgba(10, 96, 177, 0.705), 2px 2px 5px rgba(10, 97, 177, 0.5);
 }
-h1{
+#login-title{
     text-align: center;
     font-size: 50px;
     color: #3E3737;
+    margin: revert;
 }
 nav button{
     background-color: transparent;
     border: none;
 }
-img{
+.navLogin img{
     height: 50px;
+}
+.cambioIdioma img{
+    margin: 5px;
 }
 .cambioIdioma{
     display: flex;
     justify-content: right; /* Centrar horizontalmente */
     align-items: center; /* Centrar verticalmente */
+    margin-top: 50px;
 }
-nav {
+.navLogin {
     display: flex; /* Habilita flexbox */
     justify-content: space-between; /* Espacio entre los elementos */
     align-items: flex-start; /* Alinea los elementos al inicio (parte superior) */
     padding: 10px; /* Espacio alrededor */
-}
-
-nav p, .cambioIdioma {
-    margin-top: 50px; /* Ajusta este valor según lo que necesites */
 }
 a{
  text-decoration: none;

@@ -1,0 +1,414 @@
+body {
+    background-image: url(./imagenes/fondo.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 30px;
+    color: white;
+    margin: 0;
+    min-height: 100vh;
+}
+
+.juegoContenedor {
+    width: 100%;
+    height: 919px;
+    overflow: hidden;
+}
+
+/* SUELOS PARTE IZQUIERDA, DERECHA, CENTRAL Y SUPERIOR DEL CONTAINER JUEGO */
+
+.juegoContenedorCentral {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.parteSuperior,
+.murcielagos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    /* Ajusta según tu diseño */
+    height: 60px;
+    /* Ajusta la altura de la barra */
+    padding: 20px 20px;
+    margin: 0 auto;
+}
+
+.parteIzquierda,
+.parteDerecha {
+    height: 95%;
+    /* Asegura que cada parte ocupe toda la altura del contenedor */
+    width: 36%;
+}
+
+.parteIzquierda {
+    background-color: red;
+    /* Color de fondo de ejemplo */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Distribuye los pisos con espacio uniforme */
+}
+
+.primerPisoIzquierda,
+.segundoPisoIzquierda,
+.tercerPisoIzquierda {
+    width: 95%;
+    /* Ajusta la anchura de los pisos dentro de parteDerecha */
+    height: 20px;
+    /* Altura de cada piso */
+    background: #4e4e4e;
+    /* Color base para simular el suelo de alcantarilla */
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.7), inset 0 0 20px rgba(0, 0, 0, 0.5);
+    margin-right: auto;
+    /* Permite el posicionamiento adecuado dentro de parteDerecha */
+    margin-bottom: 186px;
+}
+
+.parteDerecha {
+    background-color: blue;
+    /* Color de fondo de ejemplo */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Distribuye los pisos con espacio uniforme */
+}
+
+.primerPisoDerecha,
+.segundoPisoDerecha,
+.tercerPisoDerecha {
+    width: 95%;
+    /* Ajusta la anchura de los pisos dentro de parteDerecha */
+    height: 20px;
+    /* Altura de cada piso */
+    background: #4e4e4e;
+    /* Color base para simular el suelo de alcantarilla */
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.7), inset 0 0 20px rgba(0, 0, 0, 0.5);
+    margin-left: auto;
+    /* Permite el posicionamiento adecuado dentro de parteDerecha */
+    margin-bottom: 155px;
+}
+
+.parteMedio {
+    flex: 1;
+    /* Ocupa todo el espacio restante */
+    height: 100%;
+    
+    /* Centra los pisos verticalmente */
+    position: relative;
+}
+
+.pasoSegundoPiso,
+.pasoPrimerPiso {
+    width: 42%;
+    height: 20px;
+    background: #4e4e4e;
+    /* Color base para simular el suelo de alcantarilla */
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.7), inset 0 0 20px rgba(0, 0, 0, 0.5);
+    position: absolute;
+}
+
+.pasoPrimerPiso {
+    top: 37.5%;
+    left: 7%;
+    animation: pisoMovimiento 3s infinite alternate-reverse;
+}
+
+.pasoSegundoPiso {
+    top: 37.5%;
+    animation: pisoMovimiento 3s infinite alternate;
+    left: 53%;
+}
+
+/* OBJETOS */
+
+.llaves {
+    display: flex;
+}
+
+.llaves p {
+    margin: 5px;
+}
+
+.vidas p {
+    margin: 10px;
+}
+
+.vidas {
+    display: flex;
+}
+
+.panelVidas img {
+    margin: 3px;
+}
+
+.vidas img {
+    width: 50px;
+    height: 50px;
+}
+
+#personaje {
+    width: 40px;
+    height: 140px;
+    background-color: red;
+    position: absolute;
+    left: 0;
+    top: 773px;
+    background-image: url(./imagenes/AnnaMujal.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.llavePasoTercerPiso,
+.llavePasoPrimerPiso,
+.llavePasoSegundoPisoDerecha,
+.llaveDePasoPrimerPisoDerecha {
+    width: 65px;
+    height: 71px;
+    background-color: green;
+    position: absolute;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(./imagenes/llaveDePaso.png);
+}
+
+.llavePasoTercerPiso {
+    left: 0;
+    top: 65px;
+}
+
+.llavePasoPrimerPiso {
+    left: 0;
+    bottom: 324px;
+}
+
+.llavePasoSegundoPisoDerecha {
+    background-color: red;
+    right: 0;
+    top: 289px;
+}
+
+.llaveDePasoPrimerPisoDerecha {
+    background-color: red;
+    right: 0;
+    bottom: 340px;
+}
+
+.rataTercerPiso,
+.rataSegundoPiso,
+.rataPrimerPiso,
+.rataSegundoPisoDerecha,
+.rataPrimerPisoDerecha {
+    width: 65px;
+    height: 25px;
+    background-color: green;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(./imagenes/rata.gif);
+    z-index: 1;
+}
+
+.rataTercerPiso {
+    position: absolute;
+    top: 112px;
+}
+
+.rataSegundoPiso {
+    position: absolute;
+    top: 318px;
+}
+
+.rataPrimerPiso {
+    position: absolute;
+    bottom: 326px;
+}
+
+.rataSegundoPisoDerecha {
+    position: absolute;
+    top: 334px;
+}
+
+.rataPrimerPisoDerecha {
+    position: absolute;
+    bottom: 341px;
+}
+
+.basuraTercerPiso,
+.basuraPrimerPiso,
+.basuraSegundoPisoDerecha,
+.basuraPrimerPisoDerecha {
+    width: 97px;
+    height: 40px;
+    background-color: green;
+    position: absolute;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(./imagenes/basura.png);
+}
+
+.basuraPrimerPiso {
+    left: 266px;
+    bottom: 326px;
+}
+
+.basuraTercerPiso {
+    left: 488px;
+    top: 97px;
+}
+
+.basuraSegundoPisoDerecha {
+    right: 400px;
+    top: 318px;
+}
+
+.basuraPrimerPisoDerecha {
+    right: 300px;
+    bottom: 341px;
+}
+
+.charcoTercerPisoIzquierda, .charcoSegundoPisoIzquierda, .charcoPrimerPisoIzquierda, .charcoPrimerPisoDerecha{
+    width: 174px;
+    height: 20px;
+    background: rgb(116, 216, 241);
+    transform: translateX(-50%);
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    opacity: 0.7;
+}
+
+.charcoTercerPisoIzquierda{
+    position: relative;
+    bottom: 0;
+    left: 52%;
+} 
+
+.charcoSegundoPisoIzquierda{
+    position: relative;
+    bottom: 0;
+    left: 65%;
+}
+
+.charcoPrimerPisoIzquierda{
+    position: relative;
+    bottom: 0;
+    left: 75%;
+} 
+
+.charcoPrimerPisoDerecha{
+    position: relative;
+    bottom: 0;
+    left: 20%;
+}
+
+.puerta{
+    width: 215px;
+    height: 183px;
+    position: absolute;
+    top: 17px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(./imagenes/puertaCerrada.jpg);
+    right: 9px;
+    z-index: 1;
+}
+
+/* Contenedor general para las escaleras */
+.staircase-container {
+    width: 130px;
+    height: 199px;
+    position: absolute;
+    margin: 0 auto;
+    perspective: 500px;
+    top: -2px;
+    right: 51px;
+}
+
+/* Escalones */
+.stair {
+    width: 80%;
+    height: 30px;
+    background-color: #8B4513;
+    /* Color madera para los escalones */
+    margin-bottom: 13px;
+    position: absolute;
+    left: 10%;
+    transition: all 0.3s ease;
+}
+
+/* Efecto de lejanía (los escalones más lejanos son más pequeños) */
+.stair:nth-child(1) {
+    bottom: 0;
+    transform: scale(1) translateZ(0);
+}
+
+.stair:nth-child(2) {
+    bottom: 24px;
+    transform: scale(0.9) translateZ(-30px);
+}
+
+.stair:nth-child(3) {
+    bottom: 47px;
+    transform: scale(0.8) translateZ(-60px);
+}
+
+.stair:nth-child(4) {
+    bottom: 67px;
+    transform: scale(0.7) translateZ(-90px);
+}
+
+.stair:nth-child(5) {
+    bottom: 86px;
+    transform: scale(0.6) translateZ(-120px);
+}
+
+.stair:nth-child(6) {
+    bottom: 102px;
+    transform: scale(0.5) translateZ(-150px);
+}
+
+.stair:nth-child(7) {
+    bottom: 116px;
+    transform: scale(0.4) translateZ(-180px);
+}
+
+.stair:nth-child(8) {
+    bottom: 127px;
+    transform: scale(0.3) translateZ(-210px);
+}
+
+.stair:nth-child(9) {
+    bottom: 135px;
+    transform: scale(0.2) translateZ(-240px);
+}
+
+/* MOVIMIENTO VERTICAL PISOS DEL MEDIO */
+
+@keyframes pisoMovimiento {
+    0% {
+        transform: translateY(-150px);
+    }
+
+    100% {
+        transform: translateY(200px);
+    }
+}
+
+.suelo {
+    width: 100%;
+    height: 6px; /* Ajusta la altura del suelo */
+    background-color: #3c3c3c; /* Color del suelo */
+    position: absolute;
+    bottom: 0; /* Colocamos el suelo en la parte inferior */
+    left: 0;
+    z-index: 10; /* Aseguramos que el suelo esté encima de otras cosas */
+}

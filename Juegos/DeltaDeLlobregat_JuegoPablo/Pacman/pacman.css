@@ -6,7 +6,8 @@ body {
     flex-direction: column;
     align-items: center;
     height: 100vh;
-    background-color: black;
+    background-image: url(./ImagenJuego/MarFondo.png);
+    background-size: cover;
 }
 .navegador{
     width: 1200px;
@@ -16,15 +17,26 @@ body {
     justify-content: space-around;
     align-items: center;
     display: flex;
+    background-color: black;
 }
 .vida, .tiempo, .score{
-    width: 300px;
-    height: 30px;
     position: relative;
     border: 1px solid white;
     justify-content: center;
     align-items: center;
     display: flex;
+}
+.heart-lost{
+    width: 23px;
+    height: 23px;
+    margin: 5px;
+}
+.block {
+    position: absolute;
+    width: 30px;  /* Tamaño del bloque */
+    height: 30px; /* Tamaño del bloque */
+    background-color: green;
+    z-index: 10;  /* Asegurarte de que esté por encima de otras celdas */
 }
 img{
     width: 30px;
@@ -35,29 +47,254 @@ img{
     height: 600px;        
     overflow: hidden;     
     position: relative;   
-    background-color: black; 
+    background-image: url(./ImagenJuego/Warm_Ocean.png);
+    background-size: cover;
     border: 1px solid white;
 }
 #game {
     display: grid;
-    grid-template-rows: repeat(30, 30px);    /* Cambia a 30 filas */ 
-    grid-template-columns: repeat(50, 30px); /* Cambia a 30 columnas */
+    grid-template-rows: repeat(30, 40px);    
+    grid-template-columns: repeat(50, 40px); 
 }
 .exit {
     background-color: green; /* Color verde para la salida */
 }
 .cell {
-    width: 30px;   /* Tamaño de la celda */
-    height: 30px;  /* Tamaño de la celda */
+    width: 40px;   /* Tamaño de la celda */
+    height: 40px;  /* Tamaño de la celda */
 }
 
 .wall {
-    background-color: blue; /* Color de los muros */
+    background-image: url(./ImagenJuego/prisma.png);
+    background-size: cover;
 }
-
+.The_World{
+    background-color: mediumseagreen;
+}
+.point{
+    background-image: url(./ImagenJuego/petroleo.png);
+    background-size: cover;
+}
 .pacman {
     background-color: yellow; /* Color de Pac-Man */
 }
 .enemy {
-    background-color: red; /* Color del enemigo */
+    background-size: cover;
+}
+
+.enemy-right {
+    background-image: url(./ImagenJuego/shipRight.gif);
+}
+
+.enemy-left {
+    background-image: url(./ImagenJuego/shipLeft.gif);
+}
+
+.enemy-up {
+    background-image: url(./ImagenJuego/shipUp.gif);
+}
+
+.enemy-down {
+    background-image: url(./ImagenJuego/shipDown.gif);
+}
+
+.SpeedBoost{
+    background-image: url(./ImagenJuego/oxygen.png);
+    background-size: cover;
+}
+.tiempo{
+    display: flex;
+    justify-content: space-around;
+}
+.tiempo img{
+    width: 50px;
+    height: 50px;
+}
+.tiempo h1, .score h1{
+    color: white;
+}
+
+/* Estilo para el reloj de arena */
+/* Estilo para el reloj de arena */
+/* Estilo para el reloj de arena */
+#Reloj {
+    animation: rotate 8s ease-in-out infinite; /* Aumenta la duración total de la animación a 8 segundos */
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 300px;
+}
+
+.popup h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+.popup p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.popup button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.popup button:hover {
+    background-color: #972c90;
+}
+
+
+
+/* Definición de la animación */
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg); /* Comienza en 0 grados */
+    }
+    40% {
+        transform: rotate(180deg); /* Gira a 180 grados */
+    }
+    45% {
+        transform: rotate(180deg); /* Mantiene en 180 grados durante 1 segundo */
+    }
+    70% {
+        transform: rotate(360deg); /* Gira a 360 grados */
+    }
+    100% {
+        transform: rotate(360deg); /* Completa la rotación */
+    }
+}
+@media (max-width: 1920px) {
+    #game-container{
+        width: 1400px;
+        height: 550px;
+    }
+    .cell {
+        width: 28px;   /* Tamaño de la celda */
+        height: 28px;  /* Tamaño de la celda */
+    }
+    #game {
+        display: grid;
+        grid-template-rows: repeat(30, 28px);    /* Cambia a 30 filas */ 
+        grid-template-columns: repeat(50, 28px); /* Cambia a 30 columnas */
+    }
+    .navegador{
+        width: 900px;
+        height: 100px;
+    }
+    .vida, .tiempo, .score{
+        width: 300px;
+        height: 30px;
+    }
+    img{
+        width: 30px;
+        height: 30px;
+    }
+}
+@media (max-width: 1700px) {
+    #game-container{
+        width: 1300px;
+        height: 520px;
+    }
+    .cell {
+        width: 26px;   /* Tamaño de la celda */
+        height: 26px;  /* Tamaño de la celda */
+    }
+    #game {
+        display: grid;
+        grid-template-rows: repeat(30, 26px);    /* Cambia a 30 filas */ 
+        grid-template-columns: repeat(50, 26px); /* Cambia a 30 columnas */
+    }
+    .navegador{
+        width: 900px;
+        height: 100px;
+    }
+    .vida, .tiempo, .score{
+        width: 150px;
+        height: 30px;
+    }
+    img{
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media (max-width: 1500px) {
+    #game-container{
+        width: 1200px;
+        height: 480px;
+    }
+    .cell {
+        width: 24px;   /* Tamaño de la celda */
+        height: 24px;  /* Tamaño de la celda */
+    }
+    #game {
+        display: grid;
+        grid-template-rows: repeat(30, 24px);    /* Cambia a 30 filas */ 
+        grid-template-columns: repeat(50, 24px); /* Cambia a 30 columnas */
+    }
+    .navegador{
+        width: 700px;
+        height: 80px;
+    }
+    .vida, .tiempo, .score{
+        width: 200px;
+        height: 25px;
+    }
+    img{
+        width: 25px;
+        height: 25px;
+    }
+}
+@media (max-width: 1250px) {
+    #game-container{
+        width: 1100px;
+        height: 440px;
+    }
+    .cell {
+        width: 22px;   /* Tamaño de la celda */
+        height: 22px;  /* Tamaño de la celda */
+    }
+    #game {
+        display: grid;
+        grid-template-rows: repeat(30, 22px);    /* Cambia a 30 filas */ 
+        grid-template-columns: repeat(50, 22px); /* Cambia a 30 columnas */
+    }
+    .navegador{
+        width: 700px;
+        height: 80px;
+    }
+    .vida, .tiempo, .score{
+        width: 200px;
+        height: 25px;
+    }
+    img{
+        width: 25px;
+        height: 25px;
+    }
+}
+
+@media (max-width: 1000px) {
 }

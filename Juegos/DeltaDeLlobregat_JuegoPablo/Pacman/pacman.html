@@ -9,15 +9,37 @@
 <body>
     <nav class="navegador">
         <div id="vida">
-            <img id="corazon3" src="./ImagenJuego/flat_750x1000_075_f-removebg-preview.png" alt="Corazón">
-            <img id="corazon2" src="./ImagenJuego/flat_750x1000_075_f-removebg-preview.png" alt="Corazón">
-            <img id="corazon1" src="./ImagenJuego/flat_750x1000_075_f-removebg-preview.png" alt="Corazón">
+            <img id="corazon3" src="./ImagenJuego/heartPablo.png" alt="Corazón">
+            <img id="corazon2" src="./ImagenJuego/heartPablo.png" alt="Corazón">
+            <img id="corazon1" src="./ImagenJuego/heartPablo.png" alt="Corazón">
         </div>
-        <div class="tiempo"></div>
-        <div class="score"></div>
+        <div class="tiempo">
+            <img id="Reloj" src="./ImagenJuego/Reloj.png" alt="tiempo">
+            <h1 id="timer">300</h1>
+        </div>
+        <div class="score">
+            <h1 id="puntuaje">0</h1>
+        </div>
     </nav>
     <div id="game-container">
         <div id="game"></div>
+    </div>
+    <div id="gameOverPopup" class="popup">
+        <div class="popup-content">
+            <h2>Game Over</h2>
+            <p>Obtuviste un puntaje de <span id="finalScore">0</span> puntos.</p>
+            <button id="restartButton">Reiniciar</button>
+            <button id="exitButton">Salir</button>
+        </div>
+    </div>
+    
+    <div id="winPopup" class="popup">
+        <div class="popup-content">
+            <h2>¡Felicidades, ganaste!</h2>
+            <p>Lograste un puntaje de <span id="finalWinScore">0</span> puntos.</p>
+            <button id="winRestartButton">Reiniciar</button>
+            <button id="winExitButton">Salir</button>
+        </div>
     </div>
     <script src="pacman.js"></script>
 </body>
