@@ -19,19 +19,21 @@ p{
     font-style: normal;
 }
 
-h2 a{
-        color: black; 
-        text-decoration: none;
-        font-family: "Poppins", sans-serif;
-        font-weight: 400;
-        font-style: normal;
-}
-h1 a{
+.inicarSesion a{
     color: black; 
     text-decoration: none;  
     font-family: "Bebas Neue", sans-serif ;
     font-weight: 400;
     font-style: normal;
+    font-size: 10px;
+}
+.registrarse a{
+    color: black; 
+    text-decoration: none;  
+    font-family: "Bebas Neue", sans-serif ;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 10px;
 }
 
 .carousel-item img {
@@ -113,7 +115,7 @@ h1 a{
 }
 .botones a{
     text-decoration:none;
-    color: white;
+    color: black;
 }
 
 .idiomas {
@@ -194,6 +196,11 @@ h1 a{
     transform: translate(-50%, -50%); 
     opacity: 0; 
     transition: opacity 0.3s ease; 
+    background-color: #3484CE;
+}
+.boton-juego a{
+    text-decoration: none;
+    color: #000;
 }
 
 .PJuego:hover .boton-juego {

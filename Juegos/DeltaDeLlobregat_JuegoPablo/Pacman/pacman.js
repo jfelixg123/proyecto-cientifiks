@@ -13,24 +13,21 @@ const map = [
     [1, 0, 0, 0, 0, 0, 0, 1, 4, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 3, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
     [1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 3, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
     [1, 0, 1, 1, 1, 0, 0, 0, 3, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
-    [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 3, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
+    [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
     [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 3, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1],
     [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 5, 3, 1],
     [1, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1],
     [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-];
-
-    
+];   
 const gameContainer = document.getElementById('game');
 let vidas = 3;
 let pacmanPosition = { x: 1, y: 18 };   // Posición inicial del pacman
 let enemyPosition = { x: 47, y: 18 }; // Posición inicial del enemigo
-let secondEnemyPosition = { x: 32, y: 10 };  
+let secondEnemyPosition = { x: 32, y: 9 };  
 let score = 0; // Variable global para la puntuación
 let canMove = true; // Variable para controlar si Pac-Man puede moverse
 let timerInterval;
-let timeLeft = 300;
 let currentSpeed = 250;
 let boostTimeout;
 let secondEnemyAppeared = false;
@@ -58,33 +55,8 @@ function createMap() {
         }
     }
 }
-function drawPacman() {
-    const cells = document.querySelectorAll('.cell');
-    const index = pacmanPosition.y * map[0].length + pacmanPosition.x;
-    cells[index].classList.add('pacman');
-}
-function movePacman(dx, dy) {
-    if (!isPaused) {
-        const newX = pacmanPosition.x + dx;
-        const newY = pacmanPosition.y + dy;    
-        // Verifica si la posicion se puede mover
-        if (newX >= 0 && newX < map[0].length && newY >= 0 && newY < map.length && (map[newY][newX] === 0 || map[newY][newX] === 2 || map[newY][newX] === 3 || map[newY][newX] === 4|| map[newY][newX] === 5)) {
-            // Quitar la poscion anterior
-            const cells = document.querySelectorAll('.cell');
-            const currentIndex = pacmanPosition.y * map[0].length + pacmanPosition.x;
-            cells[currentIndex].classList.remove('pacman');
-            // Actualizar posición
-            pacmanPosition.x = newX;
-            pacmanPosition.y = newY;
-            // Dibujar en la nueva posición
-            drawPacman();
-            // Verificar colisión con el enemigo
-            checkCollision();
-        }
-    }
-}
 let enemyDirection = 'right';  // Dirección inicial del primer enemigo
-let secondEnemyDirection = 'right';  // Dirección inicial del segundo enemig
+let secondEnemyDirection = 'down';  // Dirección inicial del segundo enemig
 function drawEnemy() {
     const cells = document.querySelectorAll('.cell');
     const index = enemyPosition.y * map[0].length + enemyPosition.x;
@@ -98,7 +70,6 @@ function drawEnemy() {
 function drawSecondEnemy() {
     const cells = document.querySelectorAll('.cell');
     const index = secondEnemyPosition.y * map[0].length + secondEnemyPosition.x;
-    
     // Solo agregar la clase 'enemy' si la celda no tiene un '1'
     if (map[secondEnemyPosition.y][secondEnemyPosition.x] !== 3) {
         cells[index].classList.add('enemy', `enemy-${secondEnemyDirection}`);
@@ -206,24 +177,22 @@ function checkCollision() {
     const cells = document.querySelectorAll('.cell');
     const index = pacmanPosition.y * map[0].length + pacmanPosition.x;
     // Comprobar colisión con el primer enemigo
-    if (pacmanPosition.x === enemyPosition.x && pacmanPosition.y === enemyPosition.y) {
-        if (vidas === 1) {
-            showGameOverPopup();
-        } else {
-            vidas--;
-            updateLivesDisplay();
-            resetPositions();
+    function checkCollisionWithEnemy(enemyPosition) {
+        if (pacmanPosition.x === enemyPosition.x && pacmanPosition.y === enemyPosition.y) {
+            if (vidas === 1) {
+                showGameOverPopup();
+            } else {
+                vidas--;
+                updateLivesDisplay();
+                resetPositions();
+            }
         }
     }
+    // Comprobar colisión con el primer enemigo
+    checkCollisionWithEnemy(enemyPosition);
     // Comprobar colisión con el segundo enemigo si ha aparecido
-    if (secondEnemyAppeared && pacmanPosition.x === secondEnemyPosition.x && pacmanPosition.y === secondEnemyPosition.y) {
-        if (vidas === 1) {
-            showGameOverPopup();
-        } else {
-            vidas--;
-            updateLivesDisplay();
-            resetPositions();
-        }
+    if (secondEnemyAppeared) {
+        checkCollisionWithEnemy(secondEnemyPosition);
     }
     // Comprobar si Pac-Man recoge un punto
     if (map[pacmanPosition.y][pacmanPosition.x] === 3) {
@@ -231,14 +200,13 @@ function checkCollision() {
         updateScoreDisplay();
         map[pacmanPosition.y][pacmanPosition.x] = 0;
         cells[index].classList.remove('point');
-        if (score === 9) {
+        if (score === 10) {
             DesbloquearMuro();
         }
-        if(score === 10){
-            DesbloquearMuro();
+        if(score === 11){
             secondEnemyAppeared = true;  // El segundo enemigo aparece después de 9 puntos
             drawSecondEnemy();
-            
+            DesbloquearMuro();
         }
     } else if (map[pacmanPosition.y][pacmanPosition.x] === 4) {
         map[pacmanPosition.y][pacmanPosition.x] = 0;
@@ -249,7 +217,7 @@ function checkCollision() {
         cells[index].classList.remove('The_World');
         StopTime();
     } else if (map[pacmanPosition.y][pacmanPosition.x] === 2) {
-        if (score >= 6) {
+        if (score >= 15) {
             showWinPopup();
         }
     }
@@ -270,7 +238,7 @@ function DesbloquearMuro() {
             cell.className = 'cell'; // Remueve cualquier clase adicional para que se muestre como vacío
         }
     });
-    if(score === 10){
+    if(score === 11){
         Muros2.forEach(([fila, columna]) => {
             const index = fila * map[0].length + columna;
             map[fila][columna] = 0; // Cambia el valor en el mapa a un espacio vacío (0)
@@ -323,7 +291,6 @@ function StopTime() {
 function activateSpeedBoost() {
     currentSpeed = 25; // Cambia a velocidad aumentada
     clearTimeout(boostTimeout); // Limpia cualquier boost anterior
-
     boostTimeout = setTimeout(() => {
         currentSpeed = 200; // Vuelve a la velocidad normal después de 5 segundos
     }, 5000);
@@ -344,7 +311,7 @@ function resetPositions() {
     // Reiniciar las posiciones de Pac-Man y los enemigos
     pacmanPosition = { x: 1, y: 18 };
     enemyPosition = { x: 47, y: 18 };
-    secondEnemyPosition = { x: 32, y: 10 }; // Posición inicial del segundo enemigo
+    secondEnemyPosition = { x: 32, y: 12 }; // Posición inicial del segundo enemigo
     const cells = document.querySelectorAll('.cell');
     cells.forEach(cell => {
         cell.classList.remove('pacman');
@@ -358,14 +325,12 @@ function resetPositions() {
     }
 }
 function resetGame() {
-    // Ocultar popups de fin de juego y victoria
     document.getElementById('gameOverPopup').style.display = 'none';
     document.getElementById('winPopup').style.display = 'none'; // Ocultar el popup de victoria
     // Reiniciar puntos, vidas y mostrar actualizaciones
     ResetGamePoint();
     updateLivesDisplay();
     updateScoreDisplay();
-    // Detener el temporizador y reiniciarlo
     clearInterval(timerInterval);  // Detener el temporizador anterior
     timeLeft = 300;  // Reiniciar el tiempo a 300 segundos (5 minutos)
     updateTimer();  // Mostrar el tiempo reiniciado
@@ -423,16 +388,16 @@ document.addEventListener('keydown', (event) => {
     if (!canMove) return; // Si no puede moverse, salimos de la función
     switch (event.key) {
         case 'w':
-            movePacman(0, -1);
+            movePacman(0, -1, 'up');
             break;
         case 's':
-            movePacman(0, 1);
+            movePacman(0, 1, 'down');
             break;
         case 'a':
-            movePacman(-1, 0);
+            movePacman(-1, 0, 'left');
             break;
         case 'd':
-            movePacman(1, 0);
+            movePacman(1, 0, 'right');
             break;
     }
     // Desactiva el movimiento temporalmente
@@ -442,6 +407,60 @@ document.addEventListener('keydown', (event) => {
         canMove = true;
     }, currentSpeed);
 });
+
+function drawPacman() {
+    const cells = document.querySelectorAll('.cell');
+    const index = pacmanPosition.y * map[0].length + pacmanPosition.x;
+    cells[index].classList.add('pacman');
+}
+
+function movePacman(dx, dy, direction) {
+    if (!isPaused) {
+        const newX = pacmanPosition.x + dx;
+        const newY = pacmanPosition.y + dy;    
+
+        // Verifica si la posición se puede mover
+        if (newX >= 0 && newX < map[0].length && newY >= 0 && newY < map.length && (map[newY][newX] === 0 || map[newY][newX] === 2 || map[newY][newX] === 3 || map[newY][newX] === 4 || map[newY][newX] === 5)) {
+            
+            // Eliminar las clases de movimiento de todas las celdas antes de mover
+            const cells = document.querySelectorAll('.cell');
+            cells.forEach(cell => {
+                cell.classList.remove('pacman-up', 'pacman-down', 'pacman-left', 'pacman-right');
+            });
+
+            // Agregar el rastro a la celda anterior
+            const currentIndex = pacmanPosition.y * map[0].length + pacmanPosition.x;
+            const currentCell = cells[currentIndex];
+            
+            // Agregar el rastro correspondiente según la dirección
+            if (direction === 'up' || direction === 'down') {
+                currentCell.classList.add('rastro-horizontal');  // Rastro vertical (arriba/abajo)
+            } else if (direction === 'left' || direction === 'right') {
+                currentCell.classList.add('rastro-vertical');  // Rastro horizontal (izquierda/derecha)
+            }
+            setTimeout(() => {
+                currentCell.classList.remove('rastro-vertical', 'rastro-horizontal');
+            }, 250);
+
+            // Quitar la posición anterior de Pac-Man
+            cells[currentIndex].classList.remove('pacman');
+            // Actualizar posición
+            pacmanPosition.x = newX;
+            pacmanPosition.y = newY;
+
+            // Dibujar en la nueva posición
+            drawPacman();
+
+            // Añadir la clase de dirección correcta con el nuevo formato
+            const newIndex = pacmanPosition.y * map[0].length + pacmanPosition.x;
+            const newCell = cells[newIndex];
+            newCell.classList.add('pacman', `pacman-${direction}`); // Cambiado de 'up' a 'pacman-up'
+
+            // Verificar colisión con el enemigo
+            checkCollision();
+        }
+    }
+}
 // Actualiza el temporizador
 function updateTimer() {
     if (!isPaused) {
@@ -464,13 +483,6 @@ function startTimer() {
     clearInterval(timerInterval); // Limpiar cualquier temporizador anterior
     timerInterval = setInterval(updateTimer, 1000); // Iniciar el temporizador cada 1 segundo
 }
-// Inicializa el mapa y dibuja Pac-Man y el enemigo
-function initializeGame() {
-    startTimer(); // Iniciar el temporizador
-    createMap();  // Crear el mapa del juego
-    drawPacman(); // Dibujar Pac-Man
-    drawEnemy();  // Dibujar el enemigo
-}
 function updateScoreDisplay() {
     document.getElementById('puntuaje').innerText = score; // Actualiza el texto del elemento de puntuación
 }
@@ -478,5 +490,31 @@ function updateScoreDisplay() {
 function startEnemyMovement() {
     enemyMovementInterval = setInterval(moveEnemy, 500); // Mueve al enemigo cada 500ms
 }
-startEnemyMovement();
-initializeGame();
+// Inicializa el mapa y dibuja Pac-Man y el enemigo
+function initializeGame() {
+    startTimer(); // Iniciar el temporizador
+    createMap();  // Crear el mapa del juego
+    drawPacman(); // Dibujar Pac-Man
+    drawEnemy();  // Dibujar el enemigo
+}
+// Muestra la pantalla de tutorial
+function showTutorial() {
+    const tutorialScreen = document.getElementById('tutorialScreen');
+    tutorialScreen.style.visibility = 'visible';
+    tutorialScreen.style.opacity = '1';
+}
+
+// Oculta la pantalla de tutorial y comienza el juego
+function startGame() {
+    const tutorialScreen = document.getElementById('tutorialScreen');
+    tutorialScreen.style.visibility = 'hidden';
+    tutorialScreen.style.opacity = '0';
+
+    startEnemyMovement();  // Comienza el movimiento del enemigo
+    initializeGame();      // Inicializa el juego
+}
+
+// Agrega el evento para iniciar el juego
+document.getElementById('startGameBtn').addEventListener('click', startGame);
+
+showTutorial();
