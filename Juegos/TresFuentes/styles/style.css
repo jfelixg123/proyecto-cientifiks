@@ -3,6 +3,7 @@ body {
     overflow: hidden;
     font-family: 'Bebas Neue', cursive;
 }
+
 #board {
     position: absolute;
     width: 100vw;
@@ -47,7 +48,7 @@ body {
     bottom: 0px;
     width: 100%;
     height: 100%;
-    /*background-color: rgba(255, 0, 0, 0.397); */
+    background-color: rgba(255, 0, 0, 0.397); 
     animation: none; /* Inicialmente sin animacion */
     
 }
@@ -78,15 +79,15 @@ body {
 
 @keyframes agacharse {
     0% { 
-        bottom: 0px;
+        height: 100%;
        
     }
     50% {
-        bottom: -50px; 
+        height: 50%;
        
     }
     100% { 
-        bottom: -60px;
+        height: 30%;
         
     }
 }
@@ -106,7 +107,7 @@ body {
     width: 100px;
     height: 60px;
     background-size: 100px 60px;
-   /* background-color: red;*/
+   background-color: red;
     background-image: url('../img/gif-rata.gif');
     animation: respawn 5s linear infinite;
 }
@@ -168,8 +169,8 @@ body {
         left: 50%; 
     }
     100% {
-        top: 130%;
-        left: -90%; 
+        top: 100%;
+        left: -110%; 
     }
 }
 
@@ -254,12 +255,11 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgb(0, 0, 0);
     color: rgb(255, 0, 0);
     font-size: 5em;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    background-image: url('../img/fondo.jpg');
+   /* background-image: url('../img/fondo.jpg');*/
 }

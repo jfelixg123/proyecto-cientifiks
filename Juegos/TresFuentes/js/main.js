@@ -102,6 +102,7 @@ function startScoreCounter() {
             }, 2200);
         }
     }, 100);
+    return score;
 }
 
 function detectarColision() {
@@ -144,6 +145,15 @@ function detectarColision() {
     return false;
 }
 
+function detenerAnimacionEnemigos() {
+
+    for (let enemigo of enemigoArray) {
+        enemigo.style.animation = "none";
+        enemigo.style.left = enemigo.style.left;  // Asegura que el enemigo quede en su posición actual
+        enemigo.style.top = enemigo.style.top;
+    }
+
+}
 
 function reiniciarJuego() {
     score = 0;
@@ -169,6 +179,10 @@ function gameLoop() {
         console.log("has muerto");
         fondo.style.animation = "none";
         vampiro.style.animation = "none"; 
+        player.style.animation = "none";
+        detenerAnimacionEnemigos();
+
+        guardarScore(score);
         clearInterval(scoreInterval);
        
         gameStarted = false;
@@ -196,6 +210,25 @@ function generadorEnemigos() {
         }, 3000); 
     }
     
+}
+function guardarScore(score) {
+    
+    fetch('../php/score.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ score: score })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            console.log('Score guardado exitosamente');
+        } else {
+            console.log('Error al guardar el score:', data.message);
+        }
+    })
+    .catch(error => console.error('Error:', error));
 }
 
 gameLoop();
