@@ -1,3 +1,23 @@
+<?php
+session_start();
+require 'php/bd.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    $stmt = $pdo->prepare("SELECT * FROM usuario WHERE username = ?");
+    $stmt->execute([$username]);
+    $user = $stmt->fetch();
+
+    if ($user && password_verify($password, $user['password'])) {
+        $_SESSION['user_id'] = $user['id'];
+        header("Location: index.html");
+    } else {
+        echo "Credenciales incorrectas.";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -27,16 +47,16 @@
         <div class="container">
             <div class="capa1"></div>
             <div class="login-container">
-                <form action="">
-                    <label id="email-label" for="email">Correo</label>
+                <form action="" method="POST">
+                    <label id="email-label" for="email">Nombre de usuario:</label>
                     <br>
-                    <input type="email" id="email" required>
+                    <input type="text" name="username" id="email" required>
                     <br>
-                    <label id="password-label" for="password">Contraseña</label>
+                    <label id="password-label" for="password">Contraseña:</label>
                     <br>
-                    <input type="password" id="password" required>
+                    <input type="password" id="password" name="password" required>
                     <button type="submit" id="login-button">INICIAR SESIÓN</button>
-                    <button type="button" id="register-button">REGISTRARSE</button>
+                    <button type="button" id="register-button"><a href="register.php"></a>REGISTRARSE</button>
                 </form>
             </div>
         </div>

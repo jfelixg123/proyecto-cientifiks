@@ -5,10 +5,17 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "chrome",
+            "name": "Launch Chrome",
             "request": "launch",
-            "name": "Open login.html",
-            "file": "d:\\proyecto-cientifiks\\login.html"
+            "type": "chrome",
+            "url": "http://localhost:8080/proyecto-cientifiks/index.html",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "name": "Listen for Xdebug",
+            "type": "php",
+            "request": "launch",
+            "port": 9003
         }
     ]
 }
