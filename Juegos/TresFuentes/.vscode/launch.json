@@ -1,5 +1,5 @@
 {
-    // Use IntelliSense to learn about possible attributes.
+   /* // Use IntelliSense to learn about possible attributes.
     // Hover to view descriptions of existing attributes.
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
@@ -8,7 +8,7 @@
             "name": "Launch Chrome",
             "request": "launch",
             "type": "chrome",
-            "url": "http://localhost:8080/juego_tres_fuentes_jordicelemin/tresFuentes.html",
+            "url": "http://localhost:8080/score.php",
             "webRoot": "${workspaceFolder}"
         },
         {
@@ -17,5 +17,5 @@
             "request": "launch",
             "port": 9003
         }
-    ]
+    ]*/
 }

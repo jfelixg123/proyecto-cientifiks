@@ -1,7 +1,7 @@
 const player = document.getElementById("player");
 const playerCollider = document.getElementById("playerCollider");
 const scoreElem = document.getElementById("score");
-const enemigoContainer = document.getElementById("enemigo-container"); 
+const enemigoContainer = document.getElementById("enemigo-container"); // Contenedor donde se agregan los enemigos
 const fondo = document.getElementById("background");
 const jugar = document.getElementById("botonPlay");
 const modal = document.getElementById("modal");
@@ -11,15 +11,12 @@ const vampiro = document.getElementById("vampiroVertical");
 const gameOverScreen = document.getElementById('gameOverScreen');
 const jugarotravez = document.getElementById('jugarDeNuevo');
 const volverMenu = document.getElementById('returnMenu');
-const vampiroHorizontal = document.getElementById('vampiro');
-
 
 let morir = false;
 let score = 0;
 let gameStarted = false;
 let scoreInterval;
 let enemigoInterval;
-let mapacheInterval;
 let enemigoArray = [];
 let index = 0;
 let gameOver = false;
@@ -58,7 +55,7 @@ document.addEventListener("keydown", function (event) {
 document.addEventListener("keyup", function (event) {
     if (event.code === "ArrowDown") {
         playerCollider.style.animation = "none";
-        player.style.backgroundImage = "url('../img/gifchica.gif')";
+        player.style.backgroundImage = "url('./img/gifchica.gif')";
         playerCollider.style.height = "100%";  // Restablecer el tamaño completo
         playerCollider.style.bottom = "0px";  // Restablecer la posición inicial
     }
@@ -90,31 +87,24 @@ function startScoreCounter() {
                 fuente.style.display = 'none';
             }, 2200);
 
-        } else if (score == 200) {
-            fuente.src = './img/segundafuente.gif';
-            fuente.style.width = '30%';
+        } else if (score == 300) {
             fuente.style.display = 'block';
             console.log("SEGUNDA FUENTE");
             setTimeout(() => {
                 fuente.style.display = 'none';
-            }, 4200);
+            }, 2200);
 
-        } else if (score == 350) {
-            fuente.src = './img/fuente3.gif';
-            fuente.style.width = '30%';
+        } else if (score == 500) {
             fuente.style.display = 'block';
             console.log("Tercera fuente");
             setTimeout(() => {
                 fuente.style.display = 'none';
-            }, 4200);
+            }, 2200);
         }
     }, 100);
     return score;
 }
-/**
- * 
- * @returns 
- */
+
 function detectarColision() {
     const playerRect = playerCollider.getBoundingClientRect();
 
@@ -156,8 +146,7 @@ function detectarColision() {
 }
 
 function detenerAnimacionEnemigos() {
-    vampiroHorizontal.style.animation = "none";
-    
+
     for (let enemigo of enemigoArray) {
         enemigo.style.animation = "none";
         enemigo.style.left = enemigo.style.left;  // Asegura que el enemigo quede en su posición actual
@@ -179,7 +168,6 @@ function reiniciarJuego() {
     vampiro.style.animation = "moveVampiroVertical 11s linear infinite"; 
     clearInterval(scoreInterval);
     clearInterval(enemigoInterval);
-    clearInterval(mapacheInterval);
     startScoreCounter();
     
     generadorEnemigos();
@@ -189,10 +177,9 @@ function gameLoop() {
     if (detectarColision()) {
         morir = true;
         console.log("has muerto");
-       
         fondo.style.animation = "none";
         vampiro.style.animation = "none"; 
-        
+        player.style.animation = "none";
         detenerAnimacionEnemigos();
 
         guardarScore(score);
@@ -201,7 +188,6 @@ function gameLoop() {
         gameStarted = false;
         mostrarPantallaGameOver();
         clearInterval(enemigoInterval);
-        clearInterval(mapacheInterval);
     }
     requestAnimationFrame(gameLoop);
 }
@@ -213,43 +199,36 @@ function generadorEnemigos() {
 
             let nuevoDiv = document.createElement("div");
             nuevoDiv.classList.add("enemigo");
-               
+    
+            // Posicionamiento aleatorio para cada nuevo enemigo
+            //nuevoDiv.style.left = `${Math.random() * 100 + 50}px`; // Posición aleatoria en el eje Y
+           
             enemigoContainer.appendChild(nuevoDiv);
             enemigoArray.push(nuevoDiv);
-
-           
             console.log("Enemigo añadido: " + enemigoArray.length);
 
         }, 3000); 
-        
-        mapacheInterval = setInterval(() => {
-
-            let enemigoMapache = document.createElement("div");
-            enemigoMapache.classList.add("enemigosMapache");
-               
-            enemigoContainer.appendChild(enemigoMapache);
-            enemigoArray.push(enemigoMapache);
-
-        }, 15000);
-    }     
+    }
+    
 }
 function guardarScore(score) {
-    //debugger;
-    fetch('php/obtenerScore.php?score=' + score)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Error en la solicitud: ' + response.statusText);
+    
+    fetch('../php/score.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ score: score })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            console.log('Score guardado exitosamente');
+        } else {
+            console.log('Error al guardar el score:', data.message);
         }
-        return response.text(); // Esperamos un texto plano como respuesta
-      })
-      .then(data => {
-        console.log(data); // Mostrar el mensaje de confirmación o error del servidor
-        // Puedes mostrar un mensaje al usuario aquí, por ejemplo, usando un alert o actualizando el DOM
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        // Mostrar un mensaje de error genérico al usuario
-      });
-  }
+    })
+    .catch(error => console.error('Error:', error));
+}
 
 gameLoop();

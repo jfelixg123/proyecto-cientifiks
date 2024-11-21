@@ -16,21 +16,19 @@
         <div class="banner" id="banner">
             <h1>Tutorial de las tres fuentes</h1>
             <p>Bienvenido al juego, tienes que superar saltando obstaculos hasta llegar a recoger todas las fuentes</p>
-            <p>Los controles son Space y Flecha abajo</p>
+            <p>Los controles son estos</p>
             <img src="img/space.png">
-            <img src="img/teclaAbajo.gif" id="imagenTecla">
             <button class="btn modal-btn" id="botonPlay">Jugar</button>
         </div>
-        
     </header>
 
-    <div id="gameOverScreen" >
+    <div id="gameOverScreen">
         <p>GAME OVER</p>
-        <button class="btn modal-btn" id="jugarDeNuevo">Reiniciar partida</button>
-        <button class="btn modal-btn" id="returnMenu">Volver Menu</button>
+        <button id="jugarDeNuevo">Reiniciar partida</button>
+        <button id="returnMenu">Volver Menu</button>
     </div>
 
-    <div id="board" method="POST">
+    <div id="board">
         <div id="suelo"></div>
         <div id="background"></div>
         <div id="score">SCORE: 0</div>
@@ -39,7 +37,6 @@
         <img src="img/fuente.webp" alt="" id="imagenFuente">
         <div id="player"><div id="playerCollider"></div></div>
         <div id="enemigo-container"></div>
-        
     </div>
 
     <script src="js/main.js"></script>
