@@ -290,7 +290,7 @@ p{
 .inicarSesion:hover{
     background-color: #a6d4ff;
 }
-.inicarSesion h2, .registrarse h2{
+.inicarSesion h2 a, .registrarse h2 a{
     font-size: 30px;
 }
 .inicarSesion{
@@ -515,7 +515,7 @@ footer{
         height: 50px;
         margin: 10px;
     }
-    .inicarSesion h2{
+    .inicarSesion h2 a{
         font-size: large;
     }
     .registrarse{
@@ -523,7 +523,7 @@ footer{
         height: 50px;
         margin: 10px;
     }
-    .registrarse h2{
+    .registrarse h2 a{
         font-size: large;
     }
     .opcion{
@@ -603,14 +603,14 @@ footer{
         width: 100px;
         height: 40px;
     }
-    .inicarSesion h2{
+    .inicarSesion h2 a{
         font-size: small;
     }
     .registrarse{
         width: 100px;
         height: 40px;
     }
-    .registrarse h2{
+    .registrarse h2 a{
         font-size: small;
     }
     .opcion{
