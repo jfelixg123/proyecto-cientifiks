@@ -11,12 +11,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = $stmt->fetch();
 
     if ($user && password_verify($password, $user['password'])) {
-        $_SESSION['user_id'] = $user['id'];
-        header("Location: index.html");
+        $_SESSION['id_usuario'] = $user['id_usuario']; // Usar el mismo nombre en todas partes
+        $_SESSION['mensaje'] = "¡Inicio de sesión completado con éxito! Bienvenido, <strong>$username</strong>.";
+        header("Location: indexInicioSession.html");
+        exit;
     } else {
-        echo "Credenciales incorrectas.";
+        $_SESSION['error'] = "Credenciales incorrectas. Por favor, inténtalo de nuevo.";
+        header("Location: login.php");
+        exit;
     }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -50,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <form action="" method="POST">
                     <label id="email-label" for="email">Nombre de usuario:</label>
                     <br>
-                    <input type="text" name="username" id="email" required>
+                    <input type="name" name="username" id="email" required>
                     <br>
                     <label id="password-label" for="password">Contraseña:</label>
                     <br>
@@ -99,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         document.getElementById("lang-en").addEventListener("click", () => changeLanguage('en'));
 
         document.getElementById("register-button").addEventListener("click", () => {
-            window.location.href = 'register.html';
+            window.location.href = 'register.php';
         });
 
         document.getElementById("back-button").addEventListener("click", () => {
