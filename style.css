@@ -938,9 +938,11 @@ section:hover {
     background-color: #FF7C02;
     color: white;
     font-family: "Bebas Neue", sans-serif;
+  
 }
 .login-container-register button{
     width: 100%;
+    cursor: pointer;
 }
 input[type="email"], input[type="password"],  input[type="name"],  input[type="surname"]{
 
@@ -983,4 +985,9 @@ nav button{
 a{
  text-decoration: none;
  color: white;   
+}
+
+.cuentaRegistrada img{
+    width: 20%;
+    padding-left: 5%;
 }

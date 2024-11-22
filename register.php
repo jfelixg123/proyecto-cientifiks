@@ -1,17 +1,30 @@
 <?php
+session_start();
 require 'php/bd.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['name'];
+    $username = $_POST['username'];
     $email = $_POST['email'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
     try {
         $stmt = $pdo->prepare("INSERT INTO usuario (username, email, password) VALUES (?, ?, ?)");
         $stmt->execute([$username, $email, $password]);
-        echo "Usuario registrado con éxito. <a href='login.php'>Inicia sesión</a>";
+        $id_usuario = $pdo->lastInsertId();
+        $_SESSION['id_usuario'] = $id_usuario; // Guardar el ID del usuario en la sesión
+        $_SESSION['username'] = $username;
+          // Mensaje de éxito
+          $_SESSION['mensaje'] = "¡Registro completado con éxito! Bienvenido, <strong>$username</strong>.";
+          header("Location: login.php");
+          exit;
     } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
+        if ($e->getCode() == 23000) { // Código para errores de duplicados
+            $_SESSION['error'] = "El nombre de usuario o el correo ya están registrados. Intenta con otro.";
+        } else {
+            $_SESSION['error'] = "Ocurrió un error inesperado. Por favor, inténtalo de nuevo más tarde.";
+        }
+        header("Location: register.php");
+        exit;
     }
 }
 ?>
@@ -39,27 +52,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </nav>
 
     <h1 id="login-title">REGISTRARSE</h1>
+    <?php include 'php/mensaje.php'; ?>
     <div class="container">
         <div class="capa1"></div>
         <div class="login-container-register">
+       
             <form method="POST" action="">
                 <label id="name-label" for="name">Nombre</label>
                 <br>
-                <input type="name" id="name" required>
+                <input type="name" name="username" id="name" required>
                 
                 <br>
 
-                <label id="email-label" for="email">Correo electrónico</label>
+                <label id="email-label" for="email" >Correo electrónico</label>
                 <br>
-                <input type="email" id="email" required>
+                <input type="email" id="email" name="email"  required>
                 
                 <br>
                 
-                <label id="password-label" for="password">Contraseña</label>
+                <label id="password-label" for="password" >Contraseña</label>
                 <br>
-                <input type="password" id="password" required>
-
+                <input type="password" id="password"  name="password" required>
                 <button type="submit" id="register-button">REGISTRARSE</button>
+           
             </form>
         </div>
     </div>
@@ -103,7 +118,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Asignar eventos a los botones
         document.getElementById("back-button").addEventListener("click", () => {
-            window.location.href = 'login.html';
+            window.location.href = 'login.php';
         });
 
         document.getElementById("lang-es").addEventListener("click", () => changeLanguage('es'));
