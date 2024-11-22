@@ -27,7 +27,7 @@ let vidas = 3;
 let pacmanPosition = { x: 1, y: 18 };   // Posición inicial del pacman
 let enemyPosition = { x: 47, y: 18 }; // Posición inicial del enemigo
 let secondEnemyPosition = { x: 32, y: 10 };  
-let score = 0; // Variable global para la puntuación
+let score = 8; // Variable global para la puntuación
 let canMove = true; // Variable para controlar si Pac-Man puede moverse
 let timerInterval;
 let timeLeft = 300;
@@ -61,8 +61,7 @@ function drawPacman() {
     cells[index].classList.add('pacman');
 }
 function drawEnemy() {
-    const cells = document.querySelectorAll('.cell');
-    
+    const cells = document.querySelectorAll('.cell');    
     // Dibujar el primer enemigo
     const index = enemyPosition.y * map[0].length + enemyPosition.x;
     cells[index].classList.add('enemy');
@@ -224,6 +223,7 @@ function checkCollision() {
         }else if(score === 10){
             secondEnemyAppeared = true;  // El segundo enemigo aparece después de 9 puntos
             drawSecondEnemy();
+            DesbloquearMuro();
         }
     } else if (map[pacmanPosition.y][pacmanPosition.x] === 4) {
         map[pacmanPosition.y][pacmanPosition.x] = 0;
@@ -243,12 +243,15 @@ function drawSecondEnemy() {
     }
 }
 function DesbloquearMuro() {
+    
     const Muros = [
-        [15, 32], [16,32],[17,32],[14,31],[14,33],[15,33]
+        [15, 32], [16,32],[17,32],[14,31],[14,33],[15,33],[15,31]
     ];
+    
     const Muros2 =[
-        [15,31],[4,39],[5,39],[9,12],[7,23],[7,22]
+        [4,39],[5,39],[9,12],[7,23],[7,22]
     ];
+    
     Muros.forEach(([fila, columna]) => {
         const index = fila * map[0].length + columna;
         map[fila][columna] = 0; // Cambia el valor en el mapa a un espacio vacío (0)
@@ -258,15 +261,17 @@ function DesbloquearMuro() {
             cell.className = 'cell'; // Remueve cualquier clase adicional para que se muestre como vacío
         }
     });
-    Muros2.forEach(([fila, columna]) => {
-        const index = fila * map[0].length + columna;
-        map[fila][columna] = 0; // Cambia el valor en el mapa a un espacio vacío (0)
-        // Actualiza la celda en el DOM para que se muestre como un espacio vacío
-        const cell = document.querySelectorAll('.cell')[index];
-        if (cell) {
-            cell.className = 'cell'; // Remueve cualquier clase adicional para que se muestre como vacío
-        }
-    });
+    if(score === 10){
+        Muros2.forEach(([fila, columna]) => {
+            const index = fila * map[0].length + columna;
+            map[fila][columna] = 0; // Cambia el valor en el mapa a un espacio vacío (0)
+            // Actualiza la celda en el DOM para que se muestre como un espacio vacío
+            const cell = document.querySelectorAll('.cell')[index];
+            if (cell) {
+                cell.className = 'cell'; // Remueve cualquier clase adicional para que se muestre como vacío
+            }
+        });
+    }
 }
 function showWinPopup() {
     isPaused = true; // Pausar el juego
