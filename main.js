@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "En tu camino encontrarás máquinas y sistemas fallidos que necesitan ajustes. Cada mecanismo roto esconde pistas vitales y complejos rompecabezas que deberás resolver para acercarte a la solución final. ¿Podrás hacer que las aguas fluyan otra vez?",
                 "El destino de las tres fuentes está en tus manos. Con todos los desafíos superados, tu ingenio y perseverancia te llevarán al logro definitivo. Devuelve el agua limpia y purificada a cada fuente y celebra el triunfo de haber completado la misión. ¿Estás listo para restaurar el equilibrio?",
             ],
-            gameTitle: "Científico en juego",
+            gameTitle: "Científico",
             clickHereImg: "./LangingPagPhoto/DIALOGO_ES.png",
             buttons: ["EXPLORA", "DESCUBRE", "DIVIERTE"],
             session: {
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Este es el mini texto 4 en español"
             ],
             aboutUs: "Sobre Nosotros" ,
-            Copyright: "Copyright © 2024 Cientifico en juego. Todos los derechos reservados."
+            Copyright: "Copyright © 2024 Cientifico. Todos los derechos reservados."
         },
         "en": {
             title: ["Welcome to the Adventure!", "Explore a magnificent world!", "Have fun!","Dare to discover more!"],
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Al teu camí trobaràs màquines i sistemes fallits que necessiten ajustaments. Cada mecanisme trencat amaga pistes vitals i trencaclosques complexes que hauràs de resoldre per acostar-te a la solució final. Podràs fer que les aigües flueixin una altra vegada?",
                 "The fate of the three fountains is in your hands. With all the challenges overcome, your ingenuity and perseverance will lead you to the ultimate achievement. Return clean, purified water to each fountain and celebrate the triumph of completing the mission. Are you ready to restore balance?",
             ],
-            gameTitle: "Scientist at Play",
+            gameTitle: "Scientist",
             clickHereImg: "./LangingPagPhoto/DIALOGO_EN.png",
             buttons: ["EXPLORE", "DISCOVER", "ENJOY"],
             session: {
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 register: "Register"
             },
             aboutUs: "About Us" ,
-            Copyright: "Copyright © 2024 Scientist at Play. All rights reserved.",
+            Copyright: "Copyright © 2024 Scientist. All rights reserved.",
             miniTexts: [
                 "This is mini text 1 in English",
                 "This is mini text 2 in English",
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "On your way you will encounter failed machines and systems that need adjustments. Each broken mechanism hides vital clues and complex puzzles that you must solve to get closer to the final solution. Can you make the waters flow again?",
                 "El destí de les tres fonts és a les teves mans. Amb tots els desafiaments superats, el teu enginy i perseverança et portaran a l'èxit definitiu. Torna l'aigua neta i purificada a cada font i celebra el triomf de completar la missió. Estàs preparat per restaurar l'equilibri?",
             ],
-            gameTitle: "Científic en joc",
+            gameTitle: "Científic",
             clickHereImg: "./LangingPagPhoto/DIALOGO_CAT.png",
             buttons: ["EXPLORA", "DESCOBERT", "DIVERTIR"],
             session: {
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Aquest és el mini text 4 en català"
             ],
             aboutUs: "Sobre Nosaltres" ,
-            Copyright: "Copyright © 2024 Científic en joc. Tots els drets reservats.."
+            Copyright: "Copyright © 2024. Tots els drets reservats.."
         }
     };
     window.addEventListener("scroll", function () {
@@ -251,24 +251,24 @@ document.addEventListener("DOMContentLoaded", function () {
         const carouselItems = document.querySelectorAll(".carousel-item");
         carouselItems.forEach((item, index) => {
             if (content.descriptions[index]) {
-                item.querySelector(".Descripcion p").innerText = content.descriptions[index]; // Cambia la descripción
+                item.querySelector(".Descripcion p").textContent = content.descriptions[index]; // Cambia la descripción
             }
             if (content.buttons[index]) {
-                item.querySelector(".botones h1").innerText = content.buttons[index]; // Cambia el título del botón
+                item.querySelector(".botones h1").textContent = content.buttons[index]; // Cambia el título del botón
             }
             if (content.title[index]) {
-                item.querySelector(".TituloInicio h1").innerText = content.title[index]; // Cambia el título del carrusel
+                item.querySelector(".TituloInicio h1").textContent = content.title[index]; // Cambia el título del carrusel
             }
         });
 
         const miniTextElements = document.querySelectorAll(".mini-texto");
         miniTextElements.forEach((element, index) => {
             if (content.miniTexts[index]) {
-                element.innerText = content.miniTexts[index]; // Cambia el mini texto
+                element.textContent = content.miniTexts[index]; // Cambia el mini texto
             }
         });
     
-        document.querySelector(".navegador .titulo h1").innerText = content.gameTitle; // Actualiza el título del juego
+        document.querySelector(".navegador .titulo h1").textContent = content.gameTitle; // Actualiza el título del juego
         const clickHereImages = document.querySelectorAll(".ClickAqui img");
         clickHereImages.forEach(img => {
             // Verifica si la imagen de cofre no está entre las imágenes de los cofres ya abiertos
@@ -277,11 +277,11 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     
-        document.querySelector(".inicarSesion h2").innerText = content.session.login;
-        document.querySelector(".registrarse h2").innerText = content.session.register;
-        document.querySelector(".TituloNosotros h1").innerText = content.aboutUs;
-        document.querySelector(".Redes h1").innerText = content.gameTitle;
-        document.querySelector(".FooterDerechos p").innerHTML = content.Copyright;
+        document.querySelector(".inicarSesion h2").textContent = content.session.login;
+        document.querySelector(".registrarse h2").textContent = content.session.register;
+        document.querySelector(".TituloNosotros h1").textContent = content.aboutUs;
+        document.querySelector(".Redes h1").textContent = content.gameTitle;
+        document.querySelector(".FooterDerechos p").textContent = content.Copyright;
     }
     const juegos = [
         {
