@@ -22,12 +22,21 @@ document.addEventListener('DOMContentLoaded', () => {
         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     ];  
     const gameContainer = document.getElementById('game');
+    const music = document.getElementById('background-music');
+    const SpeedSound = document.getElementById('SpeedUPSound');
+    const ShatterHEart = document.getElementById('brokenHeart');
+    const GameOverSound = document.getElementById('dead');
+    const ComicSans = document.getElementById('comicsans');
+    const SecondEnemySound = document.getElementById('Secondboss');
+    const PickUpSound = document.getElementById('PickUP');
+    const BIGONE = document.getElementById('BIGONE');
+    const SecretRoom = document.getElementById('SECRETROOM');
+    const StoptheTimeSound = document.getElementById('StopTheTime')
     const konamiCode = [
         'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
         'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight',
         'b', 'a'
     ];
-    let TutorialMusic = new Audio('proyecto-cientifiks/Juegos/DeltaDeLlobregat_JuegoPablo/Audio/Undertale OST_ 015 - sans..mp3')
     let konamiInput = [];
     let vidas = 3;
     let timeLeft = 500;
@@ -45,50 +54,52 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Crear el mapa
     function createMap() {
+        const classMap = {
+            1: 'wall',
+            2: 'exit',
+            3: 'point',
+            4: 'SpeedBoost',
+            5: 'The_World',
+            6: 'BIG'
+        };
         for (let row = 0; row < map.length; row++) {
             for (let col = 0; col < map[row].length; col++) {
                 const cell = document.createElement('div');
                 cell.className = 'cell';
-                if (map[row][col] === 1) {
-                    cell.classList.add('wall');
-                }else if(map[row][col] === 2){
-                    cell.classList.add('exit');
-                } else if(map[row][col] === 3){
-                    cell.classList.add('point');
-                }else if(map[row][col] === 4){
-                    cell.classList.add('SpeedBoost');
-                }else if(map[row][col] === 5){
-                    cell.classList.add('The_World');
-                }else if(map[row][col] === 6){
-                    cell.classList.add('BIG');
+                const cellType = map[row][col];
+    
+                // Añadir la clase correspondiente si existe en classMap
+                if (classMap[cellType]) {
+                    cell.classList.add(classMap[cellType]);
                 }
+    
                 gameContainer.appendChild(cell);
             }
         }
+        music.play();
     }
     let enemyDirection = 'right';  // Dirección inicial del primer enemigo
     let secondEnemyDirection = 'down';  // Dirección inicial del segundo enemig
-    function drawEnemy() {
+    function drawEnemyGeneric(position, direction) {
         const cells = document.querySelectorAll('.cell');
-        const index = enemyPosition.y * map[0].length + enemyPosition.x;
-        
-        // Solo agregar la clase 'enemy' si la celda no tiene un '1' (muro) ni la clase 'pacman'
+        const index = position.y * map[0].length + position.x;
         const cell = cells[index];
-        if (map[enemyPosition.y][enemyPosition.x] !== 3 && !cell.classList.contains('pacman')) {
-            cell.classList.add('enemy', `enemy-${enemyDirection}`);
+    
+        // Agregar la clase 'enemy' si la celda no tiene un '3' (punto) ni la clase 'pacman'
+        if (map[position.y][position.x] !== 3 && !cell.classList.contains('pacman')) {
+            cell.classList.add('enemy', `enemy-${direction}`);
         }
     }
-    
+
+    // Llamadas específicas para cada enemigo
+    function drawEnemy() {
+        drawEnemyGeneric(enemyPosition, enemyDirection);
+    }
     
     function drawSecondEnemy() {
-        const cells = document.querySelectorAll('.cell');
-        const index = secondEnemyPosition.y * map[0].length + secondEnemyPosition.x;
-        // Solo agregar la clase 'enemy' si la celda no tiene un '1'
-        const cell = cells[index];
-        if (map[secondEnemyPosition.y][secondEnemyPosition.x] !== 3 && !cell.classList.contains('pacman')) {
-            cells[index].classList.add('enemy', `enemy-${secondEnemyDirection}`);
-        }
+        drawEnemyGeneric(secondEnemyPosition, secondEnemyDirection);
     }
+    
     // Mover el enemigo utilizando BFS
     function moveEnemy() {
         if (!isPaused) {
@@ -192,56 +203,66 @@ document.addEventListener('DOMContentLoaded', () => {
     function checkCollision() {
         const cells = document.querySelectorAll('.cell');
         const index = pacmanPosition.y * map[0].length + pacmanPosition.x;
-        // Comprobar colisión con el primer enemigo
+    
+        // Comprobar colisión con enemigos
         function checkCollisionWithEnemy(enemyPosition) {
             if (pacmanPosition.x === enemyPosition.x && pacmanPosition.y === enemyPosition.y) {
                 if (vidas === 1) {
-                    showGameOverPopup();
+                    showPopup('gameOver');
                 } else {
+                    ShatterHEart.play();
                     vidas--;
                     updateLivesDisplay();
                     resetPositions();
                 }
             }
         }
-        // Comprobar colisión con el primer enemigo
         checkCollisionWithEnemy(enemyPosition);
-        // Comprobar colisión con el segundo enemigo si ha aparecido
         if (secondEnemyAppeared) {
             checkCollisionWithEnemy(secondEnemyPosition);
         }
-        // Comprobar si Pac-Man recoge un punto
-        if (map[pacmanPosition.y][pacmanPosition.x] === 3 ||map[pacmanPosition.y][pacmanPosition.x] === 6) {
-            if (map[pacmanPosition.y][pacmanPosition.x] === 3) {
-                score += 100; // Aumenta 1 punto
+    
+        // Comprobar interacción con elementos del mapa
+        const cellValue = map[pacmanPosition.y][pacmanPosition.x];
+        if (cellValue === 3 || cellValue === 6) {
+            if (cellValue === 3) {
+                PickUpSound.play();
+                score += 100;
                 cells[index].classList.remove('point');
-            }
-            else if (map[pacmanPosition.y][pacmanPosition.x] === 6) {
-                score += 1000; // Aumenta 10 puntos
+            } else {
+                BIGONE.play();
+                score += 1000;
                 cells[index].classList.remove('BIG');
             }
             updateScoreDisplay();
             map[pacmanPosition.y][pacmanPosition.x] = 0;
-            if (score >= 1000) {
-                DesbloquearMuro();
-            }
-            if(score >= 1100){
-                secondEnemyAppeared = true;  // El segundo enemigo aparece después de 9 puntos
+    
+            if (score === 1000) {
+                DesbloquearMuroCoordenadas();
+            } else if (score === 1100) {
+                SecondEnemySound.play();
+                secondEnemyAppeared = true;
                 drawSecondEnemy();
-                DesbloquearMuro();
+                DesbloquearMuroCoordenadas();
+            }else if(score === 1400){
+                // Mostrar el mensaje secreto cuando se alcanzan 1400 puntos
+                const secretMessage = document.getElementById("SecretMessage");
+                secretMessage.style.display = "flex";  // Mostrar el mensaje
+                // Ocultar el mensaje después de 5 segundos
+                setTimeout(function() {
+                    secretMessage.style.display = "none";  // Ocultar el mensaje después de 5 segundos
+                }, 5000);
             }
-        } else if (map[pacmanPosition.y][pacmanPosition.x] === 4) {
+        } else if (cellValue === 4) {
             map[pacmanPosition.y][pacmanPosition.x] = 0;
             cells[index].classList.remove('SpeedBoost');
             activateSpeedBoost();
-        }else if(map[pacmanPosition.y][pacmanPosition.x] === 5){
+        } else if (cellValue === 5) {
             map[pacmanPosition.y][pacmanPosition.x] = 0;
             cells[index].classList.remove('The_World');
             StopTime();
-        } else if (map[pacmanPosition.y][pacmanPosition.x] === 2) {
-            if (score >= 1400) {
-                showWinPopup();
-            }
+        } else if (cellValue === 2 && score >= 1400) {
+            showPopup('win');
         }
     }
     function actualizarMapa(celdas, valor) {
@@ -249,60 +270,47 @@ document.addEventListener('DOMContentLoaded', () => {
             map[fila][columna] = valor;
         });
     }
-    function DesbloquearMuro() {  
-        const Muros = [
-            [15, 32], [16,32],[17,32],[14,31],[14,33],[15,33],[15,31]
-        ];
-        const Muros2 =[
-            [4,39],[5,39],[9,12],[7,23],[7,22]
-        ];
-        const Muros3 = [
-            [4,15],[4,14],[4,13],[4,12]
-        ]
-        const MegaPremio =[
-            [4,11]
-        ]
-        Muros.forEach(([fila, columna]) => {
-            const index = fila * map[0].length + columna;
-            map[fila][columna] = 0; // Cambia el valor en el mapa a un espacio vacío (0)
-            // Actualiza la celda en el DOM para que se muestre como un espacio vacío
-            const cell = document.querySelectorAll('.cell')[index];
-            if (cell) {
-                cell.className = 'cell'; // Remueve cualquier clase adicional para que se muestre como vacío
+    function desbloquearMuro(muros, score) {
+        muros.forEach(({ coordenadas, scoreRequerido, premio }) => {
+            if (score >= scoreRequerido) {
+                coordenadas.forEach(([fila, columna]) => {
+                    const index = fila * map[0].length + columna;
+                    map[fila][columna] = 0; // Cambia el valor en el mapa a un espacio vacío (0)
+                    
+                    // Actualiza la celda en el DOM para que se muestre como vacío
+                    const cell = document.querySelectorAll('.cell')[index];
+                    if (cell) {
+                        cell.className = 'cell'; // Remueve cualquier clase adicional
+                    }
+                });
+    
+                // Si hay un premio asociado, lo coloca en el mapa
+                if (premio) {
+                    premio.forEach(([fila, columna]) => {
+                        const index = fila * map[0].length + columna;
+                        map[fila][columna] = 6; // Cambia el valor en el mapa a BIG (6)
+                        
+                        // Actualiza la celda en el DOM para que se muestre con la clase BIG
+                        const cell = document.querySelectorAll('.cell')[index];
+                        if (cell) {
+                            cell.className = 'cell BIG'; // Asigna las clases 'cell' y 'BIG'
+                        }
+                    });
+                }
             }
         });
-        if(score >= 1100){
-            Muros2.forEach(([fila, columna]) => {
-                const index = fila * map[0].length + columna;
-                map[fila][columna] = 0; // Cambia el valor en el mapa a un espacio vacío (0)
-                // Actualiza la celda en el DOM para que se muestre como un espacio vacío
-                const cell = document.querySelectorAll('.cell')[index];
-                if (cell) {
-                    cell.className = 'cell'; // Remueve cualquier clase adicional para que se muestre como vacío
-                }
-            });
-        }
-        if(score >= 1400 && konamiInput.toString() === konamiCode.toString()){
-            Muros3.forEach(([fila, columna]) => {
-                const index = fila * map[0].length + columna;
-                map[fila][columna] = 0; // Cambia el valor en el mapa a un espacio vacío (0)
-                // Actualiza la celda en el DOM para que se muestre como un espacio vacío
-                const cell = document.querySelectorAll('.cell')[index];
-                if (cell) {
-                    cell.className = 'cell'; // Remueve cualquier clase adicional para que se muestre como vacío
-                }
-            });
-            MegaPremio.forEach(([fila, columna]) => {
-                const index = fila * map[0].length + columna;
-                map[fila][columna] = 6; // Cambia el valor en el mapa a BIG (6)
-                // Actualiza la celda en el DOM para que se muestre con la clase BIG
-                const cell = document.querySelectorAll('.cell')[index];
-                if (cell) {
-                    cell.className = 'cell BIG'; // Asigna las clases 'cell' y 'BIG' para que se muestre con el fondo
-                }
-            });
-        } 
-    };
+    }
+    
+    function DesbloquearMuroCoordenadas() {
+        const muros = [
+            { coordenadas: [[15, 32], [16, 32], [17, 32], [14, 31], [14, 33], [15, 33], [15, 31]], scoreRequerido: 0 },
+            { coordenadas: [[4, 39], [5, 39], [9, 12], [7, 23], [7, 22]], scoreRequerido: 1100 },
+            { coordenadas: [[4, 15], [4, 14], [4, 13], [4, 12]], scoreRequerido: 1400, premio: [[4, 11]] }
+        ];
+    
+        desbloquearMuro(muros, score);
+    }
+    
     function CalcularScore() {
         const puntosTotales = score; // Usamos la variable score que ya tienes
     
@@ -321,35 +329,40 @@ document.addEventListener('DOMContentLoaded', () => {
         return totalScore;
     
     };
-    function showWinPopup() {
-        isPaused = true; // Pausar el juego
-        FinalScore = CalcularScore();
-        document.getElementById('winPopup').style.display = 'flex';
-        document.getElementById('finalWinScore').innerText = FinalScore;
-        // Botón de reiniciar
-        document.getElementById('winRestartButton').addEventListener('click', () => {
-            document.getElementById('winPopup').style.display = 'none';
-            resetGame(); // Reiniciar el juego
-        });
-        // Botón de salir
-        document.getElementById('winExitButton').addEventListener('click', () => {
-            window.location.href = 'index.html'; // Cambia 'index.html' a la página de salida deseada
-        });
+    function resetMusic(){
+        music.pause();
+        music.currentTime = 0;
     }
-    function showGameOverPopup() {
+    function showPopup(type) {
+        const isWin = type === 'win';
+        const popupId = isWin ? 'winPopup' : 'gameOverPopup';
+        const scoreId = isWin ? 'finalWinScore' : 'finalScore';
+        const restartButtonId = isWin ? 'winRestartButton' : 'restartButton';
+        const exitButtonId = isWin ? 'winExitButton' : 'exitButton';
+        const sound = isWin ? ComicSans : GameOverSound;
+    
+        // Reproducir sonido
+        sound.play();
+        sound.volume = 0.3;
+        resetMusic();
+    
         isPaused = true; // Pausar el juego
-        FinalScore = CalcularScore();
-        // Mostrar el popup y actualizar el puntaje final
-        document.getElementById('gameOverPopup').style.display = 'flex';
-        document.getElementById('finalScore').innerText = FinalScore;
-        // Botón de reiniciar
-        document.getElementById('restartButton').addEventListener('click', () => {
-            document.getElementById('gameOverPopup').style.display = 'none';
+        FinalScore = CalcularScore(); // Calcular puntaje final
+    
+        // Mostrar popup y puntaje final
+        document.getElementById(popupId).style.display = 'flex';
+        document.getElementById(scoreId).innerText = FinalScore;
+    
+        // Configurar botones
+        document.getElementById(restartButtonId).addEventListener('click', () => {
+            sound.pause();
+            sound.currentTime = 0;
+            document.getElementById(popupId).style.display = 'none';
             resetGame(); // Reiniciar el juego
         });
-        // Botón de salir
-        document.getElementById('exitButton').addEventListener('click', () => {
-            window.location.href = 'index.html'; // Cambia 'index.html' a la página de salida deseada
+    
+        document.getElementById(exitButtonId).addEventListener('click', () => {
+            window.location.href = 'index.html'; // Cambia 'index.html' según sea necesario
         });
     }
     function StopTime() {
@@ -359,8 +372,11 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             startEnemyMovement(); // Reactiva el movimiento del enemigo
         }, 5000); // 5 segundos
+        StoptheTimeSound.play();
     }
     function activateSpeedBoost() {
+        SpeedSound.play();
+        SpeedSound.volume = 0.5;
         currentSpeed = 40; // Cambia a velocidad aumentada
         clearTimeout(boostTimeout); // Limpia cualquier boost anterior
         boostTimeout = setTimeout(() => {
@@ -383,37 +399,46 @@ document.addEventListener('DOMContentLoaded', () => {
         // Reiniciar las posiciones de Pac-Man y los enemigos
         pacmanPosition = { x: 1, y: 18 };
         enemyPosition = { x: 47, y: 18 };
-        secondEnemyPosition = { x: 32, y: 9 }; // Posición inicial del segundo enemigo
-        const cells = document.querySelectorAll('.cell');
-        cells.forEach(cell => {
-            cell.classList.remove('pacman');
-            cell.classList.remove('enemy');
-        });
+        secondEnemyPosition = { x: 32, y: 9 };
+    
+        // Eliminar las clases anteriores de todas las celdas
+        document.querySelectorAll('.cell').forEach(cell => 
+            cell.classList.remove('pacman', 'enemy')
+        );
+    
         drawPacman();
-        drawEnemy(); // Dibuja al primer enemigo
-        // Si el segundo enemigo ha aparecido, dibújalo en su posición inicial
-        if (secondEnemyAppeared) {
-            drawSecondEnemy(); // Función que dibuja al segundo enemigo
-        }
+        drawEnemy();
+    
+        // Dibujar el segundo enemigo si es necesario
+        if (secondEnemyAppeared) drawSecondEnemy();
     }
     function resetGame() {
-        document.getElementById('gameOverPopup').style.display = 'none';
-        document.getElementById('winPopup').style.display = 'none';
+        // Ocultar los popups
+        ['gameOverPopup', 'winPopup'].forEach(id => 
+            document.getElementById(id).style.display = 'none'
+        );
+    
         ResetGamePoint();
         updateLivesDisplay();
         updateScoreDisplay();
-        clearInterval(timerInterval);  // Detener el temporizador anterior
-        timeLeft = 500;  // Reiniciar el tiempo a 300 segundos (5 minutos)
-        updateTimer();  // Mostrar el tiempo reiniciado
-        startTimer();  // Iniciar el temporizador nuevamente
-        gameContainer.innerHTML = ''; 
+
+        // Reiniciar el temporizador
+        clearInterval(timerInterval);
+        timeLeft = 500;
+        updateTimer();
+        startTimer();
+    
+        // Reiniciar el mapa
+        gameContainer.innerHTML = '';
         createMap();
+    
+        // Restablecer posiciones y estado del segundo enemigo
         resetPositions();
-        // Asegurarse de que el segundo enemigo desaparezca si está en el mapa
         if (secondEnemyAppeared) {
-            removeSecondEnemy(); // Función que elimina el segundo enemigo
-            secondEnemyAppeared = false; // Restablecer el estado
+            removeSecondEnemy();
+            secondEnemyAppeared = false;
         }
+    
         isPaused = false;
     }
     
@@ -491,7 +516,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         if (konamiInput.toString() === konamiCode.toString()) {
-            DesbloquearMuro();
+            SecretRoom.play();
+            DesbloquearMuroCoordenadas();
         }
     });
     
@@ -502,105 +528,93 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     function movePacman(dx, dy, direction) {
-        if (!isPaused) {
-            const newX = pacmanPosition.x + dx;
-            const newY = pacmanPosition.y + dy;    
+        if (isPaused) return;
+        const newX = pacmanPosition.x + dx;
+        const newY = pacmanPosition.y + dy;
+        // Verifica si la nueva posición es válida
+        const validMove = [0, 2, 3, 4, 5, 6].includes(map[newY]?.[newX]);
+        if (!validMove) return;
+        // Eliminar clases de movimiento previas
+        const cells = document.querySelectorAll('.cell');
+        cells.forEach(cell => cell.classList.remove('pacman_up', 'pacman_down', 'pacman_left', 'pacman_right'));
+        // Agregar rastro a la celda anterior
+        const currentIndex = pacmanPosition.y * map[0].length + pacmanPosition.x;
+        const currentCell = cells[currentIndex];
+        const rastroClass = (direction === 'up' || direction === 'down') ? 'rastro-horizontal' : 'rastro-vertical';
+        currentCell.classList.add(rastroClass);
+        setTimeout(() => currentCell.classList.remove(rastroClass), 250);
+       // Quitar la posición anterior de Pac-Man
+        currentCell.classList.remove('pacman');
+        // Actualizar posición y dibujar en la nueva posición
+        pacmanPosition = { x: newX, y: newY };
+        drawPacman();
+        // Añadir clase de dirección correcta
+        const newIndex = pacmanPosition.y * map[0].length + pacmanPosition.x;
+        const newCell = cells[newIndex];
+        newCell.classList.add('pacman', `pacman_${direction}`);
+        // Verificar colisión con el enemigo
+        checkCollision();
+    }
     
-            // Verifica si la posición se puede mover
-            if (newX >= 0 && newX < map[0].length && newY >= 0 && newY < map.length && (map[newY][newX] === 0 || map[newY][newX] === 2 || map[newY][newX] === 3 || map[newY][newX] === 4 || map[newY][newX] === 5) || map[newY][newX] === 6) {
-                
-                // Eliminar las clases de movimiento de todas las celdas antes de mover
-                const cells = document.querySelectorAll('.cell');
-                cells.forEach(cell => {
-                    cell.classList.remove('pacman_up', 'pacman_down', 'pacman_left', 'pacman_right');
-                });
-                // Agregar el rastro a la celda anterior
-                const currentIndex = pacmanPosition.y * map[0].length + pacmanPosition.x;
-                const currentCell = cells[currentIndex];
-                if (direction === 'up' || direction === 'down') {
-                    currentCell.classList.add('rastro-horizontal');  // Rastro vertical (arriba/abajo)
-                } else if (direction === 'left' || direction === 'right') {
-                    currentCell.classList.add('rastro-vertical');  // Rastro horizontal (izquierda/derecha)
-                }
-                setTimeout(() => {
-                    currentCell.classList.remove('rastro-vertical', 'rastro-horizontal');
-                }, 250);
-                // Quitar la posición anterior de Pac-Man
-                cells[currentIndex].classList.remove('pacman');
-                // Actualizar posición
-                pacmanPosition.x = newX;
-                pacmanPosition.y = newY;
-                // Dibujar en la nueva posición
-                drawPacman();
-                // Añadir la clase de dirección correcta con el nuevo formato
-                const newIndex = pacmanPosition.y * map[0].length + pacmanPosition.x;
-                const newCell = cells[newIndex];
-                newCell.classList.add('pacman', `pacman_${direction}`); // Cambiado de 'up' a 'pacman-up'
-                // Verificar colisión con el enemigo
-                checkCollision();
-            }
-        }
-    }
-    // Actualiza el temporizador
+    // Función para actualizar el temporizador
     function updateTimer() {
-        if (!isPaused) {
-            document.getElementById('timer').innerText = timeLeft;
-            if (timeLeft <= 0) {
-                clearInterval(timerInterval); // Detener el temporizador cuando se acabe el tiempo
-                canMove = false; // Deshabilitar movimiento
-                alert("¡Se acabó el tiempo!"); // Mostrar mensaje de fin de tiempo
-                resetGame(); // Llamar a la función para reiniciar el juego
-                return;
-            }
-            timeLeft--; // Disminuir el tiempo cada segundo
+        if (isPaused) return;
+        document.getElementById('timer').innerText = timeLeft;
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            canMove = false;
+            alert("¡Se acabó el tiempo!");
+            resetGame();
+            return;
         }
+        timeLeft--;
     }
-    // Inicia el temporizador
+
+    // Función para iniciar el temporizador
     function startTimer() {
-        updateTimer(); // Mostrar el tiempo actualizado
-        clearInterval(timerInterval); // Limpiar cualquier temporizador anterior
-        timerInterval = setInterval(updateTimer, 750); // Iniciar el temporizador cada 1 segundo
+        updateTimer();
+        clearInterval(timerInterval); // Limpiar intervalos previos
+        timerInterval = setInterval(updateTimer, 750); // Iniciar temporizador cada 750ms
     }
+
+    // Función para actualizar la puntuación en pantalla
     function updateScoreDisplay() {
-        document.getElementById('puntuaje').innerText = `Score: ${score}`;  // Actualiza el texto del elemento de puntuación
+        document.getElementById('puntuaje').innerText = `Score: ${score}`;
     }
-    // Mueve el enemigo cada 500 ms
+
+    // Función para iniciar el movimiento del enemigo
     function startEnemyMovement() {
-        enemyMovementInterval = setInterval(moveEnemy, 520); // Mueve al enemigo cada 400ms
+        enemyMovementInterval = setInterval(moveEnemy, 520);
     }
-    // Inicializa el mapa y dibuja Pac-Man y el enemigo
+
+    // Función para iniciar y configurar el juego
     function initializeGame() {
-        startTimer(); // Iniciar el temporizador
-        createMap();  // Crear el mapa del juego
-        drawPacman(); // Dibujar Pac-Man
-        drawEnemy();  // Dibujar el enemigo
+        startTimer();
+        createMap();
+        drawPacman();
+        drawEnemy();
     }
-    // Muestra la pantalla de tutorial
+
+    // Función para mostrar el tutorial
     function showTutorial() {
         const tutorialScreen = document.getElementById('tutorialScreen');
         tutorialScreen.style.visibility = 'visible';
         tutorialScreen.style.opacity = '1';
     }
-    // Oculta la pantalla de tutorial y comienza el juego
+
+    // Función para comenzar el juego después del tutorial
     function startGame() {
         const tutorialScreen = document.getElementById('tutorialScreen');
         tutorialScreen.style.visibility = 'hidden';
         tutorialScreen.style.opacity = '0';
-        startEnemyMovement();  // Comienza el movimiento del enemigo
-        initializeGame();      // Inicializa el juego
+        startEnemyMovement();
+        initializeGame();
     }
-    const music = document.getElementById('background-music');
 
-    // Intenta reproducir sin sonido
-    music.volume = 0; // Inicia con volumen 0
-    music.play().then(() => {
-        // Una vez que se reproduce, sube el volumen
-        music.volume = 1; // Cambia el volumen a normal
-        console.log('Música reproduciéndose.');
-    }).catch(error => {
-        console.log('Reproducción automática bloqueada:', error);
-    });
-    // Agrega el evento para iniciar el juego
+    // Evento para iniciar el juego
     document.getElementById('startGameBtn').addEventListener('click', startGame);
+
+    // Mostrar tutorial al inicio
     showTutorial();
+
 });

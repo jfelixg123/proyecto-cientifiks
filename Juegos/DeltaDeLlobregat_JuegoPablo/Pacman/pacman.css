@@ -17,7 +17,7 @@ body {
     align-items: center;
     display: flex;
     border: 1px black solid;
-    background-color: #45a049;
+    background-color: rgba(62, 55, 55, 0.8);;
 }
 .vida, .tiempo, .score{
     position: relative;
@@ -42,8 +42,8 @@ img{
     height: 30px;
 }
 #game-container {
-    width: 1500px;        
-    height: 600px;        
+    width: 1500px;
+    height: 600px;     
     overflow: hidden;     
     position: relative;   
     background-image: url(./ImagenJuego/Warm_Ocean.png);
@@ -164,7 +164,7 @@ img{
     height: 50px;
 }
 .tiempo h1, .score h1{
-    color: red;
+    color: white;
 }
 .tutorial-screen {
     position: fixed;
@@ -177,6 +177,22 @@ img{
     justify-content: center;
     align-items: center;
     transition: visibility 0s, opacity 0.5s ease-in-out;
+}
+.MensajeSecreto{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    transition: visibility 0s, opacity 0.5s ease-in-out;
+    flex-direction: column;
+}
+.MensajeSecreto h1{
+    color: white;
 }
 
 /* Estilo del contenido del modal */
@@ -249,6 +265,17 @@ img{
     overflow: hidden;
     font-family: 'Bebas Neue', cursive;
 }
+.tutorial-content h2{
+    font-size: 40px;
+}
+.tutorial-content p{
+    font-size: 25px;
+}
+.tutorial-content button{
+    width: 100px;
+    height: 50px;
+    font-size: 20px;
+}
 /* Estilo para el reloj de arena */
 #Reloj {
     animation: rotate 8s ease-in-out infinite; /* Aumenta la duración total de la animación a 8 segundos */
@@ -289,7 +316,7 @@ img{
     padding: 10px 20px;
     margin: 5px;
     border: none;
-    color: white;
+    color: rgb(197, 43, 43);
     font-size: 16px;
     cursor: pointer;
     border-radius: 5px;
@@ -321,17 +348,17 @@ img{
 }
 @media (max-width: 1700px) {
     #game-container{
-        width: 1500px;
-        height: 600px;
+        width: 1400px;
+        height: 560px;
     }
     .cell {
-        width: 30px;   /* Tamaño de la celda */
-        height: 30px;  /* Tamaño de la celda */
+        width: 28px;   /* Tamaño de la celda */
+        height: 28px;  /* Tamaño de la celda */
     }
     #game {
         display: grid;
-        grid-template-rows: repeat(30, 30px);    /* Cambia a 30 filas */ 
-        grid-template-columns: repeat(50, 30px); /* Cambia a 30 columnas */
+        grid-template-rows: repeat(30, 28px);    /* Cambia a 30 filas */ 
+        grid-template-columns: repeat(50, 28px); /* Cambia a 30 columnas */
     }
     .navegador{
         width: 1200;
@@ -400,7 +427,4 @@ img{
         width: 25px;
         height: 25px;
     }
-}
-
-@media (max-width: 1000px) {
 }
