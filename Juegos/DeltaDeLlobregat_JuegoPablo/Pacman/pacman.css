@@ -12,16 +12,15 @@ body {
 .navegador{
     width: 1200px;
     height: 100px;
-    border: 1px solid white;
     margin-bottom: 50px;
     justify-content: space-around;
     align-items: center;
     display: flex;
-    background-color: black;
+    border: 1px black solid;
+    background-color: #45a049;
 }
 .vida, .tiempo, .score{
     position: relative;
-    border: 1px solid white;
     justify-content: center;
     align-items: center;
     display: flex;
@@ -49,8 +48,6 @@ img{
     position: relative;   
     background-image: url(./ImagenJuego/Warm_Ocean.png);
     background-size: cover;
-    border: 1px solid white;
-    
 }
 #game {
     display: grid;
@@ -58,7 +55,8 @@ img{
     grid-template-columns: repeat(50, 40px); 
 }
 .exit {
-    background-color: green; /* Color verde para la salida */
+    background-image: url(./ImagenJuego/boat.png);
+    background-size: cover;
 }
 .cell {
     width: 40px;   /* Tamaño de la celda */
@@ -77,6 +75,10 @@ img{
     background-image: url(./ImagenJuego/petroleo.png);
     background-size: cover;
 }
+.BIG{
+    background-image: url(./ImagenJuego/heartPablo.png);
+    background-size: cover;
+}
 .pacman {
     background-image: url(./ImagenJuego/buzoRight.png);
     background-size: contain;
@@ -84,32 +86,36 @@ img{
     background-repeat: no-repeat;
 }
 
-.pacman-up {
+.pacman_up {
     background-image: url(./ImagenJuego/buzoUp.png);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
+    z-index: 10;
 }
 
-.pacman-down {
+.pacman_down {
     background-image: url(./ImagenJuego/buzoDown.png);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
+    z-index: 10;
 }
 
-.pacman-left {
+.pacman_left {
     background-image: url(./ImagenJuego/buzoLeft.png);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
+    z-index: 10;
 }
 
-.pacman-right {
+.pacman_right {
     background-image: url(./ImagenJuego/buzoRight.png);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
+    z-index: 10;
 }
 .enemy {
     background-size: contain; /* Ajusta la imagen para que quepa dentro de la celda */
@@ -158,7 +164,7 @@ img{
     height: 50px;
 }
 .tiempo h1, .score h1{
-    color: white;
+    color: red;
 }
 .tutorial-screen {
     position: fixed;
@@ -238,7 +244,7 @@ img{
     min-width: 150px;
     min-height: 150px;
 }
-.tutorial-content h2, .tutorial-content p{
+.tutorial-content h2, .tutorial-content p, button, h1, h2{
     margin: 0;
     overflow: hidden;
     font-family: 'Bebas Neue', cursive;
@@ -328,7 +334,7 @@ img{
         grid-template-columns: repeat(50, 30px); /* Cambia a 30 columnas */
     }
     .navegador{
-        width: 900px;
+        width: 1200;
         height: 100px;
     }
     .vida, .tiempo, .score{

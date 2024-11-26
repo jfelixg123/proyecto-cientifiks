@@ -92,33 +92,7 @@
             </div>
         </div>
     </div>
-    <script>
-        const texts = {
-            es: {
-                loginTitle: "RESULTADOS GLOBALES"
-            },
-            ca: {
-                loginTitle: "RESULTATS GLOBALS"
-            },
-            en: {
-                loginTitle: "GLOBAL RESULTS"
-            }
-        };
-
-        function changeLanguage(lang) {
-            document.getElementById("login-title").innerText = texts[lang].loginTitle;
-
-        }
-
-        document.getElementById("lang-es").addEventListener("click", () => changeLanguage('es'));
-        document.getElementById("lang-ca").addEventListener("click", () => changeLanguage('ca'));
-        document.getElementById("lang-en").addEventListener("click", () => changeLanguage('en'));
-
-        document.getElementById("back-button").addEventListener("click", () => {
-            window.location.href = 'index.html';
-        });
-    </script>
-
+    <script src="main.js"></script>
 </body>
 
 </html>
