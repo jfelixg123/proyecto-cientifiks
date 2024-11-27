@@ -28,11 +28,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const rataSegundoPisoDerecha = document.getElementById('rataSegundoPisoDerecha');
     const rataPrimerPisoDerecha = document.getElementById('rataPrimerPisoDerecha');
 
-
-    // Reposicionar el personaje en la pantalla
     function reposicionarPersonaje() {
-        personaje.style.left = "0px";
-        personaje.style.top = "807px";
+        personaje.style.left = '0px';
+        personaje.style.top = '808px';
+        isOnGround = true;
+        isJumping = false;
+        pisoActual = null;
     }
 
     // Función para perder vida
@@ -56,10 +57,8 @@ document.addEventListener("DOMContentLoaded", function () {
         } else if (velocityX < 0) { // Si se mueve a la izquierda
             personaje.style.left = (personajeLeft + 10) + 'px'; // Rebote hacia la derecha
         }
-
         // Detener el movimiento horizontal
         velocityX = 0;
-
     }
 
     function checkCollisionWithObstacles() {
@@ -79,8 +78,11 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    
+
     const slowVelocityX = 2;
     let velocidadReducida = false;
+
     function reducirVelocidad() {
         velocityX = Math.sign(velocityX) * slowVelocityX; // Mantiene la dirección, pero reduce la magnitud
         velocidadReducida = true; // Indicamos que la velocidad está reducida
@@ -164,7 +166,31 @@ document.addEventListener("DOMContentLoaded", function () {
             pisoActual = null;
         }
     }
+/*
+  
+ 
+    function checkCollisionWithFloors() {
+        const pisos = document.querySelectorAll('.tercerPisoIzquierda, .segundoPisoIzquierda, .primerPisoIzquierda, .tercerPisoDerecha, .segundoPisoDerecha, .primerPisoDerecha, .pasoPrimerPiso, .pasoSegundoPiso');
+        const personajeRect = personaje.getBoundingClientRect();
+        
 
+        pisos.forEach(piso => {
+            const pisoRect = piso.getBoundingClientRect();
+    
+            // Detectar colisión del personaje con la parte inferior del piso
+            if (
+                personajeRect.top <= pisoRect.bottom &&       // La cabeza del personaje alcanza la parte inferior del piso
+                personajeRect.bottom > pisoRect.bottom    // El personaje está parcialmente debajo del piso
+                
+            ) {
+            
+                personaje.style.top = pisoRect.bottom + 6 + 'px'; // Coloca al personaje justo debajo del piso
+                isJumping = false;
+                    
+            }
+        });
+    }
+*/
     // Obtener referencias a todas las llaves de paso
     const llaves = document.querySelectorAll('.llavePasoTercerPiso, .llavePasoPrimerPiso, .llavePasoSegundoPisoDerecha, .llaveDePasoPrimerPisoDerecha');
 
@@ -216,6 +242,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (!isOnGround) {
             personaje.style.top = (personajeTop + gravity) + 'px';
+          //  checkCollisionWithFloors();
             checkCollision();
         } else if (pisoActual) {
             const pisoRect = pisoActual.getBoundingClientRect();
@@ -224,13 +251,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const sueloRect = suelo.getBoundingClientRect();
         const personajeRect = personaje.getBoundingClientRect();
-
+        
         if (personajeRect.bottom >= sueloRect.top) {
             isOnGround = true;
             personaje.style.top = sueloRect.top - personaje.offsetHeight + 'px';
             isJumping = false;
         }
-
         checkCollisionWithKeys();
         checkCollisionWithRats();
         checkCollisionWithCharcos();
@@ -327,6 +353,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (event.key === 'ArrowLeft') velocityX = -maxVelocityX;
         if (event.key === 'ArrowUp' && isOnGround) {
             const personajeTop = parseInt(personaje.style.top || (window.innerHeight - personaje.offsetHeight) + 'px');
+
             personaje.style.top = (personajeTop - jumpHeight) + 'px';
             isJumping = true;
             isOnGround = false;

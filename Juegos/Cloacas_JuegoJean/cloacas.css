@@ -160,7 +160,7 @@ body {
     background-color: yellow;
     position: absolute;
     left: 0;
-    top: 807px;
+    top: 808px;
     background-image: url(./imagenes/AnnaMujal.png);
     background-position: center;
     background-repeat: no-repeat;
@@ -275,7 +275,7 @@ body {
 }
 
 .charcoTercerPisoIzquierda, .charcoSegundoPisoIzquierda, .charcoPrimerPisoIzquierda, .charcoPrimerPisoDerecha{
-    width: 174px;
+    width: 142px;
     height: 21px;
     background: rgb(116, 216, 241);
     position: absolute;
