@@ -1,11 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
-
-    document.getElementById('scrollToTop').addEventListener('click', function() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
+        let RollDown = document.getElementById('scrollToTop')
+        if(RollDown != null){
+            RollDown.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
-    });
+        }
 
     const translations = {
         "es": {
@@ -31,7 +33,23 @@ document.addEventListener("DOMContentLoaded", function () {
             ],
             loginTitle: "RESULTADOS GLOBALES",
             aboutUs: "Sobre Nosotros" ,
-            Copyright: "Copyright © 2024 Cientifico. Todos los derechos reservados."
+            Copyright: "Copyright © 2024 Cientifico. Todos los derechos reservados.",
+
+            IniciarloginTitle: "INICIAR SESIÓN",
+            RegisterLoginTitle: "Registrarse",
+            session: {
+                login: "Iniciar Sesión",
+                register: "Registrarse"
+            },
+            formLabels: {
+                username: "Nombre de usuario:",
+                email: "Correo electrónico",
+                password: "Contraseña"
+            },
+            buttons: {
+                login: "INICIAR SESIÓN",
+                register: "REGISTRARSE"
+            }
         },
         "en": {
             title: ["Welcome to the Adventure!", "Explore a magnificent world!", "Have fun!","Dare to discover more!"],
@@ -57,6 +75,21 @@ document.addEventListener("DOMContentLoaded", function () {
                 "This is mini text 3 in English",
                 "This is mini text 4 in English"
             ],
+            IniciarloginTitle: "LOGIN",
+            RegisterLoginTitle: "Sign up",
+            session: {
+                login: "Log In",
+                register: "Sign Up"
+            },
+            formLabels: {
+                username: "Username:",
+                email: "Email",
+                password: "Password"
+            },
+            buttons: {
+                login: "LOG IN",
+                register: "SIGN UP"
+            }
         },
         "ca": {
             title: ["Benvinguts a l'aventura!", "Explora un món magnífic!", "Diverteix-te!","Atreveix-te a descobrir més!"],
@@ -81,7 +114,23 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Aquest és el mini text 4 en català"
             ],
             aboutUs: "Sobre Nosaltres" ,
-            Copyright: "Copyright © 2024. Tots els drets reservats.."
+            Copyright: "Copyright © 2024. Tots els drets reservats..",
+
+            IniciarloginTitle: "INICIAR SESSIÓ",
+            RegisterLoginTitle: "Registrar-se",
+            session: {
+                login: "Iniciar Sessió",
+                register: "Registrar-se"
+            },
+            formLabels: {
+                username: "Nom d'usuari:",
+                email: "Correu electrònic",
+                password: "Contrasenya"
+            },
+            buttons: {
+                login: "INICIAR SESSIÓ",
+                register: "REGISTRAR-SE"
+            }
         }
     };
     window.addEventListener("scroll", function () {
@@ -236,7 +285,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
     
-    
     const languageButtons = document.querySelectorAll(".idioma img");
     languageButtons.forEach(button => {
         button.addEventListener("click", function () {
@@ -245,44 +293,110 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    function updateContent(lang) {
-        const content = translations[lang];
-        // Actualizar los títulos y descripciones de cada item del carrusel
-        const carouselItems = document.querySelectorAll(".carousel-item");
-        carouselItems.forEach((item, index) => {
-            if (content.descriptions[index]) {
-                item.querySelector(".Descripcion p").textContent = content.descriptions[index]; // Cambia la descripción
-            }
-            if (content.buttons[index]) {
-                item.querySelector(".botones h1").textContent = content.buttons[index]; // Cambia el título del botón
-            }
-            if (content.title[index]) {
-                item.querySelector(".TituloInicio h1").textContent = content.title[index]; // Cambia el título del carrusel
-            }
-        });
+function updateContent(lang) {
+    const content = translations[lang];
 
-        const miniTextElements = document.querySelectorAll(".mini-texto");
-        miniTextElements.forEach((element, index) => {
-            if (content.miniTexts[index]) {
-                element.textContent = content.miniTexts[index]; // Cambia el mini texto
-            }
-        });
-    
-        document.querySelector(".navegador .titulo h1").textContent = content.gameTitle; // Actualiza el título del juego
-        const clickHereImages = document.querySelectorAll(".ClickAqui img");
-        clickHereImages.forEach(img => {
-            // Verifica si la imagen de cofre no está entre las imágenes de los cofres ya abiertos
-            if (!dialogoImgs.includes(img.src)) {
-                img.src = content.clickHereImg; // Actualiza la imagen de clic solo si no está en las imágenes de los cofres abiertos
-            }
-        });
-        document.querySelector(".inicarSesion h2").textContent = content.session.login;
-        document.querySelector(".registrarse h2").textContent = content.session.register;
-        document.querySelector(".TituloNosotros h1").textContent = content.aboutUs;
-        document.querySelector(".Redes h1").textContent = content.gameTitle;
-        document.querySelector(".FooterDerechos p").textContent = content.Copyright;
-        document.querySelector(".h1_scoreboard").textContent = content.loginTitle;
+    // Actualizar los títulos y descripciones de cada item del carrusel
+    const carouselItems = document.querySelectorAll(".carousel-item");
+    carouselItems.forEach((item, index) => {
+        if (content.descriptions?.[index] && item.querySelector(".Descripcion p")) {
+            item.querySelector(".Descripcion p").textContent = content.descriptions[index];
+        }
+        if (content.buttons?.[index] && item.querySelector(".botones h1")) {
+            item.querySelector(".botones h1").textContent = content.buttons[index];
+        }
+        if (content.title?.[index] && item.querySelector(".TituloInicio h1")) {
+            item.querySelector(".TituloInicio h1").textContent = content.title[index];
+        }
+    });
+
+    const miniTextElements = document.querySelectorAll(".mini-texto");
+    miniTextElements.forEach((element, index) => {
+        if (content.miniTexts?.[index]) {
+            element.textContent = content.miniTexts[index];
+        }
+    });
+
+    const gameTitleElement = document.querySelector(".navegador .titulo h1");
+    if (gameTitleElement) {
+        gameTitleElement.textContent = content.gameTitle;
     }
+
+    const clickHereImages = document.querySelectorAll(".ClickAqui img");
+    clickHereImages.forEach(img => {
+        if (!dialogoImgs.includes(img.src)) {
+            img.src = content.clickHereImg || img.src; // Cambiar si hay contenido para la imagen
+        }
+    });
+    const loginElement = document.querySelector(".inicarSesion h2");
+    if (loginElement) {
+        loginElement.textContent = content.session?.login;
+    }
+
+    const registerElement = document.querySelector(".registrarse h2");
+    if (registerElement) {
+        registerElement.textContent = content.session?.register;
+    }
+
+    const aboutUsElement = document.querySelector(".TituloNosotros h1");
+    if (aboutUsElement) {
+        aboutUsElement.textContent = content.aboutUs;
+    }
+
+    const socialTitleElement = document.querySelector(".Redes h1");
+    if (socialTitleElement) {
+        socialTitleElement.textContent = content.gameTitle;
+    }
+
+    const footerElement = document.querySelector(".FooterDerechos p");
+    if (footerElement) {
+        footerElement.textContent = content.Copyright;
+    }
+
+    const scoreboardElement = document.querySelector(".h1_scoreboard");
+    if (scoreboardElement) {
+        scoreboardElement.textContent = content.loginTitle;
+    }
+    
+    // Actualizar títulos de los formularios
+     const loginTitleElement = document.querySelector("#login-title");
+     if (loginTitleElement) {
+         loginTitleElement.textContent = content.IniciarloginTitle;
+     }
+
+     const RegisterTitleElement = document.querySelector("#register-title");
+     if (RegisterTitleElement) {
+         RegisterTitleElement.textContent = content.RegisterLoginTitle;
+     }
+ 
+     // Actualizar etiquetas del formulario
+     const nameLabel = document.querySelector("#name-label");
+     if (nameLabel) {
+         nameLabel.textContent = content.formLabels.username;
+     }
+ 
+     const emailLabel = document.querySelector("#email-label");
+     if (emailLabel) {
+         emailLabel.textContent = content.formLabels.email;
+     }
+ 
+     const passwordLabel = document.querySelector("#password-label");
+     if (passwordLabel) {
+         passwordLabel.textContent = content.formLabels.password;
+     }
+ 
+     // Actualizar botones
+     const loginButton = document.querySelector("#login-button");
+     if (loginButton) {
+         loginButton.textContent = content.buttons.login;
+     }
+ 
+     const registerButton = document.querySelector("#register-button");
+     if (registerButton) {
+         registerButton.textContent = content.buttons.register;
+     }
+}
+
     const juegos = [
         {
           imagen: "./LangingPagPhoto/Cubo.png"

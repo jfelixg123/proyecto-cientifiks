@@ -40,18 +40,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Registro</title>
 </head>
 <body>
-    <div class="bodycss">
+<div class="bodycss">
     <nav class="navLogin">
         <button type="button" id="back-button"><img src="./LangingPagPhoto/flecha.png" alt="" class="flechaVolver"></button>
 
-        <div class="cambioIdioma">
-            <button id="lang-es"><img src="./LangingPagPhoto/mundo.png" alt=""></button>
-            <button id="lang-ca"><img src="./LangingPagPhoto/bandera.png" alt=""></button>
-            <button id="lang-en"><img src="./LangingPagPhoto/reino-unido.png" alt=""></button>
+        <div class="idioma">
+                    <img src="LangingPagPhoto/spain.png" alt="es">
+                    <img src="LangingPagPhoto/catalan.png" alt="ca">
+                    <img src="LangingPagPhoto/english.png" alt="en">
         </div>
     </nav>
 
-    <h1 id="login-title">REGISTRARSE</h1>
+    <h1 id="register-title">REGISTRARSE</h1>
     <?php include 'php/mensaje.php'; ?>
     <div class="container">
         <div class="capa1"></div>
@@ -79,51 +79,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 </div>
-    <script>
-        const texts = {
-            es: {
-                registerTitle: "REGISTRARSE",
-                nameLabel: "Nombre",
-                surnameLabel: "Apellidos",
-                emailLabel: "Correo electrónico",
-                passwordLabel: "Contraseña",
-                registerButton: "REGISTRARSE"
-            },
-            ca: {
-                registerTitle: "REGISTRAR-SE",
-                nameLabel: "Nom",
-                surnameLabel: "Cognoms",
-                emailLabel: "Correu electrònic",
-                passwordLabel: "Contrasenya",
-                registerButton: "REGISTRAR-SE"
-            },
-            en: {
-                registerTitle: "REGISTER",
-                nameLabel: "Name",
-                surnameLabel: "Surname",
-                emailLabel: "Email",
-                passwordLabel: "Password",
-                registerButton: "REGISTER"
-            }
-        };
-
-        function changeLanguage(lang) {
-            document.getElementById("login-title").innerText = texts[lang].registerTitle;
-            document.getElementById("name-label").innerText = texts[lang].nameLabel;
-            document.getElementById("surname-label").innerText = texts[lang].surnameLabel;
-            document.getElementById("email-label").innerText = texts[lang].emailLabel;
-            document.getElementById("password-label").innerText = texts[lang].passwordLabel;
-            document.getElementById("register-button").innerText = texts[lang].registerButton;
-        }
-
-        // Asignar eventos a los botones
-        document.getElementById("back-button").addEventListener("click", () => {
-            window.location.href = 'login.php';
-        });
-
-        document.getElementById("lang-es").addEventListener("click", () => changeLanguage('es'));
-        document.getElementById("lang-ca").addEventListener("click", () => changeLanguage('ca'));
-        document.getElementById("lang-en").addEventListener("click", () => changeLanguage('en'));
-    </script>
+<script src="main.js"></script>
 </body>
 </html>

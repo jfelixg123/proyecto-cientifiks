@@ -8,7 +8,7 @@
             "name": "Launch Chrome",
             "request": "launch",
             "type": "chrome",
-            "url": "http://localhost:8080/proyecto-cientifiks/juegos/tresfuentes/php/index.php",
+            "url": "http://localhost:8080/proyecto-cientifiks/login.php",
             "webRoot": "${workspaceFolder}"
         },
         {

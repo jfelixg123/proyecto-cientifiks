@@ -238,7 +238,7 @@ p{
 .titulo h1{
 
     font-family: "Bebas Neue";
-    color: white;
+    color: black;
 
 }
 .titulo-activo h1{
@@ -996,7 +996,7 @@ input[type="email"], input[type="password"],  input[type="name"],  input[type="s
     font-size: 16px;
     box-shadow: 2px -2px 5px rgba(10, 96, 177, 0.705), 2px 2px 5px rgba(10, 97, 177, 0.5);
 }
-#login-title{
+#login-title, #register-title {
     text-align: center;
     font-size: 50px;
     color: #3E3737;

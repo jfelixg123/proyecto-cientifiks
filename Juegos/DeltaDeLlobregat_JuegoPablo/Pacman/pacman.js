@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let pacmanPosition = { x: 1, y: 18 };
     let enemyPosition = { x: 47, y: 18 };
     let secondEnemyPosition = { x: 32, y: 9 };  
-    let score = 1300;
+    let score = 0;
     let canMove = true;
     let timerInterval;
     let currentSpeed = 200;
@@ -364,6 +364,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById(exitButtonId).addEventListener('click', () => {
             window.location.href = 'index.html'; // Cambia 'index.html' según sea necesario
         });
+        guardarScore(score);
     }
     function StopTime() {
         // Detiene el movimiento del enemigo
@@ -609,6 +610,24 @@ document.addEventListener('DOMContentLoaded', () => {
         tutorialScreen.style.opacity = '0';
         startEnemyMovement();
         initializeGame();
+    }
+    function guardarScore(score) {
+        //debugger;
+        fetch('php/Obtenerscore.php?id_videojuego=2&puntuacion=' + score)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Error en la solicitud: ' + response.statusText);
+            }
+            return response.text(); // Esperamos un texto plano como respuesta
+          })
+          .then(data => {
+            console.log(data); // Mostrar el mensaje de confirmación o error del servidor
+            // Puedes mostrar un mensaje al usuario aquí, por ejemplo, usando un alert o actualizando el DOM
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            // Mostrar un mensaje de error genérico al usuario
+          });
     }
 
     // Evento para iniciar el juego
