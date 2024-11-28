@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 "El destino de las tres fuentes está en tus manos. Con todos los desafíos superados, tu ingenio y perseverancia te llevarán al logro definitivo. Devuelve el agua limpia y purificada a cada fuente y celebra el triunfo de haber completado la misión. ¿Estás listo para restaurar el equilibrio?",
             ],
             gameTitle: "Científico",
-            clickHereImg: "./LangingPagPhoto/DIALOGO_ES.png",
             buttons: ["EXPLORA", "DESCUBRE", "DIVIERTE"],
             session: {
                 login: "Iniciar Sesión",
@@ -60,7 +59,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 "The fate of the three fountains is in your hands. With all the challenges overcome, your ingenuity and perseverance will lead you to the ultimate achievement. Return clean, purified water to each fountain and celebrate the triumph of completing the mission. Are you ready to restore balance?",
             ],
             gameTitle: "Scientist",
-            clickHereImg: "./LangingPagPhoto/DIALOGO_EN.png",
             buttons: ["EXPLORE", "DISCOVER", "ENJOY"],
             session: {
                 login: "Login",
@@ -100,7 +98,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 "El destí de les tres fonts és a les teves mans. Amb tots els desafiaments superats, el teu enginy i perseverança et portaran a l'èxit definitiu. Torna l'aigua neta i purificada a cada font i celebra el triomf de completar la missió. Estàs preparat per restaurar l'equilibri?",
             ],
             gameTitle: "Científic",
-            clickHereImg: "./LangingPagPhoto/DIALOGO_CAT.png",
             buttons: ["EXPLORA", "DESCOBERT", "DIVERTIR"],
             session: {
                 login: "Inicia Sessió",
@@ -321,13 +318,6 @@ function updateContent(lang) {
     if (gameTitleElement) {
         gameTitleElement.textContent = content.gameTitle;
     }
-
-    const clickHereImages = document.querySelectorAll(".ClickAqui img");
-    clickHereImages.forEach(img => {
-        if (!dialogoImgs.includes(img.src)) {
-            img.src = content.clickHereImg || img.src; // Cambiar si hay contenido para la imagen
-        }
-    });
     const loginElement = document.querySelector(".inicarSesion h2");
     if (loginElement) {
         loginElement.textContent = content.session?.login;

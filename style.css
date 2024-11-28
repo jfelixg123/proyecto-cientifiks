@@ -110,8 +110,14 @@ p{
     max-width: 250px;
     background-color: #FF7C02;
     margin-top: 20px;
-    padding: 10px;
     border-radius: 23px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: "Bebas Neue", sans-serif ;
+    font-weight: 400;
+    font-style: normal;
+    
 }
 .botones a{
     text-decoration:none;
@@ -261,6 +267,7 @@ p{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 10px;
 }
 .ranking img{
     display: flex;
@@ -280,6 +287,8 @@ p{
     display: flex;
     transition: background-color 0.3s ease, transform 0.3s ease; /* Transición para el color y el tamaño */
     cursor: pointer; /* Cambia el cursor al pasar por encima */
+    padding-top: 10px;
+    margin-top: 10px;
 }
 .inicarSesion:hover, .registrarse:hover {
     transform: scale(1.10); /* Aumenta el tamaño un poco */
