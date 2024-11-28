@@ -11,8 +11,12 @@
 <body>
 
     <div class="body_scoreboard">
-        <nav class="navegador-scoreboard" id="navbar">
+        <nav class="navLogin">
+            
+            <nav class="navegador-scoreboard" id="navbar">
+                
             <div class="idiomas">
+                <button type="button" id="back-button"><img src="./LangingPagPhoto/flechascore.png" alt="" class="flechaVolverscoreboard"></button>
                 <div class="titulo" id="miTitulo">
                     <h1>Cientifico en juego</h1>
                 </div>
@@ -27,7 +31,7 @@
                         </select>
                     </form>
                 </div>
-                <div class="idioma">
+                <div class="idiomascoreboard">
                     <img src="LangingPagPhoto/spain.png" alt="es">
                     <img src="LangingPagPhoto/catalan.png" alt="ca">
                     <img src="LangingPagPhoto/english.png" alt="en">
@@ -90,33 +94,13 @@
             </div>
         </div>
     </div>
-    <script>
-        const texts = {
-            es: {
-                loginTitle: "RESULTADOS GLOBALES"
-            },
-            ca: {
-                loginTitle: "RESULTATS GLOBALS"
-            },
-            en: {
-                loginTitle: "GLOBAL RESULTS"
-            }
-        };
+    <script src="main.js"></script>
+</body>
 
-        function changeLanguage(lang) {
-            document.getElementById("login-title").innerText = texts[lang].loginTitle;
-
-        }
-
-        document.getElementById("lang-es").addEventListener("click", () => changeLanguage('es'));
-        document.getElementById("lang-ca").addEventListener("click", () => changeLanguage('ca'));
-        document.getElementById("lang-en").addEventListener("click", () => changeLanguage('en'));
-
-        document.getElementById("back-button").addEventListener("click", () => {
+<script>
+    document.getElementById("back-button").addEventListener("click", () => {
             window.location.href = 'index.html';
         });
-    </script>
-
-</body>
+</script>
 
 </html>
