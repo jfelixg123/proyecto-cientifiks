@@ -210,7 +210,7 @@ p{
     background-color: #FF7C02;
 }
 .idioma {
-    width: 150px; /* Cambia a auto para que se ajuste al contenido */
+    width: 200px; /* Cambia a auto para que se ajuste al contenido */
     height: 40px;
     margin: 15px; /* Añade margen para que haya espacio entre los idiomas */
     display: flex;
@@ -219,8 +219,8 @@ p{
 }
 
 .idioma img {
-    width: 40px; /* Ajusta el tamaño de las imágenes */
-    height: 40px; /* Ajusta el tamaño de las imágenes */
+    width: 50px; /* Ajusta el tamaño de las imágenes */
+    height: 50px; /* Ajusta el tamaño de las imágenes */
     border-radius: 50%;
 }
 
