@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function reposicionarPersonaje() {
         personaje.style.left = '0px';
-        personaje.style.top = '808px';
+        personaje.style.top = '867px';
         isOnGround = true;
         isJumping = false;
         pisoActual = null;
