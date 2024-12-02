@@ -19,7 +19,7 @@
     <nav class="navegador" id="navbar">
       <div class="idiomas">
         <div class="titulo" id="miTitulo">
-          <h1>Cientifico</h1>
+          <h1>Cientifico en juego</h1>
         </div>
         <div class="idioma">
           <img src="LangingPagPhoto/spain.png" alt="es">
@@ -30,25 +30,20 @@
       <div class="menu">
         <div class="opcion">
           <div class="rankingcontent">
-
-            <a href="scoreboard1.html">
-
-            
-
+            <a href="scoreboard.html">
               <div class="ranking">
                 <img src="LangingPagPhoto/Estrella_amarilla.png" alt="estrella">
               </div>
             </a>
           </div>
-          <div class="inicarSesion">
+         <!-- <div class="inicarSesion">
             <h2><a href="login.php">Inicar Sesion</a></h2>
           </div>
           <div class="registrarse">
             <h2><a href="register.php">Registrarse</a></h2>
-            <a href="login.php"><h2>Inicar Sesion</h2></a>
-          </div>
-          <div class="registrarse">
-            <a href="register.php"><h2>Registrarse</h2></a>
+          </div> -->
+          <div >
+            <img src="LangingPagPhoto/iconoCuenta.png" alt="" class="d-block w-100">
           </div>
         </div>
       </div>
@@ -168,7 +163,7 @@
         <p>Copyright © 2024 Cientifico en juego. Todos los derechos reservados.</p>
       </div>
       <div class="Redes">
-        <h1 id="scrollToTop">Científico</h1>
+        <h1 id="scrollToTop">Científico en juego</h1>
       </div>
     </footer>
     

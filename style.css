@@ -25,7 +25,6 @@ p{
     font-family: "Bebas Neue", sans-serif ;
     font-weight: 400;
     font-style: normal;
-    font-size: 10px;
 }
 .registrarse a{
     color: black; 
@@ -33,7 +32,6 @@ p{
     font-family: "Bebas Neue", sans-serif ;
     font-weight: 400;
     font-style: normal;
-    font-size: 10px;
 }
 
 .carousel-item img {
@@ -121,7 +119,7 @@ p{
 }
 .botones a{
     text-decoration:none;
-    color: black;
+    color: white;
 }
 
 .idiomas {
@@ -203,10 +201,11 @@ p{
     opacity: 0; 
     transition: opacity 0.3s ease; 
     background-color: #3484CE;
+    border: none;
 }
 .boton-juego a{
     text-decoration: none;
-    color: #000;
+    color: white;
 }
 
 .PJuego:hover .boton-juego {
@@ -230,7 +229,7 @@ p{
     border-radius: 50%;
 }
 
-.titulo , .opcion{
+.titulo{
     height: 100px;
 
 }
@@ -252,12 +251,14 @@ p{
     transition: color 0.75s ease; /* Animación para el cambio de color */ 
 }
 
-.opcion{
-    width: 500px;
+.opcion {
+    /* Ancho ajustado al contenido */
+    height: 100px;
     margin-right: 30px;
+    margin-top: 20px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;  /* Puedes usar "center" para que los elementos se centren */
 }
 .ranking{
     width: 65px;
@@ -289,6 +290,7 @@ p{
     cursor: pointer; /* Cambia el cursor al pasar por encima */
     padding-top: 10px;
     margin-top: 10px;
+    margin-left: 10px;
 }
 .inicarSesion:hover, .registrarse:hover {
     transform: scale(1.10); /* Aumenta el tamaño un poco */
@@ -299,8 +301,8 @@ p{
 .inicarSesion:hover{
     background-color: #a6d4ff;
 }
-.inicarSesion h2 a, .registrarse h2 a{
-    font-size: 30px;
+.inicarSesion a h2, .registrarse a h2{
+    color: white;
 }
 .inicarSesion{
     background-color: #3484CE;
@@ -409,6 +411,50 @@ footer{
 .FooterDerechos p{
     font-size:20px ;
 }
+.user-icon {
+    width: 65px;  /* Aumenta el tamaño del icono */
+    height: 65px; /* Aumenta el tamaño del icono */
+    border-radius: 50%;
+    background-color: #1f9e1d;
+    color: white;
+    font-size: 30px; /* Ajusta el tamaño de la letra dentro del icono */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px; /* Agrega espacio entre el icono y el ranking */
+    margin-left: 20px;
+    margin-top: 10px;
+}
+.user-menu {
+    display: none; /* Inicialmente oculto */
+    position: absolute;
+    top: 120px; /* Ajusta para que se despliegue justo debajo del icono */
+    right: 0px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 5px;
+    width: 75px; /* Ancho del menú */
+}
+
+.logout-option {
+    display: block;
+    padding: 8px;
+    color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.logout-option:hover {
+    background-color: #f0f0f0; /* Efecto hover */
+}
+
+/* Añadir algún estilo para el contenedor del menú cuando esté visible */
+.user-menu.show {
+    display: block; /* Muestra el menú cuando se le añade la clase 'show' */
+}
+
 
 
 @keyframes fadeIn {
@@ -626,9 +672,20 @@ footer{
         font-size: small;
     }
     .opcion{
-        width: 300px;
         height: 50px;
     }
+    .user-icon{
+        width: 30px;
+        height: 30px;
+        font-size: 15px;
+    }
+    .user-menu {
+        top: 90px;
+    }
+    .inicarSesion a h2, .registrarse a h2{
+        font-size: 15px;
+    }
+    
     .MasJuego {
         flex-wrap: wrap; /* Permite que los elementos se envuelvan en varias filas */
     }

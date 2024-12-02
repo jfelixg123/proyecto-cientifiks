@@ -35,9 +35,7 @@ try {
     $stmt->bindParam(':id_videojuego', $id_videojuego, PDO::PARAM_INT);
     $stmt->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
     $stmt->bindParam(':puntuacion', $puntuacion, PDO::PARAM_INT);
-
     $stmt->execute();
-
     echo "Puntaje guardado correctamente.";
 } catch (PDOException $e) {
     echo "Error al guardar el puntaje: " . $e->getMessage();

@@ -3,7 +3,6 @@ session_start();
 require 'php/bd.php';
 require 'php/insertRegister.php';
 ?>
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
