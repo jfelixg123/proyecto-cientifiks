@@ -660,118 +660,7 @@ footer{
         font-size: 20px;
     }
 
-    /* scoreboard movil */
-
-    .body_scoreboard {
-        font-family: "Bebas Neue", sans-serif;
-        background: url('Juegos/Ahorcado/Ahorcado/images/alcantarillas.png') no-repeat center center fixed;
-        background-size: cover;
-    }
-
-    .navegador-scoreboard {
-        
-        font-size: 20px;
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 10px;
-        background-color: red;
-    }
-   
-
-    .titulo {
-        font-size: 18px;
-    }
-
-    .ranking-juegos {
-        margin-top: 10px;
-        margin-right: 5px;
-    }
-
-    .elegir-juego {
-        font-size: 16px;
-    }
-
-    .container_scoreboard {
-        padding: 10px;
-        justify-content: flex-start;
-    }
-
-    .header_scoreboard {
-        margin-bottom: 15px;
-    }
-
-    .h1_scoreboard {
-        font-size: 20px;
-        width: 100%;
-        padding: 10px;
-        border-radius: 8px;
-    }
-    .scoreboard{
-        background-color: red;
-        border-radius: 10px;
-        max-width: 400px;
-    }
-
-    .ranking_scoreboard {
-        flex-direction: column;
-        align-items: center;
-        padding: 7px;
-        width: 50px;      
-        
-    }
     
-
-    .ranking_scoreboard {
-        width: 50px;
-    }
-
-    .rank-item {
-        width: 400px;
-        border: 2px;
-    }
-
-    .pastilla-posicion,
-    .pastilla-nombre,
-    .pastilla-puntos {
-        padding: 10px;
-        margin: 5px 0;
-        text-align: center;
-        width: 100px;
-        height: 50px;
-        
-        
-        
-    }
-    .pastilla-posicion ,
-    .pastilla-nombre input{
-        
-        width: 50px;
-        margin-right: 8px;
-    }
-    
-    .pastilla-puntos input{
-        width: 50px;
-        
-    }
-    
-
-    .rank-name ,
-    .rank-score  {
-        
-        font-size: 10px;
-        padding: 0px;
-        margin: 0px 0px 0px 0px;
-    }
-
-    
-
-    .idioma img {
-        width: 20px;
-        height: 20px;
-        margin: 0 5px;
-    }
-
-    /* scoreboard movil */
 }
 
 /* style j.Pera  style J.Salamin Menu Juego*/
@@ -880,22 +769,59 @@ section:hover {
 
 /*style j.Pera  style J.Salamin Scoreboard*/
 
-.body_scoreboard {
+.body_scoreboard1 {
+    font-family: "Bebas Neue", sans-serif;
+    background: url('Juegos/TresFuentes/img/juegoJordiCelemin.png') no-repeat center center fixed;
+    background-size: cover;
+    
+}
+
+.body_scoreboard2 {
+    font-family: "Bebas Neue", sans-serif;
+    background-size: cover;
+    position: relative;
+    
+}
+
+.body_scoreboard2::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('LangingPagPhoto/deltascore.png') no-repeat center center fixed;
+    background-size: cover;
+    filter: saturate(0.8);
+    z-index: -1; /* Asegúrate de que quede detrás del contenido */
+}
+
+.body_scoreboard3 {
     font-family: "Bebas Neue", sans-serif;
     background: url('Juegos/Ahorcado/Ahorcado/images/alcantarillas.png') no-repeat center center fixed;
     background-size: cover;
     
 }
+
+.body_scoreboard4 {
+    font-family: "Bebas Neue", sans-serif;
+    background: url('Juegos/Ahorcado/Ahorcado/images/alcantarillas.png') no-repeat center center fixed;
+    background-size: cover;
+    
+}
+
 .flechaVolverscoreboard {
     transform: rotate(630deg);
     margin-top: 50px;
     cursor: pointer;
-    
+    position: absolute;
+    top: 20%;
+    left: 2%;
 }
 
 .idiomascoreboard{
-    margin-right: 5px ;
-    margin-top: 10px;
+    margin-right: 15px ;
+    margin-top: 25px;
 }
 
 .idiomascoreboard img{
@@ -922,8 +848,10 @@ section:hover {
     font-size: 30px;
 }
 
-.titulo-scoreboard{
+.titulo{
     color: white;
+    margin-top: 10px;
+    font-size: 40px;
 }
     
 .ranking-juegos{
@@ -994,19 +922,55 @@ section:hover {
     border-radius: 10px;
     
 }
+
+.scroll-bg{
+    margin: 0;
+    padding: 0;
+    background-color: rgba(62, 55, 55, 0.8);
+    border-radius: 10px;
+    
+}
+
+.scroll-div{   
+    overflow: hidden;
+    overflow-y: scroll;
+    height: 500px;
+    width: 100%;
+    max-width: 800px;
+    height: 100%;
+    max-height: 450px;
+}
+
+.scroll-div::-webkit-scrollbar {
+    width: 20px; /* Ancho de la barra vertical */
+    height: 12px; /* Alto de la barra horizontal */
+    
+}
+
+.scroll-div::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Color de fondo del track */
+    border-radius: 10px; /* Bordes redondeados */
+    
+}
+
+.scroll-div::-webkit-scrollbar-thumb {
+    background: #888; /* Color del thumb */
+    border-radius: 10px; /* Bordes redondeados */
+    
+}
+
+.scroll-div::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color más oscuro */
+}
+
 .scoreboard {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 100%;
-    max-width: 800px;
-    height: 70%;
-    max-height: 450px;
-    background-color: rgba(62, 55, 55, 0.8);
     padding: 20px;
-    border-radius: 10px;
-    
+   
 }
+
 .ranking_scoreboard {
     display: flex;
     flex-direction: column;
@@ -1079,19 +1043,109 @@ section:hover {
     border: 1px solid #ccc; 
 }
 
-.icon {
-    font-size: 40px;
-    margin-bottom: 20px;
-    cursor: pointer;
+@media (max-width: 576px) {
+
+    /* scoreboard movil */
+
+    .titulo h1{
+        position: absolute;
+        top: 80%;
+        left: 20%;
+        font-size: 25px;
+        
+    }
+    
+
+    .ranking-juegos #lista-juegos {
+        margin-top: 10px;
+        margin-right: 5px;
+        position: absolute;
+        top: 45%;
+        left: 60.5% ;
+        font-size: 15px;
+    }
+
+    
+    .idiomascoreboard {
+        position: absolute;
+        top: 220%;
+        left: 60%;
+    }
+      
+    .header_scoreboard{
+        position: absolute;
+        top: 20%;
+        left: -2%;
+        width: 25px;
+    }
+
+    .header_scoreboard h1{
+        font-size: 25px;
+    }
+
+    .scoreboard{
+        position: absolute;
+        top: 30%;
+        left: auto;        
+        border-radius: 10px;
+        max-width: 400px;
+        
+    }
+
+    .ranking_scoreboard {
+        position: absolute;
+        top: 15%;
+        left: 3% ;
+        padding: 5px;
+        width: 50px;
+          
+        
+    }       
+
+    
+    .pastilla-nombre,
+    .pastilla-puntos {
+        margin: 5px 5px;
+        text-align: center;
+        height: 50px;
+       
+    }
+
+    .pastilla-posicion{
+        width: 70px;
+    }
+
+    .pastilla-nombre input{        
+        width: 80px;
+        
+    }
+    
+    .pastilla-puntos input{
+        width: 50px;
+        
+    }
+    
+
+    .rank-name,
+    .rank-score  {
+        
+        font-size: 12px;
+        padding: 0px;
+        margin: 0px 0px 0px 0px;
+    }
+
+    .rank-number {
+        font-size: 20px;
+    }
+
+    
+
+    
+    /* scoreboard movil */
+
 }
 
-.user-icon {
-    color: #000;
-}
 
-.star-icon {
-    color: gold;
-}
 
 /*Jean style*/
 

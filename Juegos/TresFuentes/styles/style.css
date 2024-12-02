@@ -49,7 +49,6 @@ body {
     bottom: 0px;
     width: 80px;
     height: 100%;
-    /*background-color: rgba(255, 0, 0, 0.397); */
     animation: none; /* Inicialmente sin animacion */
     
 }
@@ -108,7 +107,7 @@ body {
     width: 90px;
     height: 60px;
     background-size: 100px 60px;
-    background-color: red;
+
     background-image: url('../img/gif-rata.gif');
     animation: respawn 5s linear infinite;
 }
@@ -178,7 +177,7 @@ body {
     left: 100%; 
     transform: scale(1);
     transform-origin: center;
-    background-color: red;
+   /* background-color: red;*/
     animation: moveVampiroVertical 11s linear infinite;
 }
 
