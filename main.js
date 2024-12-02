@@ -1,11 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
-
-    document.getElementById('scrollToTop').addEventListener('click', function() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
+        let RollDown = document.getElementById('scrollToTop')
+        if(RollDown != null){
+            RollDown.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
-    });
+        }
 
     const translations = {
         "es": {
@@ -17,7 +19,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 "El destino de las tres fuentes está en tus manos. Con todos los desafíos superados, tu ingenio y perseverancia te llevarán al logro definitivo. Devuelve el agua limpia y purificada a cada fuente y celebra el triunfo de haber completado la misión. ¿Estás listo para restaurar el equilibrio?",
             ],
             gameTitle: "Científico",
-            clickHereImg: "./LangingPagPhoto/DIALOGO_ES.png",
             buttons: ["EXPLORA", "DESCUBRE", "DIVIERTE"],
             buttonsCarosel: ["EXPLORA","AVENTURATE", "DESCUBRE", "DIVIERTE"],
             session: {
@@ -31,13 +32,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Este es el mini texto 3 en español",
                 "Este es el mini texto 4 en español"
             ],
+            loginTitle: "RESULTADOS GLOBALES",
             aboutUs: "Sobre Nosotros" ,
             Copyright: "Copyright © 2024 Cientifico. Todos los derechos reservados.",
 
             loginTitle: "RESULTADOS GLOBALES",
             aboutUs: "Sobre Nosotros" ,
             Copyright: "Copyright © 2024 Cientifiks. Todos los derechos reservados.",
-
             IniciarloginTitle: "INICIAR SESIÓN",
             RegisterLoginTitle: "Registrarse",
             session: {
@@ -63,13 +64,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 "The fate of the three fountains is in your hands. With all the challenges overcome, your ingenuity and perseverance will lead you to the ultimate achievement. Return clean, purified water to each fountain and celebrate the triumph of completing the mission. Are you ready to restore balance?"
             ],
             gameTitle: "Scientist",
-            clickHereImg: "./LangingPagPhoto/DIALOGO_EN.png",
             buttons: ["EXPLORE", "DISCOVER", "ENJOY"],
             buttonsCarosel: ["EXPLORE","ADVENTURE", "DISCOVER", "ENJOY"],
             session: {
                 login: "Login",
                 register: "Register"
             },
+            loginTitle: "GLOBAL RESULTS",
             aboutUs: "About Us" ,
             Copyright: "Copyright © 2024 Cientifiks. All rights reserved.",
             miniTexts: [
@@ -78,6 +79,21 @@ document.addEventListener("DOMContentLoaded", function () {
                 "This is mini text 3 in English",
                 "This is mini text 4 in English"
             ],
+            IniciarloginTitle: "LOGIN",
+            RegisterLoginTitle: "Sign up",
+            session: {
+                login: "Log In",
+                register: "Sign Up"
+            },
+            formLabels: {
+                username: "Username:",
+                email: "Email",
+                password: "Password"
+            },
+            buttons: {
+                login: "LOG IN",
+                register: "SIGN UP"
+            }
         },
         "ca": {
             title: ["Benvinguts a l'aventura!", "Explora un món magnífic!", "Diverteix-te!","Atreveix-te a descobrir més!"],
@@ -88,10 +104,13 @@ document.addEventListener("DOMContentLoaded", function () {
                "El destí de les tres fonts és a les teves mans. Amb tots els desafiaments superats, el teu enginy i perseverança et portaran a l'èxit definitiu. Torna l'aigua neta i purificada a cada font i celebra el triomf de completar la missió. Estàs preparat per restaurar l'equilibri?"
             ],
             buttonsCarosel: ["EXPLORA","AVENTURAT", "DESCOBREIX", "DIVERTEIX-TE"],
+            gameTitle: "Científic",
+            buttons: ["EXPLORA", "DESCOBERT", "DIVERTIR"],
             session: {
                 login: "Inicia Sessió",
                 register: "Registrar-se"
             },
+            loginTitle: "RESULTATS GLOBALS",
             miniTexts: [
                 "Aquest és el mini text 1 en català",
                 "Aquest és el mini text 2 en català",
@@ -100,6 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
             ],
             aboutUs: "Sobre Nosaltres" ,
             Copyright: "Copyright © 2024 Cientifiks. Tots els drets reservats..",
+            Copyright: "Copyright © 2024. Tots els drets reservats..",
 
             IniciarloginTitle: "INICIAR SESSIÓ",
             RegisterLoginTitle: "Registrar-se",
@@ -192,7 +212,6 @@ document.addEventListener("DOMContentLoaded", function () {
         cofreImg.addEventListener("click", function () {
             if (!animando) { // Solo ejecutar si no está en animación
                 animando = true; // Establecer que estamos en animación
-    
                 if (abierto) {
                     // Animación para cerrar el cofre (más rápida)
                     const interval = setInterval(function () {
@@ -239,54 +258,45 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
     
-    
     const languageButtons = document.querySelectorAll(".idioma img");
     languageButtons.forEach(button => {
         button.addEventListener("click", function () {
-            const selectedLang = button.alt; // Asumiendo que el alt es "en", "es", o "ca"
+            const selectedLang = button.alt;
             updateContent(selectedLang);
         });
     });
 
-    function updateContent(lang) {
-        const content = translations[lang];
-        if (!content) return; // Verifica si el contenido existe para el idioma seleccionado
-    
-        // Actualizar los títulos y descripciones de cada item del carrusel
-        const carouselItems = document.querySelectorAll(".carousel-item");
-        carouselItems.forEach((item, index) => {
-            if (content.descriptions[index]) {
-                item.querySelector(".Descripcion p").textContent = content.descriptions[index]; // Cambia la descripción
-            }
-            if (content.buttons[index]) {
-                item.querySelector(".botones h1").textContent = content.buttons[index]; // Cambia el título del botón
-            }
-            if (content.title[index]) {
-                item.querySelector(".TituloInicio h1").textContent = content.title[index]; // Cambia el título del carrusel
-            }
-        });
+function updateContent(lang) {
+    const content = translations[lang];
 
-        const miniTextElements = document.querySelectorAll(".mini-texto");
-        miniTextElements.forEach((element, index) => {
-            if (content.miniTexts[index]) {
-                element.textContent = content.miniTexts[index]; // Cambia el mini texto
-            }
-        });
-    
-        document.querySelector(".navegador .titulo h1").textContent = content.gameTitle; // Actualiza el título del juego
-        const clickHereImages = document.querySelectorAll(".ClickAqui img");
-        clickHereImages.forEach(img => {
-            // Verifica si la imagen de cofre no está entre las imágenes de los cofres ya abiertos
-            if (!dialogoImgs.includes(img.src)) {
-                img.src = content.clickHereImg; // Actualiza la imagen de clic solo si no está en las imágenes de los cofres abiertos
-            }
-        });
-    
-        document.querySelector(".inicarSesion h2").textContent = content.session.login;
-        document.querySelector(".registrarse h2").textContent = content.session.register;
-        document.querySelector(".TituloNosotros h1").textContent = content.aboutUs;
-        document.querySelector(".Redes h1").textContent = content.gameTitle;
-        document.querySelector(".FooterDerechos p").textContent = content.Copyright;
+    // Actualizar los títulos y descripciones de cada item del carrusel
+    const carouselItems = document.querySelectorAll(".carousel-item");
+    carouselItems.forEach((item, index) => {
+        if (content.descriptions?.[index] && item.querySelector(".Descripcion p")) {
+            item.querySelector(".Descripcion p").textContent = content.descriptions[index];
+        }
+        if (content.buttons?.[index] && item.querySelector(".botones h1")) {
+            item.querySelector(".botones h1").textContent = content.buttons[index];
+        }
+        if (content.title?.[index] && item.querySelector(".TituloInicio h1")) {
+            item.querySelector(".TituloInicio h1").textContent = content.title[index];
+        }
+    });
+
+    const miniTextElements = document.querySelectorAll(".mini-texto");
+    miniTextElements.forEach((element, index) => {
+        if (content.miniTexts?.[index]) {
+            element.textContent = content.miniTexts[index];
+        }
+    });
+
+    const gameTitleElement = document.querySelector(".navegador .titulo h1");
+    if (gameTitleElement) {
+        gameTitleElement.textContent = content.gameTitle;
+    }
+    const loginElement = document.querySelector(".inicarSesion h2");
+    if (loginElement) {
+        loginElement.textContent = content.session?.login;
     }
 function updateContent(lang) {
     const content = translations[lang];
@@ -324,6 +334,11 @@ function updateContent(lang) {
     const aboutUsElement = document.querySelector(".TituloNosotros h1");
     if (aboutUsElement) {
         aboutUsElement.textContent = content.aboutUs;
+    }
+
+    const socialTitleElement = document.querySelector(".Redes h1");
+    if (socialTitleElement) {
+        socialTitleElement.textContent = content.gameTitle;
     }
 
     const footerElement = document.querySelector(".FooterDerechos p");
@@ -420,7 +435,6 @@ function handleUserMenu() {
     function cambiarJuegos() {
         const imagenJuego1 = document.getElementById('imagenJuego1');
         const imagenJuego2 = document.getElementById('imagenJuego2');
-      
         // Aplicar la animación de desvanecimiento a ambos elementos
         imagenJuego1.classList.add('fade-out');
         imagenJuego2.classList.add('fade-out');
