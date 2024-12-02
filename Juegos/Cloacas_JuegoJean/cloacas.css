@@ -44,8 +44,6 @@ body {
 }
 
 .parteIzquierda {
-    background-color: red;
-    /* Color de fondo de ejemplo */
     position: relative;
     display: flex;
     flex-direction: column;
@@ -64,8 +62,6 @@ body {
 }
 
 .parteDerecha {
-    background-color: blue;
-    /* Color de fondo de ejemplo */
     position: relative;
     display: flex;
     flex-direction: column;
@@ -143,7 +139,6 @@ body {
 #personaje {
     width: 80px;
     height: 80px;
-    background-color: yellow;
     position: absolute;
     left: 0;
     top: 867px;
@@ -159,7 +154,6 @@ body {
 .llaveDePasoPrimerPisoDerecha {
     width: 65px;
     height: 71px;
-    background-color: green;
     position: absolute;
     background-position: center;
     background-repeat: no-repeat;
@@ -177,13 +171,11 @@ body {
 }
 
 .llavePasoSegundoPisoDerecha {
-    background-color: red;
     right: 0;
     top: 294px;
 }
 
 .llaveDePasoPrimerPisoDerecha {
-    background-color: red;
     right: 0;
     bottom: 364px;
 }
@@ -195,7 +187,6 @@ body {
 .rataPrimerPisoDerecha {
     width: 65px;
     height: 39px;
-    background-color: green;
     background-position: center;
     background-repeat: no-repeat;
     background-image: url(./imagenes/gif-rata-caminando.gif);
@@ -234,7 +225,6 @@ body {
 .basuraPrimerPisoDerecha {
     width: 112px;
     height: 69px;
-    background-color: green;
     position: absolute;
     background-position: center;
     background-repeat: no-repeat;
@@ -243,22 +233,22 @@ body {
 
 .basuraPrimerPiso {
     left: 210px;
-    bottom: 349px;
+    bottom: 328px;
 }
 
 .basuraTercerPiso {
     left: 488px;
-    top: 75px;
+    top: 97px;
 }
 
 .basuraSegundoPisoDerecha {
     right: 400px;
-    top: 296px;
+    top: 317px;
 }
 
 .basuraPrimerPisoDerecha {
     right: 220px;
-    bottom: 365px;
+    bottom: 345px;
 }
 
 .charcoTercerPisoIzquierda, 
@@ -313,65 +303,6 @@ body {
     top: 3px;
     right: 51px;
 }
-
-/* Escalones */
-.stair {
-    width: 80%;
-    height: 30px;
-    background-color: #8B4513;
-    /* Color madera para los escalones */
-    margin-bottom: 13px;
-    position: absolute;
-    left: 10%;
-    transition: all 0.3s ease;
-}
-
-/* Efecto de lejanía (los escalones más lejanos son más pequeños) */
-.stair:nth-child(1) {
-    bottom: 0;
-    transform: scale(1) translateZ(0);
-}
-
-.stair:nth-child(2) {
-    bottom: 24px;
-    transform: scale(0.9) translateZ(-30px);
-}
-
-.stair:nth-child(3) {
-    bottom: 47px;
-    transform: scale(0.8) translateZ(-60px);
-}
-
-.stair:nth-child(4) {
-    bottom: 67px;
-    transform: scale(0.7) translateZ(-90px);
-}
-
-.stair:nth-child(5) {
-    bottom: 86px;
-    transform: scale(0.6) translateZ(-120px);
-}
-
-.stair:nth-child(6) {
-    bottom: 102px;
-    transform: scale(0.5) translateZ(-150px);
-}
-
-.stair:nth-child(7) {
-    bottom: 116px;
-    transform: scale(0.4) translateZ(-180px);
-}
-
-.stair:nth-child(8) {
-    bottom: 127px;
-    transform: scale(0.3) translateZ(-210px);
-}
-
-.stair:nth-child(9) {
-    bottom: 135px;
-    transform: scale(0.2) translateZ(-240px);
-}
-
 /* MOVIMIENTO VERTICAL PISOS DEL MEDIO */
 
 @keyframes pisoMovimiento {
