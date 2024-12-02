@@ -60,7 +60,6 @@ document.addEventListener("DOMContentLoaded", function () {
         // Detener el movimiento horizontal
         velocityX = 0;
     }
-
     function checkCollisionWithObstacles() {
         const personajeRect = personaje.getBoundingClientRect();
 
@@ -210,7 +209,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 personajeRect.top < llaveRect.bottom &&
                 personajeRect.bottom > llaveRect.top
             ) {
-                // Si hay colisión, sumar la llave
+                
                 sumarLlave(llave);
             }
         });
@@ -307,41 +306,54 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("tiempo").textContent = timeString;
     }
 
-    // Función para mover cada rata rebotando en el piso
-    function moverRataRebotando(rata, piso) {
-        let posicionX = 0;
-        let velocidad = 2;
-        const anchoPiso = piso.getBoundingClientRect().width;
-        const anchoRata = rata.getBoundingClientRect().width;
-        let direccionInvertida = false;
+   // Función para mover una rata horizontalmente por su piso
+// Función para mover una rata horizontalmente por su piso
+function moverRataRebotando(rata, piso) {
+    let posicionX = 0;            // Comienza desde el borde izquierdo del piso
+    let velocidad = 2;            // Velocidad de movimiento
+    const anchoPiso = piso.getBoundingClientRect().width; // Ancho del piso
+    const anchoRata = rata.getBoundingClientRect().width; // Ancho de la rata
+    let direccionInvertida = false; // La rata comienza mirando a la derecha (false)
 
-        function animacion() {
-            posicionX += velocidad;
+    // Establecer la posición inicial de la rata
+    rata.style.left = `${posicionX}px`;
+    rata.style.transform = 'scaleX(-1)'; // Inicia mirando a la derecha
 
-            if (posicionX + anchoRata >= anchoPiso) {
-                velocidad = -velocidad;
-                posicionX = anchoPiso - anchoRata;
-                if (!direccionInvertida) {
-                    rata.style.transform = 'scaleX(-1)';
-                    direccionInvertida = true;
-                }
-            } else if (posicionX <= 0) {
-                velocidad = -velocidad;
-                posicionX = 0;
-                if (direccionInvertida) {
-                    rata.style.transform = 'scaleX(1)';
-                    direccionInvertida = false;
-                }
+    // Función de animación
+    function animacion() {
+        posicionX += velocidad; // Actualiza la posición
+
+        // Si la rata llega al extremo derecho del piso
+        if (posicionX + anchoRata >= anchoPiso) {
+            velocidad = -velocidad; // Cambia de dirección (hacia la izquierda)
+            posicionX = anchoPiso - anchoRata; // Ajusta la posición al extremo derecho
+            if (!direccionInvertida) {
+                rata.style.transform = 'scaleX(1)'; // Gira a la izquierda
+                direccionInvertida = true;
             }
-
-            rata.style.transform = `translateX(${posicionX}px)${direccionInvertida ? ' scaleX(-1)' : ' scaleX(1)'}`;
-            requestAnimationFrame(animacion);
+        }
+        // Si la rata llega al extremo izquierdo del piso
+        else if (posicionX <= 0) {
+            velocidad = -velocidad; // Cambia de dirección (hacia la derecha)
+            posicionX = 0; // Ajusta la posición al extremo izquierdo
+            if (direccionInvertida) {
+                rata.style.transform = 'scaleX(-1)'; // Gira a la derecha
+                direccionInvertida = false;
+            }
         }
 
-        animacion();
+        // Actualiza la posición horizontal
+        rata.style.left = `${posicionX}px`;
+
+        // Llama a la animación en el siguiente cuadro
+        requestAnimationFrame(animacion);
     }
 
-    // Función para el fin del juego
+    animacion(); // Inicia la animación
+}
+
+    
+// Función para el fin del juego
     function gameOver() {
         clearInterval(timerInterval);
         alert("Game Over!");
