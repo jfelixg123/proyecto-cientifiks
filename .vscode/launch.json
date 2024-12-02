@@ -36,7 +36,6 @@
             "externalConsole": false,
             "port": 9003
         },
-        
         {
             "name": "Listen for Xdebug",
             "type": "php",
