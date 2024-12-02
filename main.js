@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Este es el mini texto 3 en español",
                 "Este es el mini texto 4 en español"
             ],
+            
             loginTitle: "RESULTADOS GLOBALES",
             aboutUs: "Sobre Nosotros" ,
             Copyright: "Copyright © 2024 Cientifico. Todos los derechos reservados.",
