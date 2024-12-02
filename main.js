@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 "El destino de las tres fuentes está en tus manos. Con todos los desafíos superados, tu ingenio y perseverancia te llevarán al logro definitivo. Devuelve el agua limpia y purificada a cada fuente y celebra el triunfo de haber completado la misión. ¿Estás listo para restaurar el equilibrio?",
             ],
             gameTitle: "Científico",
-            buttons: ["EXPLORA", "DESCUBRE", "DIVIERTE"],
             buttonsCarosel: ["EXPLORA","AVENTURATE", "DESCUBRE", "DIVIERTE"],
             session: {
                 login: "Iniciar Sesión",
@@ -32,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Este es el mini texto 3 en español",
                 "Este es el mini texto 4 en español"
             ],
-            
+        
             loginTitle: "RESULTADOS GLOBALES",
             aboutUs: "Sobre Nosotros" ,
             Copyright: "Copyright © 2024 Cientifico. Todos los derechos reservados.",
@@ -65,7 +64,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 "The fate of the three fountains is in your hands. With all the challenges overcome, your ingenuity and perseverance will lead you to the ultimate achievement. Return clean, purified water to each fountain and celebrate the triumph of completing the mission. Are you ready to restore balance?"
             ],
             gameTitle: "Scientist",
-            buttons: ["EXPLORE", "DISCOVER", "ENJOY"],
             buttonsCarosel: ["EXPLORE","ADVENTURE", "DISCOVER", "ENJOY"],
             session: {
                 login: "Login",
@@ -106,7 +104,6 @@ document.addEventListener("DOMContentLoaded", function () {
             ],
             buttonsCarosel: ["EXPLORA","AVENTURAT", "DESCOBREIX", "DIVERTEIX-TE"],
             gameTitle: "Científic",
-            buttons: ["EXPLORA", "DESCOBERT", "DIVERTIR"],
             session: {
                 login: "Inicia Sessió",
                 register: "Registrar-se"
