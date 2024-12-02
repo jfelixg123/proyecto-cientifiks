@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const pisos = document.querySelectorAll('.tercerPisoIzquierda, .segundoPisoIzquierda, .primerPisoIzquierda, .tercerPisoDerecha, .segundoPisoDerecha, .primerPisoDerecha, .pasoPrimerPiso, .pasoSegundoPiso');
     const juegoContenedor = document.getElementById('juegoContenedorCentral');
-    const jumpHeight = 350;
+    const jumpHeight = 150;
     const gravity = 5;
     const maxVelocityX = 5;
     let velocityX = 0;
@@ -238,7 +238,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function applyGravity() {
         let personajeTop = parseInt(personaje.style.top || (window.innerHeight - personaje.offsetHeight) + 'px');
-
+        const pisos = document.querySelectorAll('.tercerPisoIzquierda, .segundoPisoIzquierda, .primerPisoIzquierda, .tercerPisoDerecha, .segundoPisoDerecha, .primerPisoDerecha, .pasoPrimerPiso, .pasoSegundoPiso');
+        
         if (!isOnGround) {
             personaje.style.top = (personajeTop + gravity) + 'px';
           //  checkCollisionWithFloors();
@@ -249,6 +250,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         const sueloRect = suelo.getBoundingClientRect();
+        
         const personajeRect = personaje.getBoundingClientRect();
         
         if (personajeRect.bottom >= sueloRect.top) {
