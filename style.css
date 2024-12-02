@@ -19,19 +19,21 @@ p{
     font-style: normal;
 }
 
-h2 a{
-        color: black; 
-        text-decoration: none;
-        font-family: "Poppins", sans-serif;
-        font-weight: 400;
-        font-style: normal;
-}
-h1 a{
+.inicarSesion a{
     color: black; 
     text-decoration: none;  
     font-family: "Bebas Neue", sans-serif ;
     font-weight: 400;
     font-style: normal;
+    font-size: 10px;
+}
+.registrarse a{
+    color: black; 
+    text-decoration: none;  
+    font-family: "Bebas Neue", sans-serif ;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 10px;
 }
 
 .carousel-item img {
@@ -108,12 +110,18 @@ h1 a{
     max-width: 250px;
     background-color: #FF7C02;
     margin-top: 20px;
-    padding: 10px;
     border-radius: 23px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: "Bebas Neue", sans-serif ;
+    font-weight: 400;
+    font-style: normal;
+    
 }
 .botones a{
     text-decoration:none;
-    color: white;
+    color: black;
 }
 
 .idiomas {
@@ -194,6 +202,11 @@ h1 a{
     transform: translate(-50%, -50%); 
     opacity: 0; 
     transition: opacity 0.3s ease; 
+    background-color: #3484CE;
+}
+.boton-juego a{
+    text-decoration: none;
+    color: #000;
 }
 
 .PJuego:hover .boton-juego {
@@ -203,7 +216,7 @@ h1 a{
     background-color: #FF7C02;
 }
 .idioma {
-    width: 150px; /* Cambia a auto para que se ajuste al contenido */
+    width: 200px; /* Cambia a auto para que se ajuste al contenido */
     height: 40px;
     margin: 15px; /* Añade margen para que haya espacio entre los idiomas */
     display: flex;
@@ -212,8 +225,8 @@ h1 a{
 }
 
 .idioma img {
-    width: 40px; /* Ajusta el tamaño de las imágenes */
-    height: 40px; /* Ajusta el tamaño de las imágenes */
+    width: 50px; /* Ajusta el tamaño de las imágenes */
+    height: 50px; /* Ajusta el tamaño de las imágenes */
     border-radius: 50%;
 }
 
@@ -231,7 +244,7 @@ h1 a{
 .titulo h1{
 
     font-family: "Bebas Neue";
-    color: white;
+    color: black;
 
 }
 .titulo-activo h1{
@@ -254,6 +267,7 @@ h1 a{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 10px;
 }
 .ranking img{
     display: flex;
@@ -273,6 +287,8 @@ h1 a{
     display: flex;
     transition: background-color 0.3s ease, transform 0.3s ease; /* Transición para el color y el tamaño */
     cursor: pointer; /* Cambia el cursor al pasar por encima */
+    padding-top: 10px;
+    margin-top: 10px;
 }
 .inicarSesion:hover, .registrarse:hover {
     transform: scale(1.10); /* Aumenta el tamaño un poco */
@@ -283,7 +299,7 @@ h1 a{
 .inicarSesion:hover{
     background-color: #a6d4ff;
 }
-.inicarSesion h2, .registrarse h2{
+.inicarSesion h2 a, .registrarse h2 a{
     font-size: 30px;
 }
 .inicarSesion{
@@ -508,7 +524,7 @@ footer{
         height: 50px;
         margin: 10px;
     }
-    .inicarSesion h2{
+    .inicarSesion h2 a{
         font-size: large;
     }
     .registrarse{
@@ -516,7 +532,7 @@ footer{
         height: 50px;
         margin: 10px;
     }
-    .registrarse h2{
+    .registrarse h2 a{
         font-size: large;
     }
     .opcion{
@@ -560,6 +576,9 @@ footer{
 }
 
 @media (max-width: 576px) {
+    .scoreboard{
+        background-color: red;
+    }
     .navegador {
         height: 100px;
         font-size: 12px;
@@ -596,14 +615,14 @@ footer{
         width: 100px;
         height: 40px;
     }
-    .inicarSesion h2{
+    .inicarSesion h2 a{
         font-size: small;
     }
     .registrarse{
         width: 100px;
         height: 40px;
     }
-    .registrarse h2{
+    .registrarse h2 a{
         font-size: small;
     }
     .opcion{
@@ -1193,9 +1212,11 @@ section:hover {
     background-color: #FF7C02;
     color: white;
     font-family: "Bebas Neue", sans-serif;
+  
 }
 .login-container-register button{
     width: 100%;
+    cursor: pointer;
 }
 input[type="email"], input[type="password"],  input[type="name"],  input[type="surname"]{
 
@@ -1207,7 +1228,7 @@ input[type="email"], input[type="password"],  input[type="name"],  input[type="s
     font-size: 16px;
     box-shadow: 2px -2px 5px rgba(10, 96, 177, 0.705), 2px 2px 5px rgba(10, 97, 177, 0.5);
 }
-#login-title{
+#login-title, #register-title {
     text-align: center;
     font-size: 50px;
     color: #3E3737;
@@ -1238,4 +1259,9 @@ nav button{
 a{
  text-decoration: none;
  color: white;   
+}
+
+.cuentaRegistrada img{
+    width: 20%;
+    padding-left: 5%;
 }

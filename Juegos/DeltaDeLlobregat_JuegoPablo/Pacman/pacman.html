@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pac-Man</title>
     <link rel="stylesheet" href="pacman.css">
+    <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
 </head>
 <body>
     <nav class="navegador">
@@ -15,10 +18,10 @@
         </div>
         <div class="tiempo">
             <img id="Reloj" src="./ImagenJuego/Reloj.png" alt="tiempo">
-            <h1 id="timer">300</h1>
+            <h1 id="timer"></h1>
         </div>
         <div class="score">
-            <h1 id="puntuaje">0</h1>
+            <h1 id="puntuaje">Score: 0</h1>
         </div>
     </nav>
     <div id="game-container">
@@ -41,6 +44,29 @@
             <button id="winExitButton">Salir</button>
         </div>
     </div>
+    <div id="tutorialScreen" class="tutorial-screen">
+        <div class="tutorial-content">
+            <h2>TUTORIAL DE DELTA DE LLOBREGAT</h2>
+            <p>Bienvenido al juego, tienes que recoletar los puntos evitando el enemigo, cuando recojas todo tienes que ir a la salida</p>
+            <p>Los controles son estos</p>
+            <img src="./ImagenJuego/Instruciones.png" alt="Instruciones">
+            <button id="startGameBtn">Empezar</button>
+        </div>
+    </div>
+    <div id="SecretMessage" class="MensajeSecreto">
+        <h1>Los mares tiemblan y una puerta secreta se abre ante ti. Para cruzarla, basta con seguir una secuencia de movimientos.</h1>
+        <h1>Consejo: algunos secretos sólo se desvelan al invocar el código olvidado de "Kronami".</h1>
+    </div>
+    <audio id="background-music" src="./Audio/OceanTrue.mp3" preload="auto" loop></audio>
+    <audio id="SpeedUPSound" src="./Audio/SpeedUp.mp3" preload="auto"></audio>
+    <audio id="brokenHeart" src="./Audio/Shatter.mp3" preload="auto"></audio>
+    <audio id="dead" src="./Audio/you-are-dead-not-big-surprise-sound-effect.mp3"></audio>
+    <audio id="comicsans" src="./Audio/sans.mp3" preload="auto" loop></audio>
+    <audio id="Secondboss" src="./Audio/miniboss.mp3" preload="auto"></audio>
+    <audio id="PickUP" src="./Audio/pennypickup.mp3" preload="auto"></audio>
+    <audio id="BIGONE" src="./Audio/thumbsup.mp3" preload="auto"></audio>
+    <audio id="SECRETROOM" src="./Audio/secret room find.mp3" preload="auto"></audio>
+    <audio id="StopTheTime" src="./Audio/Powerup_spewer.mp3" preload="auto"></audio>
     <script src="pacman.js"></script>
 </body>
 </html>

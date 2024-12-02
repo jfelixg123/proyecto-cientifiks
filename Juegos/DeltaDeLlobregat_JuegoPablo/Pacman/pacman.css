@@ -12,16 +12,15 @@ body {
 .navegador{
     width: 1200px;
     height: 100px;
-    border: 1px solid white;
     margin-bottom: 50px;
     justify-content: space-around;
     align-items: center;
     display: flex;
-    background-color: black;
+    border: 1px black solid;
+    background-color: rgba(62, 55, 55, 0.8);;
 }
 .vida, .tiempo, .score{
     position: relative;
-    border: 1px solid white;
     justify-content: center;
     align-items: center;
     display: flex;
@@ -43,13 +42,12 @@ img{
     height: 30px;
 }
 #game-container {
-    width: 1500px;        
-    height: 600px;        
+    width: 1500px;
+    height: 600px;     
     overflow: hidden;     
     position: relative;   
     background-image: url(./ImagenJuego/Warm_Ocean.png);
     background-size: cover;
-    border: 1px solid white;
 }
 #game {
     display: grid;
@@ -57,7 +55,8 @@ img{
     grid-template-columns: repeat(50, 40px); 
 }
 .exit {
-    background-color: green; /* Color verde para la salida */
+    background-image: url(./ImagenJuego/boat.png);
+    background-size: cover;
 }
 .cell {
     width: 40px;   /* Tamaño de la celda */
@@ -69,17 +68,59 @@ img{
     background-size: cover;
 }
 .The_World{
-    background-color: mediumseagreen;
+    background-image: url(./ImagenJuego/fishingnet.png);
+    background-size: cover;
 }
 .point{
     background-image: url(./ImagenJuego/petroleo.png);
     background-size: cover;
 }
+.BIG{
+    background-image: url(./ImagenJuego/heartPablo.png);
+    background-size: cover;
+}
 .pacman {
-    background-color: yellow; /* Color de Pac-Man */
+    background-image: url(./ImagenJuego/buzoRight.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.pacman_up {
+    background-image: url(./ImagenJuego/buzoUp.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 10;
+}
+
+.pacman_down {
+    background-image: url(./ImagenJuego/buzoDown.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 10;
+}
+
+.pacman_left {
+    background-image: url(./ImagenJuego/buzoLeft.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 10;
+}
+
+.pacman_right {
+    background-image: url(./ImagenJuego/buzoRight.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 10;
 }
 .enemy {
-    background-size: cover;
+    background-size: contain; /* Ajusta la imagen para que quepa dentro de la celda */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita la repetición de la imagen */
 }
 
 .enemy-right {
@@ -97,7 +138,19 @@ img{
 .enemy-down {
     background-image: url(./ImagenJuego/shipDown.gif);
 }
+/* Rastro para las direcciones izquierda y derecha */
+.rastro-vertical {
+    background-image: url(./ImagenJuego/rastroVertical.png);
+    background-size: cover;
+    transition: opacity 0.1s; /* Desaparece después de 1 segundo */
+}
 
+/* Rastro para las direcciones arriba y abajo */
+.rastro-horizontal {
+    background-image: url(./ImagenJuego/rastroHorizontal.png);
+    background-size: cover;
+    transition: opacity 0.1s; /* Desaparece después de 1 segundo */
+}
 .SpeedBoost{
     background-image: url(./ImagenJuego/oxygen.png);
     background-size: cover;
@@ -113,9 +166,116 @@ img{
 .tiempo h1, .score h1{
     color: white;
 }
+.tutorial-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: visibility 0s, opacity 0.5s ease-in-out;
+}
+.MensajeSecreto{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    transition: visibility 0s, opacity 0.5s ease-in-out;
+    flex-direction: column;
+}
+.MensajeSecreto h1{
+    color: white;
+}
 
-/* Estilo para el reloj de arena */
-/* Estilo para el reloj de arena */
+/* Estilo del contenido del modal */
+.tutorial-content {
+    display: flex;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    min-width: 400px;
+    max-width: 1200px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.tutorial-content img{
+    display: flex;
+    width: 800px;
+    height: 400px;
+    padding: 0;
+    margin: 0;
+    min-width: 200px;
+    min-height: 200px;
+}
+
+#startGameBtn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#startGameBtn:hover {
+    background-color: #45a049;
+}
+.tutorialKey {
+    display: flex; /* Hace que los elementos hijos se alineen horizontalmente */
+    flex-direction: row; /* Alinea los elementos en una fila */
+    justify-content: center; /* Centra los elementos en el eje horizontal */
+    align-items: center; /* Centra los elementos en el eje vertical */
+    min-width: 200px;
+    min-height: 200px;
+    max-width: 1000px;
+    border: solid black 1px;
+    padding: 10px;
+}
+.Key, .Objective{
+    display: flex;
+    flex-direction: row;
+    max-width: 200px;
+    height: 90px;
+    max-height: 150px;
+    margin: 10px;
+    border: solid black 1px;
+    justify-content: center;
+    align-items: center;
+}
+.Key img{
+    max-width: 200px;
+    max-height: 200px;
+    min-width: 150px;
+    min-height: 150px;
+}
+.tutorial-content h2, .tutorial-content p, button, h1, h2{
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Bebas Neue', cursive;
+}
+.tutorial-content h2{
+    font-size: 40px;
+}
+.tutorial-content p{
+    font-size: 25px;
+}
+.tutorial-content button{
+    width: 100px;
+    height: 50px;
+    font-size: 20px;
+}
 /* Estilo para el reloj de arena */
 #Reloj {
     animation: rotate 8s ease-in-out infinite; /* Aumenta la duración total de la animación a 8 segundos */
@@ -156,7 +316,7 @@ img{
     padding: 10px 20px;
     margin: 5px;
     border: none;
-    color: white;
+    color: rgb(197, 43, 43);
     font-size: 16px;
     cursor: pointer;
     border-radius: 5px;
@@ -186,10 +346,10 @@ img{
         transform: rotate(360deg); /* Completa la rotación */
     }
 }
-@media (max-width: 1920px) {
+@media (max-width: 1700px) {
     #game-container{
         width: 1400px;
-        height: 550px;
+        height: 560px;
     }
     .cell {
         width: 28px;   /* Tamaño de la celda */
@@ -201,34 +361,7 @@ img{
         grid-template-columns: repeat(50, 28px); /* Cambia a 30 columnas */
     }
     .navegador{
-        width: 900px;
-        height: 100px;
-    }
-    .vida, .tiempo, .score{
-        width: 300px;
-        height: 30px;
-    }
-    img{
-        width: 30px;
-        height: 30px;
-    }
-}
-@media (max-width: 1700px) {
-    #game-container{
-        width: 1300px;
-        height: 520px;
-    }
-    .cell {
-        width: 26px;   /* Tamaño de la celda */
-        height: 26px;  /* Tamaño de la celda */
-    }
-    #game {
-        display: grid;
-        grid-template-rows: repeat(30, 26px);    /* Cambia a 30 filas */ 
-        grid-template-columns: repeat(50, 26px); /* Cambia a 30 columnas */
-    }
-    .navegador{
-        width: 900px;
+        width: 1200;
         height: 100px;
     }
     .vida, .tiempo, .score{
@@ -294,7 +427,4 @@ img{
         width: 25px;
         height: 25px;
     }
-}
-
-@media (max-width: 1000px) {
 }

@@ -10,25 +10,25 @@ body {
     height: 100vh;
     overflow: hidden;
 }
-
 #background {
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
-    width: 200%;
+    width: 100%; 
     background-image: url('../img/fondo.jpg');
+    background-size: cover; 
+    background-repeat: repeat-x; 
     animation: moveBackground 10s linear infinite;
 }
 
-
 @keyframes moveBackground {
     from {
-        transform: translateX(0);
+        background-position: 0 0;
     }
 
     to {
-        transform: translateX(-50%);
+        background-position: -1920px 0; 
     }
 }
 
@@ -41,14 +41,14 @@ body {
     background-image: url('../img/gifchica.gif'); 
     background-size: 100px 100px;
     transition: bottom 0.5s;
+    
 }
 
 #playerCollider {
     position: absolute;
     bottom: 0px;
-    width: 100%;
+    width: 80px;
     height: 100%;
-   /* background-color: rgba(255, 0, 0, 0.397); */
     animation: none; /* Inicialmente sin animacion */
     
 }
@@ -102,12 +102,12 @@ body {
 
 .enemigo {
     position: absolute;
-    bottom: 50px; 
+    bottom: 40px; 
     left: 3000px;
-    width: 100px;
+    width: 90px;
     height: 60px;
     background-size: 100px 60px;
-   /*background-color: red;*/
+
     background-image: url('../img/gif-rata.gif');
     animation: respawn 5s linear infinite;
 }
@@ -124,6 +124,29 @@ body {
     }
 }
 
+.enemigosMapache{
+    position: absolute;
+    bottom: 158px; 
+    left: 3000px;
+    width: 100px;
+    height: 100px;
+    background-size: 100%;
+    background-image: url('../img/mapache.png');
+    background-color: red;
+    animation: respawnMapache 5s linear infinite;
+}
+
+@keyframes respawnMapache {
+    0% {
+        left: 3000px;
+    }
+    50% {
+        left: 1900px;
+    }
+    100% {
+        left: -400px;
+    }
+}
 #vampiro {
     width: 100px;
     height: 100px;
@@ -169,11 +192,10 @@ body {
         left: 50%; 
     }
     100% {
-        top: 100%;
+        top: 90%;
         left: -110%; 
     }
 }
-
 
 .banner {
     background-image: url('../img/fondo.jpg');
@@ -192,6 +214,7 @@ body {
     color: #dadada;
     padding: 20px;
     border-radius: 8px;
+    font-size: 25px;
 }
 
 .banner h1{
@@ -217,9 +240,11 @@ body {
    color: rgb(255, 255, 255);
 }
 .banner img{
-    width: 40%;
+    width: 20%;
 }
-
+#imagenTecla{
+    width: 5%;
+}
 .modal-overlay{
     position: fixed;
     top: 0;
@@ -261,5 +286,24 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 1000;
-   /* background-image: url('../img/fondo.jpg');*/
+    background-color: rgba(0, 0, 0, 0.24);
 }
+
+#gameOverScreen button{
+        margin-top: 20px;
+        padding:  10px 25px;
+        background-color: rgb(255, 153, 0);
+        color: white;
+        border:none;
+        border-radius: 5px;
+        text-transform: capitalize;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: 1s ease;
+   
+}
+#gameOverScreen button:hover{
+    border: 2px solid  rgb(255, 153, 0);
+    background-color: transparent;
+    color: rgb(255, 255, 255);
+ }
