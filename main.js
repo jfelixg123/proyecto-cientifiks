@@ -19,10 +19,12 @@ document.addEventListener("DOMContentLoaded", function () {
             gameTitle: "Científico",
             clickHereImg: "./LangingPagPhoto/DIALOGO_ES.png",
             buttons: ["EXPLORA", "DESCUBRE", "DIVIERTE"],
+            buttonsCarosel: ["EXPLORA","AVENTURATE", "DESCUBRE", "DIVIERTE"],
             session: {
                 login: "Iniciar Sesión",
                 register: "Registrarse"
             },
+            buttonsPlay: "",
             miniTexts: [
                 "Este es el mini texto 1 en español",
                 "Este es el mini texto 2 en español",
@@ -30,25 +32,46 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Este es el mini texto 4 en español"
             ],
             aboutUs: "Sobre Nosotros" ,
-            Copyright: "Copyright © 2024 Cientifico. Todos los derechos reservados."
+            Copyright: "Copyright © 2024 Cientifico. Todos los derechos reservados.",
+
+            loginTitle: "RESULTADOS GLOBALES",
+            aboutUs: "Sobre Nosotros" ,
+            Copyright: "Copyright © 2024 Cientifiks. Todos los derechos reservados.",
+
+            IniciarloginTitle: "INICIAR SESIÓN",
+            RegisterLoginTitle: "Registrarse",
+            session: {
+                login: "Iniciar Sesión",
+                register: "Registrarse"
+            },
+            formLabels: {
+                username: "Nombre de usuario:",
+                email: "Correo electrónico",
+                password: "Contraseña"
+            },
+            buttons: {
+                login: "INICIAR SESIÓN",
+                register: "REGISTRARSE"
+            }
         },
         "en": {
             title: ["Welcome to the Adventure!", "Explore a magnificent world!", "Have fun!","Dare to discover more!"],
             descriptions: [
                 "The emblematic fountains have stopped flowing, and a strange mystery threatens their water. Your mission is clear: unravel the causes of this interruption. Dare to immerse yourself in this story and discover the secrets that could restore the lost balance.",
                 "The water has lost its purity, and the challenge is clear: cross scenarios full of obstacles to restore its clarity. As you progress, the challenges will intensify. Will you be able to solve the riddle and take the first step towards restoration?",
-                "Al teu camí trobaràs màquines i sistemes fallits que necessiten ajustaments. Cada mecanisme trencat amaga pistes vitals i trencaclosques complexes que hauràs de resoldre per acostar-te a la solució final. Podràs fer que les aigües flueixin una altra vegada?",
-                "The fate of the three fountains is in your hands. With all the challenges overcome, your ingenuity and perseverance will lead you to the ultimate achievement. Return clean, purified water to each fountain and celebrate the triumph of completing the mission. Are you ready to restore balance?",
+                "On your way you will encounter failed machines and systems that need adjustments. Each broken mechanism hides vital clues and complex puzzles that you must solve to get closer to the final solution. Can you make the waters flow again?",
+                "The fate of the three fountains is in your hands. With all the challenges overcome, your ingenuity and perseverance will lead you to the ultimate achievement. Return clean, purified water to each fountain and celebrate the triumph of completing the mission. Are you ready to restore balance?"
             ],
             gameTitle: "Scientist",
             clickHereImg: "./LangingPagPhoto/DIALOGO_EN.png",
             buttons: ["EXPLORE", "DISCOVER", "ENJOY"],
+            buttonsCarosel: ["EXPLORE","ADVENTURE", "DISCOVER", "ENJOY"],
             session: {
                 login: "Login",
                 register: "Register"
             },
             aboutUs: "About Us" ,
-            Copyright: "Copyright © 2024 Scientist. All rights reserved.",
+            Copyright: "Copyright © 2024 Cientifiks. All rights reserved.",
             miniTexts: [
                 "This is mini text 1 in English",
                 "This is mini text 2 in English",
@@ -61,12 +84,10 @@ document.addEventListener("DOMContentLoaded", function () {
             descriptions: [
                 "Les fonts emblemàtiques han deixat de fluir, i un estrany misteri amenaça la seva aigua. La teva missió és clara: esbrinar les causes d'aquesta interrupció. Atreveix-te a submergir-te en aquesta història i descobreix els secrets que podrien restaurar l'equilibri perdut.",
                 "L'aigua ha perdut la seva puresa, i el repte és clar: travessar escenaris plens d'obstacles per tornar-li la claredat. A mesura que avanços, els desafiaments s'intensificaran. Seràs capaç de resoldre l'enigma i fer el primer pas cap a la restauració?",
-                "On your way you will encounter failed machines and systems that need adjustments. Each broken mechanism hides vital clues and complex puzzles that you must solve to get closer to the final solution. Can you make the waters flow again?",
-                "El destí de les tres fonts és a les teves mans. Amb tots els desafiaments superats, el teu enginy i perseverança et portaran a l'èxit definitiu. Torna l'aigua neta i purificada a cada font i celebra el triomf de completar la missió. Estàs preparat per restaurar l'equilibri?",
+               "Al teu camí trobaràs màquines i sistemes fallits que necessiten ajustaments. Cada mecanisme trencat amaga pistes vitals i trencaclosques complexes que hauràs de resoldre per acostar-te a la solució final. Podràs fer que les aigües flueixin una altra vegada?",
+               "El destí de les tres fonts és a les teves mans. Amb tots els desafiaments superats, el teu enginy i perseverança et portaran a l'èxit definitiu. Torna l'aigua neta i purificada a cada font i celebra el triomf de completar la missió. Estàs preparat per restaurar l'equilibri?"
             ],
-            gameTitle: "Científic",
-            clickHereImg: "./LangingPagPhoto/DIALOGO_CAT.png",
-            buttons: ["EXPLORA", "DESCOBERT", "DIVERTIR"],
+            buttonsCarosel: ["EXPLORA","AVENTURAT", "DESCOBREIX", "DIVERTEIX-TE"],
             session: {
                 login: "Inicia Sessió",
                 register: "Registrar-se"
@@ -78,7 +99,23 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Aquest és el mini text 4 en català"
             ],
             aboutUs: "Sobre Nosaltres" ,
-            Copyright: "Copyright © 2024. Tots els drets reservats.."
+            Copyright: "Copyright © 2024 Cientifiks. Tots els drets reservats..",
+
+            IniciarloginTitle: "INICIAR SESSIÓ",
+            RegisterLoginTitle: "Registrar-se",
+            session: {
+                login: "Iniciar Sessió",
+                register: "Registrar-se"
+            },
+            formLabels: {
+                username: "Nom d'usuari:",
+                email: "Correu electrònic",
+                password: "Contrasenya"
+            },
+            buttons: {
+                login: "INICIAR SESSIÓ",
+                register: "REGISTRAR-SE"
+            }
         }
     };
     window.addEventListener("scroll", function () {
@@ -136,38 +173,6 @@ document.addEventListener("DOMContentLoaded", function () {
         // Cuando el mouse sale del área de 'ClickAqui', ocultamos el mini texto
         character.addEventListener('mouseleave', () => {
             miniTexto.style.display = 'none';
-        });
-        cofreImg.addEventListener("click", function () {
-            if (!animando) { // Solo ejecutar si no está en animación
-                animando = true; // Establecer que estamos en animación
-    
-                if (abierto) {
-                    // ... código para cerrar el cofre ...
-                    const interval = setInterval(function () {
-                        indexImagen--;
-                        if (indexImagen < 0) {
-                            clearInterval(interval);
-                            cofreImg.src = imagenInicial;
-                            imagenActual = cofreImg.src; // Actualiza la imagen actual
-                        } else {
-                            cofreImg.src = imagenes[indexImagen];
-                        }
-                    }, 100);
-                } else {
-                    // ... código para abrir el cofre ...
-                    const interval = setInterval(function () {
-                        indexImagen++;
-                        if (indexImagen >= imagenes.length) {
-                            clearInterval(interval);
-                            indexImagen = imagenes.length - 1;
-                            animando = false;
-                            imagenActual = cofreImg.src; // Actualiza la imagen actual
-                        } else {
-                            cofreImg.src = imagenes[indexImagen];
-                        }
-                    }, 100);
-                }
-            }
         });
     });
 
@@ -283,6 +288,118 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector(".Redes h1").textContent = content.gameTitle;
         document.querySelector(".FooterDerechos p").textContent = content.Copyright;
     }
+function updateContent(lang) {
+    const content = translations[lang];
+
+    // Actualizar los títulos y descripciones de cada item del carrusel
+    const carouselItems = document.querySelectorAll(".carousel-item");
+    carouselItems.forEach((item, index) => {
+        if (content.descriptions?.[index] && item.querySelector(".Descripcion p")) {
+            item.querySelector(".Descripcion p").textContent = content.descriptions[index];
+        }
+        if (content.buttonsCarosel?.[index] && item.querySelector(".botones h1")) {
+            item.querySelector(".botones h1").textContent = content.buttonsCarosel[index];
+        }
+        if (content.title?.[index] && item.querySelector(".TituloInicio h1")) {
+            item.querySelector(".TituloInicio h1").textContent = content.title[index];
+        }
+    });
+
+    const miniTextElements = document.querySelectorAll(".mini-texto");
+    miniTextElements.forEach((element, index) => {
+        if (content.miniTexts?.[index]) {
+            element.textContent = content.miniTexts[index];
+        }
+    });
+    const loginElement = document.querySelector(".inicarSesion h2");
+    if (loginElement) {
+        loginElement.textContent = content.session?.login;
+    }
+
+    const registerElement = document.querySelector(".registrarse h2");
+    if (registerElement) {
+        registerElement.textContent = content.session?.register;
+    }
+
+    const aboutUsElement = document.querySelector(".TituloNosotros h1");
+    if (aboutUsElement) {
+        aboutUsElement.textContent = content.aboutUs;
+    }
+
+    const footerElement = document.querySelector(".FooterDerechos p");
+    if (footerElement) {
+        footerElement.textContent = content.Copyright;
+    }
+
+    const scoreboardElement = document.querySelector(".h1_scoreboard");
+    if (scoreboardElement) {
+        scoreboardElement.textContent = content.loginTitle;
+    }
+    
+    // Actualizar títulos de los formularios
+     const loginTitleElement = document.querySelector("#login-title");
+     if (loginTitleElement) {
+         loginTitleElement.textContent = content.IniciarloginTitle;
+     }
+
+     const RegisterTitleElement = document.querySelector("#register-title");
+     if (RegisterTitleElement) {
+         RegisterTitleElement.textContent = content.RegisterLoginTitle;
+     }
+ 
+     // Actualizar etiquetas del formulario
+     const nameLabel = document.querySelector("#name-label");
+     if (nameLabel) {
+         nameLabel.textContent = content.formLabels.username;
+     }
+ 
+     const emailLabel = document.querySelector("#email-label");
+     if (emailLabel) {
+         emailLabel.textContent = content.formLabels.email;
+     }
+ 
+     const passwordLabel = document.querySelector("#password-label");
+     if (passwordLabel) {
+         passwordLabel.textContent = content.formLabels.password;
+     }
+ 
+     // Actualizar botones
+     const loginButton = document.querySelector("#login-button");
+     if (loginButton) {
+         loginButton.textContent = content.buttons.login;
+     }
+ 
+     const registerButton = document.querySelector("#register-button");
+     if (registerButton) {
+         registerButton.textContent = content.buttons.register;
+     }
+}
+function handleUserMenu() {
+    // Verificamos si el icono de usuario existe en la página
+    const userIcon = document.querySelector('.user-icon');
+    if (!userIcon) {
+        return; // Si el icono no existe, simplemente salimos de la función para evitar errores
+    }
+
+    // Verificamos si el menú de usuario también existe
+    const userMenu = document.getElementById('user-menu');
+    if (!userMenu) {
+        return; // Si el menú no existe, igualmente salimos de la función
+    }
+
+    // Añadimos el evento de clic al icono de usuario
+    userIcon.addEventListener('click', function() {
+        // Alternamos la clase 'show' para mostrar u ocultar el menú
+        userMenu.classList.toggle('show');
+    });
+
+    // Si se hace clic fuera del icono o del menú, cerramos el menú (opcional)
+    document.addEventListener('click', function(event) {
+        if (!userIcon.contains(event.target) && !userMenu.contains(event.target)) {
+            userMenu.classList.remove('show'); // Ocultar el menú
+        }
+    });
+}
     const juegos = [
         {
           imagen: "./LangingPagPhoto/Cubo.png"
@@ -300,7 +417,7 @@ document.addEventListener("DOMContentLoaded", function () {
       
       let indice = 0;
       
-      function cambiarJuegos() {
+    function cambiarJuegos() {
         const imagenJuego1 = document.getElementById('imagenJuego1');
         const imagenJuego2 = document.getElementById('imagenJuego2');
       
@@ -327,9 +444,9 @@ document.addEventListener("DOMContentLoaded", function () {
             imagenJuego2.classList.remove('fade-in');
           }, 500); // Tiempo que dura la animación de aparición
         }, 500); // Tiempo que dura la animación de desaparición
-      }
+    }
       
       // Cambiar los juegos cada 3 segundos
       setInterval(cambiarJuegos, 5000);
-
+      handleUserMenu();
 });
