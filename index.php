@@ -50,7 +50,7 @@ if (isset($_SESSION['username'])) {
           </div>
           <?php
           if (isset($_SESSION['username'])) {
-            echo '<div class="user-icon">';
+            echo '<div id="user-icon" class="user-icon">';
             echo $firstLetter;
             echo '</div>';
             echo '<div id="user-menu" class="user-menu">';
