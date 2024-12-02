@@ -8,7 +8,7 @@
             "name": "Launch Chrome",
             "request": "launch",
             "type": "chrome",
-            "url": "http://localhost:8080/HPT_BASICO/EinaDeFestio/index.php",
+            "url": "http://localhost/proyecto-cientifiks/login.php",
             "webRoot": "${workspaceFolder}"
         },
 

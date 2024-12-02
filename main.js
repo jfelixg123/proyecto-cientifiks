@@ -391,7 +391,7 @@ function updateContent(lang) {
 }
 function handleUserMenu() {
     // Verificamos si el icono de usuario existe en la página
-    const userIcon = document.querySelector('.user-icon');
+    const userIcon = document.getElementById('.user-icon');
     if (!userIcon) {
         return; // Si el icono no existe, simplemente salimos de la función para evitar errores
     }
@@ -463,4 +463,4 @@ function handleUserMenu() {
       // Cambiar los juegos cada 3 segundos
       setInterval(cambiarJuegos, 5000);
       handleUserMenu();
-});
+}});
