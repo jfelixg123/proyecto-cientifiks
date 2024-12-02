@@ -387,32 +387,6 @@ function updateContent(lang) {
          registerButton.textContent = content.buttons.register;
      }
 }
-function handleUserMenu() {
-    // Verificamos si el icono de usuario existe en la página
-    const userIcon = document.getElementById('.user-icon');
-    if (!userIcon) {
-        return; // Si el icono no existe, simplemente salimos de la función para evitar errores
-    }
-
-    // Verificamos si el menú de usuario también existe
-    const userMenu = document.getElementById('user-menu');
-    if (!userMenu) {
-        return; // Si el menú no existe, igualmente salimos de la función
-    }
-
-    // Añadimos el evento de clic al icono de usuario
-    userIcon.addEventListener('click', function() {
-        // Alternamos la clase 'show' para mostrar u ocultar el menú
-        userMenu.classList.toggle('show');
-    });
-
-    // Si se hace clic fuera del icono o del menú, cerramos el menú (opcional)
-    document.addEventListener('click', function(event) {
-        if (!userIcon.contains(event.target) && !userMenu.contains(event.target)) {
-            userMenu.classList.remove('show'); // Ocultar el menú
-        }
-    });
-}
     const juegos = [
         {
           imagen: "./LangingPagPhoto/Cubo.png"
@@ -460,5 +434,4 @@ function handleUserMenu() {
       
       // Cambiar los juegos cada 3 segundos
       setInterval(cambiarJuegos, 5000);
-      handleUserMenu();
 }});
