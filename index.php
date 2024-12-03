@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['username'])) {
-  // Si el usuario está logueado, mostrar la primera letra del nombre de usuario
+  // Sisadsasdsaario está logueado, mostrar la primera letra del nombre de usuario
   $username = $_SESSION['username']; // Obtener el nombre de usuario
   $firstLetter = strtoupper($username[0]); // Tomar la primera letra y ponerla en mayúsculas
 }
