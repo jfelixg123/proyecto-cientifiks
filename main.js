@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Este es el mini texto 3 en español",
                 "Este es el mini texto 4 en español"
             ],
+            loginTitle: "RESULTADOS GLOBALES",
             aboutUs: "Sobre Nosotros" ,
             Copyright: "Copyright © 2024 Cientifico. Todos los derechos reservados."
         },
@@ -47,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 login: "Login",
                 register: "Register"
             },
+            loginTitle: "GLOBAL RESULTS",
             aboutUs: "About Us" ,
             Copyright: "Copyright © 2024 Scientist. All rights reserved.",
             miniTexts: [
@@ -71,6 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 login: "Inicia Sessió",
                 register: "Registrar-se"
             },
+            loginTitle: "RESULTATS GLOBALS",
             miniTexts: [
                 "Aquest és el mini text 1 en català",
                 "Aquest és el mini text 2 en català",
@@ -187,7 +190,6 @@ document.addEventListener("DOMContentLoaded", function () {
         cofreImg.addEventListener("click", function () {
             if (!animando) { // Solo ejecutar si no está en animación
                 animando = true; // Establecer que estamos en animación
-    
                 if (abierto) {
                     // Animación para cerrar el cofre (más rápida)
                     const interval = setInterval(function () {
@@ -238,15 +240,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const languageButtons = document.querySelectorAll(".idioma img");
     languageButtons.forEach(button => {
         button.addEventListener("click", function () {
-            const selectedLang = button.alt; // Asumiendo que el alt es "en", "es", o "ca"
+            const selectedLang = button.alt;
             updateContent(selectedLang);
         });
     });
 
     function updateContent(lang) {
         const content = translations[lang];
-        if (!content) return; // Verifica si el contenido existe para el idioma seleccionado
-    
         // Actualizar los títulos y descripciones de cada item del carrusel
         const carouselItems = document.querySelectorAll(".carousel-item");
         carouselItems.forEach((item, index) => {
@@ -276,12 +276,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 img.src = content.clickHereImg; // Actualiza la imagen de clic solo si no está en las imágenes de los cofres abiertos
             }
         });
-    
         document.querySelector(".inicarSesion h2").textContent = content.session.login;
         document.querySelector(".registrarse h2").textContent = content.session.register;
         document.querySelector(".TituloNosotros h1").textContent = content.aboutUs;
         document.querySelector(".Redes h1").textContent = content.gameTitle;
         document.querySelector(".FooterDerechos p").textContent = content.Copyright;
+        document.querySelector(".h1_scoreboard").textContent = content.loginTitle;
     }
     const juegos = [
         {
@@ -303,7 +303,6 @@ document.addEventListener("DOMContentLoaded", function () {
       function cambiarJuegos() {
         const imagenJuego1 = document.getElementById('imagenJuego1');
         const imagenJuego2 = document.getElementById('imagenJuego2');
-      
         // Aplicar la animación de desvanecimiento a ambos elementos
         imagenJuego1.classList.add('fade-out');
         imagenJuego2.classList.add('fade-out');
