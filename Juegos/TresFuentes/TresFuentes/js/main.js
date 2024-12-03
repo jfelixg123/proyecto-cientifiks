@@ -271,7 +271,7 @@ function generadorEnemigos() {
  */
 function guardarScore(score) {
     //debugger;
-    fetch('php/obtenerScore.php?id_videojuego=1&puntuacion=' + score)
+    fetch('php/ObtenerScore.php?id_videojuego=1&puntuacion=' + score)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Error en la solicitud: ' + response.statusText);
