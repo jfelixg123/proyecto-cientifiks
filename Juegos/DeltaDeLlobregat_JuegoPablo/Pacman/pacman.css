@@ -26,8 +26,8 @@ body {
     display: flex;
 }
 .heart-lost{
-    width: 23px;
-    height: 23px;
+    width: 21px;
+    height: 21px;
     margin: 5px;
 }
 .block {
@@ -203,7 +203,7 @@ img{
     border-radius: 10px;
     text-align: center;
     min-width: 400px;
-    max-width: 1200px;
+    max-width: 1600px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -266,9 +266,11 @@ img{
     font-family: 'Bebas Neue', cursive;
 }
 .tutorial-content h2{
-    font-size: 40px;
+    font-size: 60px;
+    margin-bottom: 20px;
 }
 .tutorial-content p{
+    width: 600px;
     font-size: 25px;
 }
 .tutorial-content button{
