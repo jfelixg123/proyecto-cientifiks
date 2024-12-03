@@ -37,15 +37,20 @@ try {
     $existing_score = $stmt->fetchColumn();
 
     if ($existing_score !== false) {
-        // Si ya existe un puntaje, actualizamos sin necesidad de comparar
-        $stmt = $pdo->prepare("UPDATE jugar SET puntuacion = :puntuacion WHERE id_videojuego = :id_videojuego AND id_usuario = :id_usuario");
-        $stmt->bindParam(':puntuacion', $puntuacion, PDO::PARAM_INT);
-        $stmt->bindParam(':id_videojuego', $id_videojuego, PDO::PARAM_INT);
-        $stmt->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
-        $stmt->execute();
-        echo "Puntaje actualizado correctamente.";
+        // Si ya existe un puntaje, verificar si el nuevo puntaje es mayor
+        if ($puntuacion > $existing_score) {
+            // Si el nuevo puntaje es mayor, actualizar el puntaje
+            $stmt = $pdo->prepare("UPDATE jugar SET puntuacion = :puntuacion WHERE id_videojuego = :id_videojuego AND id_usuario = :id_usuario");
+            $stmt->bindParam(':puntuacion', $puntuacion, PDO::PARAM_INT);
+            $stmt->bindParam(':id_videojuego', $id_videojuego, PDO::PARAM_INT);
+            $stmt->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
+            $stmt->execute();
+            echo "Puntaje actualizado correctamente.";
+        } else {
+            echo "El nuevo puntaje debe ser mayor que el anterior.";
+        }
     } else {
-        // Si no existe un puntaje, insertamos uno nuevo
+        // Si no existe un puntaje, insertar el puntaje
         $stmt = $pdo->prepare("INSERT INTO jugar (id_videojuego, id_usuario, puntuacion) VALUES (:id_videojuego, :id_usuario, :puntuacion)");
         $stmt->bindParam(':id_videojuego', $id_videojuego, PDO::PARAM_INT);
         $stmt->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
