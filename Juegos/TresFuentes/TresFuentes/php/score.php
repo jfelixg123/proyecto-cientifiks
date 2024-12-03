@@ -26,6 +26,7 @@ function insertarScore($score)
     }
 }
 
+
 // Obtener los datos del request POST
 $data = json_decode(file_get_contents('php://input'), true);
 $score = $data['score'] ?? 0; // Obtener el valor del score, por defecto 0 si no existe
