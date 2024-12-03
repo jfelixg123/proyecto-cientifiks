@@ -12,8 +12,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['username'] = $user['username'];  
         $_SESSION['mensaje'] = "¡Inicio de sesión completado con éxito! Bienvenido, <strong>$username</strong>.";
         header("Location: index.php");
-        $_SESSION['mensaje'] = "¡Inicio de sesión completado con éxito! Bienvenido, <strong>$username</strong>.";
-        header("Location: indexInicioSession.html");
         exit;
     } else {
         $_SESSION['error'] = "Credenciales incorrectas. Por favor, inténtalo de nuevo.";
