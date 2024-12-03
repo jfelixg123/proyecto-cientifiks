@@ -1325,6 +1325,11 @@ a{
  color: white;   
 }
 
+form{
+    height: 93%;
+    width: 88.1%;
+}
+
 .cuentaRegistrada img{
     width: 20%;
     padding-left: 5%;

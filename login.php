@@ -70,7 +70,6 @@ require 'php/selectLogin.php';
                 registerButton: "REGISTER"
             }
         };
-
         function changeLanguage(lang) {
             document.getElementById("login-title").innerText = texts[lang].loginTitle;
             document.getElementById("email-label").innerText = texts[lang].emailLabel;
@@ -93,5 +92,4 @@ require 'php/selectLogin.php';
     </script>
 
 </body>
-
 </html>

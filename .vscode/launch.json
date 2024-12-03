@@ -8,7 +8,7 @@
             "name": "Launch Chrome",
             "request": "launch",
             "type": "chrome",
-            "url": "http://localhost8080/proyecto-cientifiks/index.php",
+            "url": "http://localhost/proyecto-cientifiks/login.php",
             "webRoot": "${workspaceFolder}"
         },
 
