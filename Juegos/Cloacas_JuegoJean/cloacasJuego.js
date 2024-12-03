@@ -41,7 +41,13 @@ document.addEventListener("DOMContentLoaded", function () {
             vidas--;
             panelVidas[vidas].style.display = 'none'; // Oculta la vida
             reposicionarPersonaje();
-            if (vidas === 0) gameOver(); // Si ya no hay vidas, termina el juego
+
+            if (vidas === 0){
+                puntajeBase = 0;
+                puntaje = 0;
+                clearInterval(intervalo);
+                gameOver();
+                } // Si ya no hay vidas, termina el juego
         }
     }
 
@@ -231,6 +237,8 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector('.llaves p:nth-child(2)').textContent = contadorLlaves;
 
         if (contadorLlaves === 4) {
+            clearInterval(intervalo);
+            multiplicadorPuntajeVidas();
             abrirPuerta();
         }
     }
@@ -286,10 +294,6 @@ document.addEventListener("DOMContentLoaded", function () {
     let timeRemaining = 300;
     let timerInterval;
 
-    function initializeTimer() {
-        startTimer();
-    }
-
     function startTimer() {
         timerInterval = setInterval(updateTimerDisplay, 1000);
     }
@@ -316,10 +320,35 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("tiempo").textContent = timeString;
     }
 
-    // Iniciar el temporizador
     window.onload = function () {
-        initializeTimer();
+        startTimer();
+        iniciarPuntaje();
     };
+
+    let puntajeBase = 300;
+    let puntaje = puntajeBase;
+    let intervalo;
+
+    function multiplicadorPuntajeVidas(){
+        if (vidas > 0) {
+            puntaje = Math.floor(puntajeBase * Math.pow(1.5, vidas - 1));  // Multiplicar puntaje por 1.5 por cada vida
+          } else {
+            puntaje = 0;
+          } 
+    }
+
+    function iniciarPuntaje(){
+    intervalo = setInterval(() => {
+      if (puntajeBase > 0) {    
+        puntajeBase--;  // Restar 1 al puntaje
+        console.log(puntajeBase);
+      } else {
+        clearInterval(intervalo);  // Detener el temporizador cuando llega a 0
+        puntaje = 0;
+        alert("¡Juego terminado!");
+      }
+    }, 1000);  // Intervalo de 1 segundo
+}
 
     
 

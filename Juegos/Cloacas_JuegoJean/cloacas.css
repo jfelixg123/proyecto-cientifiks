@@ -112,7 +112,7 @@ body {
 /* OBJETOS */
 
 .timer {
-    animation: rotate 8s ease-in-out infinite; /* Aumenta la duración total de la animación a 8 segundos */
+    animation: rotate 8s ease-in-out infinite;
 }
 
 .llaves {
