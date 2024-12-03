@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     // Variables globales
-    let timerInterval;
-    let secondsElapsed = 0;
+    
     let vidas = 3;
     const personaje = document.getElementById('personaje');
     const panelVidas = [
@@ -12,9 +11,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const pisos = document.querySelectorAll('.tercerPisoIzquierda, .segundoPisoIzquierda, .primerPisoIzquierda, .tercerPisoDerecha, .segundoPisoDerecha, .primerPisoDerecha, .pasoPrimerPiso, .pasoSegundoPiso');
     const juegoContenedor = document.getElementById('juegoContenedorCentral');
-    const jumpHeight = 150;
+    const jumpHeight = 130;
     const gravity = 5;
-    const maxVelocityX = 5;
+    const maxVelocityX = 4;
     let velocityX = 0;
     let isJumping = false;
     let isOnGround = false;
@@ -30,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function reposicionarPersonaje() {
         personaje.style.left = '0px';
-        personaje.style.top = '867px';
+        personaje.style.top = '869px';
         isOnGround = true;
         isJumping = false;
         pisoActual = null;
@@ -284,6 +283,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Función para iniciar el temporizador
+    let timeRemaining = 300;
+    let timerInterval;
+
     function initializeTimer() {
         startTimer();
     }
@@ -293,9 +295,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function updateTimerDisplay() {
-        secondsElapsed++;
-        const formattedTime = formatTime(secondsElapsed);
-        displayTime(formattedTime);
+        if (timeRemaining > 0) {
+            timeRemaining--; // Disminuir el tiempo restante
+            const formattedTime = formatTime(timeRemaining); // Formatear el tiempo restante
+            displayTime(formattedTime); // Mostrar el tiempo
+        } else {
+            clearInterval(timerInterval); // Detener el temporizador cuando llegue a 0
+            displayTime("00:00"); // Mostrar 00:00 cuando el temporizador termine
+            gameOver(); /// Ejecutar la función para terminar el juego
+        }
     }
 
     function formatTime(totalSeconds) {
@@ -308,11 +316,18 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("tiempo").textContent = timeString;
     }
 
+    // Iniciar el temporizador
+    window.onload = function () {
+        initializeTimer();
+    };
+
+    
+
    // Función para mover una rata horizontalmente por su piso
 // Función para mover una rata horizontalmente por su piso
 function moverRataRebotando(rata, piso) {
     let posicionX = 0;            // Comienza desde el borde izquierdo del piso
-    let velocidad = 2;            // Velocidad de movimiento
+    let velocidad = 1.5;            // Velocidad de movimiento
     const anchoPiso = piso.getBoundingClientRect().width; // Ancho del piso
     const anchoRata = rata.getBoundingClientRect().width; // Ancho de la rata
     let direccionInvertida = false; // La rata comienza mirando a la derecha (false)
@@ -354,6 +369,7 @@ function moverRataRebotando(rata, piso) {
     animacion(); // Inicia la animación
 }
 
+
     
 // Función para el fin del juego
     function gameOver() {
@@ -382,11 +398,6 @@ function moverRataRebotando(rata, piso) {
 
     // Iniciar el bucle de animación para la posición horizontal
     updatePosition();
-
-    // Iniciar el temporizador
-    window.onload = function () {
-        initializeTimer();
-    };
 
     // Llamar a la función para mover las ratas
     moverRataRebotando(rataTercerPiso, document.querySelector('.tercerPisoIzquierda'));

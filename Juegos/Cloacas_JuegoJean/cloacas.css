@@ -111,6 +111,10 @@ body {
 
 /* OBJETOS */
 
+.timer {
+    animation: rotate 8s ease-in-out infinite; /* Aumenta la duración total de la animación a 8 segundos */
+}
+
 .llaves {
     display: flex;
 }
@@ -131,17 +135,23 @@ body {
     margin: 3px;
 }
 
-.vidas img {
-    width: 50px;
+.vidas img, .reloj img {
     height: 50px;
+}
+.reloj{
+    display: flex;
+}
+
+#tiempo{
+    margin-top: 6px;
 }
 
 #personaje {
-    width: 80px;
-    height: 80px;
+    width: 40px;
+    height: 70px;
     position: absolute;
     left: 0;
-    top: 867px;
+    top: 869px;
     background-image: url(./imagenes/AnnaMujal.gif);
     background-position: center;
     background-repeat: no-repeat;
@@ -162,22 +172,22 @@ body {
 
 .llavePasoTercerPiso {
     left: 0;
-    top: 73px;
+    top: 72px;
 }
 
 .llavePasoPrimerPiso {
     left: 0;
-    bottom: 349px;
+    bottom: 345px;
 }
 
 .llavePasoSegundoPisoDerecha {
     right: 0;
-    top: 294px;
+    top: 293px;
 }
 
 .llaveDePasoPrimerPisoDerecha {
     right: 0;
-    bottom: 364px;
+    bottom: 361px;
 }
 
 .rataTercerPiso,
@@ -185,50 +195,51 @@ body {
 .rataPrimerPiso,
 .rataSegundoPisoDerecha,
 .rataPrimerPisoDerecha {
-    width: 65px;
-    height: 39px;
+    width: 48px;
+    height: 29px;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url(./imagenes/gif-rata-caminando.gif);
-    z-index: 1;
+    background-image: url(./imagenes/rata.gif);
+    background-color: red;
     transform: scaleX(-1);
 }
 
 .rataTercerPiso {
     position: absolute;
-    top: 105px;
+    top: 112px;
 }
 
 .rataSegundoPiso {
     position: absolute;
-    top: 311px;
+    top: 317px;
 }
 
 .rataPrimerPiso {
     position: absolute;
-    bottom: 349px;
+    bottom: 345px;
 }
 
 .rataSegundoPisoDerecha {
     position: absolute;
-    top: 328px;
+    top: 332px;
 }
 
 .rataPrimerPisoDerecha {
     position: absolute;
-    bottom: 365px;
+    bottom: 361px;
 }
 
 .basuraTercerPiso,
 .basuraPrimerPiso,
 .basuraSegundoPisoDerecha,
 .basuraPrimerPisoDerecha {
-    width: 112px;
-    height: 69px;
+    width: 101px;
+    height: 49px;
     position: absolute;
     background-position: center;
     background-repeat: no-repeat;
     background-image: url(./imagenes/basura.png);
+    background-color: red;
 }
 
 .basuraPrimerPiso {
@@ -238,12 +249,12 @@ body {
 
 .basuraTercerPiso {
     left: 488px;
-    top: 97px;
+    top: 110px;
 }
 
 .basuraSegundoPisoDerecha {
     right: 400px;
-    top: 317px;
+    top: 328px;
 }
 
 .basuraPrimerPisoDerecha {
@@ -262,22 +273,22 @@ body {
 }
 
 .charcoTercerPisoIzquierda{
-    top: 142px; 
+    top: 135px; 
     left: 29%;
 } 
 
 .charcoSegundoPisoIzquierda {
-    top: 349px; /* Ajusta esta posición en base al contenedor */
+    top: 341px; /* Ajusta esta posición en base al contenedor */
     left: 34%;
 }
 
 .charcoPrimerPisoIzquierda {
-    top: 555px; /* Ajusta esta posición en base al contenedor */
+    top: 546px; /* Ajusta esta posición en base al contenedor */
     left: 56%;
 }
 
 .charcoPrimerPisoDerecha {
-    top: 539px; /* Ajusta esta posición en base al contenedor */
+    top: 530px; /* Ajusta esta posición en base al contenedor */
     left: 18%;
 }
 
@@ -285,23 +296,21 @@ body {
     width: 109px;
     height: 129px;
     position: absolute;
-    top: 63px;
+    top: 60px;
     background-position: center;
     background-repeat: no-repeat;
     background-image: url(./imagenes/puertaCerrada.png);
     right: 9px;
-    z-index: 1;
 }
 
-/* Contenedor general para las escaleras */
-.staircase-container {
-    width: 130px;
-    height: 199px;
+.suelo {
+    width: 100%;
+    height: 6px; /* Ajusta la altura del suelo */
+    background-color: #3c3c3c; /* Color del suelo */
     position: absolute;
-    margin: 0 auto;
-    perspective: 500px;
-    top: 3px;
-    right: 51px;
+    bottom: 0; /* Colocamos el suelo en la parte inferior */
+    left: 0;
+    z-index: 10; /* Aseguramos que el suelo esté encima de otras cosas */
 }
 /* MOVIMIENTO VERTICAL PISOS DEL MEDIO */
 
@@ -315,12 +324,20 @@ body {
     }
 }
 
-.suelo {
-    width: 100%;
-    height: 6px; /* Ajusta la altura del suelo */
-    background-color: #3c3c3c; /* Color del suelo */
-    position: absolute;
-    bottom: 0; /* Colocamos el suelo en la parte inferior */
-    left: 0;
-    z-index: 10; /* Aseguramos que el suelo esté encima de otras cosas */
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg); /* Comienza en 0 grados */
+    }
+    40% {
+        transform: rotate(180deg); /* Gira a 180 grados */
+    }
+    45% {
+        transform: rotate(180deg); /* Mantiene en 180 grados durante 1 segundo */
+    }
+    70% {
+        transform: rotate(360deg); /* Gira a 360 grados */
+    }
+    100% {
+        transform: rotate(360deg); /* Completa la rotación */
+    }
 }
