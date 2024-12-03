@@ -1,6 +1,10 @@
 <?php 
 require_once('bd.php');
-
+/**
+ * Funcion de el insert para el Score del videojuego
+ * @param mixed $punto
+ * @return void
+ */
 function insertScore($punto){
     $conexion = openDB();
     

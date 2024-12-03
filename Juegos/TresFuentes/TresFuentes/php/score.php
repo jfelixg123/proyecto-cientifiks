@@ -1,32 +1,13 @@
 <?php
 session_start();
+require_once('bd.php');
 
-// Función para abrir la conexión con la base de datos
-function openDB()
-{
-    $servername = "localhost";
-    $username = "root";
-    $password = "mysql";
-    $dbname = "scoreBD"; // Asegúrate de que este sea el nombre correcto de tu base de datos
-
-    try {
-        $conexion = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $conexion->exec("set names utf8");
-        return $conexion;
-    } catch (PDOException $e) {
-        echo "Error de conexión: " . $e->getMessage();
-        return null;
-    }
-}
-
-// Función para cerrar la conexión con la base de datos
-function closeDB($conexion)
-{
-    $conexion = null;
-}
-
-// Insertar el score en la base de datos
+/**
+ * Summary of insertarScore
+ * Funcion para insertar Score 
+ * @param mixed $score
+ * @return bool
+ */
 function insertarScore($score)
 {
     try {
