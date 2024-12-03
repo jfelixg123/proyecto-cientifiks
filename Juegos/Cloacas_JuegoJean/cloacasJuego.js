@@ -379,12 +379,19 @@ function moverRataRebotando(rata, piso) {
 
     // Eventos de teclado para mover el personaje
     document.addEventListener('keydown', (event) => {
-        if (event.key === 'ArrowRight') velocityX = maxVelocityX;
-        if (event.key === 'ArrowLeft') velocityX = -maxVelocityX;
+        if (event.key === 'ArrowRight'){
+            velocityX = maxVelocityX;
+            personaje.style.backgroundImage = "url('./imagenes/PersonajeCaminandoIzq.gif')";
+        }            
+        if (event.key === 'ArrowLeft'){ 
+            velocityX = -maxVelocityX;
+            personaje.style.backgroundImage = "url('./imagenes/PersonajeCaminandoDer.gif')";
+        }
         if (event.key === 'ArrowUp' && isOnGround) {
             const personajeTop = parseInt(personaje.style.top || (window.innerHeight - personaje.offsetHeight) + 'px');
 
             personaje.style.top = (personajeTop - jumpHeight) + 'px';
+            personaje.style.backgroundImage = "url('./imagenes/PersonajeSaltando.gif')";
             isJumping = true;
             isOnGround = false;
         }
@@ -392,7 +399,13 @@ function moverRataRebotando(rata, piso) {
 
     document.addEventListener('keyup', (event) => {
         if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+            personaje.style.backgroundImage = "url('./imagenes/AnnaMujal.gif')";
             velocityX = 0;
+        }
+        if (event.key === 'ArrowUp' && isJumping){
+            isJumping = false;
+            personaje.style.backgroundImage = "url('./imagenes/AnnaMujal.gif')";
+            
         }
     });
 
