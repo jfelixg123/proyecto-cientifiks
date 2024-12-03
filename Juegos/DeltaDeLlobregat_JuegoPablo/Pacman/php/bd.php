@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 function openDB()
 {
   $servername = "localhost";
@@ -13,7 +14,10 @@ function openDB()
 
   return $conexion;
 }
+
 function closeDB($conexion) {
   $conexion = null;
 }
+
+
 ?>
