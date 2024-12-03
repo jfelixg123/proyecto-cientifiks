@@ -681,6 +681,11 @@ footer{
     }
     .user-menu {
         top: 90px;
+        width: 30px;
+    }
+    .user-menu a{
+        font-size: 10px;
+
     }
     .inicarSesion a h2, .registrarse a h2{
         font-size: 15px;
