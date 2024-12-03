@@ -1,6 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
-    // Variables globales
-    
+document.addEventListener("DOMContentLoaded", function () {  
     let vidas = 3;
     const personaje = document.getElementById('personaje');
     const panelVidas = [
@@ -332,7 +330,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function multiplicadorPuntajeVidas(){
         if (vidas > 0) {
             puntaje = Math.floor(puntajeBase * Math.pow(1.5, vidas - 1));  // Multiplicar puntaje por 1.5 por cada vida
-          } else {
+        } else {
             puntaje = 0;
           } 
     }
