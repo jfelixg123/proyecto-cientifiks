@@ -269,22 +269,22 @@ function generadorEnemigos() {
  * Esta funcion es la funcion que se usa como API para llamar al php y que obtenga el score de cada usuario y se quede registrado en el sql gracias el PDO.
  * @param {*} score 
  */
-function guardarScore(score) {
+function guardarScore() {
     //debugger;
-    fetch('php/ObtenerScore.php?id_videojuego=1&puntuacion=' + score)
+    fetch('php/Obtenerscore.php?id_videojuego=2&puntuacion=' + score)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Error en la solicitud: ' + response.statusText);
             }
-            return response.text();
+            return response.text(); // Esperamos un texto plano como respuesta
         })
         .then(data => {
-            console.log(data);
+            console.log(data); // Mostrar el mensaje de confirmación o error del servidor
             // Puedes mostrar un mensaje al usuario aquí, por ejemplo, usando un alert o actualizando el DOM
         })
         .catch(error => {
             console.error('Error:', error);
-
+            // Mostrar un mensaje de error genérico al usuario
         });
 }
 
