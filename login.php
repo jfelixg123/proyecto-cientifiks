@@ -1,27 +1,7 @@
 <?php
 session_start();
 require 'php/bd.php';
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    $stmt = $pdo->prepare("SELECT * FROM usuario WHERE username = ?");
-    $stmt->execute([$username]);
-    $user = $stmt->fetch();
-
-    if ($user && password_verify($password, $user['password'])) {
-        $_SESSION['id_usuario'] = $user['id_usuario']; // Usar el mismo nombre en todas partes
-        $_SESSION['mensaje'] = "¡Inicio de sesión completado con éxito! Bienvenido, <strong>$username</strong>.";
-        header("Location: indexInicioSession.html");
-        exit;
-    } else {
-        $_SESSION['error'] = "Credenciales incorrectas. Por favor, inténtalo de nuevo.";
-        header("Location: login.php");
-        exit;
-    }
-}
-
+require 'php/selectLogin.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -41,10 +21,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <nav class="navLogin">
             <button type="button" id="back-button"><img src="./LangingPagPhoto/flecha.png" alt="" class="flechaVolver"></button>
 
-            <div class="cambioIdioma">
-                <button id="lang-es"><img src="./LangingPagPhoto/mundo.png" alt=""></button>
-                <button id="lang-ca"><img src="./LangingPagPhoto/bandera.png" alt=""></button>
-                <button id="lang-en"><img src="./LangingPagPhoto/reino-unido.png" alt=""></button>
+            <div class="idioma">
+                    <img src="LangingPagPhoto/spain.png" alt="es">
+                    <img src="LangingPagPhoto/catalan.png" alt="ca">
+                    <img src="LangingPagPhoto/english.png" alt="en">
             </div>
         </nav>
 
@@ -66,51 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </div>
     </div>
-    <script>
-        const texts = {
-            es: {
-                loginTitle: "INICIAR SESIÓN",
-                emailLabel: "Correo",
-                passwordLabel: "Contraseña",
-                loginButton: "INICIAR SESIÓN",
-                registerButton: "REGISTRARSE"
-            },
-            ca: {
-                loginTitle: "INICIAR SESSIÓ",
-                emailLabel: "Correu",
-                passwordLabel: "Contrasenya",
-                loginButton: "INICIAR SESSIÓ",
-                registerButton: "REGISTRAR-SE"
-            },
-            en: {
-                loginTitle: "LOGIN",
-                emailLabel: "Email",
-                passwordLabel: "Password",
-                loginButton: "LOGIN",
-                registerButton: "REGISTER"
-            }
-        };
-
-        function changeLanguage(lang) {
-            document.getElementById("login-title").innerText = texts[lang].loginTitle;
-            document.getElementById("email-label").innerText = texts[lang].emailLabel;
-            document.getElementById("password-label").innerText = texts[lang].passwordLabel;
-            document.getElementById("login-button").innerText = texts[lang].loginButton;
-            document.getElementById("register-button").innerText = texts[lang].registerButton;
-        }
-
-        document.getElementById("lang-es").addEventListener("click", () => changeLanguage('es'));
-        document.getElementById("lang-ca").addEventListener("click", () => changeLanguage('ca'));
-        document.getElementById("lang-en").addEventListener("click", () => changeLanguage('en'));
-
-        document.getElementById("register-button").addEventListener("click", () => {
-            window.location.href = 'register.php';
-        });
-
-        document.getElementById("back-button").addEventListener("click", () => {
-            window.location.href = 'index.html';
-        });
-    </script>
+    <script src="main.js"></script>
 
 </body>
 

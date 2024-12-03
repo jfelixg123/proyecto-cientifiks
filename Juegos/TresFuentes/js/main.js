@@ -250,6 +250,6 @@ function guardarScore(score) {
         console.error('Error:', error);
         // Mostrar un mensaje de error genérico al usuario
       });
-  }
+}
 
 gameLoop();

@@ -110,8 +110,14 @@ p{
     max-width: 250px;
     background-color: #FF7C02;
     margin-top: 20px;
-    padding: 10px;
     border-radius: 23px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: "Bebas Neue", sans-serif ;
+    font-weight: 400;
+    font-style: normal;
+    
 }
 .botones a{
     text-decoration:none;
@@ -210,7 +216,7 @@ p{
     background-color: #FF7C02;
 }
 .idioma {
-    width: 150px; /* Cambia a auto para que se ajuste al contenido */
+    width: 200px; /* Cambia a auto para que se ajuste al contenido */
     height: 40px;
     margin: 15px; /* Añade margen para que haya espacio entre los idiomas */
     display: flex;
@@ -219,8 +225,8 @@ p{
 }
 
 .idioma img {
-    width: 40px; /* Ajusta el tamaño de las imágenes */
-    height: 40px; /* Ajusta el tamaño de las imágenes */
+    width: 50px; /* Ajusta el tamaño de las imágenes */
+    height: 50px; /* Ajusta el tamaño de las imágenes */
     border-radius: 50%;
 }
 
@@ -238,7 +244,7 @@ p{
 .titulo h1{
 
     font-family: "Bebas Neue";
-    color: white;
+    color: black;
 
 }
 .titulo-activo h1{
@@ -261,6 +267,7 @@ p{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 10px;
 }
 .ranking img{
     display: flex;
@@ -280,6 +287,8 @@ p{
     display: flex;
     transition: background-color 0.3s ease, transform 0.3s ease; /* Transición para el color y el tamaño */
     cursor: pointer; /* Cambia el cursor al pasar por encima */
+    padding-top: 10px;
+    margin-top: 10px;
 }
 .inicarSesion:hover, .registrarse:hover {
     transform: scale(1.10); /* Aumenta el tamaño un poco */
@@ -650,6 +659,119 @@ footer{
     .Descripcion p{
         font-size: 20px;
     }
+
+    /* scoreboard movil */
+
+    .body_scoreboard {
+        font-family: "Bebas Neue", sans-serif;
+        background: url('Juegos/Ahorcado/Ahorcado/images/alcantarillas.png') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    .navegador-scoreboard {
+        
+        font-size: 20px;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px;
+        background-color: red;
+    }
+   
+
+    .titulo {
+        font-size: 18px;
+    }
+
+    .ranking-juegos {
+        margin-top: 10px;
+        margin-right: 5px;
+    }
+
+    .elegir-juego {
+        font-size: 16px;
+    }
+
+    .container_scoreboard {
+        padding: 10px;
+        justify-content: flex-start;
+    }
+
+    .header_scoreboard {
+        margin-bottom: 15px;
+    }
+
+    .h1_scoreboard {
+        font-size: 20px;
+        width: 100%;
+        padding: 10px;
+        border-radius: 8px;
+    }
+    .scoreboard{
+        background-color: red;
+        border-radius: 10px;
+        max-width: 400px;
+    }
+
+    .ranking_scoreboard {
+        flex-direction: column;
+        align-items: center;
+        padding: 7px;
+        width: 50px;      
+        
+    }
+    
+
+    .ranking_scoreboard {
+        width: 50px;
+    }
+
+    .rank-item {
+        width: 400px;
+        border: 2px;
+    }
+
+    .pastilla-posicion,
+    .pastilla-nombre,
+    .pastilla-puntos {
+        padding: 10px;
+        margin: 5px 0;
+        text-align: center;
+        width: 100px;
+        height: 50px;
+        
+        
+        
+    }
+    .pastilla-posicion ,
+    .pastilla-nombre input{
+        
+        width: 50px;
+        margin-right: 8px;
+    }
+    
+    .pastilla-puntos input{
+        width: 50px;
+        
+    }
+    
+
+    .rank-name ,
+    .rank-score  {
+        
+        font-size: 10px;
+        padding: 0px;
+        margin: 0px 0px 0px 0px;
+    }
+
+    
+
+    .idioma img {
+        width: 20px;
+        height: 20px;
+        margin: 0 5px;
+    }
+
+    /* scoreboard movil */
 }
 
 /* style j.Pera  style J.Salamin Menu Juego*/
@@ -727,13 +849,15 @@ section:hover {
     margin: 0;
     font-size: 24px;
     font-weight: bold;
-    font-family: 'Franklin Gothic';
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
 }
 
 .overlay p {
     margin: 40px 0;
     font-size: 14px;
-    font-family: 'Franklin Gothic light';
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
     max-width: 250px;
 }
 
@@ -745,7 +869,8 @@ section:hover {
     font-size: 16px;
     border-radius: 5px;
     transition: 0.3s ease;
-    font-family: 'Franklin Gothic medium';
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
 }
 
 .play-btn:hover {
@@ -761,6 +886,26 @@ section:hover {
     background-size: cover;
     
 }
+.flechaVolverscoreboard {
+    transform: rotate(630deg);
+    margin-top: 50px;
+    cursor: pointer;
+    
+}
+
+.idiomascoreboard{
+    margin-right: 5px ;
+    margin-top: 10px;
+}
+
+.idiomascoreboard img{
+    border-radius: 50%;
+    width: 50px;
+    margin: 2px;
+    cursor: pointer;
+    
+}
+
 
 .navegador-scoreboard{
     position: fixed;
@@ -782,16 +927,48 @@ section:hover {
 }
     
 .ranking-juegos{
-    margin-top: 25px;
-    margin-right: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: fit-content;
 }
 
+.ranking-juegos #lista-juegos {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    color: white;
+    padding: 8px;
+    background-color: #3484CE;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.ranking-juegos #lista-juegos:hover {
+    background-color: #f78821;
+    border-color: #f78821;
+    color: white;
+}
+
+#lista-juegos{
+    position: absolute;
+    margin-left: 10px;
+    top: 85%;
+}
 .elegir-juego{
     font-family: "Bebas Neue", sans-serif;
     font-weight: 400;
     color: white;
-    font-size: 30px;
+    font-size: 40px;
 }
+
+
 .container_scoreboard {
     width: 100%;
     height: 100vh;
@@ -928,9 +1105,10 @@ section:hover {
     font-size: 30px;
     height: 954px;
 }
-.flechaVolver{
+.flechaVolverscoreboard{
     transform: rotate(630deg);
-    margin-top: 50px;
+    margin-top: 15px;
+    
 }
 .container {
     display: flex;
@@ -996,7 +1174,7 @@ input[type="email"], input[type="password"],  input[type="name"],  input[type="s
     font-size: 16px;
     box-shadow: 2px -2px 5px rgba(10, 96, 177, 0.705), 2px 2px 5px rgba(10, 97, 177, 0.5);
 }
-#login-title{
+#login-title, #register-title {
     text-align: center;
     font-size: 50px;
     color: #3E3737;

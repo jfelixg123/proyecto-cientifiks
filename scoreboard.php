@@ -1,3 +1,9 @@
+<?php
+require_once('php/bd.php');
+require_once('php/selectScore.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -12,29 +18,32 @@
 
     <div class="body_scoreboard">
         <nav class="navLogin">
-            <button type="button" id="back-button"><img src="./LangingPagPhoto/flecha.png" alt="" class="flechaVolver"></button>
             <nav class="navegador-scoreboard" id="navbar">
-            <div class="idiomas">
-                <div class="titulo" id="miTitulo">
-                    <h1>Cientifico en juego</h1>
-                </div>
-                <div class="ranking-juegos">
-                    <form action="">
-                        <label class="elegir-juego" for="elegir-juego">JUEGOS:</label>
-                        <select name="elegir-juegos" id="lista-juegos">
-                            <option value="tresfuentes">Las Tres Fuentes</option>
-                            <option value="delta">Delta Llobregat</option>
-                            <option value="cloaca">Las cloacas</option>
-                            <option value="depuradora">La Depuradora</option>
-                        </select>
-                    </form>
-                </div>
-                <div class="idioma">
-                    <img src="LangingPagPhoto/spain.png" alt="es">
-                    <img src="LangingPagPhoto/catalan.png" alt="ca">
-                    <img src="LangingPagPhoto/english.png" alt="en">
-                </div>
-            </div>
+                
+                <div class="idiomas">
+                    <a href="index.html">
+                        <button type="button" id="back-button"><img src="./LangingPagPhoto/flechascore.png" alt=""
+                            class="flechaVolverscoreboard"></button>
+                    </a>
+                    <div class="titulo" id="miTitulo">
+                        <h1>Cientifico en juego</h1>
+                    </div>
+                    <div class="ranking-juegos">
+                        <form action="">
+                            <label class="elegir-juego" for="elegir-juego">JUEGOS:</label>
+                            <select name="elegir-juegos" id="lista-juegos">
+                                <option value="tresfuentes">Las Tres Fuentes</option>
+                                <option value="delta">Delta Llobregat</option>
+                                <option value="cloaca">Las cloacas</option>
+                                <option value="depuradora">La Depuradora</option>
+                            </select>
+                        </form>
+                    </div>
+                    <div class="idioma">
+                        <img src="LangingPagPhoto/spain.png" alt="es">
+                        <img src="LangingPagPhoto/catalan.png" alt="ca">
+                        <img src="LangingPagPhoto/english.png" alt="en">
+                    </div>
         </nav>
         <div class="container_scoreboard">
             <header class="header_scoreboard">
@@ -94,5 +103,8 @@
     </div>
     <script src="main.js"></script>
 </body>
+
+<script src="main.js">
+</script>
 
 </html>
