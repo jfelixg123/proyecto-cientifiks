@@ -398,8 +398,12 @@ function moverRataRebotando(rata, piso) {
     });
 
     document.addEventListener('keyup', (event) => {
-        if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+        if (event.key === 'ArrowRight') {
             personaje.style.backgroundImage = "url('./imagenes/AnnaMujal.gif')";
+            velocityX = 0;
+        }
+        if (event.key === 'ArrowLeft') {
+            personaje.style.backgroundImage = "url('./imagenes/PersonajeReposoDer.gif')";
             velocityX = 0;
         }
         if (event.key === 'ArrowUp' && isJumping){
