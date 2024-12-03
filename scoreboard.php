@@ -1,6 +1,6 @@
 <?php
-require_once('php/bd.php');
-require_once('php/selectScore.php');
+require_once 'php/bd.php';
+require_once 'php/selectScore.php';
 
 ?>
 

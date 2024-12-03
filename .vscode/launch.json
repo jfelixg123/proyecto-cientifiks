@@ -8,7 +8,8 @@
             "name": "Launch Chrome",
             "request": "launch",
             "type": "chrome",
-            "url": "http://localhost/proyecto-cientifiks/login.php",
+            "url": "http://localhost:8080/proyecto-cientifiks/index.php",
+
             "webRoot": "${workspaceFolder}"
         },
 
@@ -27,7 +28,7 @@
                 "action": "openExternally"
             }
         },
-        {
+        {       
             "name": "Debug current script in console",
             "type": "php",
             "request": "launch",

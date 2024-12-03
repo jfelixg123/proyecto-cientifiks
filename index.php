@@ -42,11 +42,15 @@ if (isset($_SESSION['username'])) {
       <div class="menu">
         <div class="opcion">
           <div class="rankingcontent">
-            <a href="scoreboard.php">
-              <div class="ranking">
-                <img src="LangingPagPhoto/Estrella_amarilla.png" alt="estrella">
+            <form action="scoreboard1.php" method="POST">
+            <div class="ranking">
+              <button type="submit">
+              <img src="LangingPagPhoto/Estrella_amarilla.png" alt="estrella">
+              </button>
+                
               </div>
-            </a>
+            </form>
+           
           </div>
           <?php
           if (isset($_SESSION['username'])) {

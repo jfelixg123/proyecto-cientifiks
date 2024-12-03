@@ -37,6 +37,31 @@ if (session_status() === PHP_SESSION_NONE) {
     }
     return $mensaje;
   }
+
+  
+function openDB()
+{
+    $servername = "localhost";
+    $username = "root";
+    $password = "mysql";
+    $dbname = "cientifiks"; 
+
+    try {
+        $conexion = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $conexion->exec("set names utf8");
+        return $conexion;
+    } catch (PDOException $e) {
+        echo "Error de conexión: " . $e->getMessage();
+        return null;
+    }
+}
+
+// Función para cerrar la conexión con la base de datos
+function closeDB($conexion)
+{
+    $conexion = null;
+}
   
 $host = 'localhost';
 $db = 'cientifiks';

@@ -187,6 +187,7 @@ function reiniciarJuego() {
 
 function gameLoop() {
     if (detectarColision()) {
+        guardarScore(score);
         morir = true;
         console.log("has muerto");
        
@@ -194,8 +195,6 @@ function gameLoop() {
         vampiro.style.animation = "none"; 
         
         detenerAnimacionEnemigos();
-
-        guardarScore(score);
         clearInterval(scoreInterval);
        
         gameStarted = false;
@@ -233,23 +232,23 @@ function generadorEnemigos() {
         }, 15000);
     }     
 }
-function guardarScore(score) {
+function guardarScore() {
     //debugger;
-    fetch('php/obtenerScore.php?id_videojuego=1&puntuacion=' + score)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Error en la solicitud: ' + response.statusText);
-        }
-        return response.text(); // Esperamos un texto plano como respuesta
-      })
-      .then(data => {
-        console.log(data); // Mostrar el mensaje de confirmación o error del servidor
-        // Puedes mostrar un mensaje al usuario aquí, por ejemplo, usando un alert o actualizando el DOM
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        // Mostrar un mensaje de error genérico al usuario
-      });
+    fetch('php/Obtenerscore.php?id_videojuego=1&puntuacion=' + score)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error en la solicitud: ' + response.statusText);
+            }
+            return response.text(); // Esperamos un texto plano como respuesta
+        })
+        .then(data => {
+            console.log(data); // Mostrar el mensaje de confirmación o error del servidor
+            // Puedes mostrar un mensaje al usuario aquí, por ejemplo, usando un alert o actualizando el DOM
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Mostrar un mensaje de error genérico al usuario
+        });
 }
 
 gameLoop();
