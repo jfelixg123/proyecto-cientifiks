@@ -15,6 +15,11 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+
+
+
+    
+
     const translations = {
         "es": {
             title: ["¡Bienvenidos a la aventura!", "¡Explora un mundo magnifico!", "¡Diviertete!", "¡Atrévete a descubrir más!"],
