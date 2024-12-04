@@ -238,6 +238,7 @@ document.addEventListener("DOMContentLoaded", function () {
             clearInterval(intervalo);
             multiplicadorPuntajeVidas();
             abrirPuerta();
+            console.log(`¡Has recolectado 4 llaves! Puntaje final: ${puntaje}`);
         }
     }
 
@@ -332,18 +333,18 @@ document.addEventListener("DOMContentLoaded", function () {
             puntaje = Math.floor(puntajeBase * Math.pow(1.5, vidas - 1));  // Multiplicar puntaje por 1.5 por cada vida
         } else {
             puntaje = 0;
-          } 
+          }
+          console.log("Puntaje final ajustado por vidas:", puntaje);   
     }
 
     function iniciarPuntaje(){
     intervalo = setInterval(() => {
       if (puntajeBase > 0) {    
         puntajeBase--;  // Restar 1 al puntaje
-        console.log(puntajeBase);
       } else {
         clearInterval(intervalo);  // Detener el temporizador cuando llega a 0
         puntaje = 0;
-        alert("¡Juego terminado!");
+        alert("¡Juego terminado!", puntaje);
       }
     }, 1000);  // Intervalo de 1 segundo
 }
