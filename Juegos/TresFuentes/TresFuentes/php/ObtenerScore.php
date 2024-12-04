@@ -1,8 +1,8 @@
 <?php
-require_once 'bd.php';
+
+require_once('bd.php');
 
 // Verificar si el usuario ha iniciado sesión
-session_start();
 if (!isset($_SESSION['id_usuario'])) {
     echo "Debes iniciar sesión para guardar tu puntaje.";
     exit;
