@@ -101,11 +101,11 @@ body {
 
 .pasoPrimerPiso {
     left: 7%;
-    animation: pisoMovimiento 3s infinite alternate-reverse;
+    animation: pisoMovimiento 7s infinite alternate-reverse;
 }
 
 .pasoSegundoPiso {
-    animation: pisoMovimiento 3s infinite alternate;
+    animation: pisoMovimiento 7s infinite alternate;
     left: 53%;
 }
 
@@ -315,10 +315,12 @@ body {
 @keyframes pisoMovimiento {
     0% {
         transform: translateY(-190px);
+        animation-timing-function: ease-in; /* Subida rápida */
     }
 
     100% {
         transform: translateY(282px);
+        animation-timing-function: ease-out; /* Bajada más suave */
     }
 }
 

@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {  
+document.addEventListener("DOMContentLoaded", function () {
     let vidas = 3;
     const personaje = document.getElementById('personaje');
     const panelVidas = [
@@ -13,9 +13,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const gravity = 5;
     const maxVelocityX = 4;
     let velocityX = 0;
-    let isJumping = false;
+    let isJumping = true;
     let isOnGround = false;
-    let pisoActual = null; // Piso actual donde el personaje se encuentra
     const suelo = document.querySelector('.suelo');
 
     // Selección de las ratas en sus pisos
@@ -29,9 +28,70 @@ document.addEventListener("DOMContentLoaded", function () {
         personaje.style.left = '0px';
         personaje.style.top = '869px';
         isOnGround = true;
-        isJumping = false;
-        pisoActual = null;
     }
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowRight') {
+            velocityX = maxVelocityX;
+            personaje.style.backgroundImage = "url('./imagenes/PersonajeCaminandoIzq.gif')";
+        }
+        if (event.key === 'ArrowLeft') {
+            velocityX = -maxVelocityX;
+            personaje.style.backgroundImage = "url('./imagenes/PersonajeCaminandoDer.gif')";
+        }
+        if (event.key === 'ArrowUp' && isOnGround) {
+            const personajeTop = parseInt(personaje.style.top || (window.innerHeight - personaje.offsetHeight) + 'px');
+            personaje.style.top = (personajeTop - jumpHeight) + 'px';
+            personaje.style.backgroundImage = "url('./imagenes/PersonajeSaltando.gif')";
+            isOnGround = false;
+        }
+    });
+
+    document.addEventListener('keyup', (event) => {
+        if (event.key === 'ArrowRight') {
+            personaje.style.backgroundImage = "url('./imagenes/AnnaMujal.gif')";
+            velocityX = 0;
+        }
+        if (event.key === 'ArrowLeft') {
+            personaje.style.backgroundImage = "url('./imagenes/PersonajeReposoDer.gif')";
+            velocityX = 0;
+        }
+        if (event.key === 'ArrowUp' && isJumping) {
+            isJumping = false;
+            if(isOnGround){
+                personaje.style.backgroundImage = "url('./imagenes/AnnaMujal.gif')";
+            }
+            
+
+        }
+    });
+    function checkCollision() {
+        const personajeRect = personaje.getBoundingClientRect();
+        let collisionDetected = false;
+
+        pisos.forEach(piso => {
+            const pisoRect = piso.getBoundingClientRect();
+            if (personajeRect.bottom >= pisoRect.top &&
+                personajeRect.top < pisoRect.top &&
+                personajeRect.right > pisoRect.left &&
+                personajeRect.left < pisoRect.right) {
+
+                collisionDetected = true;
+                isOnGround = false;
+                isJumping = true;
+                pisoActual = piso;
+
+                // Corregir la posición del personaje para que quede justo encima del piso
+                personaje.style.top = pisoRect.top - personaje.offsetHeight + 'px';
+            }
+        });
+
+        if (!collisionDetected) {
+            isOnGround = false;
+            pisoActual = null;
+        }
+    }
+
 
     // Función para perder vida
     function perderVida() {
@@ -40,12 +100,12 @@ document.addEventListener("DOMContentLoaded", function () {
             panelVidas[vidas].style.display = 'none'; // Oculta la vida
             reposicionarPersonaje();
 
-            if (vidas === 0){
+            if (vidas === 0) {
                 puntajeBase = 0;
                 puntaje = 0;
                 clearInterval(intervalo);
                 gameOver();
-                } // Si ya no hay vidas, termina el juego
+            } // Si ya no hay vidas, termina el juego
         }
     }
 
@@ -80,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    
+
 
     const slowVelocityX = 2;
     let velocidadReducida = false;
@@ -142,57 +202,31 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Función para verificar las colisiones con los pisos
-    function checkCollision() {
-        const personajeRect = personaje.getBoundingClientRect();
-        let collisionDetected = false;
-
-        pisos.forEach(piso => {
-            const pisoRect = piso.getBoundingClientRect();
-            if (
-                personajeRect.bottom <= pisoRect.top + gravity &&
-                personajeRect.bottom >= pisoRect.top - gravity &&
-                personajeRect.right > pisoRect.left &&
-                personajeRect.left < pisoRect.right
-            ) {
-                collisionDetected = true;
-                isOnGround = true;
-                isJumping = false;
-                pisoActual = piso;
-                personaje.style.top = pisoRect.top - personaje.offsetHeight + 'px';
-            }
-        });
-
-        if (!collisionDetected) {
-            isOnGround = false;
-            pisoActual = null;
-        }
-    }
-/*
-  
- 
-    function checkCollisionWithFloors() {
-        const pisos = document.querySelectorAll('.tercerPisoIzquierda, .segundoPisoIzquierda, .primerPisoIzquierda, .tercerPisoDerecha, .segundoPisoDerecha, .primerPisoDerecha, .pasoPrimerPiso, .pasoSegundoPiso');
-        const personajeRect = personaje.getBoundingClientRect();
-        
-
-        pisos.forEach(piso => {
-            const pisoRect = piso.getBoundingClientRect();
-    
-            // Detectar colisión del personaje con la parte inferior del piso
-            if (
-                personajeRect.top <= pisoRect.bottom &&       // La cabeza del personaje alcanza la parte inferior del piso
-                personajeRect.bottom > pisoRect.bottom    // El personaje está parcialmente debajo del piso
-                
-            ) {
+    /*
+      
+     
+        function checkCollisionWithFloors() {
+            const pisos = document.querySelectorAll('.tercerPisoIzquierda, .segundoPisoIzquierda, .primerPisoIzquierda, .tercerPisoDerecha, .segundoPisoDerecha, .primerPisoDerecha, .pasoPrimerPiso, .pasoSegundoPiso');
+            const personajeRect = personaje.getBoundingClientRect();
             
-                personaje.style.top = pisoRect.bottom + 6 + 'px'; // Coloca al personaje justo debajo del piso
-                isJumping = false;
+    
+            pisos.forEach(piso => {
+                const pisoRect = piso.getBoundingClientRect();
+        
+                // Detectar colisión del personaje con la parte inferior del piso
+                if (
+                    personajeRect.top <= pisoRect.bottom &&       // La cabeza del personaje alcanza la parte inferior del piso
+                    personajeRect.bottom > pisoRect.bottom    // El personaje está parcialmente debajo del piso
                     
-            }
-        });
-    }
-*/
+                ) {
+                
+                    personaje.style.top = pisoRect.bottom + 6 + 'px'; // Coloca al personaje justo debajo del piso
+                    isJumping = false;
+                        
+                }
+            });
+        }
+    */
     // Obtener referencias a todas las llaves de paso
     const llaves = document.querySelectorAll('.llavePasoTercerPiso, .llavePasoPrimerPiso, .llavePasoSegundoPisoDerecha, .llaveDePasoPrimerPisoDerecha');
 
@@ -212,7 +246,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 personajeRect.top < llaveRect.bottom &&
                 personajeRect.bottom > llaveRect.top
             ) {
-                
+
                 sumarLlave(llave);
             }
         });
@@ -244,11 +278,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function applyGravity() {
         let personajeTop = parseInt(personaje.style.top || (window.innerHeight - personaje.offsetHeight) + 'px');
-        const pisos = document.querySelectorAll('.tercerPisoIzquierda, .segundoPisoIzquierda, .primerPisoIzquierda, .tercerPisoDerecha, .segundoPisoDerecha, .primerPisoDerecha, .pasoPrimerPiso, .pasoSegundoPiso');
-        
+
         if (!isOnGround) {
             personaje.style.top = (personajeTop + gravity) + 'px';
-          //  checkCollisionWithFloors();
+            //  checkCollisionWithFloors();
             checkCollision();
         } else if (pisoActual) {
             const pisoRect = pisoActual.getBoundingClientRect();
@@ -256,13 +289,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         const sueloRect = suelo.getBoundingClientRect();
-        
         const personajeRect = personaje.getBoundingClientRect();
-        
+
         if (personajeRect.bottom >= sueloRect.top) {
             isOnGround = true;
             personaje.style.top = sueloRect.top - personaje.offsetHeight + 'px';
             isJumping = false;
+        }else if(!collisionDetected){
+            isOnGround = false;
         }
         checkCollisionWithKeys();
         checkCollisionWithRats();
@@ -300,7 +334,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function updateTimerDisplay() {
         if (timeRemaining > 0) {
             timeRemaining--; // Disminuir el tiempo restante
-            const formattedTime = formatTime(timeRemaining); // Formatear el tiempo restante
+            const formattedTime = formatTime(timeRemaining);
             displayTime(formattedTime); // Mostrar el tiempo
         } else {
             clearInterval(timerInterval); // Detener el temporizador cuando llegue a 0
@@ -319,127 +353,83 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("tiempo").textContent = timeString;
     }
 
-    window.onload = function () {
-        startTimer();
-        iniciarPuntaje();
-    };
+
 
     let puntajeBase = 300;
     let puntaje = puntajeBase;
     let intervalo;
 
-    function multiplicadorPuntajeVidas(){
+    function multiplicadorPuntajeVidas() {
         if (vidas > 0) {
-            puntaje = Math.floor(puntajeBase * Math.pow(1.5, vidas - 1));  // Multiplicar puntaje por 1.5 por cada vida
+            puntaje = Math.floor(puntajeBase * Math.pow(1.5, vidas));  // Multiplicar puntaje por 1.5 por cada vida
         } else {
             puntaje = 0;
-          }
-          console.log("Puntaje final ajustado por vidas:", puntaje);   
+        }
+        console.log("Puntaje final ajustado por vidas:", puntaje);
     }
 
-    function iniciarPuntaje(){
-    intervalo = setInterval(() => {
-      if (puntajeBase > 0) {    
-        puntajeBase--;  // Restar 1 al puntaje
-      } else {
-        clearInterval(intervalo);  // Detener el temporizador cuando llega a 0
-        puntaje = 0;
-        alert("¡Juego terminado!", puntaje);
-      }
-    }, 1000);  // Intervalo de 1 segundo
-}
-
-    
-
-   // Función para mover una rata horizontalmente por su piso
-// Función para mover una rata horizontalmente por su piso
-function moverRataRebotando(rata, piso) {
-    let posicionX = 0;            // Comienza desde el borde izquierdo del piso
-    let velocidad = 1.5;            // Velocidad de movimiento
-    const anchoPiso = piso.getBoundingClientRect().width; // Ancho del piso
-    const anchoRata = rata.getBoundingClientRect().width; // Ancho de la rata
-    let direccionInvertida = false; // La rata comienza mirando a la derecha (false)
-
-    // Establecer la posición inicial de la rata
-    rata.style.left = `${posicionX}px`;
-    rata.style.transform = 'scaleX(-1)'; // Inicia mirando a la derecha
-
-    // Función de animación
-    function animacion() {
-        posicionX += velocidad; // Actualiza la posición
-
-        // Si la rata llega al extremo derecho del piso
-        if (posicionX + anchoRata >= anchoPiso) {
-            velocidad = -velocidad; // Cambia de dirección (hacia la izquierda)
-            posicionX = anchoPiso - anchoRata; // Ajusta la posición al extremo derecho
-            if (!direccionInvertida) {
-                rata.style.transform = 'scaleX(1)'; // Gira a la izquierda
-                direccionInvertida = true;
+    function iniciarPuntaje() {
+        intervalo = setInterval(() => {
+            if (puntajeBase > 0) {
+                puntajeBase--;  // Restar 1 al puntaje
+                console.log(puntajeBase)
+            } else {
+                clearInterval(intervalo);  // Detener el temporizador cuando llega a 0
+                puntaje = 0;
+                alert("¡Juego terminado!", puntaje);
             }
-        }
-        // Si la rata llega al extremo izquierdo del piso
-        else if (posicionX <= 0) {
-            velocidad = -velocidad; // Cambia de dirección (hacia la derecha)
-            posicionX = 0; // Ajusta la posición al extremo izquierdo
-            if (direccionInvertida) {
-                rata.style.transform = 'scaleX(-1)'; // Gira a la derecha
-                direccionInvertida = false;
-            }
-        }
+        }, 1000);  // Intervalo de 1 segundo
+    }
 
-        // Actualiza la posición horizontal
+    // Función para mover una rata horizontalmente por su piso
+    function moverRataRebotando(rata, piso) {
+        let posicionX = 0;            // Comienza desde el borde izquierdo del piso
+        let velocidad = 1.5;            // Velocidad de movimiento
+        const anchoPiso = piso.getBoundingClientRect().width; // Ancho del piso
+        const anchoRata = rata.getBoundingClientRect().width; // Ancho de la rata
+        let direccionInvertida = false; // La rata comienza mirando a la derecha (false)
+
+        // Establecer la posición inicial de la rata
         rata.style.left = `${posicionX}px`;
+        rata.style.transform = 'scaleX(-1)'; // Inicia mirando a la derecha
 
-        // Llama a la animación en el siguiente cuadro
-        requestAnimationFrame(animacion);
+        // Función de animación
+        function animacion() {
+            posicionX += velocidad; // Actualiza la posición
+
+            // Si la rata llega al extremo derecho del piso
+            if (posicionX + anchoRata >= anchoPiso) {
+                velocidad = -velocidad; // Cambia de dirección (hacia la izquierda)
+                posicionX = anchoPiso - anchoRata; // Ajusta la posición al extremo derecho
+                if (!direccionInvertida) {
+                    rata.style.transform = 'scaleX(1)'; // Gira a la izquierda
+                    direccionInvertida = true;
+                }
+            }
+            // Si la rata llega al extremo izquierdo del piso
+            else if (posicionX <= 0) {
+                velocidad = -velocidad; // Cambia de dirección (hacia la derecha)
+                posicionX = 0; // Ajusta la posición al extremo izquierdo
+                if (direccionInvertida) {
+                    rata.style.transform = 'scaleX(-1)'; // Gira a la derecha
+                    direccionInvertida = false;
+                }
+            }
+
+            // Actualiza la posición horizontal
+            rata.style.left = `${posicionX}px`;
+
+            // Llama a la animación en el siguiente cuadro
+            requestAnimationFrame(animacion);
+        }
+
+        animacion(); // Inicia la animación
     }
 
-    animacion(); // Inicia la animación
-}
-
-
-    
-// Función para el fin del juego
     function gameOver() {
         clearInterval(timerInterval);
         alert("Game Over!");
     }
-
-    // Eventos de teclado para mover el personaje
-    document.addEventListener('keydown', (event) => {
-        if (event.key === 'ArrowRight'){
-            velocityX = maxVelocityX;
-            personaje.style.backgroundImage = "url('./imagenes/PersonajeCaminandoIzq.gif')";
-        }            
-        if (event.key === 'ArrowLeft'){ 
-            velocityX = -maxVelocityX;
-            personaje.style.backgroundImage = "url('./imagenes/PersonajeCaminandoDer.gif')";
-        }
-        if (event.key === 'ArrowUp' && isOnGround) {
-            const personajeTop = parseInt(personaje.style.top || (window.innerHeight - personaje.offsetHeight) + 'px');
-
-            personaje.style.top = (personajeTop - jumpHeight) + 'px';
-            personaje.style.backgroundImage = "url('./imagenes/PersonajeSaltando.gif')";
-            isJumping = true;
-            isOnGround = false;
-        }
-    });
-
-    document.addEventListener('keyup', (event) => {
-        if (event.key === 'ArrowRight') {
-            personaje.style.backgroundImage = "url('./imagenes/AnnaMujal.gif')";
-            velocityX = 0;
-        }
-        if (event.key === 'ArrowLeft') {
-            personaje.style.backgroundImage = "url('./imagenes/PersonajeReposoDer.gif')";
-            velocityX = 0;
-        }
-        if (event.key === 'ArrowUp' && isJumping){
-            isJumping = false;
-            personaje.style.backgroundImage = "url('./imagenes/AnnaMujal.gif')";
-            
-        }
-    });
 
     // Iniciar el bucle de animación para la posición horizontal
     updatePosition();
@@ -453,4 +443,26 @@ function moverRataRebotando(rata, piso) {
 
     // Ejecutar gravedad en intervalos
     setInterval(applyGravity, 20);
+
+    window.onload = function () {
+        startTimer();
+        iniciarPuntaje();
+    };
+
+    fetch('php/Obtenerscore.php?id_videojuego=3&puntuacion=' + puntaje)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error en la solicitud: ' + response.statusText);
+                }
+                return response.text(); // Esperamos un texto plano como respuesta
+            })
+            .then(data => {
+                console.log(data); // Mostrar el mensaje de confirmación o error del servidor
+                // Puedes mostrar un mensaje al usuario aquí, por ejemplo, usando un alert o actualizando el DOM
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Mostrar un mensaje de error genérico al usuario
+            });
+    
 });
