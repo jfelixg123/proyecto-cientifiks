@@ -1,5 +1,4 @@
 <?php 
-require_once 'bd.php';
 function selectScore()
 {
     $conexion = openDB();

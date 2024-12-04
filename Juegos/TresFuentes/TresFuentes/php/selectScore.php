@@ -1,6 +1,10 @@
 <?php
 require_once('bd.php');
-
+/**
+ * Summary of selectScore
+ * funcion para selecionar el score de cada jugador y salga registrado
+ * @return array|null
+ */
 function selectScore()
 {
     $conexion = openDB();

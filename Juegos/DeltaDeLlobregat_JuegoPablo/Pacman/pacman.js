@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'b', 'a'
     ];
     let konamiInput = [];
-    let vidas = 3;
+    let vidas = 1;
     let timeLeft = 500;
     let pacmanPosition = { x: 1, y: 18 };
     let enemyPosition = { x: 47, y: 18 };
@@ -360,7 +360,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         document.getElementById(exitButtonId).addEventListener('click', () => {
-            window.location.href = '../index.php'; // Cambia 'index.html' según sea necesario
+            window.location.href = '../index.php';
         });
         guardarScore();
     }

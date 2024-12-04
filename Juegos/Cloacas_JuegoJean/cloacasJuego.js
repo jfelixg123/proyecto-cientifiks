@@ -1,4 +1,6 @@
-document.addEventListener("DOMContentLoaded", function () {  
+document.addEventListener("DOMContentLoaded", function () {
+    // Variables globales
+    
     let vidas = 3;
     const personaje = document.getElementById('personaje');
     const panelVidas = [
@@ -238,7 +240,6 @@ document.addEventListener("DOMContentLoaded", function () {
             clearInterval(intervalo);
             multiplicadorPuntajeVidas();
             abrirPuerta();
-            console.log(`¡Has recolectado 4 llaves! Puntaje final: ${puntaje}`);
         }
     }
 
@@ -331,20 +332,20 @@ document.addEventListener("DOMContentLoaded", function () {
     function multiplicadorPuntajeVidas(){
         if (vidas > 0) {
             puntaje = Math.floor(puntajeBase * Math.pow(1.5, vidas - 1));  // Multiplicar puntaje por 1.5 por cada vida
-        } else {
+          } else {
             puntaje = 0;
-          }
-          console.log("Puntaje final ajustado por vidas:", puntaje);   
+          } 
     }
 
     function iniciarPuntaje(){
     intervalo = setInterval(() => {
       if (puntajeBase > 0) {    
         puntajeBase--;  // Restar 1 al puntaje
+        console.log(puntajeBase);
       } else {
         clearInterval(intervalo);  // Detener el temporizador cuando llega a 0
         puntaje = 0;
-        alert("¡Juego terminado!", puntaje);
+        alert("¡Juego terminado!");
       }
     }, 1000);  // Intervalo de 1 segundo
 }

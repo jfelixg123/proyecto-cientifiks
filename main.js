@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Variable para almacenar el identificador del intervalo
     let intervaloCambiarJuegos;
-    
+
     let RollDown = document.getElementById('scrollToTop')
     if (RollDown != null) {
         RollDown.addEventListener('click', function () {
@@ -14,6 +14,11 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     }
+
+
+
+
+    
 
     const translations = {
         "es": {
@@ -404,5 +409,24 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 500); // Tiempo que dura la animación de desaparición
     }
     // Iniciar el intervalo
+    const userIcon = document.getElementById('user-icon');
+    const userMenu = document.getElementById('user-menu');
+
+    // Verifica si los elementos existen antes de añadir los eventos
+    if (userIcon && userMenu) {
+        // Añadir un evento de clic al icono del usuario
+        userIcon.addEventListener('click', function() {
+            // Alternar la clase 'show' para mostrar u ocultar el menú
+            userMenu.classList.toggle('show');
+        });
+
+        // Cerrar el menú si el usuario hace clic fuera de él
+        document.addEventListener('click', function(event) {
+            if (!userIcon.contains(event.target) && !userMenu.contains(event.target)) {
+                userMenu.classList.remove('show');
+            }
+        });
+    }
+
     intervaloCambiarJuegos = setInterval(cambiarJuegos, 5000);
 }); 
