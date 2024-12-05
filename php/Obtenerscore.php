@@ -1,6 +1,6 @@
 <?php
 
-require_once('bd.php');
+require_once('../php/bd.php');
 
 // Verificar si el usuario ha iniciado sesión
 if (!isset($_SESSION['id_usuario'])) {

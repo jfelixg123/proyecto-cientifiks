@@ -610,7 +610,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     function guardarScore() {
         //debugger;
-        fetch('php/Obtenerscore.php?id_videojuego=2&puntuacion=' + FinalScore)
+        fetch('../../../php/Obtenerscore.php?id_videojuego=2&puntuacion=' + FinalScore)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Error en la solicitud: ' + response.statusText);
