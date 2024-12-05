@@ -101,11 +101,11 @@ body {
 
 .pasoPrimerPiso {
     left: 7%;
-    animation: pisoMovimiento 7s infinite alternate-reverse;
+    animation: pisoMovimiento 6s infinite alternate-reverse;
 }
 
 .pasoSegundoPiso {
-    animation: pisoMovimiento 7s infinite alternate;
+    animation: pisoMovimiento 6s infinite alternate;
     left: 53%;
 }
 

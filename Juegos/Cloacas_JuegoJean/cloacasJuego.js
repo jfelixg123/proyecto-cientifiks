@@ -6,18 +6,15 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('SegundaVida'),
         document.getElementById('TerceraVida')
     ];
-
     const pisos = document.querySelectorAll('.tercerPisoIzquierda, .segundoPisoIzquierda, .primerPisoIzquierda, .tercerPisoDerecha, .segundoPisoDerecha, .primerPisoDerecha, .pasoPrimerPiso, .pasoSegundoPiso');
     const juegoContenedor = document.getElementById('juegoContenedorCentral');
-    const jumpHeight = 130;
-    const gravity = 5;
+    const jumpHeight = 140;
+    const gravity = 6;
     const maxVelocityX = 4;
     let velocityX = 0;
-    let isJumping = true;
-    let isOnGround = false;
+    let isJumping = false;
+    let isOnGround = true;
     const suelo = document.querySelector('.suelo');
-
-    // Selección de las ratas en sus pisos
     const rataTercerPiso = document.getElementById('rataTercerPiso');
     const rataSegundoPiso = document.getElementById('rataSegundoPiso');
     const rataPrimerPiso = document.getElementById('rataPrimerPiso');
@@ -27,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function reposicionarPersonaje() {
         personaje.style.left = '0px';
         personaje.style.top = '869px';
-        isOnGround = true;
+        isOnGround = false;
     }
 
     document.addEventListener('keydown', (event) => {
@@ -39,11 +36,11 @@ document.addEventListener("DOMContentLoaded", function () {
             velocityX = -maxVelocityX;
             personaje.style.backgroundImage = "url('./imagenes/PersonajeCaminandoDer.gif')";
         }
-        if (event.key === 'ArrowUp' && isOnGround) {
+        if (event.key === 'ArrowUp' && !isOnGround) {
             const personajeTop = parseInt(personaje.style.top || (window.innerHeight - personaje.offsetHeight) + 'px');
             personaje.style.top = (personajeTop - jumpHeight) + 'px';
             personaje.style.backgroundImage = "url('./imagenes/PersonajeSaltando.gif')";
-            isOnGround = false;
+            isOnGround = true;
         }
     });
 
@@ -56,56 +53,26 @@ document.addEventListener("DOMContentLoaded", function () {
             personaje.style.backgroundImage = "url('./imagenes/PersonajeReposoDer.gif')";
             velocityX = 0;
         }
-        if (event.key === 'ArrowUp' && isJumping) {
-            isJumping = false;
-            if(isOnGround){
-                personaje.style.backgroundImage = "url('./imagenes/AnnaMujal.gif')";
-            }
-            
+        if (event.key === 'ArrowUp' && !isJumping) {
+            isJumping = true;
+            personaje.style.backgroundImage = "url('./imagenes/AnnaMujal.gif')";
+
 
         }
     });
-    function checkCollision() {
-        const personajeRect = personaje.getBoundingClientRect();
-        let collisionDetected = false;
 
-        pisos.forEach(piso => {
-            const pisoRect = piso.getBoundingClientRect();
-            if (personajeRect.bottom >= pisoRect.top &&
-                personajeRect.top < pisoRect.top &&
-                personajeRect.right > pisoRect.left &&
-                personajeRect.left < pisoRect.right) {
-
-                collisionDetected = true;
-                isOnGround = false;
-                isJumping = true;
-                pisoActual = piso;
-
-                // Corregir la posición del personaje para que quede justo encima del piso
-                personaje.style.top = pisoRect.top - personaje.offsetHeight + 'px';
-            }
-        });
-
-        if (!collisionDetected) {
-            isOnGround = false;
-            pisoActual = null;
-        }
-    }
-
-
-    // Función para perder vida
     function perderVida() {
         if (vidas > 0) {
             vidas--;
-            panelVidas[vidas].style.display = 'none'; // Oculta la vida
+            panelVidas[vidas].style.display = 'none';
             reposicionarPersonaje();
 
             if (vidas === 0) {
-                puntajeBase = 0;
-                puntaje = 0;
+                puntuacionFinal = 0;
                 clearInterval(intervalo);
                 gameOver();
-            } // Si ya no hay vidas, termina el juego
+                enviarPuntos();
+            }
         }
     }
 
@@ -114,15 +81,14 @@ document.addEventListener("DOMContentLoaded", function () {
     function handleObstacleCollision() {
         const personajeLeft = parseInt(personaje.style.left || '0px');
 
-        // Determinar la dirección del rebote
-        if (velocityX > 0) { // Si se mueve a la derecha
-            personaje.style.left = (personajeLeft - 10) + 'px'; // Rebote hacia la izquierda
-        } else if (velocityX < 0) { // Si se mueve a la izquierda
-            personaje.style.left = (personajeLeft + 10) + 'px'; // Rebote hacia la derecha
+        if (velocityX > 0) {
+            personaje.style.left = (personajeLeft - 10) + 'px';
+        } else if (velocityX < 0) {
+            personaje.style.left = (personajeLeft + 10) + 'px';
         }
-        // Detener el movimiento horizontal
         velocityX = 0;
     }
+
     function checkCollisionWithObstacles() {
         const personajeRect = personaje.getBoundingClientRect();
 
@@ -140,28 +106,13 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-
-
     const slowVelocityX = 2;
     let velocidadReducida = false;
-
-    function reducirVelocidad() {
-        velocityX = Math.sign(velocityX) * slowVelocityX; // Mantiene la dirección, pero reduce la magnitud
-        velocidadReducida = true; // Indicamos que la velocidad está reducida
-    }
-
-    function restaurarVelocidad() {
-        velocityX = Math.sign(velocityX) * maxVelocityX; // Restablece la velocidad normal
-        velocidadReducida = false; // Indicamos que ya no está reducida
-    }
-
     const charcos = document.querySelectorAll('.charcoTercerPisoIzquierda, .charcoSegundoPisoIzquierda, .charcoPrimerPisoIzquierda, .charcoPrimerPisoDerecha');
 
     function checkCollisionWithCharcos() {
         const personajeRect = personaje.getBoundingClientRect();
-
-        let enCharco = false; // Bandera para verificar si el personaje está en un charco
-
+        let enCharco = false;
         charcos.forEach(charco => {
             const charcoRect = charco.getBoundingClientRect();
 
@@ -176,16 +127,14 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         if (enCharco && !velocidadReducida) {
-            velocityX = Math.sign(velocityX) * slowVelocityX; // Reducir la velocidad
+            velocityX = Math.sign(velocityX) * slowVelocityX;
             velocidadReducida = true;
         } else if (!enCharco && velocidadReducida) {
-            velocityX = Math.sign(velocityX) * maxVelocityX; // Restaurar la velocidad
+            velocityX = Math.sign(velocityX) * maxVelocityX;
             velocidadReducida = false;
         }
     }
 
-
-    // Función para verificar las colisiones con las ratas
     function checkCollisionWithRats() {
         const personajeRect = personaje.getBoundingClientRect();
         const ratas = [rataTercerPiso, rataSegundoPiso, rataPrimerPiso, rataSegundoPisoDerecha, rataPrimerPisoDerecha];
@@ -202,43 +151,16 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    /*
-      
-     
-        function checkCollisionWithFloors() {
-            const pisos = document.querySelectorAll('.tercerPisoIzquierda, .segundoPisoIzquierda, .primerPisoIzquierda, .tercerPisoDerecha, .segundoPisoDerecha, .primerPisoDerecha, .pasoPrimerPiso, .pasoSegundoPiso');
-            const personajeRect = personaje.getBoundingClientRect();
-            
-    
-            pisos.forEach(piso => {
-                const pisoRect = piso.getBoundingClientRect();
-        
-                // Detectar colisión del personaje con la parte inferior del piso
-                if (
-                    personajeRect.top <= pisoRect.bottom &&       // La cabeza del personaje alcanza la parte inferior del piso
-                    personajeRect.bottom > pisoRect.bottom    // El personaje está parcialmente debajo del piso
-                    
-                ) {
-                
-                    personaje.style.top = pisoRect.bottom + 6 + 'px'; // Coloca al personaje justo debajo del piso
-                    isJumping = false;
-                        
-                }
-            });
-        }
-    */
-    // Obtener referencias a todas las llaves de paso
     const llaves = document.querySelectorAll('.llavePasoTercerPiso, .llavePasoPrimerPiso, .llavePasoSegundoPisoDerecha, .llaveDePasoPrimerPisoDerecha');
-
-    // Contador de llaves inicializado en 0
     let contadorLlaves = 0;
 
-    // Función para verificar colisiones con las llaves
     function checkCollisionWithKeys() {
         const personajeRect = personaje.getBoundingClientRect();
 
+
         llaves.forEach((llave) => {
             const llaveRect = llave.getBoundingClientRect();
+
 
             if (
                 personajeRect.left < llaveRect.right &&
@@ -247,6 +169,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 personajeRect.bottom > llaveRect.top
             ) {
 
+
                 sumarLlave(llave);
             }
         });
@@ -254,49 +177,54 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function abrirPuerta() {
         const puerta = document.querySelector('.puerta');
-
         puerta.style.backgroundImage = "url('./imagenes/puerta.gif')";
-
     }
 
-    // Función para sumar una llave y actualizar el contador en el DOM
     function sumarLlave(llave) {
-
         llave.remove();
-
         contadorLlaves++;
-
         document.querySelector('.llaves p:nth-child(2)').textContent = contadorLlaves;
 
         if (contadorLlaves === 4) {
             clearInterval(intervalo);
             multiplicadorPuntajeVidas();
             abrirPuerta();
-            console.log(`¡Has recolectado 4 llaves! Puntaje final: ${puntaje}`);
+            console.log(`¡Has recolectado 4 llaves! Puntaje final: ${puntuacionFinal}`);
+            enviarPuntos();
         }
     }
 
     function applyGravity() {
         let personajeTop = parseInt(personaje.style.top || (window.innerHeight - personaje.offsetHeight) + 'px');
-
-        if (!isOnGround) {
-            personaje.style.top = (personajeTop + gravity) + 'px';
-            //  checkCollisionWithFloors();
-            checkCollision();
-        } else if (pisoActual) {
-            const pisoRect = pisoActual.getBoundingClientRect();
-            personaje.style.top = pisoRect.top - personaje.offsetHeight + 'px';
-        }
-
-        const sueloRect = suelo.getBoundingClientRect();
         const personajeRect = personaje.getBoundingClientRect();
+        let isCollidingWithPiso = false;
 
-        if (personajeRect.bottom >= sueloRect.top) {
-            isOnGround = true;
-            personaje.style.top = sueloRect.top - personaje.offsetHeight + 'px';
-            isJumping = false;
-        }else if(!collisionDetected){
-            isOnGround = false;
+        pisos.forEach(piso => {
+            const pisoRect = piso.getBoundingClientRect();
+
+            if (personajeRect.bottom >= pisoRect.top &&
+                personajeRect.top < pisoRect.top &&
+                personajeRect.right > pisoRect.left &&
+                personajeRect.left < pisoRect.right) {
+
+                personaje.style.top = pisoRect.top - personaje.offsetHeight + 'px';
+                isOnGround = false;
+                isCollidingWithPiso = true;
+            }
+        });
+
+        if (isOnGround) {
+            personaje.style.top = (personajeTop + gravity) + 'px';
+        }
+        
+        if (!isCollidingWithPiso) {
+            const sueloRect = suelo.getBoundingClientRect();
+            if (personajeRect.bottom >= sueloRect.top) {
+                personaje.style.top = sueloRect.top - personaje.offsetHeight + 'px';
+                isOnGround = false;
+            } else {
+                isOnGround = true;
+            }
         }
         checkCollisionWithKeys();
         checkCollisionWithRats();
@@ -304,8 +232,6 @@ document.addEventListener("DOMContentLoaded", function () {
         checkCollisionWithObstacles();
     }
 
-
-    // Función para actualizar la posición horizontal del personaje
     function updatePosition() {
         const personajeLeft = parseInt(personaje.style.left || '0px');
         const nextPositionX = personajeLeft + velocityX;
@@ -319,11 +245,9 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             personaje.style.left = nextPositionX + 'px';
         }
-
         requestAnimationFrame(updatePosition);
     }
 
-    // Función para iniciar el temporizador
     let timeRemaining = 300;
     let timerInterval;
 
@@ -333,13 +257,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function updateTimerDisplay() {
         if (timeRemaining > 0) {
-            timeRemaining--; // Disminuir el tiempo restante
+            timeRemaining--;
             const formattedTime = formatTime(timeRemaining);
-            displayTime(formattedTime); // Mostrar el tiempo
+            displayTime(formattedTime);
         } else {
-            clearInterval(timerInterval); // Detener el temporizador cuando llegue a 0
-            displayTime("00:00"); // Mostrar 00:00 cuando el temporizador termine
-            gameOver(); /// Ejecutar la función para terminar el juego
+            clearInterval(timerInterval); 
+            displayTime("00:00");
+            gameOver();
         }
     }
 
@@ -353,77 +277,66 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("tiempo").textContent = timeString;
     }
 
-
-
     let puntajeBase = 300;
-    let puntaje = puntajeBase;
+    let puntuacionFinal = puntajeBase;
     let intervalo;
 
     function multiplicadorPuntajeVidas() {
         if (vidas > 0) {
-            puntaje = Math.floor(puntajeBase * Math.pow(1.5, vidas));  // Multiplicar puntaje por 1.5 por cada vida
+            puntuacionFinal = Math.floor(puntajeBase * Math.pow(1.5, vidas));
         } else {
-            puntaje = 0;
+            puntuacionFinal = 0;
         }
-        console.log("Puntaje final ajustado por vidas:", puntaje);
+        console.log("Puntaje final ajustado por vidas:", puntuacionFinal);
     }
 
     function iniciarPuntaje() {
         intervalo = setInterval(() => {
             if (puntajeBase > 0) {
-                puntajeBase--;  // Restar 1 al puntaje
+                puntajeBase--; 
                 console.log(puntajeBase)
             } else {
-                clearInterval(intervalo);  // Detener el temporizador cuando llega a 0
-                puntaje = 0;
-                alert("¡Juego terminado!", puntaje);
+                clearInterval(intervalo);
+                puntuacionFinal = 0;
+                alert("¡Juego terminado!", puntuacionFinal);
             }
-        }, 1000);  // Intervalo de 1 segundo
+        }, 1000); 
     }
 
-    // Función para mover una rata horizontalmente por su piso
     function moverRataRebotando(rata, piso) {
-        let posicionX = 0;            // Comienza desde el borde izquierdo del piso
-        let velocidad = 1.5;            // Velocidad de movimiento
-        const anchoPiso = piso.getBoundingClientRect().width; // Ancho del piso
-        const anchoRata = rata.getBoundingClientRect().width; // Ancho de la rata
-        let direccionInvertida = false; // La rata comienza mirando a la derecha (false)
-
-        // Establecer la posición inicial de la rata
+        let posicionX = 0;            
+        let velocidad = 1.5;            
+        const anchoPiso = piso.getBoundingClientRect().width; 
+        const anchoRata = rata.getBoundingClientRect().width; 
+        let direccionInvertida = false; 
+ 
         rata.style.left = `${posicionX}px`;
-        rata.style.transform = 'scaleX(-1)'; // Inicia mirando a la derecha
+        rata.style.transform = 'scaleX(-1)'; 
 
-        // Función de animación
         function animacion() {
-            posicionX += velocidad; // Actualiza la posición
+            posicionX += velocidad; 
 
-            // Si la rata llega al extremo derecho del piso
             if (posicionX + anchoRata >= anchoPiso) {
-                velocidad = -velocidad; // Cambia de dirección (hacia la izquierda)
-                posicionX = anchoPiso - anchoRata; // Ajusta la posición al extremo derecho
+                velocidad = -velocidad;
+                posicionX = anchoPiso - anchoRata;
                 if (!direccionInvertida) {
-                    rata.style.transform = 'scaleX(1)'; // Gira a la izquierda
+                    rata.style.transform = 'scaleX(1)';
                     direccionInvertida = true;
                 }
             }
-            // Si la rata llega al extremo izquierdo del piso
             else if (posicionX <= 0) {
-                velocidad = -velocidad; // Cambia de dirección (hacia la derecha)
-                posicionX = 0; // Ajusta la posición al extremo izquierdo
+                velocidad = -velocidad; 
+                posicionX = 0; 
                 if (direccionInvertida) {
-                    rata.style.transform = 'scaleX(-1)'; // Gira a la derecha
+                    rata.style.transform = 'scaleX(-1)'; 
                     direccionInvertida = false;
                 }
             }
-
-            // Actualiza la posición horizontal
             rata.style.left = `${posicionX}px`;
 
-            // Llama a la animación en el siguiente cuadro
             requestAnimationFrame(animacion);
         }
-
-        animacion(); // Inicia la animación
+            animacion();
     }
 
     function gameOver() {
@@ -431,17 +344,30 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("Game Over!");
     }
 
-    // Iniciar el bucle de animación para la posición horizontal
-    updatePosition();
+    function enviarPuntos(){
+        fetch('../DeltaDeLlobregat_JuegoPablo/Pacman/php/Obtenerscore.php?id_videojuego=3&puntuacion=' + puntuacionFinal)
 
-    // Llamar a la función para mover las ratas
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error en la solicitud: ' + response.statusText);
+                }
+                return response.text();
+            })
+            .then(data => {
+                console.log(data); 
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+
+    updatePosition();
     moverRataRebotando(rataTercerPiso, document.querySelector('.tercerPisoIzquierda'));
     moverRataRebotando(rataSegundoPiso, document.querySelector('.segundoPisoIzquierda'));
     moverRataRebotando(rataPrimerPiso, document.querySelector('.primerPisoIzquierda'));
     moverRataRebotando(rataSegundoPisoDerecha, document.querySelector('.segundoPisoDerecha'));
     moverRataRebotando(rataPrimerPisoDerecha, document.querySelector('.primerPisoDerecha'));
 
-    // Ejecutar gravedad en intervalos
     setInterval(applyGravity, 20);
 
     window.onload = function () {
@@ -449,20 +375,4 @@ document.addEventListener("DOMContentLoaded", function () {
         iniciarPuntaje();
     };
 
-    fetch('php/Obtenerscore.php?id_videojuego=3&puntuacion=' + puntaje)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Error en la solicitud: ' + response.statusText);
-                }
-                return response.text(); // Esperamos un texto plano como respuesta
-            })
-            .then(data => {
-                console.log(data); // Mostrar el mensaje de confirmación o error del servidor
-                // Puedes mostrar un mensaje al usuario aquí, por ejemplo, usando un alert o actualizando el DOM
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                // Mostrar un mensaje de error genérico al usuario
-            });
-    
 });
