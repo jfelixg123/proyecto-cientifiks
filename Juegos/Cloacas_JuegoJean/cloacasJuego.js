@@ -6,15 +6,14 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('SegundaVida'),
         document.getElementById('TerceraVida')
     ];
-
     const pisos = document.querySelectorAll('.tercerPisoIzquierda, .segundoPisoIzquierda, .primerPisoIzquierda, .tercerPisoDerecha, .segundoPisoDerecha, .primerPisoDerecha, .pasoPrimerPiso, .pasoSegundoPiso');
     const juegoContenedor = document.getElementById('juegoContenedorCentral');
     const jumpHeight = 130;
     const gravity = 5;
     const maxVelocityX = 4;
     let velocityX = 0;
-    let isJumping = true;
-    let isOnGround = false;
+    let isJumping = false;
+    let isOnGround = true;
     const suelo = document.querySelector('.suelo');
 
     // Selección de las ratas en sus pisos
@@ -27,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function reposicionarPersonaje() {
         personaje.style.left = '0px';
         personaje.style.top = '869px';
-        isOnGround = true;
+        isOnGround = false;
     }
 
     document.addEventListener('keydown', (event) => {
@@ -39,11 +38,11 @@ document.addEventListener("DOMContentLoaded", function () {
             velocityX = -maxVelocityX;
             personaje.style.backgroundImage = "url('./imagenes/PersonajeCaminandoDer.gif')";
         }
-        if (event.key === 'ArrowUp' && isOnGround) {
+        if (event.key === 'ArrowUp' && !isOnGround) {
             const personajeTop = parseInt(personaje.style.top || (window.innerHeight - personaje.offsetHeight) + 'px');
             personaje.style.top = (personajeTop - jumpHeight) + 'px';
             personaje.style.backgroundImage = "url('./imagenes/PersonajeSaltando.gif')";
-            isOnGround = false;
+            isOnGround = true;
         }
     });
 
@@ -56,41 +55,13 @@ document.addEventListener("DOMContentLoaded", function () {
             personaje.style.backgroundImage = "url('./imagenes/PersonajeReposoDer.gif')";
             velocityX = 0;
         }
-        if (event.key === 'ArrowUp' && isJumping) {
-            isJumping = false;
-            if(isOnGround){
-                personaje.style.backgroundImage = "url('./imagenes/AnnaMujal.gif')";
-            }
-            
+        if (event.key === 'ArrowUp' && !isJumping) {
+            isJumping = true;
+            personaje.style.backgroundImage = "url('./imagenes/AnnaMujal.gif')";
 
         }
     });
-    function checkCollision() {
-        const personajeRect = personaje.getBoundingClientRect();
-        let collisionDetected = false;
 
-        pisos.forEach(piso => {
-            const pisoRect = piso.getBoundingClientRect();
-            if (personajeRect.bottom >= pisoRect.top &&
-                personajeRect.top < pisoRect.top &&
-                personajeRect.right > pisoRect.left &&
-                personajeRect.left < pisoRect.right) {
-
-                collisionDetected = true;
-                isOnGround = false;
-                isJumping = true;
-                pisoActual = piso;
-
-                // Corregir la posición del personaje para que quede justo encima del piso
-                personaje.style.top = pisoRect.top - personaje.offsetHeight + 'px';
-            }
-        });
-
-        if (!collisionDetected) {
-            isOnGround = false;
-            pisoActual = null;
-        }
-    }
 
 
     // Función para perder vida
@@ -202,31 +173,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    /*
-      
-     
-        function checkCollisionWithFloors() {
-            const pisos = document.querySelectorAll('.tercerPisoIzquierda, .segundoPisoIzquierda, .primerPisoIzquierda, .tercerPisoDerecha, .segundoPisoDerecha, .primerPisoDerecha, .pasoPrimerPiso, .pasoSegundoPiso');
-            const personajeRect = personaje.getBoundingClientRect();
-            
-    
-            pisos.forEach(piso => {
-                const pisoRect = piso.getBoundingClientRect();
-        
-                // Detectar colisión del personaje con la parte inferior del piso
-                if (
-                    personajeRect.top <= pisoRect.bottom &&       // La cabeza del personaje alcanza la parte inferior del piso
-                    personajeRect.bottom > pisoRect.bottom    // El personaje está parcialmente debajo del piso
-                    
-                ) {
-                
-                    personaje.style.top = pisoRect.bottom + 6 + 'px'; // Coloca al personaje justo debajo del piso
-                    isJumping = false;
-                        
-                }
-            });
-        }
-    */
     // Obtener referencias a todas las llaves de paso
     const llaves = document.querySelectorAll('.llavePasoTercerPiso, .llavePasoPrimerPiso, .llavePasoSegundoPisoDerecha, .llaveDePasoPrimerPisoDerecha');
 
@@ -259,7 +205,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-    // Función para sumar una llave y actualizar el contador en el DOM
     function sumarLlave(llave) {
 
         llave.remove();
@@ -278,32 +223,49 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function applyGravity() {
         let personajeTop = parseInt(personaje.style.top || (window.innerHeight - personaje.offsetHeight) + 'px');
-
-        if (!isOnGround) {
-            personaje.style.top = (personajeTop + gravity) + 'px';
-            //  checkCollisionWithFloors();
-            checkCollision();
-        } else if (pisoActual) {
-            const pisoRect = pisoActual.getBoundingClientRect();
-            personaje.style.top = pisoRect.top - personaje.offsetHeight + 'px';
-        }
-
-        const sueloRect = suelo.getBoundingClientRect();
         const personajeRect = personaje.getBoundingClientRect();
+        let isCollidingWithPiso = false;
 
-        if (personajeRect.bottom >= sueloRect.top) {
-            isOnGround = true;
-            personaje.style.top = sueloRect.top - personaje.offsetHeight + 'px';
-            isJumping = false;
-        }else if(!collisionDetected){
-            isOnGround = false;
+        // Aplicar gravedad si el personaje no está en el suelo
+        if (isOnGround) {
+            personaje.style.top = (personajeTop + gravity) + 'px';
         }
+
+        // Comprobar colisiones con cada piso
+        pisos.forEach(piso => {
+            const pisoRect = piso.getBoundingClientRect();
+
+            if (personajeRect.bottom >= pisoRect.top &&
+                personajeRect.top < pisoRect.top &&
+                personajeRect.right > pisoRect.left &&
+                personajeRect.left < pisoRect.right) {
+
+                // Colisión detectada, ajustar posición del personaje
+                personaje.style.top = pisoRect.top - personaje.offsetHeight + 'px';
+                isOnGround = false;
+                isCollidingWithPiso = true;
+            }
+        });
+
+        // Si no hay colisión con ningún piso, comprobar el suelo
+        if (!isCollidingWithPiso) {
+            const sueloRect = suelo.getBoundingClientRect();
+            if (personajeRect.bottom >= sueloRect.top) {
+                // Ajustar posición del personaje si toca el suelo
+                personaje.style.top = sueloRect.top - personaje.offsetHeight + 'px';
+                isOnGround = false;
+            } else {
+                isOnGround = true;
+            }
+        }
+
+        // Llamar a las funciones de colisiones específicas
         checkCollisionWithKeys();
         checkCollisionWithRats();
         checkCollisionWithCharcos();
         checkCollisionWithObstacles();
-    }
 
+    }
 
     // Función para actualizar la posición horizontal del personaje
     function updatePosition() {
@@ -448,21 +410,4 @@ document.addEventListener("DOMContentLoaded", function () {
         startTimer();
         iniciarPuntaje();
     };
-
-    fetch('php/Obtenerscore.php?id_videojuego=3&puntuacion=' + puntaje)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Error en la solicitud: ' + response.statusText);
-                }
-                return response.text(); // Esperamos un texto plano como respuesta
-            })
-            .then(data => {
-                console.log(data); // Mostrar el mensaje de confirmación o error del servidor
-                // Puedes mostrar un mensaje al usuario aquí, por ejemplo, usando un alert o actualizando el DOM
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                // Mostrar un mensaje de error genérico al usuario
-            });
-    
 });
