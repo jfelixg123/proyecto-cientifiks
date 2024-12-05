@@ -10,6 +10,7 @@ body {
     height: 100vh;
     overflow: hidden;
 }
+/* Imagen de fondo con animacion para la izquierda*/
 #background {
     position: absolute;
     top: 0;
@@ -31,7 +32,7 @@ body {
         background-position: -1920px 0; 
     }
 }
-
+/* Jugador que es Anna con animaciones camimando y distintas que se cambian en el js*/
 #player {
     position: absolute;
     bottom: 40px;
@@ -39,16 +40,19 @@ body {
     width: 100px;
     height: 100px;
     background-image: url('../img/gifchica.gif'); 
+    background-size: cover;
     background-size: 100px 100px;
     transition: bottom 0.5s;
     
 }
 
+/* Esto es un colider del jugar para que cada vez que se colisione con un enemigo se muera y sus animaciones*/
 #playerCollider {
     position: absolute;
     bottom: 0px;
     width: 80px;
     height: 100%;
+   /* background-color: rgba(255, 0, 0, 0.397); */
     animation: none; /* Inicialmente sin animacion */
     
 }
@@ -92,6 +96,7 @@ body {
     }
 }
 
+/* El estilo del score que esta en cursiva con la tipografia acordada*/
 #score {
     font-style: oblique;
     position: absolute;
@@ -100,6 +105,8 @@ body {
     color: #ffffff;
 }
 
+/* TIPOS DE ENEMIGOS */
+/* Enemigos con el gif de movimiento de ratas y su respawn*/
 .enemigo {
     position: absolute;
     bottom: 40px; 
@@ -107,7 +114,7 @@ body {
     width: 90px;
     height: 60px;
     background-size: 100px 60px;
-
+    /*background-color: red;*/
     background-image: url('../img/gif-rata.gif');
     animation: respawn 5s linear infinite;
 }
@@ -123,7 +130,7 @@ body {
         left: -40px;
     }
 }
-
+/* 2 enemigo que es el mapache que sale de vez en cuando */
 .enemigosMapache{
     position: absolute;
     bottom: 158px; 
@@ -132,7 +139,7 @@ body {
     height: 100px;
     background-size: 100%;
     background-image: url('../img/mapache.png');
-    background-color: red;
+   /* background-color: red;*/
     animation: respawnMapache 5s linear infinite;
 }
 
@@ -147,6 +154,7 @@ body {
         left: -400px;
     }
 }
+/* 3 enemigo que es el vampiro que vuela y este vampiro te engaña porque no va hacia ti */
 #vampiro {
     width: 100px;
     height: 100px;
@@ -168,7 +176,7 @@ body {
         left: -90%; 
     }
 }
-
+/* 4 enemigo que es el vampiro que vuela y va hacia ti  */
 #vampiroVertical {
     width: 100px;
     height: 100px;
@@ -177,7 +185,7 @@ body {
     left: 100%; 
     transform: scale(1);
     transform-origin: center;
-   /* background-color: red;*/
+    /*background-color: red;*/
     animation: moveVampiroVertical 11s linear infinite;
 }
 
@@ -196,7 +204,7 @@ body {
         left: -110%; 
     }
 }
-
+/*Este es el tutorial que sale al principio para saber como se juega todo el banner */
 .banner {
     background-image: url('../img/fondo.jpg');
     background-repeat: no-repeat;
@@ -206,7 +214,7 @@ body {
     text-align: center;
     border-radius: 5px;
     display: flex;
-    flex-direction: column; /* Cambiar a disposición en columna */
+    flex-direction: column; 
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -221,6 +229,7 @@ body {
     text-transform: capitalize;
     font-size: 55px;
 }
+
 .banner button{
     margin-top: 20px;
     padding:  10px 25px;
@@ -239,12 +248,15 @@ body {
    background-color: transparent;
    color: rgb(255, 255, 255);
 }
+
 .banner img{
     width: 20%;
 }
+
 #imagenTecla{
     width: 5%;
 }
+
 .modal-overlay{
     position: fixed;
     top: 0;
@@ -273,6 +285,8 @@ body {
     transform: translate(-50%, -50%); 
 }
 
+
+/* Esta pantalla final de Game Over para cada vez que mueras */
 #gameOverScreen {
     display: none; /* Oculta la pantalla inicialmente */
     position: fixed;

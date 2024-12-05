@@ -22,10 +22,10 @@ require 'php/insertRegister.php';
             <button type="button" id="back-button"><img src="./LangingPagPhoto/flecha.png" alt=""
                     class="flechaVolver"></button>
 
-            <div class="cambioIdioma">
-                <button id="lang-es"><img src="./LangingPagPhoto/mundo.png" alt=""></button>
-                <button id="lang-ca"><img src="./LangingPagPhoto/bandera.png" alt=""></button>
-                <button id="lang-en"><img src="./LangingPagPhoto/reino-unido.png" alt=""></button>
+            <div class="idioma">
+                <img src="LangingPagPhoto/spain.png" alt="es">
+                <img src="LangingPagPhoto/catalan.png" alt="ca">
+                <img src="LangingPagPhoto/english.png" alt="en">
             </div>
         </nav>
 

@@ -3,7 +3,7 @@
 require_once './php/bd.php';
 
 // ID del videojuego (en este caso 2)
-$id_videojuego = 1;
+$id_videojuego = 3;
 
 // Obtener el ranking
 $ranking = obtenerRanking($pdo, $id_videojuego);
@@ -11,6 +11,7 @@ $ranking = obtenerRanking($pdo, $id_videojuego);
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +20,7 @@ $ranking = obtenerRanking($pdo, $id_videojuego);
 </head>
 
 <body>
-    <div class="body_scoreboard1">
+    <div class="body_scoreboard3">
         <nav class="navLogin">
             <nav class="navegador-scoreboard" id="navbar">
                 <div class="idiomas">
@@ -29,7 +30,7 @@ $ranking = obtenerRanking($pdo, $id_videojuego);
                         <h1>Cientifico en juego</h1>
                     </div>
                     <div class="ranking-juegos">
-    <form action="">
+                    <form action="">
         <label class="elegir-juego" for="elegir-juego"></label>
         <select name="elegir-juegos" id="lista-juegos" onchange="cambiarPagina()">
             <option value="scoreboard1.php" <?php echo ($id_videojuego == 1) ? 'selected' : ''; ?>>Tres Fuentes</option>
@@ -49,7 +50,7 @@ $ranking = obtenerRanking($pdo, $id_videojuego);
         </nav>
         <div class="container_scoreboard">
             <header class="header_scoreboard">
-                <h1 class="h1_scoreboard">Tres Fuentes</h1>
+                <h1 class="h1_scoreboard">Las cloacas</h1>
             </header>
 
             <div class="scroll-bg">

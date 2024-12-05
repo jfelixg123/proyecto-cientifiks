@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['username'])) {
-  // Si el usuario está logueado, mostrar la primera letra del nombre de usuario
+  // Sisadsasdsaario está logueado, mostrar la primera letra del nombre de usuario
   $username = $_SESSION['username']; // Obtener el nombre de usuario
   $firstLetter = strtoupper($username[0]); // Tomar la primera letra y ponerla en mayúsculas
 }
@@ -42,15 +42,11 @@ if (isset($_SESSION['username'])) {
       <div class="menu">
         <div class="opcion">
           <div class="rankingcontent">
-            <form action="scoreboard1.php" method="POST">
-            <div class="ranking">
-              <button type="submit">
-              <img src="LangingPagPhoto/Estrella_amarilla.png" alt="estrella">
-              </button>
-                
+            <a href="scoreboard1.php">
+              <div class="ranking">
+                <img src="LangingPagPhoto/Estrella_amarilla.png" alt="estrella">
               </div>
-            </form>
-           
+            </a>
           </div>
           <?php
           if (isset($_SESSION['username'])) {
