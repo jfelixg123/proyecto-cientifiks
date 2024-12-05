@@ -37,31 +37,6 @@ if (session_status() === PHP_SESSION_NONE) {
     }
     return $mensaje;
   }
-
-  
-function openDB()
-{
-    $servername = "localhost";
-    $username = "root";
-    $password = "mysql";
-    $dbname = "cientifiks"; 
-
-    try {
-        $conexion = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $conexion->exec("set names utf8");
-        return $conexion;
-    } catch (PDOException $e) {
-        echo "Error de conexión: " . $e->getMessage();
-        return null;
-    }
-}
-
-// Función para cerrar la conexión con la base de datos
-function closeDB($conexion)
-{
-    $conexion = null;
-}
   
 $host = 'localhost';
 $db = 'cientifiks';
@@ -73,5 +48,27 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     die("Error de conexión: " . $e->getMessage());
+}
+
+function obtenerRanking(PDO $pdo, int $id_videojuego): array
+{
+    try {
+        // Consulta para obtener el ranking sin alias
+        $stmt = $pdo->prepare("
+            SELECT puntuacion, username
+            FROM jugar
+            INNER JOIN usuario ON jugar.id_usuario = usuario.id_usuario
+            WHERE jugar.id_videojuego = :id_videojuego
+            ORDER BY puntuacion DESC
+            LIMIT 10
+        ");
+        $stmt->bindParam(':id_videojuego', $id_videojuego, PDO::PARAM_INT);
+        $stmt->execute();
+
+        // Devolver los resultados
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        die("Error al obtener los datos: " . $e->getMessage());
+    }
 }
 ?>

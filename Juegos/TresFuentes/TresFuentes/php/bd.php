@@ -1,6 +1,9 @@
 <?php
 session_start();
-
+/**
+ * Summary of openDB funcion para activar la base de datos
+ * @return PDO
+ */
 function openDB()
 {
   $servername = "localhost";
