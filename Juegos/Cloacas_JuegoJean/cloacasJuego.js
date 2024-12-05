@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
     const pisos = document.querySelectorAll('.tercerPisoIzquierda, .segundoPisoIzquierda, .primerPisoIzquierda, .tercerPisoDerecha, .segundoPisoDerecha, .primerPisoDerecha, .pasoPrimerPiso, .pasoSegundoPiso');
     const juegoContenedor = document.getElementById('juegoContenedorCentral');
-    const jumpHeight = 140;
+    const jumpHeight = 120;
     const gravity = 6;
     const maxVelocityX = 4;
     let velocityX = 0;
@@ -191,7 +191,6 @@ document.addEventListener("DOMContentLoaded", function () {
             abrirPuerta();
             console.log(`¡Has recolectado 4 llaves! Puntaje final: ${puntuacionFinal}`);
             enviarPuntos();
-
         }
     }
 
@@ -284,7 +283,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function multiplicadorPuntajeVidas() {
         if (vidas > 0) {
-
             puntuacionFinal = Math.floor(puntajeBase * Math.pow(1.5, vidas));
         } else {
             puntuacionFinal = 0;
@@ -301,61 +299,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 clearInterval(intervalo);
                 puntuacionFinal = 0;
                 alert("¡Juego terminado!", puntuacionFinal);
-
-            puntaje = Math.floor(puntajeBase * Math.pow(1.5, vidas - 1));  // Multiplicar puntaje por 1.5 por cada vida
-          } else {
-            puntaje = 0;
-          } 
-    }
-
-    function iniciarPuntaje(){
-    intervalo = setInterval(() => {
-      if (puntajeBase > 0) {    
-        puntajeBase--;  // Restar 1 al puntaje
-        console.log(puntajeBase);
-      } else {
-        clearInterval(intervalo);  // Detener el temporizador cuando llega a 0
-        puntaje = 0;
-        alert("¡Juego terminado!");
-      }
-    }, 1000);  // Intervalo de 1 segundo
-}
-
-    
-
-   // Función para mover una rata horizontalmente por su piso
-// Función para mover una rata horizontalmente por su piso
-function moverRataRebotando(rata, piso) {
-    let posicionX = 0;            // Comienza desde el borde izquierdo del piso
-    let velocidad = 1.5;            // Velocidad de movimiento
-    const anchoPiso = piso.getBoundingClientRect().width; // Ancho del piso
-    const anchoRata = rata.getBoundingClientRect().width; // Ancho de la rata
-    let direccionInvertida = false; // La rata comienza mirando a la derecha (false)
-
-    // Establecer la posición inicial de la rata
-    rata.style.left = `${posicionX}px`;
-    rata.style.transform = 'scaleX(-1)'; // Inicia mirando a la derecha
-
-    // Función de animación
-    function animacion() {
-        posicionX += velocidad; // Actualiza la posición
-
-        // Si la rata llega al extremo derecho del piso
-        if (posicionX + anchoRata >= anchoPiso) {
-            velocidad = -velocidad; // Cambia de dirección (hacia la izquierda)
-            posicionX = anchoPiso - anchoRata; // Ajusta la posición al extremo derecho
-            if (!direccionInvertida) {
-                rata.style.transform = 'scaleX(1)'; // Gira a la izquierda
-                direccionInvertida = true;
-            }
-        }
-        // Si la rata llega al extremo izquierdo del piso
-        else if (posicionX <= 0) {
-            velocidad = -velocidad; // Cambia de dirección (hacia la derecha)
-            posicionX = 0; // Ajusta la posición al extremo izquierdo
-            if (direccionInvertida) {
-                rata.style.transform = 'scaleX(-1)'; // Gira a la derecha
-                direccionInvertida = false;
             }
         }, 1000); 
     }
