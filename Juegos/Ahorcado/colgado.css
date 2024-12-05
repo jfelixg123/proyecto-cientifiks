@@ -32,31 +32,63 @@ body{
     font-family: "Poppins", sans-serif;
     font-weight: 500;
     font-style: normal;
+    
 }
 .letras {
-    margin: 5px 10px;
+    margin: 0px 10px;
 }
 
-input{
-    margin: 5px 10px;
-    background-color: #464646;
-    color: white;
-    border: none;
-    height: 30px;
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
-    font-style: normal;
-    font-size: 20px;
+.instruccion{
+    font-size: 30px;
+}
+
+
+.contenedor-dragNdrop {
+    
+    max-width: 375px;
+    height: 150px;
+    padding: 10px;
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start; /* Alineación al inicio para no centrar todo */
+    align-items: center;
     border-radius: 10px;
+    flex-wrap: wrap; /* Permite que las letras se acomoden en varias filas si es necesario */
 }
 
-input[type="text"]:focus {
-    outline: none;          /* Elimina el contorno predeterminado */
-    border: none;          /* Elimina el borde */
+.dragNdrop {
+    display: flex;
+    flex-wrap: wrap; /* Permite que las letras se ajusten a varias líneas */
+    justify-content: flex-start; /* Alineación horizontal de las letras */
+    align-items: center;
+    font-size: large;
+    overflow: hidden;
 }
 
-input:hover{
-    background-color: #5f5f5f;
+.letter {
+    background-color: #FF7C02;
+    color: white;
+    font-size: 20px;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    padding: 4px 13px;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s, transform 0.3s, color 0.3s, opacity 0.3s;
+    margin: 3px; /* Agregar margen entre las letras */
+}
+
+.letter:hover {
+    transform: scale(1.1); /* Añade un ligero escalado */
+    background-color: #ff9838;    
+}
+
+.letter.used-letter {
+    color: white !important; /* Cambia el color del texto */
+    background-color: #464646 !important; /* Cambia el fondo */
+    cursor: not-allowed;
+    opacity: 0.7;
 }
 
 
@@ -73,11 +105,6 @@ button{
     font-size: 30px;
 }
 
-#verificar{
-    margin-top: 15px;
-    margin-left: 10px;
-    transition: all 0.1s ease; /* Añade una transición suave */
-}
 
 #reiniciar-lose{
     position: absolute;
@@ -150,6 +177,8 @@ button:hover{
     border-radius: 25px;
     position: relative; 
 }
+
+
 
 #corazon1{
     width: 50px;
@@ -231,16 +260,18 @@ button:hover{
 }
 
 
-.contenedor1{
+.contenedor1 {
     background-color: #7F7F7F;
-    width: 94px ;
-    height: 60px;
-    border-radius: 0px 0px 12px 12px ;
+    width: 94px;
+    height: 60px; /* Esta altura será la altura original antes de la deformación */
+    border-radius: 0px 0px 12px 12px;
     position: absolute;
-    transform: translate(100%, 100%);
-    top: 33%; /* Centra verticalment */
-    left: -2.5%; /* Centra horitzontalment */
+    top: 43.7%; /* Centra verticalmente */
+    left: 12.5%; /* Centra horizontalmente */
+    transform-origin: top; /* Para que la deformación ocurra desde el borde superior */
+    transition: transform 1s ease; /* Transición de transformación (scaleY) durante 1 segundo */
 }
+
 
 .contenedor2{
     background-color: #7F7F7F;
@@ -249,8 +280,10 @@ button:hover{
     border-radius: 0px 0px 12px 12px ;
     position: absolute;
     transform: translate(100%, 100%);
-    top: 33%; /* Centra verticalment */
-    left: 21.7%; /* Centra horitzontalment */
+    top: 44.2%; /* Centra verticalment */
+    left: 36.7%; /* Centra horitzontalment */
+    transform-origin: top; /* Para que la deformación ocurra desde el borde superior */
+    transition: transform 1s ease; /* Transición de transformación (scaleY) durante 1 segundo */
 }
 
 .contenedor3{
@@ -260,8 +293,10 @@ button:hover{
     border-radius: 0px 0px 12px 12px ;
     position: absolute;
     transform: translate(100%, 100%);
-    top: 50.1%; /* Centra verticalment */
-    left: 44.12%; /* Centra horitzontalment */
+    top: 61.1%; /* Centra verticalment */
+    left: 59.12%; /* Centra horitzontalment */
+    transform-origin: top; /* Para que la deformación ocurra desde el borde superior */
+    transition: transform 1s ease; /* Transición de transformación (scaleY) durante 1 segundo */
 }
 
 .contenedor4{
@@ -271,8 +306,10 @@ button:hover{
     border-radius: 0px 0px 12px 12px ;
     position: absolute;
     transform: translate(100%, 100%);
-    top: 50.2%; /* Centra verticalment */
-    left: 21.7%; /* Centra horitzontalment */
+    top: 61.1%; /* Centra verticalment */
+    left: 36.7%; /* Centra horitzontalment */
+    transform-origin: top; /* Para que la deformación ocurra desde el borde superior */
+    transition: transform 1s ease; /* Transición de transformación (scaleY) durante 1 segundo */
 }
 
 .contenedor5{
@@ -282,8 +319,10 @@ button:hover{
     border-radius: 0px 0px 12px 12px ;
     position: absolute;
     transform: translate(100%, 100%);
-    top: 50.2%; /* Centra verticalment */
-    left: -2.8%; 
+    top: 61.1%; 
+    left: 12.3%;
+    transform-origin: top; /* Para que la deformación ocurra desde el borde superior */
+    transition: transform 1s ease; /* Transición de transformación (scaleY) durante 1 segundo */ 
 }
 
 .contenedor6{
@@ -293,8 +332,10 @@ button:hover{
     border-radius: 0px 0px 12px 12px ;
     position: absolute;
     transform: translate(100%, 100%);
-    top: 66%; 
-    left: -2.8%; 
+    top: 77%; 
+    left: 12.3%; 
+    transform-origin: top; /* Para que la deformación ocurra desde el borde superior */
+    transition: transform 1s ease; /* Transición de transformación (scaleY) durante 1 segundo */
 }
 
 .contenedor7{
@@ -304,8 +345,10 @@ button:hover{
     border-radius: 0px 0px 12px 12px ;
     position: absolute;
     transform: translate(100%, 100%);
-    top: 66%; 
-    left: 21.7%; 
+    top: 77%; 
+    left: 36.7%;
+    transform-origin: top; /* Para que la deformación ocurra desde el borde superior */
+    transition: transform 1s ease; /* Transición de transformación (scaleY) durante 1 segundo */ 
 }
 
 .tuberia_horizontal1{
@@ -382,20 +425,20 @@ button:hover{
 .tuberia_vertical1{
     background-color: #7F7F7F;
     width: 9.8px ;
-    height: 125px;
+    height: 56.5px;
     position: absolute;
     transform: translate(100%, 100%);
-    top: 26.4%; 
+    top: 40.5%; 
     left: 64.21%; 
 }
 
 .tuberia_vertical2{
     background-color: #7F7F7F;
     width: 9.8px ;
-    height: 88px;
+    height: 28px;
     position: absolute;
     transform: translate(100%, 100%);
-    top: 55.4%; 
+    top: 66.8%; 
     left: 17.21%; 
 }
 
@@ -408,3 +451,4 @@ button:hover{
     top: -9.4%; 
     left: 77.55%; 
 }
+
