@@ -24,34 +24,39 @@
         <div class="container_colgado">
 
             <div class="col_colgado1">
-                
+
                 <div class="depuradora">
-                    
-                    <img id="depuradora" src="images/depuradora.png" alt="Depuradora"/>
-                    
+
+                    <img id="depuradora" src="images/depuradora.png" alt="Depuradora" />
+
                     <div class="vidas">
-                        <img id="corazon1" src="./images/heartPablo.png" alt="Corazon">
-                        <img id="corazon2" src="./images/heartPablo.png" alt="Corazon">
-                        <img id="corazon3" src="./images/heartPablo.png" alt="Corazon">
-                        <img id="corazon4" src="./images/heartPablo.png" alt="Corazon">
-                        <img id="corazon5" src="./images/heartPablo.png" alt="Corazon">
+                        <img id="corazon5" src="images/heartPablo.png" alt="Corazon">
+                        <img id="corazon4" src="images/heartPablo.png" alt="Corazon">
+                        <img id="corazon3" src="images/heartPablo.png" alt="Corazon">
+                        <img id="corazon2" src="images/heartPablo.png" alt="Corazon">
+                        <img id="corazon1" src="images/heartPablo.png" alt="Corazon">
                     </div>
                     <div class="vidas-perdidas">
-                        <img id="corazon-roto1" style="display: none;" src="/Ahorcado/images/brokenHeart.png" alt="Corazon">
-                        <img id="corazon-roto2" style="display: none;" src="/Ahorcado/images/brokenHeart.png" alt="Corazon">
-                        <img id="corazon-roto3" style="display: none;" src="/Ahorcado/images/brokenHeart.png" alt="Corazon">
-                        <img id="corazon-roto4" style="display: none;" src="/Ahorcado/images/brokenHeart.png" alt="Corazon">
-                        <img id="corazon-roto5" style="display: none;" src="/Ahorcado/images/brokenHeart.png" alt="Corazon">
+                        <img id="corazon-roto5" style="display: none;" src="images/brokenHeart.png"
+                            alt="Corazon">
+                        <img id="corazon-roto4" style="display: none;" src="images/brokenHeart.png"
+                            alt="Corazon">
+                        <img id="corazon-roto3" style="display: none;" src="images/brokenHeart.png"
+                            alt="Corazon">
+                        <img id="corazon-roto2" style="display: none;" src="images/brokenHeart.png"
+                            alt="Corazon">
+                        <img id="corazon-roto1" style="display: none;" src="images/brokenHeart.png"
+                            alt="Corazon">
                     </div>
                     <div class="contenedores">
-                        
-                        <div class="contenedor1"></div>
-                        <div class="contenedor2"></div>
-                        <div class="contenedor3"></div>
-                        <div class="contenedor4"></div>
-                        <div class="contenedor5"></div>
-                        <div class="contenedor6"></div>
-                        <div class="contenedor7"></div>
+
+                        <div class="contenedor1" style="transform: scaleY(1);"></div>
+                        <div class="contenedor2" style="transform: scaleY(1);"></div>
+                        <div class="contenedor3"style="transform: scaleY(1);"></div>
+                        <div class="contenedor4"style="transform: scaleY(1);"></div>
+                        <div class="contenedor5"style="transform: scaleY(1);"></div>
+                        <div class="contenedor6"style="transform: scaleY(1);"></div>
+                        <div class="contenedor7"style="transform: scaleY(1);"></div>
                     </div>
                     <div class="tuberias">
                         <div class="tuberia_horizontal1"></div>
@@ -66,30 +71,35 @@
                         <div class="tuberia_vertical2"></div>
                         <div class="tuberia_vertical3"></div>
                     </div>
-                    
+
                     <div class="resultado"></div>
-                    <button id="reiniciar-lose" style="display: none;">Reiniciar juego</button> <!-- Oculto inicialmente -->
+                    <button id="reiniciar-lose" style="display: none;">Reiniciar juego</button>
+                    <!-- Oculto inicialmente -->
                     <button id="continuar" style="display: none;">Continuar</button> <!-- Oculto inicialmente -->
+                    <button id="reiniciar-win" style="display: none;">Reiniciar</button>
+
                 </div>
-                
+
             </div>
             <div class="col_colgado">
                 <div class="Titulo">
                     <h1>LA DEPURADORA</h1>
                 </div>
 
-                <div class="letras">
-                    <p class="palabraEscondida"></p>
-                    <p>Introduce una letra</p>
+                 <div class="letras">
+                    <p class="palabraEscondida" id="dropzone"></p>
+                    <p class="instruccion">Arrastra una letra</p>
                 </div>
-                <div class="inputs">
-                    <input type="text"><br />
-
-                </div>
-                <div class="boton">
+                
+                <!-- <div class="boton">
                     <button id="verificar">Verificar letra</button>
                     
+                </div>  -->
+                <div class="contenedor-dragNdrop">
+                    <div class="dragNdrop" id="dragNdrop"></div>
                 </div>
+                
+                
             </div>
         </div>
     </div>
