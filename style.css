@@ -622,9 +622,6 @@ footer{
 }
 
 @media (max-width: 576px) {
-    .scoreboard{
-        background-color: red;
-    }
     .navegador {
         height: 100px;
         font-size: 12px;
@@ -1107,100 +1104,149 @@ section:hover {
 
     /* scoreboard movil */
 
-    .titulo h1{
+    .scroll-bg {
+        top: 35%;
+        left: 15%;
+        width: 400px;
+        height: 450px;
+    }
+
+    .scroll-div {
+        max-height: 450px;
+        width: 100%;
+        max-width: 400px;
+
+    }
+
+    .titulo h1 {
         position: absolute;
         top: 80%;
         left: 20%;
         font-size: 25px;
-        
+
     }
-    
+
 
     .ranking-juegos #lista-juegos {
         margin-top: 10px;
         margin-right: 5px;
         position: absolute;
         top: 45%;
-        left: 60.5% ;
+        left: 60.5%;
         font-size: 15px;
     }
 
-    
+
     .idiomascoreboard {
         position: absolute;
         top: 220%;
         left: 60%;
     }
-      
-    .header_scoreboard{
+    .idiomascoreboard img{
+        width: 45px;
+    }
+
+    .header_scoreboard {
         position: absolute;
         top: 20%;
         left: -2%;
-        width: 25px;
+       
     }
 
-    .header_scoreboard h1{
+    .header_scoreboard h1 {
         font-size: 25px;
     }
 
-    .scoreboard{
+    .scoreboard {
         position: absolute;
-        top: 30%;
-        left: auto;        
-        border-radius: 10px;
-        max-width: 400px;
-        
+        top: 22%;
+        height: 450px;
+        width: 500px;
     }
 
     .ranking_scoreboard {
         position: absolute;
-        top: 15%;
-        left: 3% ;
+        top: 14%;
+        left: 2.5%;
         padding: 5px;
-        width: 50px;
-          
-        
-    }       
+        height: auto;
+        max-height: 100%;
+        overflow: hidden;
+        overflow-y: scroll;
 
-    
+
+    }
+
+    .ranking_scoreboard::-webkit-scrollbar {
+        width: 20px;
+        height: 12px;
+
+    }
+
+    .ranking_scoreboard::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+
+    }
+
+    .ranking_scoreboard::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 10px;
+
+    }
+
+    .ranking_scoreboard::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+
+
+
     .pastilla-nombre,
     .pastilla-puntos {
         margin: 5px 5px;
         text-align: center;
         height: 50px;
-       
+
     }
 
-    .pastilla-posicion{
+    .pastilla-nombre input,
+    .pastilla-puntos input {
+        font-size: 13px;
+    }
+
+
+
+    .pastilla-posicion {
         width: 70px;
     }
 
-    .pastilla-nombre input{        
+    .pastilla-nombre input {
         width: 80px;
-        
+
     }
-    
-    .pastilla-puntos input{
+
+    .pastilla-puntos input {
         width: 50px;
-        
+
+
     }
-    
+
 
     .rank-name,
-    .rank-score  {
-        
+    .rank-score {
+
         font-size: 12px;
         padding: 0px;
         margin: 0px 0px 0px 0px;
     }
 
     .rank-number {
-        font-size: 20px;
+        font-size: 18px;
     }
 
-    
 
-    
+
+
     /* scoreboard movil */
 
 }

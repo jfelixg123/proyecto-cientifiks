@@ -42,8 +42,8 @@ img{
     height: 30px;
 }
 #game-container {
-    width: 1500px;
-    height: 600px;     
+    width: 1200px;
+    height: 475px;     
     overflow: hidden;     
     position: relative;   
     background-image: url(./ImagenJuego/Warm_Ocean.png);
@@ -51,16 +51,16 @@ img{
 }
 #game {
     display: grid;
-    grid-template-rows: repeat(30, 40px);    
-    grid-template-columns: repeat(50, 40px); 
+    grid-template-rows: repeat(30, 24px);    
+    grid-template-columns: repeat(50, 24px); 
 }
 .exit {
     background-image: url(./ImagenJuego/boat.png);
     background-size: cover;
 }
 .cell {
-    width: 40px;   /* Tamaño de la celda */
-    height: 40px;  /* Tamaño de la celda */
+    width: 24px;   /* Tamaño de la celda */
+    height: 24px;  /* Tamaño de la celda */
 }
 
 .wall {
@@ -318,49 +318,49 @@ img{
     padding: 10px 20px;
     margin: 5px;
     border: none;
-    color: rgb(197, 43, 43);
+    color: rgb(0, 0, 0);
     font-size: 16px;
     cursor: pointer;
     border-radius: 5px;
 }
 
 .popup button:hover {
-    background-color: #972c90;
+    background-color:#4CAF50;
 }
 
 
 
-/* Definición de la animación */
+
 @keyframes rotate {
     0% {
-        transform: rotate(0deg); /* Comienza en 0 grados */
+        transform: rotate(0deg); 
     }
     40% {
-        transform: rotate(180deg); /* Gira a 180 grados */
+        transform: rotate(180deg); 
     }
     45% {
-        transform: rotate(180deg); /* Mantiene en 180 grados durante 1 segundo */
+        transform: rotate(180deg); 
     }
     70% {
-        transform: rotate(360deg); /* Gira a 360 grados */
+        transform: rotate(360deg); 
     }
     100% {
-        transform: rotate(360deg); /* Completa la rotación */
+        transform: rotate(360deg); 
     }
 }
-@media (max-width: 1700px) {
+/* @media (max-width: 1700px) {
     #game-container{
         width: 1400px;
         height: 560px;
     }
     .cell {
-        width: 28px;   /* Tamaño de la celda */
-        height: 28px;  /* Tamaño de la celda */
+        width: 28px;  
+        height: 28px; 
     }
     #game {
         display: grid;
-        grid-template-rows: repeat(30, 28px);    /* Cambia a 30 filas */ 
-        grid-template-columns: repeat(50, 28px); /* Cambia a 30 columnas */
+        grid-template-rows: repeat(30, 28px); 
+        grid-template-columns: repeat(50, 28px);
     }
     .navegador{
         width: 1200;
@@ -382,13 +382,13 @@ img{
         height: 480px;
     }
     .cell {
-        width: 24px;   /* Tamaño de la celda */
-        height: 24px;  /* Tamaño de la celda */
+        width: 24px; 
+        height: 24px;
     }
     #game {
         display: grid;
-        grid-template-rows: repeat(30, 24px);    /* Cambia a 30 filas */ 
-        grid-template-columns: repeat(50, 24px); /* Cambia a 30 columnas */
+        grid-template-rows: repeat(30, 24px);  
+        grid-template-columns: repeat(50, 24px);
     }
     .navegador{
         width: 700px;
@@ -409,13 +409,13 @@ img{
         height: 440px;
     }
     .cell {
-        width: 22px;   /* Tamaño de la celda */
-        height: 22px;  /* Tamaño de la celda */
+        width: 22px;
+        height: 22px;
     }
     #game {
         display: grid;
-        grid-template-rows: repeat(30, 22px);    /* Cambia a 30 filas */ 
-        grid-template-columns: repeat(50, 22px); /* Cambia a 30 columnas */
+        grid-template-rows: repeat(30, 22px);
+        grid-template-columns: repeat(50, 22px);
     }
     .navegador{
         width: 700px;
@@ -429,4 +429,4 @@ img{
         width: 25px;
         height: 25px;
     }
-}
+} */

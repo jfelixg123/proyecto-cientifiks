@@ -53,13 +53,13 @@ try {
 function obtenerRanking(PDO $pdo, int $id_videojuego): array
 {
     try {
-        // Consulta para obtener el ranking
+        // Consulta para obtener el ranking sin alias
         $stmt = $pdo->prepare("
-            SELECT j.puntuacion, u.username
-            FROM jugar j
-            INNER JOIN usuario u ON j.id_usuario = u.id_usuario
-            WHERE j.id_videojuego = :id_videojuego
-            ORDER BY j.puntuacion DESC
+            SELECT puntuacion, username
+            FROM jugar
+            INNER JOIN usuario ON jugar.id_usuario = usuario.id_usuario
+            WHERE jugar.id_videojuego = :id_videojuego
+            ORDER BY puntuacion DESC
             LIMIT 10
         ");
         $stmt->bindParam(':id_videojuego', $id_videojuego, PDO::PARAM_INT);

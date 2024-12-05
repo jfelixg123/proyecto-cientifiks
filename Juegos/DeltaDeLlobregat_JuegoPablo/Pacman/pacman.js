@@ -360,7 +360,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         document.getElementById(exitButtonId).addEventListener('click', () => {
-            window.location.href = '../index.php';
+            window.location.href = '../../../index.php';
         });
         guardarScore();
     }
