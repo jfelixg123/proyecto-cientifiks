@@ -6,56 +6,133 @@
     <title>Galería de Juegos</title>
     <link href="./style.css" rel="stylesheet" type="text/css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <nav class="navLogin2">
+        <a href="index.php">        
+            <button type="button" id="back-button">
+                <img src="./LangingPagPhoto/flechascore.png" alt=""
+                    class="flechaVolverscoreboard2">
+            </button>
+        </a>
+        <div class="cambioIdioma">
+            <button><img src="./LangingPagPhoto/mundo.png" alt="es"></button>
+            <button><img src="./LangingPagPhoto/bandera.png" alt="ca"></button>
+            <button><img src="./LangingPagPhoto/reino-unido.png" alt="en"></button>
+        </div>
+    </nav>
     <section>
         <div class="contenedor">
             <img src="LangingPagPhoto/juegoJordiCelemin.png" alt="Juego 1">
             <div class="overlay">
-                <h2>Las Tres Fuentes</h2>
-                <p>En el patio salen las tres fuentes en este orden: azul, amarilla y roja. 
+                <h2 data-trad="titulo1">Las Tres Fuentes</h2>
+                <p data-trad="descripcion1">En el patio salen las tres fuentes en este orden: azul, amarilla y roja. 
                     Al fondo se ve una escalera de colores que sube al patio de infantil. 
                     Debajo de las fuentes hay un arenal y 2 peldaños.</p>
-                <a href="./Juegos/TresFuentes/TresFuentes/tresfuentes.html" class="play-btn">JUGAR</a>
+                <a href="./Juegos/TresFuentes/TresFuentes/tresfuentes.html" class="play-btn" data-trad="jugar">JUGAR</a>
             </div>
         </div>
 
         <div class="contenedor">
-            <img src="LangingPagPhoto/deltascore.png" alt="Juego 2">
+            <img src="LangingPagPhoto/Warm_Ocean.png" alt="Juego 2">
             <div class="overlay">
-                <h2>Delta Del Llobregat</h2>
-                <p> En este escenario controlas a Anna donde tendras que ir sumergido bajo y limpiar el petroleo que los barcos han soltado, ten cuidado con los barcos porque no te permitiran que los limpies, por eso tendras potenciadores que te benefician. Al limpiar todo el tesoro tendras que volver al punto de inicio</p>
-                <a href="./Juegos/DeltaDeLlobregat_JuegoPablo/Pacman/pacman.html" class="play-btn">JUGAR</a>
+                <h2 data-trad="titulo2">Delta Del Llobregat</h2>
+                <p data-trad="descripcion2"> En este escenario controlas a Anna donde tendras que ir sumergido bajo y limpiar el petroleo que los barcos han soltado, ten cuidado con los barcos porque no te permitiran que los limpies, por eso tendras potenciadores que te benefician. Al limpiar todo el tesoro tendras que volver al punto de inicio</p>
+                <a href="./Juegos/DeltaDeLlobregat_JuegoPablo/Pacman/pacman.html" class="play-btn" data-trad="jugar">JUGAR</a>
             </div>
         </div>
 
         <div class="contenedor">
             <img src="LangingPagPhoto/fondo-cloacas.jpg" alt="Juego 3">
             <div class="overlay">
-                <h2>Las Cloacas</h2>
-                <p> En este escenario el personaje escogido tendrá que abrir todas las llaves de paso
+                <h2 data-trad="titulo3">Las Cloacas</h2>
+                <p data-trad="descripcion3"> En este escenario el personaje escogido tendrá que abrir todas las llaves de paso
                     esquivando a las ratas que le quitan vida, tendrá que esquivar diferentes objetos
                     como charcos que le hará ir más lento, basura que no le dejara pasar.
                 </p>
-                <a href="./Juegos/Cloacas_JuegoJean/cloacas.html" class="play-btn">JUGAR</a>
+                <a href="./Juegos/Cloacas_JuegoJean/Cloacas_JuegoJean/cloacas.html" class="play-btn" data-trad="jugar">JUGAR</a>
             </div>
         </div>
 
         <div class="contenedor">
             <img src="Juegos/Ahorcado/images/alcantarillas.png" alt="Juego 4">
             <div class="overlay">
-                <h2>La Depuradora</h2>
-                <p> En este escenario habrá depositos, tanques y decantadores de agua sucia
+                <h2 data-trad="titulo4">La Depuradora</h2>
+                <p data-trad="descripcion4"> En este escenario habrá depositos, tanques y decantadores de agua sucia
                     con toallitas de vàter.
 
                     Tu como protagonista te encargaras de que este no siga ocurriendo.
                     Arrastra las letras naranjas hacia el espacio con texto vacio para
                     completar la palabra oculta.</p>
-                <a href="./Juegos/Ahorcado/colgado.html" class="play-btn">JUGAR</a>
+                <a href="./Juegos/Ahorcado/colgado.html" class="play-btn" data-trad="jugar">JUGAR</a>
             </div>
         </div>
     </section>
+    
+    <script>
+        const traducciones = {
+        es: {
+            titulo1: "Las Tres Fuentes",
+            descripcion1: "En el patio salen las tres fuentes en este orden: azul, amarilla y roja. Al fondo se ve una escalera de colores que sube al patio de infantil. Debajo de las fuentes hay un arenal y 2 peldaños.",
+            titulo2: "Delta Del Llobregat",
+            descripcion2: "En este escenario controlas a Anna donde tendras que ir sumergido bajo y limpiar el petroleo que los barcos han soltado, ten cuidado con los barcos porque no te permitiran que los limpies, por eso tendras potenciadores que te benefician. Al limpiar todo el tesoro tendras que volver al punto de inicio.",
+            titulo3: "Las Cloacas",
+            descripcion3: "En este escenario el personaje escogido tendrá que abrir todas las llaves de paso esquivando a las ratas que le quitan vida, tendrá que esquivar diferentes objetos como charcos que le hará ir más lento, basura que no le dejara pasar.",
+            titulo4: "La Depuradora",
+            descripcion4: "En este escenario habrá depositos, tanques y decantadores de agua sucia con toallitas de vàter. Tu como protagonista te encargaras de que este no siga ocurriendo. Arrastra las letras naranjas hacia el espacio con texto vacio para completar la palabra oculta.",
+            jugar: "JUGAR"
+        },
+        ca: {
+            titulo1: "Les Tres Fonts",
+            descripcion1: "Al pati surten les tres fonts en aquest ordre: blau, groc i vermell. Al fons es veu una escala de colors que puja al pati d'infantil. Davant de les fonts hi ha una zona de sorra i 2 graons.",
+            titulo2: "Delta Del Llobregat",
+            descripcion2: "En aquest escenari controles a Anna, on hauràs d'anar submergida netejant el petroli que els vaixells han deixat anar. Tingues cura amb els vaixells perquè no et permetran netejar-lo. Per això, tindràs potenciadors que t'ajudaran. Quan netegis tot el tresor hauràs de tornar al punt d'inici.",
+            titulo3: "Les Clavagueres",
+            descripcion3: "En aquest escenari el personatge escollit haurà d'obrir totes les claus de pas esquivant les rates que li treuen vida. També haurà d'esquivar objectes com tolls que faran que vagi més lent, i escombraries que no el deixaran passar.",
+            titulo4: "La Depuradora",
+            descripcion4: "En aquest escenari hi haurà dipòsits, dipòsits i decantadors d'aigua bruta amb tovallons de vàter. Tu com a protagonista t'encarregaràs que això no continuï passant. Arrossega les lletres taronges a l'espai de text buit per completar la paraula oculta.",
+            jugar: "JUGAR"
+        },
+        en: {
+            titulo1: "The Three Fountains",
+            descripcion1: "In the yard, the three fountains appear in this order: blue, yellow, and red. In the background, there is a colorful staircase that leads to the kindergarten yard. Below the fountains, there is a sandy area and 2 steps.",
+            titulo2: "Delta of the Llobregat",
+            descripcion2: "In this scenario, you control Anna, where you must dive and clean the oil spilled by the ships. Be careful with the ships because they will not allow you to clean it. That's why you will have boosters to help you. Once you clean all the treasure, you must return to the starting point.",
+            titulo3: "The Sewers",
+            descripcion3: "In this scenario, the chosen character will have to open all the valves while avoiding the rats that take away life. The character will also have to dodge different objects, such as puddles that slow them down, and trash that will block their path.",
+            titulo4: "The Purifier",
+            descripcion4: "In this scenario, there will be tanks, tanks, and clarifiers of dirty water with toilet wipes. You, as the protagonist, will be in charge of making sure this doesn't continue. Drag the orange letters to the empty text space to complete the hidden word.",
+            jugar: "PLAY"
+        }
+    };
+
+    let idiomaActual = 'es'; // Idioma predeterminado
+
+    // Cambia el idioma y actualiza el contenido
+    function cambiarIdioma(idioma) {
+        idiomaActual = idioma;
+        actualizarIdioma();
+    }
+
+    // Actualiza el contenido de la página según el idioma seleccionado
+    function actualizarIdioma() {
+        const elementos = document.querySelectorAll('[data-trad]');
+        elementos.forEach(elemento => {
+            const traduccion = traducciones[idiomaActual][elemento.getAttribute('data-trad')];
+            if (traduccion) {
+                elemento.textContent = traduccion;
+            }
+        });
+    }
+
+    // Eventos para cambiar idioma al hacer clic en las banderas
+    document.querySelector('.cambioIdioma').addEventListener('click', (e) => {
+        if (e.target.alt) { // Asegúrate de que clickeas una imagen
+            cambiarIdioma(e.target.alt);
+        }
+    });
+    </script>
 </body>
 </html>

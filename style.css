@@ -115,12 +115,19 @@ p{
     font-family: "Bebas Neue", sans-serif ;
     font-weight: 400;
     font-style: normal;
-    
+    transition: all 0.3s ease;
 }
 .botones a{
     text-decoration:none;
     color: white;
 }
+
+.botones:hover {
+    transform: scale(1.1); /* Agrandar el botón */
+    background-color: #FF9B4D; /* Color de fondo más claro */
+    cursor: pointer; /* Cambiar el cursor al hacer hover */
+}
+
 
 .idiomas {
     display: flex;
@@ -380,6 +387,9 @@ p{
     pointer-events: none; /* No interfiere con el movimiento del mouse */
     transition: opacity 0.2s ease;
     z-index: 1;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .Cofre {
@@ -721,7 +731,6 @@ footer{
 
     
 }
-
 /* style j.Pera  style J.Salamin Menu Juego*/
 body{
     background-color: #CCE2EB;
@@ -729,6 +738,41 @@ body{
     padding: 0px;
 }
 
+.navLogin2 {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 130px; 
+    z-index: 1000;
+    background-color: rgba(75, 75, 75, 0.8); 
+    display: flex; 
+    justify-content: space-between;
+    align-items: center; 
+    padding: 0 20px; 
+    backdrop-filter: blur(10px); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    
+}
+
+.flechaVolverscoreboard2 {
+    transform: rotate(630deg);
+    cursor: pointer;
+    position: absolute;
+    top: 35%;
+    left: 2%;
+}
+
+
+.navLogin2 img{
+    width: 50px;
+}
+
+.cambioIdioma{
+    position: absolute;
+    top: -10% ;
+    left: 89%;
+}
 
 
 section {
@@ -768,7 +812,25 @@ section:hover {
     filter: contrast(120%);
     transform: scale(1.3);
 }
-
+.play-btn{
+    width: 100px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f78821;
+    border: solid #f78821 1px;
+    border-radius: 10px;
+    transition: background-color 0.3                                                                                                                                                                     s ease;
+    font-family: "Bebas Neue", sans-serif ;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 30px;
+}
+.play-btn:hover {
+    background-color: transparent; /* Fondo transparente al hacer hover */
+    color: #f78821;
+}
 .overlay {
     position: absolute;
     top: 0;
@@ -809,23 +871,6 @@ section:hover {
     max-width: 250px;
 }
 
-.play-btn {
-    background-color: #FF7C02;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    font-size: 30px;
-    border-radius: 25px;
-    transition: 0.3s ease;
-    font-family: "Bebas Neue", sans-serif;
-    font-weight: 400;
-}
-
-.play-btn:hover {
-    background-color: #f78821;
-    transform: scale(1.2);
-}
-
 /*style j.Pera  style J.Salamin Scoreboard*/
 
 .body_scoreboard1 {
@@ -847,7 +892,7 @@ section:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('LangingPagPhoto/deltascore.png') no-repeat center center fixed;
+    background: url('LangingPagPhoto/Warm_Ocean.png') no-repeat center center fixed;
     background-size: cover;
     filter: saturate(0.8);
     z-index: -1; /* Asegúrate de que quede detrás del contenido */
@@ -855,24 +900,24 @@ section:hover {
 
 .body_scoreboard3 {
     font-family: "Bebas Neue", sans-serif;
-    background: url('Juegos/Ahorcado/Ahorcado/images/alcantarillas.png') no-repeat center center fixed;
+    background: url('Juegos/Ahorcado/images/alcantarillas.png') no-repeat center center fixed;
     background-size: cover;
     
 }
 
 .body_scoreboard4 {
     font-family: "Bebas Neue", sans-serif;
-    background: url('Juegos/Ahorcado/Ahorcado/images/alcantarillas.png') no-repeat center center fixed;
+    background: url('LangingPagPhoto/fondo-cloacas.jpg') no-repeat center center fixed;
     background-size: cover;
     
 }
 
 .flechaVolverscoreboard {
     transform: rotate(630deg);
-    margin-top: 50px;
+    
     cursor: pointer;
     position: absolute;
-    top: 20%;
+    top: 80%;
     left: 2%;
 }
 
@@ -906,11 +951,16 @@ section:hover {
 }
 
 .titulo{
-    color: white;
+    
     margin-top: 10px;
-    font-size: 40px;
+    font-size: 50px;
 }
     
+.titulo h1{
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 700;
+   color: white;
+}
 .ranking-juegos{
     display: flex;
     justify-content: center;
@@ -929,11 +979,16 @@ section:hover {
     color: white;
     padding: 8px;
     background-color: #3484CE;
-    border: 1px solid #ccc;
     border-radius: 5px;
     outline: none;
     transition: border-color 0.3s;
 }
+
+#lista-juegos > option{
+    font-family: "Bebas Neue", sans-serif!important;
+    font-weight: 700;
+}
+
 
 .ranking-juegos #lista-juegos:hover {
     background-color: #f78821;
@@ -945,12 +1000,14 @@ section:hover {
     position: absolute;
     margin-left: 10px;
     top: 85%;
+    
 }
 .elegir-juego{
     font-family: "Bebas Neue", sans-serif;
     font-weight: 400;
     color: white;
     font-size: 40px;
+    
 }
 
 
@@ -977,6 +1034,8 @@ section:hover {
     padding: 5px;
     width: 500px;
     border-radius: 10px;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 700;
     
 }
 
@@ -987,6 +1046,8 @@ section:hover {
     border-radius: 10px;
     
 }
+
+
 
 .scroll-div{   
     overflow: hidden;
@@ -1031,6 +1092,7 @@ section:hover {
 .ranking_scoreboard {
     display: flex;
     flex-direction: column;
+    color: white;
     
 }
 
@@ -1078,6 +1140,35 @@ section:hover {
     margin: 0px 15px;
 }
 
+
+.pastilla-nombre,
+.pastilla-puntos {
+    margin: 5px 5px;
+    text-align: center;
+    height: 50px; 
+
+}
+
+.pastilla-nombre input,
+.pastilla-puntos input {
+    font-size: 13px;
+    border: none;;
+    
+
+}
+input[disabled] {
+    font-family: "Bebas Neue", sans-serif ;
+    font-weight: 400;
+    font-style: normal;
+    opacity: 1; /* Evita que se vea transparente */
+    color: #000; /* Asegúrate de que el texto sea visible */
+    font-size: 16px; /* Cambia el tamaño del texto */
+    text-align: center; /* Opcional: centra el texto */
+    padding: 2px 0; /* Ajusta el espacio superior e inferior */
+    line-height: 1; /* Ajusta la altura de la línea para controlar la verticalidad */
+}
+
+
 .rank-number {
     font-size: 24px;
     font-weight: bold;
@@ -1086,169 +1177,141 @@ section:hover {
     
 }
 
-.rank-name {
+.rank-name,
+.rank-score {
+    display: inline-block;
     width: 200px;
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+    border: none; /* Elimina el borde */
+    text-align: center;
+    font-size: 20px;
+    line-height: 1;
+    background-color: transparent; /* Fondo transparente */
+    color: black; /* Cambia el color del texto a negro */
+    font-family: "Bebas Neue", sans-serif; /* Tipografía Bebas Neue */
+    font-weight: 800; /* Peso de la fuente */
+    font-style: normal; /* Estilo de la fuente */
 }
-.rank-score{
-    width: 200px;
-     margin-left: 10px;
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid #ccc; 
-}
+
 
 @media (max-width: 576px) {
 
     /* scoreboard movil */
-
     .scroll-bg {
         top: 35%;
         left: 15%;
-        width: 400px;
+        width: 300px; /* Reducido el ancho para móvil */
         height: 450px;
     }
 
     .scroll-div {
         max-height: 450px;
         width: 100%;
-        max-width: 400px;
-
+        max-width: 300px; /* Ajustar el tamaño para móvil */
     }
 
     .titulo h1 {
         position: absolute;
-        top: 80%;
-        left: 20%;
-        font-size: 25px;
-
+        top: 100%;
+        left: 25%;
+        font-size: 20px; /* Reducir el tamaño del texto */
     }
-
 
     .ranking-juegos #lista-juegos {
         margin-top: 10px;
         margin-right: 5px;
         position: absolute;
-        top: 45%;
+        top: 68%;
         left: 60.5%;
-        font-size: 15px;
+        font-size: 12px; /* Reducir el tamaño del texto */
     }
-
 
     .idiomascoreboard {
         position: absolute;
         top: 220%;
         left: 60%;
     }
-    .idiomascoreboard img{
-        width: 45px;
+
+    .idiomascoreboard img {
+        width: 35px; /* Reducir el tamaño de la imagen */
     }
 
     .header_scoreboard {
         position: absolute;
         top: 20%;
         left: -2%;
-       
     }
 
     .header_scoreboard h1 {
-        font-size: 25px;
+        font-size: 20px; /* Reducir el tamaño del texto */
     }
 
     .scoreboard {
         position: absolute;
-        top: 22%;
+        top: 15%;
+        left: -4%;
         height: 450px;
-        width: 500px;
+        width: 350px; /* Ajustar el tamaño para móvil */
+    }
+    .ranking_scoreboard{
+        width: 150px;
     }
 
-    .ranking_scoreboard {
+    .ranking_scoreboard p {
         position: absolute;
-        top: 14%;
-        left: 2.5%;
-        padding: 5px;
-        height: auto;
-        max-height: 100%;
-        overflow: hidden;
-        overflow-y: scroll;
-
-
+        top: 15%;
+        right: 15%;
     }
 
     .ranking_scoreboard::-webkit-scrollbar {
-        width: 20px;
-        height: 12px;
-
+        width: 15px; /* Reducir el tamaño de la scrollbar */
+        height: 10px;
     }
 
     .ranking_scoreboard::-webkit-scrollbar-track {
         background: #f1f1f1;
         border-radius: 10px;
-
     }
 
     .ranking_scoreboard::-webkit-scrollbar-thumb {
         background: #888;
         border-radius: 10px;
-
     }
 
     .ranking_scoreboard::-webkit-scrollbar-thumb:hover {
         background: #555;
     }
 
-
-
+    /* Ajuste de los elementos ranking */
     .pastilla-nombre,
     .pastilla-puntos {
+        display: flex;
+        width: 75px;
         margin: 5px 5px;
         text-align: center;
-        height: 50px;
+        justify-content: center;
 
     }
 
     .pastilla-nombre input,
     .pastilla-puntos input {
-        font-size: 13px;
+        font-size: 12px; /* Reducir el tamaño de los textos */
+        border: none;
     }
-
-
-
-    .pastilla-posicion {
-        width: 70px;
-    }
-
-    .pastilla-nombre input {
-        width: 80px;
-
-    }
-
-    .pastilla-puntos input {
-        width: 50px;
-
-
-    }
-
 
     .rank-name,
     .rank-score {
-
-        font-size: 12px;
-        padding: 0px;
-        margin: 0px 0px 0px 0px;
+        width: 40px;
+        font-size: 15px; /* Reducir tamaño de texto para el nombre y puntuación */
+        padding-right: 22px;
+        padding-bottom: 20px;
+        top: 30px;
     }
 
     .rank-number {
-        font-size: 18px;
+        font-size: 16px; /* Reducir tamaño de texto para el número de posición */
     }
 
-
-
-
     /* scoreboard movil */
-
 }
 
 

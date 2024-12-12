@@ -12,6 +12,7 @@ const gameOverScreen = document.getElementById('gameOverScreen');
 const jugarotravez = document.getElementById('jugarDeNuevo');
 const volverMenu = document.getElementById('returnMenu');
 const vampiroHorizontal = document.getElementById('vampiro');
+const music = document.getElementById('background-music');
 
 /**
  * Variables para el score,personaje,enemigos.
@@ -33,6 +34,8 @@ jugar.addEventListener("click", function () {
     modal.classList.add('modal-off'); // Ocultar el modal   
     board.style.display = "block";
     if (!gameStarted) {
+        music.volume = 0.2;
+        music.play();
         startScoreCounter();
         gameStarted = true;
         generadorEnemigos();
@@ -88,7 +91,7 @@ function mostrarPantallaGameOver() {
 
 function  returnMenu(){
     volverMenu.addEventListener('click', function() {
-        window.location.href = '/proyecto-cientifiks/PanelJoc.html';
+        window.location.href = '../../../index.php';
 
     });
 }
@@ -192,6 +195,7 @@ function detenerAnimacionEnemigos() {
  * Y cada animacion de cada enemigo
  */
 function reiniciarJuego() {
+    music.play();
     score = 0;
     gameStarted = true;
     morir = false;
@@ -215,6 +219,8 @@ function reiniciarJuego() {
  */
 function gameLoop() {
     if (detectarColision()) {
+        music.pause();
+        music.currentTime = 0;
         morir = true;
         console.log("has muerto");
 

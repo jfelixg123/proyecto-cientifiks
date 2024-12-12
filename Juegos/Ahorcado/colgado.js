@@ -1,11 +1,15 @@
+let puntos = 0; // Variable para llevar el puntaje
+
 // Función que reemplaza caracteres en una cadena
 const replaceAt = (string, character, index) => {
     return string.substring(0, index) + character + string.substring(index + character.length);
 };
 
-// Array de palabras y selección aleatoria de una palabra secreta
-const palabras = ['depurar', 'fuentes', 'agua', 'escuela', 'tres'];
+// Array de palabras y selección aleatoria inicial
+const palabras = ['depuran', 'agujero', 'pantano', 'escuela', 'arroyos', 'lagunas', 'cascada'];
+let nivelActual = 1; // Nivel inicial
 let palabraSecreta = palabras[Math.floor(Math.random() * palabras.length)];
+let palabrasUsadas = []; // Para evitar repetir palabras
 
 // Crear la palabra escondida con guiones bajos
 let palabraEscondida = palabraSecreta.replace(/./g, "_ ");
@@ -72,6 +76,67 @@ const cambiarDeformacion = (factorEscala) => {
     }
 };
 
+// Función para avanzar al siguiente nivel desde el botón
+const avanzarNivelDesdeBoton = () => {
+    document.querySelector('.resultado').innerHTML = ''; // Ocultar el mensaje y el botón
+    avanzarNivel(); // Llamar a la función para avanzar al siguiente nivel
+};
+
+// Función modificada para avanzar al siguiente nivel
+const avanzarNivel = () => {
+    nivelActual++;
+    palabrasUsadas.push(palabraSecreta);
+
+    // Sumar puntos por pasar de nivel
+    puntos += 300;
+    actualizarPuntaje();
+
+    // Si se han completado todos los niveles
+    if (nivelActual > 3) {
+        document.querySelector('.resultado').innerHTML = `<h1>¡HAS GANADO!</h1>`;
+        document.getElementById('reiniciar-win').style.display = 'inline-block';
+        document.getElementById('continuar').style.display = 'inline-block';
+        guardarScore();
+        return;
+    }
+
+    // Restaurar la escala de los contenedores antes de iniciar el siguiente nivel
+    const contenedores = document.querySelectorAll('.contenedor1, .contenedor2, .contenedor3, .contenedor4, .contenedor5, .contenedor6, .contenedor7');
+    contenedores.forEach((contenedor) => {
+        contenedor.style.transform = 'scaleY(1)'; // Restablecer la escala a su valor original
+    });
+
+    contenedorIndex = 0; // Reiniciar el índice de los contenedores
+
+    // Seleccionar una nueva palabra secreta que no haya sido usada
+    do {
+        palabraSecreta = palabras[Math.floor(Math.random() * palabras.length)];
+    } while (palabrasUsadas.includes(palabraSecreta));
+
+    // Crear la nueva palabra escondida
+    palabraEscondida = palabraSecreta.replace(/./g, "_ ");
+    document.querySelector('.palabraEscondida').innerHTML = palabraEscondida;
+
+    // Restaurar letras disponibles
+    document.querySelectorAll('.letter').forEach((letra) => {
+        letra.setAttribute('draggable', 'true');
+        letra.classList.remove('used-letter');
+    });
+};
+
+// Modificar la lógica al completar un nivel
+if (!palabraEscondida.includes('_')) {
+    // Mostrar mensaje de nivel completado
+    const resultadoContenedor = document.querySelector('.resultado');
+    resultadoContenedor.innerHTML = `<h1>¡Nivel ${nivelActual} completado!</h1>`;
+
+    // Esperar unos segundos antes de avanzar al siguiente nivel
+    setTimeout(() => {
+        resultadoContenedor.innerHTML = ''; // Vaciar el contenido del contenedor
+        avanzarNivel(); // Avanzar al siguiente nivel
+    }, 2000); // 2 segundos
+}
+
 // Dropzone para soltar letras
 dropzone.addEventListener('drop', (event) => {
     event.preventDefault();
@@ -84,7 +149,7 @@ dropzone.addEventListener('drop', (event) => {
     for (let i = 0; i < palabraSecreta.length; i++) {
         if (palabraSecreta[i] === letraArrastrada) {
             palabraEscondida = replaceAt(palabraEscondida, letraArrastrada, i * 2);
-            acierto = true; // Marcamos que hay un acierto
+            acierto = true;
         }
     }
 
@@ -93,14 +158,25 @@ dropzone.addEventListener('drop', (event) => {
 
     // Lógica al verificar la letra seleccionada
     if (acierto) {
+        // Sumar puntos por acierto
+        puntos += 100;
+        actualizarPuntaje(); // Actualizar puntaje en pantalla
+
         cambiarDeformacion(0); // Deforma el siguiente contenedor
         if (!palabraEscondida.includes('_')) {
-            document.querySelector('.resultado').innerHTML = '<h1>¡Has ganado!</h1>';
+            const resultadoContenedor = document.querySelector('.resultado');
+            resultadoContenedor.innerHTML = `<h1>¡Nivel ${nivelActual} completado!</h1>`;
 
-            // Mostrar el botón de reinicio
-            document.getElementById('reiniciar-win').style.display = 'inline-block';
+            setTimeout(() => {
+                resultadoContenedor.innerHTML = ''; // Vaciar el contenido
+                avanzarNivel(); // Avanzar al siguiente nivel
+            }, 2000); // 2 segundos
         }
     } else {
+        // Restar puntos por fallo
+        puntos -= 50;
+        actualizarPuntaje(); // Actualizar puntaje en pantalla
+
         if (errorCounter < corazones.length) {
             corazones[errorCounter].style.display = 'none';
             corazonesRotos[errorCounter].style.display = 'inline';
@@ -110,21 +186,26 @@ dropzone.addEventListener('drop', (event) => {
         if (errorCounter === corazones.length) {
             document.querySelector('.resultado').innerHTML = '<h1>Has perdido</h1>';
             document.getElementById('reiniciar-lose').style.display = 'inline-block';
+            guardarScore();
         }
     }
 
     // Deshabilitar la letra arrastrada
     const letraElemento = document.getElementById(`letter-${letraArrastrada.toUpperCase()}`);
     letraElemento.setAttribute('draggable', 'false');
-    letraElemento.classList.add('used-letter'); // Cambiar estilo de la letra usada
+    letraElemento.classList.add('used-letter');
 });
 
-// Función para reiniciar el juego
-const reiniciarJuego = () => {
-    // Seleccionar una nueva palabra secreta aleatoria
-    palabraSecreta = palabras[Math.floor(Math.random() * palabras.length)];
+// Función para actualizar el puntaje en la pantalla
+const actualizarPuntaje = () => {
+    document.getElementById('puntaje').innerText = puntos;
+};
 
-    // Crear la nueva palabra escondida con la longitud de la nueva palabra secreta
+// Función para reiniciar el juego completo
+const reiniciarJuego = () => {
+    nivelActual = 1;
+    palabrasUsadas = [];
+    palabraSecreta = palabras[Math.floor(Math.random() * palabras.length)];
     palabraEscondida = palabraSecreta.replace(/./g, "_ ");
     document.querySelector('.palabraEscondida').innerHTML = palabraEscondida;
 
@@ -151,16 +232,33 @@ const reiniciarJuego = () => {
     // Ocultar mensajes y botones de reinicio
     document.querySelector('.resultado').innerHTML = '';
     document.getElementById('reiniciar-win').style.display = 'none';
+    document.getElementById('continuar').style.display = 'none';
     document.getElementById('reiniciar-lose').style.display = 'none';
-};
-// // Reiniciar la palabra secreta
-// palabraSecreta = palabras[Math.floor(Math.random() * palabras.length)];
 
+    // Reiniciar puntos
+    puntos = 0;
+    actualizarPuntaje();
+};
+
+function guardarScore() {
+    //debugger;
+    fetch('../../php/Obtenerscore.php?id_videojuego=3&puntuacion=' + puntos)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error en la solicitud: ' + response.statusText);
+            }
+            return response.text(); // Esperamos un texto plano como respuesta
+        })
+        .then(data => {
+            console.log(data); // Mostrar el mensaje de confirmación o error del servidor
+            // Puedes mostrar un mensaje al usuario aquí, por ejemplo, usando un alert o actualizando el DOM
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Mostrar un mensaje de error genérico al usuario
+        });
+}
 
 // Evento de reinicio en botón
 document.getElementById('reiniciar-lose').addEventListener('click', reiniciarJuego);
 document.getElementById('reiniciar-win').addEventListener('click', reiniciarJuego);
-
-
-
-
