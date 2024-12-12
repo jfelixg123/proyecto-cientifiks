@@ -19,7 +19,7 @@ require 'php/selectLogin.php';
 <body>
     <div class="bodycss">
         <nav class="navLogin">
-            <button type="button" id="back-button"><img src="./LangingPagPhoto/flecha.png" alt="" class="flechaVolver"></button>
+            <a href="index.php"><button type="button" id="back-button"><img src="./LangingPagPhoto/flecha.png" alt="" class="flechaVolver"></button></a>
 
             <div class="cambioIdioma">
                 <button id="lang-es"><img src="./LangingPagPhoto/mundo.png" alt=""></button>

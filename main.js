@@ -305,11 +305,6 @@ document.addEventListener("DOMContentLoaded", function () {
             aboutUsElement.textContent = content.aboutUs;
         }
 
-        const socialTitleElement = document.querySelector(".Redes h1");
-        if (socialTitleElement) {
-            socialTitleElement.textContent = content.gameTitle;
-        }
-
         const footerElement = document.querySelector(".FooterDerechos p");
         if (footerElement) {
             footerElement.textContent = content.Copyright;
@@ -360,16 +355,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     const juegos = [
         {
-            imagen: "./LangingPagPhoto/Cubo.png"
+            imagen: "LangingPagPhoto/juegoJordiCelemin.png"
         },
         {
-            imagen: "./LangingPagPhoto/SapoRecortado.png"
+            imagen: "LangingPagPhoto/Warm_Ocean.png"
         },
         {
-            imagen: "./LangingPagPhoto/cosa.png"
+            imagen: "LangingPagPhoto/fondo-cloacas.jpg"
         },
         {
-            imagen: "./LangingPagPhoto/pulpo2.png"
+            imagen: "Juegos/Ahorcado/images/alcantarillas.png"
         }
     ];
 

@@ -83,7 +83,7 @@ if (isset($_SESSION['username'])) {
               <h1>EXPLORA</h1>
             </a></div>
         </div>
-        <img src="./LangingPagPhoto/sapofinal.png" class="d-block w-100" alt="...">
+        <img src="LangingPagPhoto/juegoJordiCelemin.png" class="d-block w-100" alt="...">
       </div>
       <div class="carousel-item">
         <div class="contenido">
@@ -99,7 +99,7 @@ if (isset($_SESSION['username'])) {
             <a href="./PanelJoc.html"><h1>AVENTURATE</h1></a>
           </div>
         </div>
-        <img src="./LangingPagPhoto/CubiPantalla.png" class="d-block w-100" alt="...">
+        <img src="LangingPagPhoto/Warm_Ocean.png" class="d-block w-100" alt="...">
       </div>
       <div class="carousel-item">
         <div class="contenido">
@@ -115,7 +115,7 @@ if (isset($_SESSION['username'])) {
             <a href="PanelJoc.html"><h1>DESCUBRE</h1></a>
           </div>
         </div>
-        <img src="./LangingPagPhoto/Azul.png" class="d-block w-100" alt="...">
+        <img src="LangingPagPhoto/fondo-cloacas.jpg" class="d-block w-100" alt="...">
       </div>
       <div class="carousel-item">
         <div class="contenido">
@@ -131,7 +131,7 @@ if (isset($_SESSION['username'])) {
               <h1>DIVIERTE</h1>
             </a></div>
         </div>
-        <img src="./LangingPagPhoto/pulpoPantalla.png" class="d-block w-100" alt="...">
+        <img src="Juegos/Ahorcado/images/alcantarillas.png" class="d-block w-100" alt="...">
       </div>
     </div>
 
@@ -150,13 +150,13 @@ if (isset($_SESSION['username'])) {
   <div class="Second">
     <div class="MasJuego">
       <div class="PJuego">
-        <img id="imagenJuego1" src="./LangingPagPhoto/Cubo.png" alt="">
+        <img id="imagenJuego1" src="LangingPagPhoto/juegoJordiCelemin.png" alt="">
         <button class="boton-juego">
           <h1><a href="./PanelJoc.html">JUGAR</a></h1>
         </button>
       </div>
       <div class="PJuego">
-        <img id="imagenJuego2" src="./LangingPagPhoto/SapoRecortado.png" alt="">
+        <img id="imagenJuego2" src="LangingPagPhoto/Warm_Ocean.png" alt="">
         <button class="boton-juego">
           <h1><a href="./PanelJoc.html">JUGAR</a></h1>
         </button>

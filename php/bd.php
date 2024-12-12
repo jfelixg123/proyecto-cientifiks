@@ -52,19 +52,23 @@ try {
 
 function openDB()
 {
-  $host = 'localhost';
-  $db = 'cientifiks';
-  $user = 'root';
-  $pass = 'mysql';
-  
-  try {
-      $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass);
-      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  } catch (PDOException $e) {
-      die("Error de conexión: " . $e->getMessage());
-  }
+    $servername = "localhost";
+    $username = "root";
+    $password = "mysql";
+    $BDname = "cientifiks";
 
-  return $pdo;
+    $con = new PDO("mysql:host=$servername;dbname=$BDname", $username, $password);
+    // set the PDO error mode to exception
+    $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Connected successfully";
+    $con->exec("set names utf8");
+
+
+  return $con;
+}
+
+function closeDB($con) {
+  $con = null;
 }
 
 

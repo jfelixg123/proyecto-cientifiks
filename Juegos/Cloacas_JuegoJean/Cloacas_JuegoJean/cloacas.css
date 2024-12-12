@@ -1,0 +1,443 @@
+body {
+    background-image: url(./imagenes/Fondo.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 30px;
+    color: white;
+    margin: 0;
+    min-height: 100vh;
+}
+
+.juegoContenedor {
+    height: 100vh;
+    overflow: hidden;
+}
+
+#juegoContenedor {
+    display: none;
+}
+
+/*TUTORIAL*/
+
+.modal-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;  
+}
+
+.modal-off {
+    display: none;
+}
+
+#imagenTecla{
+    width: 5%;
+}
+
+.banner {
+    padding: 25px;
+    text-align: center;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    color: #dadada;
+    padding: 20px;
+    border-radius: 8px;
+    font-size: 25px;
+}
+
+.banner h1{
+    text-transform: capitalize;
+    font-size: 55px;
+}
+
+.banner button{
+    margin-top: 20px;
+    padding:  10px 25px;
+    background-color: rgb(255, 153, 0);
+    color: white;
+    border:none;
+    border-radius: 5px;
+    text-transform: capitalize;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: 1s ease;
+}
+
+.banner button:hover{
+   border: 2px solid  rgb(255, 153, 0);
+   background-color: transparent;
+   color: rgb(255, 255, 255);
+}
+
+.banner img{
+    width: 20%;
+}
+
+/*GAME OVER SCREEN*/
+
+#pantallaGameOver, #pantallaFelicitaciones {
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: rgb(255, 0, 0);
+    font-size: 5em;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.24);
+}
+
+#pantallaGameOver button, #pantallaFelicitaciones button{
+        margin-top: 20px;
+        padding:  10px 25px;
+        background-color: rgb(255, 153, 0);
+        color: white;
+        border:none;
+        border-radius: 5px;
+        text-transform: capitalize;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: 1s ease;
+   
+}
+#pantallaGameOver button:hover, #pantallaFelicitaciones button:hover{
+    border: 2px solid  rgb(255, 153, 0);
+    background-color: transparent;
+    color: rgb(255, 255, 255);
+ }
+
+/* SUELOS PARTE IZQUIERDA, DERECHA, CENTRAL Y SUPERIOR DEL CONTAINER JUEGO */
+
+.juegoContenedorCentral {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    top: -3%;
+}
+
+.parteSuperior,
+.murcielagos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    height: 60px;
+    padding: 20px 20px;
+    margin: 0 auto;
+}
+
+.parteIzquierda,
+.parteDerecha {
+    height: 95%;
+    width: 36%;
+}
+
+.parteIzquierda {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.primerPisoIzquierda,
+.segundoPisoIzquierda,
+.tercerPisoIzquierda {
+    width: 96%;
+    height: 20px;
+    margin-bottom: 200px;
+    background-image: url(./imagenes/piso.png);
+    background-repeat: no-repeat;
+}
+
+.parteDerecha {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.primerPisoDerecha,
+.segundoPisoDerecha,
+.tercerPisoDerecha {
+    width: 96%;
+    height: 20px;
+    background-image: url(./imagenes/piso.png);
+    margin-left: auto;
+    margin-bottom: 200px;
+    background-repeat: no-repeat;
+}
+
+.parteMedio {
+    width: 29%;
+    height: 100%;
+    position: relative;
+}
+
+.pasoSegundoPiso,
+.pasoPrimerPiso {
+    width: 42%;
+    height: 20px;
+    background: #b95c19;
+    top: 37.5%;
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.7), inset 0 0 20px rgba(0, 0, 0, 0.5);
+    position: absolute;
+}
+
+.pasoPrimerPiso {
+    left: 7%;
+    animation: pisoMovimiento 6s infinite alternate-reverse;
+}
+
+.pasoSegundoPiso {
+    animation: pisoMovimiento 6s infinite alternate;
+    left: 53%;
+}
+
+/* OBJETOS */
+
+.timer {
+    animation: rotate 8s ease-in-out infinite;
+}
+
+.llaves {
+    display: flex;
+}
+
+.llaves p {
+    margin: 5px;
+}
+
+.vidas p {
+    margin: 10px;
+}
+
+.vidas {
+    display: flex;
+}
+
+.panelVidas img {
+    margin: 3px;
+}
+
+.vidas img, .reloj img {
+    height: 50px;
+}
+.reloj{
+    display: flex;
+}
+
+#tiempo{
+    margin-top: 6px;
+}
+
+#personaje {
+    width: 40px;
+    height: 70px;
+    position: absolute;
+    left: 0;
+    top: 869px;
+    background-image: url(./imagenes/AnnaMujal.gif);
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.llavePasoTercerPiso,
+.llavePasoPrimerPiso,
+.llavePasoSegundoPisoDerecha,
+.llaveDePasoPrimerPisoDerecha {
+    width: 65px;
+    height: 71px;
+    position: absolute;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(./imagenes/tuberia.png);
+}
+
+.llavePasoTercerPiso {
+    left: 0;
+    top: 56px;
+}
+
+.llavePasoPrimerPiso {
+    left: 0;
+    bottom: 342px;
+}
+
+.llavePasoSegundoPisoDerecha {
+    right: 0;
+    top: 275px;
+}
+
+.llaveDePasoPrimerPisoDerecha {
+    right: 0;
+    bottom: 340px;
+}
+
+.rataTercerPiso,
+.rataSegundoPiso,
+.rataPrimerPiso,
+.rataSegundoPisoDerecha,
+.rataPrimerPisoDerecha {
+    width: 48px;
+    height: 29px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(./imagenes/rata.gif);
+    transform: scaleX(-1);
+    z-index: 1;
+}
+
+.rataTercerPiso {
+    position: absolute;
+    top: 112px;
+}
+
+.rataSegundoPiso {
+    position: absolute;
+    top: 332px;
+}
+
+.rataPrimerPiso {
+    position: absolute;
+    bottom: 321px;
+}
+
+.rataSegundoPisoDerecha {
+    position: absolute;
+    top: 332px;
+}
+
+.rataPrimerPisoDerecha {
+    position: absolute;
+    bottom: 322px;
+}
+
+.basuraTercerPiso,
+.basuraPrimerPiso,
+.basuraSegundoPisoDerecha,
+.basuraPrimerPisoDerecha {
+    width: 47px;
+    height: 46px;
+    position: absolute;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(./imagenes/basura.png);
+}
+
+.basuraPrimerPiso {
+    left: 210px;
+    bottom: 325px;
+}
+
+.basuraTercerPiso {
+    left: 488px;
+    top: 94px;
+}
+
+.basuraSegundoPisoDerecha {
+    right: 400px;
+    top: 314px;
+}
+
+.basuraPrimerPisoDerecha {
+    right: 220px;
+    bottom: 325px;
+}
+
+.charcoTercerPisoIzquierda, 
+.charcoSegundoPisoIzquierda, 
+.charcoPrimerPisoIzquierda, 
+.charcoPrimerPisoDerecha {
+    width: 140px;               
+    height: 19px;               
+    position: absolute;
+    background-image: url(./imagenes/charco.png);
+}
+
+.charcoTercerPisoIzquierda{
+    top: 111px; 
+    left: 29%;
+} 
+
+.charcoSegundoPisoIzquierda {
+    top: 331px; 
+    left: 34%;
+}
+
+.charcoPrimerPisoIzquierda {
+    top: 551px; 
+    left: 56%;
+}
+
+.charcoPrimerPisoDerecha {
+    top: 551px; 
+    left: 18%;
+}
+
+.puerta{
+    width: 109px;
+    height: 129px;
+    position: absolute;
+    top: -5px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(./imagenes/puertaCerrada.png);
+    right: 9px;
+    z-index: 1;
+}
+
+.suelo {
+    width: 100%;
+    height: 6px; 
+    background-color: #3c3c3c; 
+    position: absolute;
+    bottom: 0; 
+    left: 0;
+    z-index: 10; 
+}
+/* MOVIMIENTO VERTICAL PISOS DEL MEDIO */
+
+@keyframes pisoMovimiento {
+    0% {
+        transform: translateY(-190px);
+        animation-timing-function: ease-in; 
+    }
+
+    100% {
+        transform: translateY(282px);
+        animation-timing-function: ease-out; 
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg); 
+    }
+    40% {
+        transform: rotate(180deg); 
+    }
+    45% {
+        transform: rotate(180deg); 
+    }
+    70% {
+        transform: rotate(360deg); 
+    }
+    100% {
+        transform: rotate(360deg); 
+    }
+}

@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'b', 'a'
     ];
     let konamiInput = [];
-    let vidas = 1;
+    let vidas = 3;
     let timeLeft = 500;
     let pacmanPosition = { x: 1, y: 18 };
     let enemyPosition = { x: 47, y: 18 };
@@ -412,6 +412,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (secondEnemyAppeared) drawSecondEnemy();
     }
     function resetGame() {
+        music.pause();
         // Ocultar los popups
         ['gameOverPopup', 'winPopup'].forEach(id =>
             document.getElementById(id).style.display = 'none'
@@ -602,6 +603,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Función para comenzar el juego después del tutorial
     function startGame() {
+        music.play();
+        music.volume = 0.2;
         const tutorialScreen = document.getElementById('tutorialScreen');
         tutorialScreen.style.visibility = 'hidden';
         tutorialScreen.style.opacity = '0';

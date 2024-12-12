@@ -19,8 +19,10 @@ require 'php/insertRegister.php';
 <body>
     <div class="bodycss">
         <nav class="navLogin">
+            <a href="index.php">
             <button type="button" id="back-button"><img src="./LangingPagPhoto/flecha.png" alt=""
-                    class="flechaVolver"></button>
+            class="flechaVolver"></button>
+            </a>
 
             <div class="idioma">
                 <img src="LangingPagPhoto/spain.png" alt="es">

@@ -118,13 +118,13 @@ button{
 #reiniciar-win{
     position: absolute;
     top: 60%; /* Centra verticalment */
-    left: 70%; /* Centra horitzontalment */
+    left: 85%; /* Centra horitzontalment */
 }
 
-#continuar-win{
+#continuar{
     position: absolute;
     top: 60%; /* Centra verticalment */
-    left: 60%; /* Centra horitzontalment */
+    left: 52%; /* Centra horitzontalment */
 }
 
 button:hover{
@@ -176,6 +176,17 @@ button:hover{
     left: 4%; /* Centra horitzontalment */
     border-radius: 25px;
     position: relative; 
+}
+
+.puntaje{
+    position: absolute;
+    top: 10%;
+    left: 78%;
+    font-size: 40px;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;  
+    color: rgba(40, 40, 40,);
+    
 }
 
 
