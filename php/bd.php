@@ -40,8 +40,8 @@ if (session_status() === PHP_SESSION_NONE) {
   
 $host = 'localhost';
 $db = 'cientifiks';
-$user = 'root';
-$pass = 'mysql';
+$user = 'mysql';
+$pass = 'Linoubou123';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass);
@@ -52,10 +52,10 @@ try {
 
 function openDB()
 {
-    $servername = "localhost";
-    $username = "root";
-    $password = "mysql";
-    $BDname = "cientifiks";
+  $servername = "localhost";
+  $username = "root";
+  $password = "mysql";
+  $BDname = "cientifiks";
 
     $con = new PDO("mysql:host=$servername;dbname=$BDname", $username, $password);
     // set the PDO error mode to exception

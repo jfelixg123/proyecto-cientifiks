@@ -2,23 +2,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const map = [
         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         [1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 1],
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 3, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 4, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 3, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 4, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         [1, 0, 0, 0, 0, 0, 3, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 3, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 5, 1, 0, 0, 0, 3, 1],
-        [1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1],
+        [1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1],
         [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 5, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        [1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 1, 1, 1, 1, 1, 1, 3, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
         [1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1],
-        [1, 0, 0, 0, 0, 0, 0, 1, 4, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 3, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
-        [1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 3, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
-        [1, 0, 1, 1, 1, 0, 0, 0, 3, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
-        [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
-        [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 3, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1],
-        [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 5, 3, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1],
-        [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 1, 4, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 3, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1],
+        [1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1],
+        [1, 0, 1, 1, 1, 0, 0, 0, 3, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1],
+        [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 3, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1],
+        [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 3, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1],
+        [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 5, 3, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1],
+        [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1],
         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     ];
     const gameContainer = document.getElementById('game');
@@ -38,15 +38,17 @@ document.addEventListener('DOMContentLoaded', () => {
         'b', 'a'
     ];
     let konamiInput = [];
+    let konamiInputCorrect = false;
+    let CountPoint = 0;
     let vidas = 3;
     let timeLeft = 500;
-    let pacmanPosition = { x: 1, y: 18 };
+    let pacmanPosition = { x: 48, y: 1 };
     let enemyPosition = { x: 47, y: 18 };
     let secondEnemyPosition = { x: 32, y: 9 };
     let score = 0;
     let canMove = true;
     let timerInterval;
-    let currentSpeed = 200;
+    let currentSpeed = 50;
     let boostTimeout;
     let secondEnemyAppeared = false;
     let isPaused = false;
@@ -228,39 +230,42 @@ document.addEventListener('DOMContentLoaded', () => {
             if (cellValue === 3) {
                 PickUpSound.play();
                 score += 100;
+                CountPoint++;
                 cells[index].classList.remove('point');
             } else {
                 BIGONE.play();
                 score += 1000;
+                CountPoint++;
                 cells[index].classList.remove('BIG');
             }
             updateScoreDisplay();
             map[pacmanPosition.y][pacmanPosition.x] = 0;
 
-            if (score === 1000) {
-                DesbloquearMuroCoordenadas();
-            } else if (score === 1100) {
-                SecondEnemySound.play();
-                secondEnemyAppeared = true;
-                drawSecondEnemy();
-                DesbloquearMuroCoordenadas();
-            } else if (score === 1400) {
-                // Mostrar el mensaje secreto cuando se alcanzan 1400 puntos
+            if (CountPoint === 10 || CountPoint === 11) {
+                DesbloquearMuroCoordenadas(CountPoint);
+                if (CountPoint === 11) {
+                    SecondEnemySound.play();
+                    secondEnemyAppeared = true;
+                    drawSecondEnemy();
+                }
+            } else if (CountPoint === 14) {
                 const secretMessage = document.getElementById("SecretMessage");
-                secretMessage.style.display = "flex";  // Mostrar el mensaje
-                // Ocultar el mensaje después de 5 segundos
-                setTimeout(function () {
-                    secretMessage.style.display = "none";  // Ocultar el mensaje después de 5 segundos
-                }, 5000);
+                secretMessage.style.display = "flex"; // Mostrar el mensaje
+                setTimeout(() => secretMessage.style.display = "none", 5000); // Ocultar después de 5 segundos
             }
+            
         } else if (cellValue === 4) {
             map[pacmanPosition.y][pacmanPosition.x] = 0;
             cells[index].classList.remove('SpeedBoost');
+            score += 50;
             activateSpeedBoost();
+            updateScoreDisplay();
         } else if (cellValue === 5) {
             map[pacmanPosition.y][pacmanPosition.x] = 0;
             cells[index].classList.remove('The_World');
+            score += 50;
             StopTime();
+            updateScoreDisplay();
         } else if (cellValue === 2 && score >= 1400) {
             showPopup('win');
         }
@@ -270,13 +275,13 @@ document.addEventListener('DOMContentLoaded', () => {
             map[fila][columna] = valor;
         });
     }
-    function desbloquearMuro(muros, score) {
+    function desbloquearMuro(muros, countPoint) {
         muros.forEach(({ coordenadas, scoreRequerido, premio }) => {
-            if (score >= scoreRequerido) {
+            if (countPoint >= scoreRequerido) { // Usar countPoint en lugar de score
                 coordenadas.forEach(([fila, columna]) => {
                     const index = fila * map[0].length + columna;
                     map[fila][columna] = 0; // Cambia el valor en el mapa a un espacio vacío (0)
-
+    
                     // Actualiza la celda en el DOM para que se muestre como vacío
                     const cell = document.querySelectorAll('.cell')[index];
                     if (cell) {
@@ -284,31 +289,51 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
 
-                // Si hay un premio asociado, lo coloca en el mapa
-                if (premio) {
-                    premio.forEach(([fila, columna]) => {
-                        const index = fila * map[0].length + columna;
-                        map[fila][columna] = 6; // Cambia el valor en el mapa a BIG (6)
-
-                        // Actualiza la celda en el DOM para que se muestre con la clase BIG
-                        const cell = document.querySelectorAll('.cell')[index];
-                        if (cell) {
-                            cell.className = 'cell BIG'; // Asigna las clases 'cell' y 'BIG'
-                        }
-                    });
-                }
             }
         });
     }
-
-    function DesbloquearMuroCoordenadas() {
+    function desbloquearPremio() {
         const muros = [
-            { coordenadas: [[15, 32], [16, 32], [17, 32], [14, 31], [14, 33], [15, 33], [15, 31]], scoreRequerido: 0 },
-            { coordenadas: [[4, 39], [5, 39], [9, 12], [7, 23], [7, 22]], scoreRequerido: 1100 },
-            { coordenadas: [[4, 15], [4, 14], [4, 13], [4, 12]], scoreRequerido: 1400, premio: [[4, 11]] }
+            { coordenadas: [[4, 15], [4, 14], [4, 13], [4, 12]], scoreRequerido: 14, premio: [[4, 11]] }, // Zona con premio
         ];
+    
+        muros.forEach(({ coordenadas, scoreRequerido, premio }) => {
+            if (premio && CountPoint >= scoreRequerido) {
+                // Vaciar las coordenadas de la zona bloqueada (ponerlas como espacios vacíos)
+                coordenadas.forEach(([fila, columna]) => {
+                    map[fila][columna] = 0; // Cambia el valor en el mapa a vacío (0)
+    
+                    // Actualiza la celda en el DOM para que se muestre como vacía
+                    const index = fila * map[0].length + columna;
+                    const cell = document.querySelectorAll('.cell')[index];
+                    if (cell) {
+                        cell.className = 'cell'; // Remueve cualquier clase adicional (de muro)
+                    }
+                });
+    
+                // Colocar el premio en las coordenadas correspondientes
+                premio.forEach(([fila, columna]) => {
+                    map[fila][columna] = 6; // Cambia el valor en el mapa a BIG (6)
+    
+                    // Actualiza la celda en el DOM para que se muestre con la clase BIG
+                    const index = fila * map[0].length + columna;
+                    const cell = document.querySelectorAll('.cell')[index];
+                    if (cell) {
+                        cell.className = 'cell BIG'; // Asigna las clases 'cell' y 'BIG'
+                    }
+                });
+            }
+        });
+    }
+    
 
-        desbloquearMuro(muros, score);
+    function DesbloquearMuroCoordenadas(CountPoint) {
+        const muros = [
+            { coordenadas: [[15, 32], [16, 32], [17, 32], [14, 31], [14, 33], [15, 33], [15, 31]], scoreRequerido: 10 },
+            { coordenadas: [[4, 39], [5, 39], [9, 12], [7, 23], [7, 22]], scoreRequerido: 11 },
+        ];
+    
+        desbloquearMuro(muros, CountPoint);
     }
 
     function CalcularScore() {
@@ -317,8 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Puntaje por vidas restantes (por ejemplo, 100 puntos por cada vida)
         const puntajePorVidas = vidas * 100;
 
-        // Puntaje por tiempo (el puntaje disminuye si se tarda más tiempo, aquí puedes ajustarlo como desees)
-        const puntajePorTiempo = Math.max(0, (500 - timeLeft)); // Aquí 300 es el tiempo límite en segundos, ajustable según tus necesidades
+        const puntajePorTiempo = timeLeft * 1.5;
 
         // Calcular el puntaje total
         let totalScore = puntosTotales + puntajePorVidas + puntajePorTiempo;
@@ -360,7 +384,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         document.getElementById(exitButtonId).addEventListener('click', () => {
-            window.location.href = '../../../index.php';
+            window.location.href = '../../../PanelJoc.html';
         });
         guardarScore();
     }
@@ -376,10 +400,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function activateSpeedBoost() {
         SpeedSound.play();
         SpeedSound.volume = 0.5;
-        currentSpeed = 40; // Cambia a velocidad aumentada
+        currentSpeed = 10; // Cambia a velocidad aumentada
         clearTimeout(boostTimeout); // Limpia cualquier boost anterior
         boostTimeout = setTimeout(() => {
-            currentSpeed = 200; // Vuelve a la velocidad normal después de 5 segundos
+            currentSpeed = 50; // Vuelve a la velocidad normal después de 5 segundos
         }, 5000);
     }
     function updateLivesDisplay() {
@@ -395,8 +419,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     function resetPositions() {
+        konamiInputCorrect === false;
         // Reiniciar las posiciones de Pac-Man y los enemigos
-        pacmanPosition = { x: 1, y: 18 };
+        pacmanPosition = { x: 48, y: 1};
         enemyPosition = { x: 47, y: 18 };
         secondEnemyPosition = { x: 32, y: 9 };
 
@@ -412,6 +437,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (secondEnemyAppeared) drawSecondEnemy();
     }
     function resetGame() {
+        CountPoint = 0;
         music.pause();
         // Ocultar los popups
         ['gameOverPopup', 'winPopup'].forEach(id =>
@@ -446,10 +472,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const initialConfig = {
             puntos: [
                 [13, 8], [4, 6], [3, 18], [11, 20], [15, 20],
-                [18, 20], [4, 27], [2, 34], [12, 32], [2, 48]
+                [18, 20], [4, 27], [2, 34], [14, 32], [2, 48]
             ],
             puntosExtra: [
-                [9, 1], [1, 21], [4, 48], [16, 48]
+                [9, 7], [1, 21], [4, 48], [16, 48]
             ],
             muros: [
                 [15, 32], [16, 32], [17, 32], [14, 31], [14, 33], [15, 33]
@@ -486,7 +512,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Manejo de las teclas presionadas
     document.addEventListener('keydown', (event) => {
         if (!canMove) return; // Si no puede moverse, salimos de la función
-        switch (event.key) {
+    
+        // Obtenemos la tecla presionada en minúsculas
+        const key = event.key.toLowerCase();
+    
+        switch (key) {
             case 'w':
                 movePacman(0, -1, 'up');
                 break;
@@ -500,23 +530,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 movePacman(1, 0, 'right');
                 break;
         }
+    
         // Desactiva el movimiento temporalmente
         canMove = false;
         // Activa el movimiento nuevamente después de 250 ms
         setTimeout(() => {
             canMove = true;
         }, currentSpeed);
-
+    
         konamiInput.push(event.key);
         if (konamiInput.length > konamiCode.length) {
             konamiInput.shift();
         }
-
-        if (konamiInput.toString() === konamiCode.toString()) {
+    
+        if (konamiInput.toString() === konamiCode.toString() && CountPoint >= 14) {
             SecretRoom.play();
-            DesbloquearMuroCoordenadas();
+            desbloquearPremio();
         }
     });
+    
 
     function drawPacman() {
         const cells = document.querySelectorAll('.cell');
@@ -583,7 +615,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Función para iniciar el movimiento del enemigo
     function startEnemyMovement() {
-        enemyMovementInterval = setInterval(moveEnemy, 520);
+        enemyMovementInterval = setInterval(moveEnemy, 400);
     }
 
     // Función para iniciar y configurar el juego
