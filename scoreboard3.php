@@ -38,7 +38,8 @@ $ranking = obtenerRanking($pdo, $id_videojuego);
                                     Tres Fuentes</option>
                                 <option value="scoreboard2.php" <?php echo ($id_videojuego == 2) ? 'selected' : ''; ?>>
                                     Delta Llobregat</option>
-                                <option value="scoreboard3.php" <?php echo ($id_videojuego == 3) ? 'selected' : ''; ?>>La Depuradora</option>
+                                <option value="scoreboard3.php" <?php echo ($id_videojuego == 3) ? 'selected' : ''; ?>>La
+                                    Depuradora</option>
                                 <option value="scoreboard4.php" <?php echo ($id_videojuego == 4) ? 'selected' : ''; ?>>Las
                                     Cloacas</option>
                             </select>
@@ -59,31 +60,31 @@ $ranking = obtenerRanking($pdo, $id_videojuego);
 
             <div class="scroll-bg">
                 <div class="scroll-div">
-                <div class="scoreboard">
-        <div class="ranking_scoreboard">
-            <?php if (!empty($ranking)): ?>
-                <?php foreach ($ranking as $index => $fila): ?>
-                    <div class="rank-item">
-                        <div class="pastilla-posicion">
-                            <span class="rank-number">#<?= $index + 1 ?></span>
-                        </div>
-                        <div class="pastilla-nombre">
-                            <div class="rank-name">
-                                <?= htmlspecialchars($fila['username']) ?>
-                            </div>
-                        </div>
-                        <div class="pastilla-puntos">
-                            <div class="rank-score">
-                                <?= htmlspecialchars($fila['puntuacion']) ?>
-                            </div>
+                    <div class="scoreboard">
+                        <div class="ranking_scoreboard">
+                            <?php if (!empty($ranking)): ?>
+                                <?php foreach ($ranking as $index => $fila): ?>
+                                    <div class="rank-item">
+                                        <div class="pastilla-posicion">
+                                            <span class="rank-number">#<?= $index + 1 ?></span>
+                                        </div>
+                                        <div class="pastilla-nombre">
+                                            <div class="rank-name">
+                                                <?= htmlspecialchars($fila['username']) ?>
+                                            </div>
+                                        </div>
+                                        <div class="pastilla-puntos">
+                                            <div class="rank-score">
+                                                <?= htmlspecialchars($fila['puntuacion']) ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <p>No hay datos disponibles para este videojuego.</p>
+                            <?php endif; ?>
                         </div>
                     </div>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <p>No hay datos disponibles para este videojuego.</p>
-            <?php endif; ?>
-        </div>
-    </div>
                 </div>
             </div>
         </div>
@@ -100,70 +101,70 @@ $ranking = obtenerRanking($pdo, $id_videojuego);
             }
         }
         const traducciones = {
-        es: {
-            titulo: "Resultados Globales",
-            cientifiks: "CIENTIFIKS",
-            tres_fuentes: "Tres Fuentes",
-            delta_llobregat: "Delta Llobregat",
-            las_cloacas: "Las Cloacas",
-            la_depuradora: "La Depuradora",
-            no_datos: "No hay datos disponibles para este videojuego."
-        },
-        ca: {
-            titulo: "Resultats Globals",
-            cientifiks: "CIENTIFIKS",
-            tres_fuentes: "Tres Fonts",
-            delta_llobregat: "Delta Llobregat",
-            las_cloacas: "Les Clavegueres",
-            la_depuradora: "La Depuradora",
-            no_datos: "No hi ha dades disponibles per a aquest videojoc."
-        },
-        en: {
-            titulo: "Global Results",
-            cientifiks: "CIENTIFIKS",
-            tres_fuentes: "Three Sources",
-            delta_llobregat: "Delta Llobregat",
-            las_cloacas: "The Sewers",
-            la_depuradora: "The Purifier",
-            no_datos: "No data available for this video game."
+            es: {
+                titulo: "Resultados Globales",
+                cientifiks: "CIENTIFIKS",
+                tres_fuentes: "Tres Fuentes",
+                delta_llobregat: "Delta Llobregat",
+                las_cloacas: "Las Cloacas",
+                la_depuradora: "La Depuradora",
+                no_datos: "No hay datos disponibles para este videojuego."
+            },
+            ca: {
+                titulo: "Resultats Globals",
+                cientifiks: "CIENTIFIKS",
+                tres_fuentes: "Tres Fonts",
+                delta_llobregat: "Delta Llobregat",
+                las_cloacas: "Les Clavegueres",
+                la_depuradora: "La Depuradora",
+                no_datos: "No hi ha dades disponibles per a aquest videojoc."
+            },
+            en: {
+                titulo: "Global Results",
+                cientifiks: "CIENTIFIKS",
+                tres_fuentes: "Three Sources",
+                delta_llobregat: "Delta Llobregat",
+                las_cloacas: "The Sewers",
+                la_depuradora: "The Purifier",
+                no_datos: "No data available for this video game."
+            }
+        };
+
+        let idiomaActual = 'es'; // Idioma predeterminado
+
+        // Cambia el idioma y actualiza el contenido
+        function cambiarIdioma(idioma) {
+            idiomaActual = idioma;
+            actualizarIdioma();
         }
-    };
 
-    let idiomaActual = 'es'; // Idioma predeterminado
+        // Actualiza el contenido de la página según el idioma seleccionado
+        function actualizarIdioma() {
+            document.title = traducciones[idiomaActual].titulo;
+            document.querySelector('#miTitulo h1').textContent = traducciones[idiomaActual].cientifiks;
+            document.querySelector('.h1_scoreboard').textContent = traducciones[idiomaActual].la_depuradora;
 
-    // Cambia el idioma y actualiza el contenido
-    function cambiarIdioma(idioma) {
-        idiomaActual = idioma;
+            const opciones = document.querySelectorAll('#lista-juegos option');
+            opciones[0].textContent = traducciones[idiomaActual].tres_fuentes;
+            opciones[1].textContent = traducciones[idiomaActual].delta_llobregat;
+            opciones[2].textContent = traducciones[idiomaActual].la_depuradora;
+            opciones[3].textContent = traducciones[idiomaActual].las_cloacas;
+
+            const noDatos = document.querySelector('.ranking_scoreboard p');
+            if (noDatos) {
+                noDatos.textContent = traducciones[idiomaActual].no_datos;
+            }
+        }
+
+        // Eventos para cambiar idioma al hacer clic en las banderas
+        document.querySelector('.idiomascoreboard').addEventListener('click', (e) => {
+            if (e.target.alt) { // Asegúrate de que clickeas una imagen
+                cambiarIdioma(e.target.alt);
+            }
+        });
+
+        // Inicializa el idioma al cargar la página
         actualizarIdioma();
-    }
-
-    // Actualiza el contenido de la página según el idioma seleccionado
-    function actualizarIdioma() {
-        document.title = traducciones[idiomaActual].titulo;
-        document.querySelector('#miTitulo h1').textContent = traducciones[idiomaActual].cientifiks;
-        document.querySelector('.h1_scoreboard').textContent = traducciones[idiomaActual].la_depuradora;
-
-        const opciones = document.querySelectorAll('#lista-juegos option');
-        opciones[0].textContent = traducciones[idiomaActual].tres_fuentes;
-        opciones[1].textContent = traducciones[idiomaActual].delta_llobregat;
-        opciones[2].textContent = traducciones[idiomaActual].la_depuradora;
-        opciones[3].textContent = traducciones[idiomaActual].las_cloacas;
-
-        const noDatos = document.querySelector('.ranking_scoreboard p');
-        if (noDatos) {
-            noDatos.textContent = traducciones[idiomaActual].no_datos;
-        }
-    }
-
-    // Eventos para cambiar idioma al hacer clic en las banderas
-    document.querySelector('.idiomascoreboard').addEventListener('click', (e) => {
-        if (e.target.alt) { // Asegúrate de que clickeas una imagen
-            cambiarIdioma(e.target.alt);
-        }
-    });
-
-    // Inicializa el idioma al cargar la página
-    actualizarIdioma();
     </script>
 </body>
 

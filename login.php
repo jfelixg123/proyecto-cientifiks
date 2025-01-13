@@ -41,13 +41,52 @@ require 'php/selectLogin.php';
                     <br>
                     <input type="password" id="password" name="password" required>
                     <button type="submit" id="login-button">INICIAR SESIÓN</button>
-                    <button type="button" id="register-button"><a href="register.php"></a>REGISTRARSE</button>
+                    <button type="button" id="register-button"><a href="register.php">REGISTRARSE</a></button>
                 </form>
             </div>
         </div>
     </div>
-    <script src="main.js"> </script>
 
+    <script>
+        // Diccionario de traducciones
+        const translations = {
+            es: {
+                loginTitle: "INICIAR SESIÓN",
+                emailLabel: "Nombre de usuario:",
+                passwordLabel: "Contraseña:",
+                loginButton: "INICIAR SESIÓN",
+                registerButton: "REGISTRARSE",
+            },
+            ca: {
+                loginTitle: "INICIA SESSIÓ",
+                emailLabel: "Nom d'usuari:",
+                passwordLabel: "Contrasenya:",
+                loginButton: "INICIA SESSIÓ",
+                registerButton: "REGISTRA'T",
+            },
+            en: {
+                loginTitle: "LOG IN",
+                emailLabel: "Username:",
+                passwordLabel: "Password:",
+                loginButton: "LOG IN",
+                registerButton: "REGISTER",
+            },
+        };
+
+        // Función para cambiar idioma
+        function changeLanguage(lang) {
+            document.getElementById("login-title").textContent = translations[lang].loginTitle;
+            document.getElementById("email-label").textContent = translations[lang].emailLabel;
+            document.getElementById("password-label").textContent = translations[lang].passwordLabel;
+            document.getElementById("login-button").textContent = translations[lang].loginButton;
+            document.getElementById("register-button").textContent = translations[lang].registerButton;
+        }
+
+        // Event listeners para los botones de idioma
+        document.getElementById("lang-es").addEventListener("click", () => changeLanguage("es"));
+        document.getElementById("lang-ca").addEventListener("click", () => changeLanguage("ca"));
+        document.getElementById("lang-en").addEventListener("click", () => changeLanguage("en"));
+    </script>
 </body>
 
 </html>

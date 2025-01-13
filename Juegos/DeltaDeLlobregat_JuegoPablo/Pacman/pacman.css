@@ -42,8 +42,8 @@ img{
     height: 30px;
 }
 #game-container {
-    width: 1200px;
-    height: 475px;     
+    width: 1375px;
+    height: 550px;     
     overflow: hidden;     
     position: relative;   
     background-image: url(./ImagenJuego/Warm_Ocean.png);
@@ -51,16 +51,16 @@ img{
 }
 #game {
     display: grid;
-    grid-template-rows: repeat(30, 24px);    
-    grid-template-columns: repeat(50, 24px); 
+    grid-template-rows: repeat(30, 27.5px);    
+    grid-template-columns: repeat(50, 27.5px); 
 }
 .exit {
     background-image: url(./ImagenJuego/boat.png);
     background-size: cover;
 }
 .cell {
-    width: 24px;   /* Tamaño de la celda */
-    height: 24px;  /* Tamaño de la celda */
+    width: 27.5px;   /* Tamaño de la celda */
+    height: 27.5px;  /* Tamaño de la celda */
 }
 
 .wall {
@@ -303,6 +303,10 @@ img{
     text-align: center;
     width: 500px;
     height: 400px;
+}
+.popup-content img{
+    width: 100px;
+    height: 100px;
 }
 
 .popup h2 {

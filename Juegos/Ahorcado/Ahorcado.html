@@ -20,8 +20,52 @@
 </head>
 
 <body>
+    <nav class="navAhorcado">
+        <a href="../../PanelJoc.html">
+            <button type="button" id="back-button"><img src="./images/flechascore.png" alt=""
+                class="flechaVolverAhorcado"></button>
+        </a>
+        <!-- <div class="idioma">
+            <button><img src="./images/spain.png" alt=""></button>
+            <button><img src="./images/catalan.png" alt=""></button>
+            <button><img src="./images/english.png" alt=""></button>
+        </div> -->
+    </nav>
+
     <div class="foto_fondo">
+
         <div class="container_colgado">
+            <div class="tutorial">
+                <div class="contenido_tutorial">
+                    <div class="titulo_tutorial">
+                        <h2>LA DEPURADORA</h2>
+                    </div>
+                    <div class="descripcion1">
+                        <p>¿Has jugado alguna vez al ahorcado? 
+                            La depuradora está atascada y solo acertando las palabras de
+                            cada nivel <b>(3 niveles)</b> podras hacer que las fuentes vuelvan a
+                            funcionar.
+                        </p>
+                    </div>
+                    <div class="descripcion2">
+                        <p>Arrastra las letras que tienes en la esquina inferior derecha
+                            hasta la parte superior en la que encontraras estos guiones <b>'_'</b> ,
+                            perderas una vida cada vez que arrastres la letra incorrecta.
+                        </p>
+                    </div>
+                    <div class="descripcion3">
+                        <p>Consigue el maximo de puntos fallando el mínimo de 
+                            letras posibles.
+                        </p>
+                    </div>
+                    <div class="boton-tutorial">
+                        <button id="cerrar_tutorial_btn">JUGAR</button>
+                    </div>
+                    <div class="imagen_tutorial">
+                        <img src="/Juegos/Ahorcado/images/Raton.png" alt="">
+                    </div>
+                </div>
+            </div>
 
             <div class="col_colgado1">
 
@@ -51,16 +95,16 @@
                     <div class="puntaje">
                         <span id="puntaje">0</span>pts
                     </div>
-                    
+
                     <div class="contenedores">
 
                         <div class="contenedor1" style="transform: scaleY(1);"></div>
                         <div class="contenedor2" style="transform: scaleY(1);"></div>
-                        <div class="contenedor3"style="transform: scaleY(1);"></div>
-                        <div class="contenedor4"style="transform: scaleY(1);"></div>
-                        <div class="contenedor5"style="transform: scaleY(1);"></div>
-                        <div class="contenedor6"style="transform: scaleY(1);"></div>
-                        <div class="contenedor7"style="transform: scaleY(1);"></div>
+                        <div class="contenedor3" style="transform: scaleY(1);"></div>
+                        <div class="contenedor4" style="transform: scaleY(1);"></div>
+                        <div class="contenedor5" style="transform: scaleY(1);"></div>
+                        <div class="contenedor6" style="transform: scaleY(1);"></div>
+                        <div class="contenedor7" style="transform: scaleY(1);"></div>
                     </div>
                     <div class="tuberias">
                         <div class="tuberia_horizontal1"></div>
@@ -76,15 +120,18 @@
                         <div class="tuberia_vertical3"></div>
                     </div>
 
-                    <div class="resultado"></div>
-                    <button id="reiniciar-lose" style="display: none;">Reiniciar juego</button>
+                    <div class="resultado">
+                        <div class="siguiente-nivel"></div>
+                    </div>
+
                     <!-- Oculto inicialmente -->
-                    
+
                     <div class="fin-juego">
+                        <button id="reiniciar-lose" style="display: none;">Reiniciar juego</button>
                         <button id="continuar" style="display: none;">Continuar</button> <!-- Oculto inicialmente -->
                         <button id="reiniciar-win" style="display: none;">Reiniciar</button>
                     </div>
-                    
+
 
                 </div>
 
@@ -94,11 +141,11 @@
                     <h1>LA DEPURADORA</h1>
                 </div>
 
-                 <div class="letras">
+                <div class="letras">
                     <p class="palabraEscondida" id="dropzone"></p>
                     <p class="instruccion">Arrastra una letra</p>
                 </div>
-                
+
                 <!-- <div class="boton">
                     <button id="verificar">Verificar letra</button>
                     
@@ -106,8 +153,8 @@
                 <div class="contenedor-dragNdrop">
                     <div class="dragNdrop" id="dragNdrop"></div>
                 </div>
-                
-                
+
+
             </div>
         </div>
     </div>

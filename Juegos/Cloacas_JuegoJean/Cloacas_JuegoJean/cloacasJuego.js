@@ -391,7 +391,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function volverAlIndex() { 
-        window.location.href = '../../index.php';
+        window.location.href = '../../../PanelJoc.html';
     }
 
     if (volverMenuGameOver) {

@@ -172,7 +172,7 @@ if (isset($_SESSION['username'])) {
         <div class="ClickAqui">
           <img src="./LangingPagPhoto/DIALOGO_ES.png" alt="">
           <div class="mini-texto">
-            <p>Este es el mini texto</p>
+            <p>Jordi Perez</p>
           </div>
         </div>
         <img class="Cofre" src="./LangingPagPhoto/cofre1-removebg-preview.png" alt="Un cofre">
@@ -181,7 +181,7 @@ if (isset($_SESSION['username'])) {
         <div class="ClickAqui">
           <img src="./LangingPagPhoto/DIALOGO_ES.png" alt="">
           <div class="mini-texto">
-            <p>Este es el mini texto</p>
+            <p>Pablo Lin</p>
           </div>
         </div>
         <img class="Cofre" src="./LangingPagPhoto/cofre1-removebg-preview.png" alt="Un cofre">
@@ -190,7 +190,7 @@ if (isset($_SESSION['username'])) {
         <div class="ClickAqui">
           <img src="./LangingPagPhoto/DIALOGO_ES.png" alt="">
           <div class="mini-texto">
-            <p>Este es el mini texto</p>
+            <p>Jeancarlos Felix</p>
           </div>
         </div>
         <img class="Cofre" src="./LangingPagPhoto/cofre1-removebg-preview.png" alt="Un cofre">
@@ -199,7 +199,7 @@ if (isset($_SESSION['username'])) {
         <div class="ClickAqui">
           <img src="./LangingPagPhoto/DIALOGO_ES.png" alt="">
           <div class="mini-texto">
-            <p>Este es el mini texto</p>
+            <p>Jordi Celemin</p>
           </div>
         </div>
         <img class="Cofre" src="./LangingPagPhoto/cofre1-removebg-preview.png" alt="Un cofre">

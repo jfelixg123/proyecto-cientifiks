@@ -125,7 +125,7 @@ body {
     position: relative;
     height: 100vh;
     display: flex;
-    top: -3%;
+    top: -5%;
 }
 
 .parteSuperior,
@@ -270,22 +270,22 @@ body {
 
 .llavePasoTercerPiso {
     left: 0;
-    top: 56px;
+    top: 65px;
 }
 
 .llavePasoPrimerPiso {
     left: 0;
-    bottom: 342px;
+    bottom: 35.8%;
 }
 
 .llavePasoSegundoPisoDerecha {
     right: 0;
-    top: 275px;
+    top: 285px;
 }
 
 .llaveDePasoPrimerPisoDerecha {
     right: 0;
-    bottom: 340px;
+    bottom: 322px;
 }
 
 .rataTercerPiso,
@@ -309,7 +309,7 @@ body {
 
 .rataSegundoPiso {
     position: absolute;
-    top: 332px;
+    top: 326px;
 }
 
 .rataPrimerPiso {
@@ -324,7 +324,7 @@ body {
 
 .rataPrimerPisoDerecha {
     position: absolute;
-    bottom: 322px;
+    bottom: 326px;
 }
 
 .basuraTercerPiso,
@@ -341,22 +341,22 @@ body {
 
 .basuraPrimerPiso {
     left: 210px;
-    bottom: 325px;
+    bottom: 322px;
 }
 
 .basuraTercerPiso {
     left: 488px;
-    top: 94px;
+    top: 90px;
 }
 
 .basuraSegundoPisoDerecha {
     right: 400px;
-    top: 314px;
+    top: 310px;
 }
 
 .basuraPrimerPisoDerecha {
     right: 220px;
-    bottom: 325px;
+    bottom: 322px;
 }
 
 .charcoTercerPisoIzquierda, 

@@ -37,10 +37,10 @@ document.addEventListener("DOMContentLoaded", function () {
             },
             buttonsPlay: "",
             miniTexts: [
-                "Este es el mini texto 1 en español",
-                "Este es el mini texto 2 en español",
-                "Este es el mini texto 3 en español",
-                "Este es el mini texto 4 en español"
+                "Jordi Perez",
+                "Pablo Lin",
+                "Jeancarlos Felix",
+                "Jordi Celemin"
             ],
 
             loginTitle: "RESULTADOS GLOBALES",
@@ -76,10 +76,10 @@ document.addEventListener("DOMContentLoaded", function () {
             aboutUs: "About Us",
             Copyright: "Copyright © 2024 Cientifiks. All rights reserved.",
             miniTexts: [
-                "This is mini text 1 in English",
-                "This is mini text 2 in English",
-                "This is mini text 3 in English",
-                "This is mini text 4 in English"
+               "Jordi Perez",
+                "Pablo Lin",
+                "Jeancarlos Felix",
+                "Jordi Celemin"
             ],
             IniciarloginTitle: "LOGIN",
             RegisterLoginTitle: "Sign up",
@@ -113,10 +113,10 @@ document.addEventListener("DOMContentLoaded", function () {
             },
             loginTitle: "RESULTATS GLOBALS",
             miniTexts: [
-                "Aquest és el mini text 1 en català",
-                "Aquest és el mini text 2 en català",
-                "Aquest és el mini text 3 en català",
-                "Aquest és el mini text 4 en català"
+               "Jordi Perez",
+                "Pablo Lin",
+                "Jeancarlos Felix",
+                "Jordi Celemin"
             ],
             aboutUs: "Sobre Nosaltres",
             Copyright: "Copyright © 2024 Cientifiks. Tots els drets reservats..",
